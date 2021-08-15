@@ -1,0 +1,44 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+ul{
+	list-style: none;
+}
+#findPwd_wrap{
+	width: 1300px;
+	margin: 0 auto;
+	text-align : center;
+	margin-top: 80px;
+	min-height: 500px;
+}
+/* 비밀번호 찾기 문구*/
+#findPwd_wrap h2{
+	display : inline-block;
+	width: 500px;
+	text-align : left;
+}
+.line{
+	display : inline-block;
+	width: 500px;
+	border: 1px solid gray;
+	margin: 5px 0 30px;
+}
+
+#findPwd_wrap form label{
+	margin-right: 10px;
+}
+#findPwd_wrap form input{
+	width : 260px;
+	height: 40px;
+	margin: 10px 0;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+#findPwd_wrap form input[type="submit"]{
+	margin-top : 30px;
+	width : 100px;
+}

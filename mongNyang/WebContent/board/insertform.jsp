@@ -6,10 +6,9 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/insertform.css">
+<link rel="stylesheet" href="../css/insertform.css">
 </head>
 <body>
-	<%@ include file="header.jsp" %>
 	
 	<form method="post" action="">
 		<ul>
@@ -47,7 +46,6 @@
 		</div>
 	</form>
 			
-	
-	<%@ include file="footer.jsp" %>
+
 </body>
 </html>

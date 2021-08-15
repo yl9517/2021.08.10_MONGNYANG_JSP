@@ -16,7 +16,14 @@
 					<input type="text" id="id" name="id" placeholder="UserID"> <br>
 				</li>
 				<li>
-					<input type="password" id="pwd" name="pwd" placeholder="PassWord">
+					<input type="password" id="pwd" name="pwd" placeholder="Password">
+				</li>
+				<li>
+					<input type="submit" value="로그인">
+				</li>
+				<li>
+					<a href="#"> 비밀번호 찾기 </a> <br>
+					<a href="singUp.jsp">회원가입</a>
 				</li>
 			</ul>
 		

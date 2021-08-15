@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-	<%@ include file="header.jsp" %>
-	
+
 	<div id="main_wrap">
 		<div id="main_img">
 			<ul id="data">
@@ -35,6 +34,5 @@
 	</div>
 	
 	
-	<%@ include file="footer.jsp" %>
 </body>
 </html>

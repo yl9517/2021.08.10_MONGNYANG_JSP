@@ -8,38 +8,53 @@ ul{
 }
 
 
-/* 로그인  전체 */
-#log_wrap{
+#sign_wrap{
 	width: 1300px;
 	margin: 0 auto;
 	text-align : center;
 	min-height: 500px;
 }
-#log_wrap h2{
+
+#sign_wrap h2{
 	font-size : 36px;
 	margin: 80px 0 40px;	
 }
-#log_wrap li{
-	margin-bottom: 8px;
+#sign_wrap li{
+	margin-bottom: 15px;
 }
-#log_wrap form input{
+/*라벨*/
+#sign_wrap li label{
+	display:inline-block;
+	width : 260px;
+	text-align: left;
+	font-size: 14px;
+	font-weight: bolder;
+}
+
+#sign_wrap form input,
+#sign_wrap select{
 	width : 260px;
 	height: 45px;
 	margin: 7px 0;
+	border: 1px solid black;
 	border-radius: 5px;
 	padding: 5px 10px;
 }
-
-#log_wrap li:last-child {
-	margin-top: 20px;
+#sign_wrap form input:hover{
+	border: 2px solid black;
 }
 
-#log_wrap a{
+
+/* 로그인 버튼 */
+#sign_wrap li:last-child {
+	margin-top: 20px;
+}
+#sign_wrap a{
 	text-decoration: none;
 	margin : 5px;
 	color: #717171;
 }
-#log_wrap a:hover{
+#sign_wrap a:hover{
 	color: black;
 	margin: 5px;
 	text-decoration: underline;
