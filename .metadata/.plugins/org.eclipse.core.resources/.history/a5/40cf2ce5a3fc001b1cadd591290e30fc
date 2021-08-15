@@ -1,0 +1,17 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+/* 로그인  전체 */
+#log_wrap{
+	text-align : center;
+	width: 1300px;
+	margin: 0 auto;
+	background-color: pink;
+}
+
+#log_wrap form input{
+	height: 20px;
+}

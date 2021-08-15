@@ -1,0 +1,10 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+/* 로그인  전체 */
+#log_wrap{
+	width: 1300px;
+}

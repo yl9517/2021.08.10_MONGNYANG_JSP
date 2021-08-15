@@ -1,0 +1,13 @@
+const toogleBtn = document.querySelector('.toogleBtn');
+const boards = document.querySelector('.boards');
+const user = document.querySelector('.user');
+
+console.log('출력');
+
+toogleBtn.addEventListener('click',() => {
+	boards.classList.toogle('active');
+	user.classList.toogle('active');
+	console.log('클릭');
+});
+
+console.log('끝');

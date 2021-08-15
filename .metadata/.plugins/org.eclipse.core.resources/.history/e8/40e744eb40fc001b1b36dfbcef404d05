@@ -1,0 +1,8 @@
+const toogleBtn = document.querySelector('toogleBtn');
+const boards = document.querySelector('boards');
+const user = document.querySelector('user');
+
+toogleBtn.addEventListener('click',() => {
+	boards.classList.toogle('active');
+	user.classList.toogle('active');
+});

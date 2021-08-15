@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+	<%@ include file="header.jsp" %>
+	
+	<div id="main_wrap">
+		<div id="main_img">
+			<div id="chart">
+				<div class="data">
+					<h2>23건</h2>
+					<p>오늘 접수 된 <br> 실종 건수</p>				
+				</div>
+			</div>
+			<p class="msg">
+				가족을 잃어버린 몽냥이들에게 <b>가족의 품을</b> <br>
+				거리의 몽냥이들에게 <b>따뜻한 손길을</b>
+			</p>
+		</div>	
+	</div>
+	
+	
+	<%@ include file="footer.jsp" %>
+</body>
+</html>

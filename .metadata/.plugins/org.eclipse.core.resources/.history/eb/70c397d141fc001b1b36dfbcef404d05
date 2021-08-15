@@ -1,0 +1,5 @@
+
+$('.toogleBtn').click(function() {
+	$('.boards').toogleClass('active');
+	$('.user').toogleClass('active');
+});

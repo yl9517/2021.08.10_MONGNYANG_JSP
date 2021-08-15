@@ -1,0 +1,11 @@
+
+const boards = document.getElementsByClassName('boards');
+const user = document.getElementsByClassName('user');
+
+console.log('출력');
+
+document.getElementsByClassName('toogleBtn').onclick=function(){
+	console.log('클릭');
+	boards.classList.add('active');
+	user.classList.add('active');
+}

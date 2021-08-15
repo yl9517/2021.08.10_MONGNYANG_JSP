@@ -1,0 +1,15 @@
+const toogleBtn = document.querySelector('.toogleBtn');
+const boards = document.querySelector('.boards');
+const user = document.querySelector('.user');
+
+console.log('출력');
+
+toogleBtn.addEventListener('click',() => {
+
+	boards.style.display="block";
+	user.style.display = "block";
+	console.log('클릭');
+});
+
+boards.style.display="block";
+user.style.display = "none";

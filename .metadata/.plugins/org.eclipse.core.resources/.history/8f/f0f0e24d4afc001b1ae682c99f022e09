@@ -1,0 +1,72 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+/* 메인 전체 */
+div#main_wrap{
+	width : 100%;
+	height : 780px;
+}
+
+/* 메인 이미지 */
+#main_img{
+	height : 100%;
+	background-image: url("../images/bigMainBack.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/* 데이터 */
+#main_wrap #data{
+	list-style:none;
+	display:inline-block;
+	background-color: rgba(0,0,0,0.3);
+	text-align: center;
+	float: left;
+	color : white;
+	position: absolute;
+	top: 400px;
+	rigth : 100px;
+	
+}
+#data li{	
+	background-color: rgba(255,3,0,0.3);
+	width : 220px;
+	height :200px;
+	display:inline-block;
+	padding: 20px;
+}
+#data li h2{	
+	font-size: 50px;
+	padding-bottom : 20px;
+	border-bottom: 5px solid rgba(255,255,255,0.7);
+}
+#data li p{
+	font-size: 18px;
+	margin-top: 20px;
+	font-weight: bolder;
+}
+
+
+/* 메세지 */
+#main_wrap .msg{
+	font-size: 40px;
+    color: white;
+    position: absolute;
+    top: 680px;
+    left: 60px;
+}
+
+
+
+
+/* 768px 미만 시 */
+@media screen and (max-width:768px){
+	#main_wrap .msg{
+	    top: 300px;
+	}
+}

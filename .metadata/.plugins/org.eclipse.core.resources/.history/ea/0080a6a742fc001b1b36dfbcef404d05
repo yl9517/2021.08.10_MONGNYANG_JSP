@@ -1,0 +1,12 @@
+const toogleBtn = document.getElementsByClassName('.toogleBtn');
+const boards = document.getElementsByClassName('.boards');
+const user = document.getElementsByClassName('.user');
+
+console.log(toogleBtn);
+console.log(boards);
+console.log(user);
+
+toogleBtn.onclick=function(){
+	boards.classList.toogle('active');
+	user.classList.toogle('active');
+}

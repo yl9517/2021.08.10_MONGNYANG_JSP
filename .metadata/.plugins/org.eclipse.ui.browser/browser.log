@@ -1,0 +1,5 @@
+
+8월 13, 2021 19:00:38.05 NEW SESSION
+8월 13, 2021 19:00:38.05 [12124:7476:0813/190038.053:ERROR:device_event_log_impl.cc(214)] [19:00:38.053] Bluetooth: bluetooth_adapter_winrt.cc:1073 Getting Default Adapter failed.
+8월 13, 2021 19:58:25.35 [12124:7476:0813/195825.359:ERROR:CONSOLE(0)] "TypeError: Cannot read property '__widget' of null", source:  (0)
+8월 13, 2021 21:00:08.15 [12124:7476:0813/210008.151:ERROR:device_event_log_impl.cc(214)] [21:00:08.151] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
