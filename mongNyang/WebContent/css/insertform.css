@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+form {
+	width: 50%;
+	height: 1000px;
+	margin: 0 auto;
+}
+li {
+	list-style: none;
+	
+}
+#line1 {
+	border-bottom: solid gray 2px;
+	
+}
+
+#line1 label{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#line1 input{
+	border: 1px;
+	color: white;
+	font-weight: bold;
+	background-color: #84C0E9;
+	border-radius: 5px;
+	width: 80px;
+	height: 30px;
+	float: right;
+}
+#line2 input{
+	margin-top: 20px;
+	width: 100%;
+	height: 30px;
+}
+
+#line3 {
+	margin-top: 10px;
+	font-weight: bold;
+	
+}
+
+#line3 label {
+	font-weight: bold;
+	padding-right: 20px;
+}
+
+#line3 select {
+	margin-right: 50px;
+}
+
+#line4 {
+	margin-top: 10px;
+}
+#boardContent{
+	width: 100%;
+	height: 500px;
+	
+}
+#photo	{
+	background-color: #F1F1F1;
+	width: 100%;
+	height: 100px;
+}
