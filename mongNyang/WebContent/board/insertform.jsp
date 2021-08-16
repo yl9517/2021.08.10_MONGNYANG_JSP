@@ -12,15 +12,15 @@
 	
 	<form method="post" action="">
 		<ul>
-			<li id="line1">
+			<li id="titleBar">
 				<label>글쓰기</label>
 				<input type="submit" value="등록">
 			</li>
-			<li id="line2">
+			<li id="titleBar2">
 				<label for="boardTitle"></label>
 				<input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요" required="required">
 			</li>
-			<li id="line3">
+			<li id="addrBar">
 				<label>실종장소</label>
 				<select id="petAddr" name="petAddr">
 					<option value="강동">강동</option>
@@ -35,7 +35,7 @@
 					<option value="고양이">고양이</option>
 				</select>
 			</li>
-			<li id="line4">
+			<li id="contentBar">
 				<label for="boardContent"></label>
 				<textarea name="boardContent" id="boardContent"></textarea>
 			</li>

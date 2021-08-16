@@ -15,17 +15,18 @@ li {
 	list-style: none;
 	
 }
-#line1 {
+/* 게시판글씨, 등록버튼 */
+#titleBar {
 	border-bottom: solid gray 2px;
 	
 }
 
-#line1 label{
+#titleBar label{
 	font-size: 30px;
 	font-weight: bold;
 }
 
-#line1 input{
+#titleBar input{
 	border: 1px;
 	color: white;
 	font-weight: bold;
@@ -35,28 +36,32 @@ li {
 	height: 30px;
 	float: right;
 }
-#line2 input{
+
+/* 게시판 제목 */
+#titleBar2 input{
 	margin-top: 20px;
 	width: 100%;
 	height: 30px;
 }
 
-#line3 {
+/* 주소 및 견/묘 선택 */
+#addrBar {
 	margin-top: 10px;
 	font-weight: bold;
 	
 }
 
-#line3 label {
+#addrBar label {
 	font-weight: bold;
 	padding-right: 20px;
 }
 
-#line3 select {
+#addrBar select {
 	margin-right: 50px;
 }
 
-#line4 {
+/* 게시판 내용 */
+#contentBar {
 	margin-top: 10px;
 }
 #boardContent{
@@ -64,6 +69,7 @@ li {
 	height: 500px;
 	
 }
+/* 사진 첨부 */
 #photo	{
 	background-color: #F1F1F1;
 	width: 100%;

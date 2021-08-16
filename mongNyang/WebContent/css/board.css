@@ -9,7 +9,7 @@ ul li{
 	list-style: none;
 }
 
-#board_wrap {
+#boardWrap {
 	width: 1300px;
 	height: 1000px;
 	margin: 30px auto;
@@ -17,7 +17,7 @@ ul li{
 }
 
 /* 지도 이미지 */
-#board_wrap img {
+#boardWrap img {
 	width: 100px;
 	margin-right: 50px;
 	position: relative;
@@ -25,48 +25,48 @@ ul li{
 }
 
 /* 주소선택 바 */
-#addr_bar {
+#addrBar {
 	display: inline-block;
 	font-size: 30px;
 	font-weight: bold;
 	padding-bottom:10px;
 	border-bottom: solid 5px #F1F1F1;	
 }
-#addr_bar a {
+#addrBar a {
 	text-decoration : none;
 	padding: 10px 60px;
 	color: #717171;
 }
-#addr_bar a:hover {
+#addrBar a:hover {
 	border-bottom: solid 5px #84C0E9;
 	color: black;
 }
 
 /* 검색 바 */
-#find_bar {
+#findBar {
 	margin-top: 50px;
 }
-#find_bar input{
+#findBar input{
 	width: 150px;
 	height: 30px;
 	padding: 5px 10px;
 }
-#find_bar select{
+#findBar select{
 	width: 70px;
 	height: 30px;
 }
 /*검색 바 - 날짜검색*/
-#find_bar #date_search{
+#findBar #dateSearch{
 	display:inline-block;
 	position: relative;
 	right: 340px;
 }
 /*검색 바 -직접 검색*/
-#find_bar #direct_search{
+#findBar #directSearch{
 	float: right;
 	margin-right: 50px;
 }
-#find_bar #direct_search input:last-child{
+#findBar #directSearch input:last-child{
 	width : 50px;
 	color: white;
 	font-weight: bolder;
@@ -92,7 +92,7 @@ ul li{
 	border: solid 2px #84C0E9;
 	border-radius: 10px;
 }
-.pet_img {
+.petImg {
 	width: 180px;
 	height: 180px;
 	float: left;
@@ -102,17 +102,17 @@ ul li{
 	border-radius: 10px; */
 }
 
-.pet_content {
+.petContent {
 	text-align: left;
 	margin-top: 20px;
 }
 
-#pet_addr{
+#petAddr{
 	color: #84C0E9;
 	font-weight: bold;
 }
 
-#board_title{
+#boardTitle{
 	font-weight: bold;
 	font-size: larger;
 }
