@@ -80,7 +80,7 @@ ul li{
 	margin-top: 50px;
 	height: 800px;
 	position:relative;
-	background-color: #F1F1F1;
+	/* background-color: #F1F1F1; */
 	/* 영역 보여주기위해 일단 잠시 색지정 */
 }
 #list li {
@@ -88,8 +88,9 @@ ul li{
 	margin: 30px;
 	width: 500px;
 	height: 200px;
-	background-color: gray;
-	
+	/* background-color: gray; */
+	border: solid 2px #84C0E9;
+	border-radius: 10px;
 }
 .pet_img {
 	width: 180px;
@@ -97,6 +98,8 @@ ul li{
 	float: left;
 	background-color: yellow;
 	margin: 10px;
+	/* border: solid 2px #84C0E9;
+	border-radius: 10px; */
 }
 
 .pet_content {
@@ -111,6 +114,7 @@ ul li{
 
 #board_title{
 	font-weight: bold;
+	font-size: larger;
 }
 
 span {
