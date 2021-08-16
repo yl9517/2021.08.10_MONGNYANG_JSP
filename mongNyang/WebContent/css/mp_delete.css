@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+
+#btn_group{
+	
+    width: 200px;
+	height: 100px;
+	display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+#btn_group button{
+	margin: 10px;
+    border: 1px solid silver;
+    background-color: silver;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
+#btn_group button:hover{
+    border: 1px solid skyblue;
+    background-color: skyblue;
+}
