@@ -81,13 +81,38 @@ ul li{
 	height: 800px;
 	position:relative;
 	background-color: #F1F1F1;
-	
+	/* 영역 보여주기위해 일단 잠시 색지정 */
 }
-#inner {
-	position: absolute;
-	transform: translate(-50%,-50%);
-	top: 50%;
-	left: 50%;
+#list li {
+	display:inline-block;
+	margin: 30px;
+	width: 500px;
+	height: 200px;
 	background-color: gray;
 	
+}
+.pet_img {
+	width: 180px;
+	height: 180px;
+	float: left;
+	background-color: yellow;
+	margin: 10px;
+}
+
+.pet_content {
+	text-align: left;
+	margin-top: 20px;
+}
+
+#pet_addr{
+	color: #84C0E9;
+	font-weight: bold;
+}
+
+#board_title{
+	font-weight: bold;
+}
+
+span {
+	color: #84C0E9;
 }

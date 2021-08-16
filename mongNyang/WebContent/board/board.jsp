@@ -38,17 +38,23 @@
 			</form>
 		</div>
 		<div id="list">
-			<div id="inner">
-				<img alt="imageName" src="imagePath">
-				<ul>
-					<li> 
-						<img alt="" src="">
-						<p>강동/강아지</p>
-						<p>강동구 랄라동 말티즈를 찾습니다<span>[6]</span></p>
-						<p>2021.08.12 15:03</p>
+			<ul>
+				<%-- <c:forEach var="item" items="${list }">  --%>
+					<% for(int i=0;i<8;i++){
+						%>
+					<li onclick="location.href=''">
+						<!-- <img alt="imageName" src="imagePath" class="pet_img"> -->
+						<div class="pet_img">사진영역</div>
+						<!-- div는 지우고 img 활성화-->
+						<p class="pet_content" id="pet_addr"><c:out value="강동/강아지"></c:out></p>
+						<p class="pet_content" id="board_title"><c:out value="강동구 랄라동 말티즈를 찾습니다"></c:out><span>[6]</span></p>
+						<p class="pet_content"><c:out value="2021.08.12 15:03"></c:out></p>
 					</li>
-				</ul>
-			</div>
+					<%
+					}
+					%>
+				<%-- </c:forEach> --%>
+						</ul>
 		</div>
 	</div>
 	
