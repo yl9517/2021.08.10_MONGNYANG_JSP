@@ -29,8 +29,8 @@
 				</div>
 				<div id="directSearch">
 					<select id="search" name="search">
-						<option value="지역">지역</option>
-						<option value="견/묘">견/묘</option>
+						<option value="제목">제목</option>
+						<option value="내용">내용</option>
 					</select>
 					<input type="text" value="search">
 					<input type="submit" value="검색" id="btn1">

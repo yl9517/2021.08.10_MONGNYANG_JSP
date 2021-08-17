@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+form {
+	width: 50%;
+	height: 1000px;
+	margin: 0 auto;
+}
+li {
+	list-style: none;
+	
+}
+/* 게시판글씨, 등록버튼 */
+#titleBar {
+	border-bottom: solid gray 2px;
+	
+}
+
+#titleBar label{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#titleBar input{
+	border: 1px;
+	color: white;
+	font-weight: bold;
+	background-color: #84C0E9;
+	border-radius: 5px;
+	width: 80px;
+	height: 30px;
+	float: right;
+}
+
+/* 게시판 제목 */
+#titleBar2 input{
+	margin-top: 20px;
+	width: 100%;
+	height: 30px;
+}
+
+/* 주소 및 견/묘 선택 */
+#addrBar {
+	margin-top: 10px;
+	font-weight: bold;
+	
+}
+
+#addrBar label {
+	font-weight: bold;
+	padding-right: 20px;
+}
+
+#addrBar select {
+	margin-right: 50px;
+}
+
+/* 게시판 내용 */
+#contentBar {
+	margin-top: 10px;
+}
+#boardContent{
+	width: 100%;
+	height: 500px;
+	
+}
+/* 사진 첨부 */
+#photo	{
+	background-color: #F1F1F1;
+	width: 100%;
+	height: 100px;
+}

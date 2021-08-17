@@ -42,7 +42,7 @@
 			
 		</ul>
 		<div id="photo">
-			사진 첨부 (미완성)
+			<input type="file">
 		</div>
 	</form>
 			
