@@ -42,7 +42,7 @@ ul li{
 	display: inline-block;
 	float: right;
 }
-#titleBar #userInfo p.date{
+p.date {
 	font-size: 14px;
 }
 
@@ -144,6 +144,16 @@ input:checked + .slider:before {
 	bottom: 20px;
 }
 /* 댓글리스트 */
+#replyList li{
+}
+#replyList li p{
+	display: inline-block;
+	background-color: yellow;
+	margin: 10px;
+}
+.reply{
+	display: block;
+}
 
 /* 댓글 작성 칸 */
 #replyInsert{

@@ -49,8 +49,9 @@
 			
 			<ul id="replyList">
 				<li>
-					<p>hong01</p><p>2021.06.17 18:05</p>
-					<p>어라 32사거리에서 본 것 같은데</p>
+					<img alt="userImg" src="../images/userImg.png">					
+					<p>hong01</p><p class="date">2021.06.17 18:05</p>
+					<p class="reply">어라 32사거리에서 본 것 같은데</p>
 				</li>
 			</ul>
 			
