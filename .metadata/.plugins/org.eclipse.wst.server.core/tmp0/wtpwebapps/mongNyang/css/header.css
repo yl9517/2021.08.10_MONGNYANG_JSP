@@ -43,9 +43,12 @@ header{
 	font-size:21px;
 	font-weight: bolder;
 	cursor: pointer;
+	border: 3px solid white;
+	border-radius: 30px;
 }
 #head .boards li:hover{
 	color:black;
+	border-color: #EBD6EB;	
 }
 
 /* 유저 */
