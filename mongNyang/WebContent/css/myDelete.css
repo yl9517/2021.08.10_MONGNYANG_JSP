@@ -1,13 +1,69 @@
 @charset "UTF-8";
+
 *{
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
 }
-#delWrap{
+
+#myBordWarp{	
 	width: 1300px;
 	margin: 0 auto;
 	text-align: center;
+	display:flex;	
+}
+
+aside{
+	border-right:2px solid gray;
+	width: 20%;
+}
+aside img{
+	width: 150px;
+}
+aside p{
+	border-bottom: 2px solid gray;
+}
+
+
+.nav li{
+	width:150px;
+		
+	height: 40px;
+	
+    background-color: gray;
+
+    border: 2px solid black;
+
+    color:white;
+
+    padding: 0px;
+
+    text-align: center;
+    
+    vertical-align:middle;
+
+    display: inline-block;
+
+    font-size: 20px;
+
+    margin: 4px;
+    
+    border-radius: 5px;
+
+}
+
+
+.nav li:hover{
+	background-color: skyblue;
+}
+
+
+
+#delWrap{
+	width: 1300px;
+	margin: 200px;
+	text-align: center;
+
 }
 
 #btn_group{
@@ -16,6 +72,7 @@
 	display: flex;
     flex-flow: row wrap;
     justify-content: center;
+
 }
 
 #btn_group button{

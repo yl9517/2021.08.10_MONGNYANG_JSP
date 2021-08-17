@@ -11,7 +11,7 @@
 	
 	<div id="myReplywrap">
 		<aside>
-			<img alt="사람이미지" src="../images/man.jpg" width="150px">
+			<img alt="사람이미지" src="../images/man.jpg">
 			<p>본인 아이디</p>
 			<ul class="nav">
 				<li id="mpinfo"><a href="#">회원정보</a></li><br>

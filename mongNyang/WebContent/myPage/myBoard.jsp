@@ -21,6 +21,8 @@
 				<li id="withdrawal"><a href="#">회원 탈퇴</a></li>	<br>
 			</ul>
 		</aside>
+		
+		
 		<div class="boardwrap">
 		<section>
 			<table>
