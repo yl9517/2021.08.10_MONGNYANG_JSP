@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="../css/boardList.css">
 </head>
 <body>
+
+<c:set var="list" value="${requestScope.list }"></c:set>
 	
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
@@ -39,21 +41,21 @@
 		</div>
 		<div id="list">
 			<ul>
-				<%-- <c:forEach var="item" items="${list }">  --%>
-					<% for(int i=0;i<8;i++){
-						%>
+				<c:forEach var="item" items="${list }"> 
+					<%-- <% for(int i=0;i<8;i++){
+						%> --%>
 					<li onclick="location.href=''">
 						<!-- <img alt="imageName" src="imagePath" class="petImg"> -->
 						<div class="petImg">사진영역</div>
 						<!-- div는 지우고 img 활성화-->
-						<p class="petContent" id="petAddr"><c:out value="강동/강아지"></c:out></p>
-						<p class="petContent" id="boardTitle"><c:out value="강동구 랄라동 말티즈를 찾습니다"></c:out><span>[6]</span></p>
-						<p class="petContent"><c:out value="2021.08.12 15:03"></c:out></p>
+						<p class="petContent" id="petAddr"><c:out value="${item.categoryName }"></c:out></p>
+						<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>["${item.boardReadNo }"]</span></p>
+						<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
 					</li>
-					<%
+					<%-- <%
 					}
-					%>
-				<%-- </c:forEach> --%>
+					%> --%>
+				</c:forEach>
 						</ul>
 		</div>
 	</div>
