@@ -8,11 +8,10 @@
 <link rel="stylesheet" href="../css/myBoard.css">
 </head>
 <body>
-	<%@ include file="../header.jsp" %>
 	
-	<main>
+	<div id ="myBordWarp">
 		<aside>
-			<img alt="사람이미지" src="../imgages/man.jpg">
+			<img alt="사람이미지" src="../images/man.jpg">
 			<p>본인 아이디</p>
 			<ul class="nav">
 				<li id="mpinfo"><a href="#">회원정보</a></li><br>
@@ -37,8 +36,7 @@
 			</div>
 		</section>
 		</div>
-	</main>
-	<%@ include file="../footer.jsp" %>
+	</div>
 	
 </body>
 </html>

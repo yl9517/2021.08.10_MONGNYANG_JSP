@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../css/findPwd.css">
 </head>
 <body>
+
 	<div id="findPwd_wrap">
 		<h2>비밀번호 찾기</h2> <br>
 		<div class="line"></div>

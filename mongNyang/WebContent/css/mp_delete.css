@@ -1,8 +1,16 @@
 @charset "UTF-8";
-
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+#delWrap{
+	width: 1300px;
+	margin: 0 auto;
+	text-align: center;
+}
 
 #btn_group{
-	
     width: 200px;
 	height: 100px;
 	display: flex;

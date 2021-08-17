@@ -5,17 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/delete.css">
+<link rel="stylesheet" href="../css/mp_delete.css">
 </head>
 <body>
-
-
-    
-    <div id="btn_group">
-    	<p>정말로 탈퇴하시겠습니까?</p>
-        <button id="btn1" type="button">탈 퇴</button>
-        <button id="btn2" type="button">취 소</button>
+	<div id="delWrap">
+	    <div id="btn_group">
+	    	<p>정말로 탈퇴하시겠습니까?</p>
+	        <button id="btn1" type="button">탈 퇴</button>
+	        <button id="btn2" type="button">취 소</button>
+	    </div>
     </div>
-    
 </body>
 </html>

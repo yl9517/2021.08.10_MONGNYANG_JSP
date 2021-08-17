@@ -14,7 +14,6 @@
 			<nav id="mpside">
 				<div id="mpsidetop">
 					
-				
 				</div>
 				<div id="mpsidebottom">
 					<ul id="mpsidebutton">

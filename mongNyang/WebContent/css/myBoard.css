@@ -6,14 +6,20 @@
 	box-sizing: border-box;
 }
 
-main{
+#myBordWarp{	
+	width: 1300px;
+	margin: 0 auto;
+	text-align: center;
 	display:flex;	
 }
 
 aside{
 	border-right:2px solid gray;
+	width: 20%;
 }
-
+aside img{
+	width: 150px;
+}
 aside p{
 	border-bottom: 2px solid gray;
 }
