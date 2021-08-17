@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/mp_main.css">
+<link rel="stylesheet" href="../css/myMain.css">
 </head>
 <body>
 	<hr>

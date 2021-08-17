@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/mp_delete.css">
+<link rel="stylesheet" href="../css/myDelete.css">
 </head>
 <body>
 	<div id="delWrap">
