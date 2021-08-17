@@ -8,11 +8,10 @@
 <link rel="stylesheet" href="../css/myReply.css">
 </head>
 <body>
-<%@ include file="/header.jsp" %>
 	
-	<main>
+	<div id="myReplywrap">
 		<aside>
-			<img alt="사람이미지" src="../imgages/man.jpg">
+			<img alt="사람이미지" src="../images/man.jpg" width="150px">
 			<p>본인 아이디</p>
 			<ul class="nav">
 				<li id="mpinfo"><a href="#">회원정보</a></li><br>
@@ -24,20 +23,27 @@
 		</aside>
 		<div class="replywrap">
 		<section>
-			<h1>댓글 목록</h1>
-			<p>전체 19</p>
-			<div>
-				여기서 본 것 같아요
-			</div>
-			<div>
-				갈색 냥이 제가 데리고 있습니다!!
-			</div>
-			<div>
-				얼른 찾으셨으면 좋겠어요 ㅜㅜ
-			</div>
+			<table>
+				<caption>댓글 목록</caption>
+				<tr class="thhead">
+					<th>댓글 목록</th><th>작성일자</th>
+				</tr>
+				<tr>
+					<td>어! 저희 집 근처에서 발견한 것 같아요.</td>
+					<td>2021.08.17</td>
+				</tr>
+				<tr>
+					<td>꼭 찾으셨으면 좋겠습니다!!!!!</td>
+					<td>2021.08.17</td>
+				</tr>
+				<tr>
+					<td>제가 임시 보호중에 있습니다. 연락처 남겨주세요.</td>
+					<td>2021.08.17</td>
+				</tr>
+			
+			</table>
 		</section>
 		</div>
-	</main>
-	<%@ include file="/footer.jsp" %>
+	</div>
 </body>
 </html>

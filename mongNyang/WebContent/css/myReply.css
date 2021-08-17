@@ -6,43 +6,47 @@
 	box-sizing: border-box;
 }
 
-main{
-	display:flex;	
+#myReplywrap{	
+	width: 1300px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
 }
 
 aside{
 	border-right:2px solid gray;
+	width: 20%;
 }
-
+img{
+	width: 10px;
+}
 aside p{
 	border-bottom: 2px solid gray;
 }
 
 
 .nav li{
-	width:125px;
+	width:150px;
 		
-	height: 20px;
+	height: 40px;
 	
     background-color: gray;
 
-    border: none;
+    border: 2px solid black;
 
     color:white;
 
     padding: 0px;
 
     text-align: center;
-
-    text-decoration: none;
+    
+    vertical-align:middle;
 
     display: inline-block;
 
-    font-size: 15px;
+    font-size: 20px;
 
     margin: 4px;
-
-    cursor: pointer;
     
     border-radius: 5px;
 
@@ -52,39 +56,37 @@ aside p{
 	background-color: skyblue;
 }
 
-.replywrap{
-	margin: 20px;
+table{
+	width:700px;
+	
+	border-collapse: collapse;
 }
 
-section p{
-	display: inline-block;
+caption{
+	font-size: 40px;
+	
+	font-style: normal;
+	
+	text-align: left;
+	
+	margin-bottom: 30px;
+}
+
+.thhead{
+	height:15px;
 	
 	background-color: gray;
 	
-	color:white;
-	
-	width: 600px;
-	
-	border-radius:5px;
+	border-radius: 3px;
 }
 
-.replywrap div{
-	display: inline-block;
+tr {
+	display: inline-blick;
 	
-	background-color: white;
+	height:70px;
+	
+	vertical-align: middle;
 	
 	border-bottom: 2px solid gray;
 	
-	width: 600px;
-	
-	height: 60px;
-	
-	margin-top: 30px;
-	
-	
 }
-
-
-
-
-
