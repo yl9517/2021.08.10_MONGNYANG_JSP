@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dto.BoardDTO;
+import kr.or.mn.dto.ReplyDTO;
 
 public class BoardService {
 
@@ -90,5 +91,59 @@ private static BoardService instance=new BoardService();
 		}
 		return result;
 	}
+	
+	public int insertReply(ReplyDTO dto) {
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		int result=0;
+		
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=new BoardDAO();
+			result=dao.insertReply(conn, dto);
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return result;
+	}
+	
+	public List<ReplyDTO> replyDetail(int boardNum) {
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		List<ReplyDTO> list=new ArrayList<ReplyDTO>();
+		
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=new BoardDAO();
+			list=dao.replyDetail(conn, boardNum);
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return list;
+	}
+	
+	public void replyDelete(int replyNum, int boardNum) {
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=new BoardDAO();
+			dao.replyDelete(conn, replyNum, boardNum);
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+			
+		}
+	}
+	
+	
+	
 	
 }
