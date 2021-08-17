@@ -17,3 +17,5 @@ C:\msa\몽냥프로젝트\jspfile\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearc
 \mongNyang\src
 C:\msa\몽냥프로젝트\jspfile\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3247940315.index
 \mongNyang\src
+C:\msa\몽냥프로젝트\jspfile\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3575439456.index
+\mongNyang\src

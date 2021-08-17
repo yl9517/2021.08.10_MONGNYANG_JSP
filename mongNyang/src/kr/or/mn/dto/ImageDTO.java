@@ -4,7 +4,6 @@ public class ImageDTO {
 	private int imageNum;
 	private String imagePath;
 	private String imageName;
-	private String imageType;
 	private int boardNum;
 	private int replyNum;
 	
@@ -25,12 +24,6 @@ public class ImageDTO {
 	}
 	public void setImageName(String imageName) {
 		this.imageName = imageName;
-	}
-	public String getImageType() {
-		return imageType;
-	}
-	public void setImageType(String imageType) {
-		this.imageType = imageType;
 	}
 	public int getBoardNum() {
 		return boardNum;

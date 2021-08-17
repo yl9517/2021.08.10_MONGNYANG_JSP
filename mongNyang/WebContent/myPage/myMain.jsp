@@ -12,7 +12,7 @@
 	<hr>
 	<div id ="myBordWarp">
 		<aside>
-			<img alt="사람이미지" src="../images/man.jpg">
+			<img alt="userImg" src="../images/man.jsp">
 			<p>본인 아이디</p>
 			<ul class="nav">
 				<li id="mpinfo"><a href="#">회원정보</a></li><br>
@@ -22,8 +22,7 @@
 				<li id="withdrawal"><a href="#">회원 탈퇴</a></li>	<br>
 			</ul>
 		</aside>
-		 
-		
+				
 		<section>
 			<div id="infowrap">
 				<table>

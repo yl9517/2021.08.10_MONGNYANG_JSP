@@ -1,0 +1,24 @@
+#myAlert{
+	width: 1300px;	
+	margin: 30px auto;
+	text-align : center;
+}
+table{
+	border-collapse: collapse;
+	margin: 30px auto;
+	
+}
+table thead tr th{
+	text-align: left;
+	background-color: #37419A;
+	padding: 10px 20px;
+	color:white;
+}
+
+table tbody tr{
+	height: 30px;	
+	border-bottom: 2px solid #A9DFED;
+}
+table td{
+	padding: 20px;
+}

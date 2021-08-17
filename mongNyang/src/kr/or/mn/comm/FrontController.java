@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.jstl.core.Config;
 
-
-
 @WebServlet(urlPatterns = {"*.do"},
 			initParams = {@WebInitParam(name="init", value = "WEB-INF/prop.properties")})
 public class FrontController extends HttpServlet {
@@ -33,8 +31,7 @@ public class FrontController extends HttpServlet {
    
     @Override
     public void init(ServletConfig config) throws ServletException {
-    	String param = config.getInitParameter("init"); //prop파일경로 가져오기
-    	
+    	String param = config.getInitParameter("init"); //prop파일경로 가져오기  	
     	String realpath = config.getServletContext().getRealPath(param); //prop파일의 실제 경로
     	
     	Properties prop = new Properties();
@@ -50,11 +47,9 @@ public class FrontController extends HttpServlet {
     			Class c = Class.forName(value); //value 문자열 값을 객체로 변환
     			Action act = (Action) c.newInstance(); //Action객체로 변환		
 
-    			hm.put(key, act); //hm에 담기
-    			
+    			hm.put(key, act); //hm에 담기   			
     		}
-    		
-  		
+    		  		
     	}catch (Exception e) {
 			System.out.println(e);
 		}

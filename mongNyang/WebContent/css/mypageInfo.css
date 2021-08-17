@@ -1,0 +1,80 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+ul{
+	list-style: none;
+}
+
+#mypageInfo{
+	width: 1300px;
+	margin: 30px auto;
+	text-align : center;
+	min-height: 500px;
+}
+#mypageInfo h1{
+	margin-bottom: 50px;
+}
+#mypageInfo li{
+	margin: 20px;
+}
+#mypageInfo label{
+	display:inline-block;
+	width: 100px;
+	font-weight: bolder;
+}
+#mypageInfo input, #mypageInfo select{
+	width: 200px;
+	height: 35px;
+	border-bottom: 2px solid black;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	padding: 0 10px;
+}
+#mypageInfo input:hover, #mypageInfo select:hover{	
+	border-bottom: 2px solid #A9DFED;
+}
+
+#mypageInfo input[type="submit"]{
+	margin : 30px 0 5px;
+	border : 1px solid black;
+	border-radius : 5px;
+	width: 100px;
+	height: 45px;
+}
+ #mypageInfo ul li a{
+ 	font-size: 12px;
+ 	color : gray;
+ }
+ 
+ /* 내가 쓴 게시글, 댓글 가기 */
+
+ .mybtn{
+ 	display:inline-block;
+ 	width: 400px;
+ 	height: 80px;
+ 	background-color: #A9DFED;
+ 	text-align: left;
+ 	padding: 0 20px;
+ 	border-radius: 10px;
+ 	margin: 10px;
+ }
+  .mybtn span{
+ 	font-size: 24px;
+	font-weight: bolder;
+  }
+ .mybtn img{
+ 	width: 50px;
+ 	position: relative;
+ 	top: 15px;
+ 	left: 140px;
+ }
+  .mybtn:last-child img{
+ 	left: 165px;
+ }  
+  a.mybtn{
+ 	text-decoration: none;
+ 	color:black;
+ }
