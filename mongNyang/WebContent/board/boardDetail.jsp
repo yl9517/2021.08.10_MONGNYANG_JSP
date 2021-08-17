@@ -49,18 +49,22 @@
 			
 			<ul id="replyList">
 				<li>
-					<img alt="userImg" src="../images/userImg.png">					
-					<p>hong01</p><p class="date">2021.06.17 18:05</p>
+					<div id="replyInfo">
+						<img alt="userImg" src="../images/userImg.png">					
+						<p class="replyId">hong01</p>
+						<p class="date">2021.06.17 18:05</p>
+					</div>
 					<p class="reply">어라 32사거리에서 본 것 같은데</p>
+				<img src="../images/dog1.jpg" alt="dog"> <!-- 사진 있을 시 -->
 				</li>
 			</ul>
 			
 			<form id="replyInsert">
 				<textarea></textarea>
-				<input type="file">
 				<input type="submit" value="등록">
+				<input type="file">
 			</form>
-			
+		
 		</div>	
 	</div>
 			
@@ -68,7 +72,7 @@
 		<input type="button" value="글쓰기">
 		<input type="button" value="수정">
 		<input type="button" value="삭제">
-		<input type="button" value="목록">	
+		<input type="button" class="right" value="목록">	
 	</div>
 	
 	<script src="../js/boardBtn.js"></script>

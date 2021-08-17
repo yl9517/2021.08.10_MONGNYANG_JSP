@@ -42,9 +42,6 @@ ul li{
 	display: inline-block;
 	float: right;
 }
-p.date {
-	font-size: 14px;
-}
 
 /* 게시판 - 카테고리바 */
 #categoryBar{
@@ -144,16 +141,43 @@ input:checked + .slider:before {
 	bottom: 20px;
 }
 /* 댓글리스트 */
-#replyList li{
+#replyList{
+	padding: 10px 50px;
 }
-#replyList li p{
-	display: inline-block;
-	background-color: yellow;
-	margin: 10px;
+#replyList li{
+	margin: 10px 0;
+	padding: 10px;
+	border-bottom: 2px solid #ccc;
+}
+#replyInfo img{
+	width: 45px;
+	margin-right: 20px;
+}
+#replyInfo{
+	display:flex;
+}
+#replyInfo p{
+	margin-right: 20px;
+	position: relative;
+	top:20px;
+}
+.replyId{
+	line-height : 3px;
+	font-size: 20px;
 }
 .reply{
-	display: block;
+	text-align:left;
+	padding: 10px 30px;
 }
+p.date {
+	font-size: 14px;
+}
+#replyList li > img{
+	width: 200px;
+	display: flex;
+	margin: 0 0 20px 20px;
+}
+
 
 /* 댓글 작성 칸 */
 #replyInsert{
@@ -166,15 +190,24 @@ input:checked + .slider:before {
 	padding: 10px 20px;
 }
 #replyInsert input[type="submit"]{
-	width: 60px;
-	height: 30px;
+	position: relative;
+	bottom: 15px;
+	width: 70px;
+	height: 40px;
 }
-#replyInsert input{
-	
-}
+
 /* 버튼*/
 #btns{
 	width: 1300px;
 	margin: 30px auto;
-	text-align: center;
+	text-align: left;	
+}
+#btns input{
+	width: 90px;
+	height: 50px;
+	margin: 0 2px;
+	font-size: 16px;
+}
+#btns .right{
+	float:right;
 }
