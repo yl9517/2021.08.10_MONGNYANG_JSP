@@ -51,4 +51,49 @@ public class BoardDAO {
 		return list;
 	}
 
+	public BoardDTO getDetail(Connection conn, int boardnum) {
+		// TODO Auto-generated method stub
+		StringBuilder sql=new StringBuilder();
+		sql.append("  select				");
+		sql.append("		boardNum		");
+		sql.append("		, boardTitle	");
+		sql.append("		, boardContent	");
+		sql.append("		, userId		");
+		sql.append("		, boardDate		");
+		sql.append("		, categoryName	");
+		sql.append("		, imageNum		");
+		sql.append("		, boardState	");
+		sql.append("		, boardReadNo	");
+		sql.append("  from one_board		");
+		sql.append("  where boardNum=?		");
+
+		
+		ResultSet rs=null;
+		BoardDTO dto=new BoardDTO();
+		try(
+				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+				){
+			pstmt.setInt(1, boardnum);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setBoardNum(rs.getInt("boardNum"));
+				dto.setBoardTitle(rs.getString("boardTitle"));
+				dto.setBoardContent(rs.getString("boardContent"));
+				dto.setUserId(rs.getString("userId"));
+				dto.setBoardDate(rs.getString("boardDate"));
+				dto.setCategoryName(rs.getString("categoryName"));
+				dto.setImageNum(rs.getInt("imageNum"));
+				dto.setBoardState(rs.getBoolean("boardState"));
+				dto.setBoardReadNo(rs.getInt("boardReadNo"));
+			}
+		}catch(SQLException e) {
+			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch(SQLException e) {}
+		}
+		return dto;
+	}
+
+
 }

@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="../css/boardDetail.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<c:set var="dto" value="${requestScope.dto }"></c:set>
+
 <body>
 	<div id="detailWrap">
 		<div id="boardWrap"> 
@@ -17,14 +19,18 @@
 				<img src="../images/dog1.jpg" alt="dog">
 			</div>
 			<div id="titleBar">
-				<h2>제목입니다</h2>
+				<h2><c:out value="${dto.boardTitle }"></c:out></h2>
 				<div id="userInfo">
-					<p>hong01</p>
-					<p class="date">2021.08.12 17:55</p>
+					<p><c:out value="${dto.userId }"></c:out></p>
+					<p class="date"><c:out value="${dto.boardDate }"></c:out></p>
 				</div>
 			</div>
 			<div id="categoryBar">
-				<p class="category"> 강서  > 강아지  </p>		
+				<p class="category">
+					<c:out value="${dto.categoryName }"></c:out>
+					<c:out value="아아아아아"></c:out>
+					<c:out value="${dto.categoryName }"></c:out>
+				</p>		
 				<div class="switchBar">
 					<span class="view">아직 해결 되지 않았습니다 😥</span>
 					<span class="view" style="display:none;">도와주셔서 감사합니다 😊</span>
