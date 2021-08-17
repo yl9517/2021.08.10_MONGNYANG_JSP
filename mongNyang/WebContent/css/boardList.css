@@ -92,6 +92,10 @@ ul li{
 	border: solid 2px #84C0E9;
 	border-radius: 10px;
 }
+#list a{
+	display: block;
+}
+
 .petImg {
 	width: 180px;
 	height: 180px;

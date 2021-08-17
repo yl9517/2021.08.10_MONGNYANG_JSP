@@ -44,13 +44,16 @@
 				<c:forEach var="item" items="${list }"> 
 					<%-- <% for(int i=0;i<8;i++){
 						%> --%>
-					<li onclick="location.href=''">
-						<!-- <img alt="imageName" src="imagePath" class="petImg"> -->
-						<div class="petImg">사진영역</div>
-						<!-- div는 지우고 img 활성화-->
-						<p class="petContent" id="petAddr"><c:out value="${item.categoryName }"></c:out></p>
-						<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>["${item.boardReadNo }"]</span></p>
-						<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
+					
+					<li>
+						<a href="boarddetail.do?boardNum=${item.boardNum }">
+							<!-- <img alt="imageName" src="imagePath" class="petImg"> -->
+							<div class="petImg">사진영역</div>
+							<!-- div는 지우고 img 활성화-->
+							<p class="petContent" id="petAddr"><c:out value="${item.categoryName }"></c:out></p>
+							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>["${item.boardReadNo }"]</span></p>
+							<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
+						</a>				
 					</li>
 					<%-- <%
 					}
