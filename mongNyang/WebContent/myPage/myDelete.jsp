@@ -23,7 +23,7 @@
 			</ul>
 		</aside>
 
-
+ 
 		<section>
 			<div id="delWrap">
 	    		<div id="btn_group">
