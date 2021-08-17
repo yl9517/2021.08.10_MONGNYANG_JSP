@@ -28,7 +28,7 @@
 			<div id="categoryBar">
 				<p class="category">
 					<c:out value="${dto.categoryName }"></c:out>
-					<c:out value="아아아아아"></c:out>
+					<c:out value=" > "></c:out>
 					<c:out value="${dto.categoryName }"></c:out>
 				</p>		
 				<div class="switchBar">

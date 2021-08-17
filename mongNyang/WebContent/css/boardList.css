@@ -124,3 +124,14 @@ ul li{
 span {
 	color: #84C0E9;
 }
+
+#add {
+	float: right;
+	height: 40px;
+	width: 80px;
+	color: white;
+	font-weight: bolder;
+	background-color: #84C0E9;
+	border-radius: 5px;
+	border: 1px;	
+}

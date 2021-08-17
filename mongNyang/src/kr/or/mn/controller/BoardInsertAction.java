@@ -8,29 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
-import kr.or.mn.dto.BoardDTO;
-import kr.or.mn.service.BoardService;
 
-public class BoardDelAction implements Action {
+public class BoardInsertAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String n=request.getParameter("boardNum");
+		Forward forward=new Forward();
+		forward.setForward(true);
+		forward.setPath("board/boardInsert.jsp");
 		
-		int boardnum=1;
-		if(n!=null && !n.equals("")) {
-			boardnum=Integer.parseInt(n);
-		}
-		
-		BoardService service=BoardService.getInstance();
-		service.delete(boardnum);
-		
-		Forward forward=new Forward();	
-		forward.setForward(false);
-		forward.setPath("boardlist.do");
-
 		return forward;
 	}
 

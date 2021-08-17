@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../css/boardList.css">
+
 </head>
 <body>
 
@@ -42,8 +43,6 @@
 		<div id="list">
 			<ul>
 				<c:forEach var="item" items="${list }"> 
-					<%-- <% for(int i=0;i<8;i++){
-						%> --%>
 					
 					<li>
 						<a href="boarddetail.do?boardNum=${item.boardNum }">
@@ -55,14 +54,15 @@
 							<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
 						</a>				
 					</li>
-					<%-- <%
-					}
-					%> --%>
 				</c:forEach>
-						</ul>
+				
+			</ul>
+			<input type="button" value="글쓰기" id="add">
+				
 		</div>
 	</div>
 	
+	<script src="js/boardList.js"></script>
 	
 </body>
 </html>

@@ -56,5 +56,39 @@ private static BoardService instance=new BoardService();
 		}
 		return dto;
 	}
+	public void delete(int boardnum) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=new BoardDAO();
+			dao.delete(conn, boardnum);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+	}
+	public int insertData(BoardDTO dto) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		int result=0;
+		
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=new BoardDAO();
+			result=dao.insert(conn, dto);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return result;
+	}
 	
 }
