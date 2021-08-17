@@ -9,7 +9,7 @@
 <body>
 	<%@ include file="header.jsp" %>
 	
-	<jsp:include page="user/login.jsp"></jsp:include>
+	<jsp:include page="main.jsp"></jsp:include>
 	
 	<%@ include file="footer.jsp" %>
 </body>

@@ -58,11 +58,11 @@ header{
 }
 
 /* 토글버튼 */
-#head .toogleBtn img{
+#head .toggleBtn img{
 	width: 32px;
 }
 
-#head .toogleBtn{
+#head .toggleBtn{
 	display:none;
 	position: absolute;
 	top : 9px;

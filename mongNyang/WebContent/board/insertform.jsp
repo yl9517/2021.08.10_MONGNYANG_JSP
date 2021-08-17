@@ -18,7 +18,7 @@
 			</li>
 			<li id="titleBar2">
 				<label for="boardTitle"></label>
-				<input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요" required="required">
+				<input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요(최대 40자)" required="required">
 			</li>
 			<li id="addrBar">
 				<label>실종장소</label>

@@ -5,13 +5,13 @@
 }
 
 /* 메인 전체 */
-div#main_wrap{
+#mainWrap{
 	width : 100%;
 	height : 780px;
 }
 
 /* 메인 이미지 */
-#main_img{
+#mainImg{
 	height : 100%;
 	background-image: url("../images/bigMainBack.jpg");
 	background-repeat: no-repeat;
@@ -21,7 +21,7 @@ div#main_wrap{
 }
 
 /* 데이터 */
-#main_wrap #data{
+#mainWrap #data{
 	list-style:none;
 	background-color: rgba(0,0,0,0.3);
 	text-align: center;
@@ -54,7 +54,7 @@ div#main_wrap{
 }
 
 /* 메세지 */
-#main_wrap .msg{
+#mainWrap .msg{
 	font-size: 40px;
     color: white;
     position: absolute;
@@ -67,7 +67,7 @@ div#main_wrap{
 
 /* 768px 미만 시 */
 @media screen and (max-width:768px){
-	#main_wrap .msg{
+	#mainWrap .msg{
 	   display: none;
 	}
 }

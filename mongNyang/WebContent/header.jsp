@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/header2.css">
+<link rel="stylesheet" href="css/header.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
 				<a href="#">LOGIN</a>
 			</div>
 			
-			<a href="#" class="toogleBtn">
+			<a href="#" class="toggleBtn">
 				<img src="images/line.png" alt="toogle">
 			</a>
 		</nav>

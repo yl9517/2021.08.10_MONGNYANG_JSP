@@ -10,8 +10,8 @@
 </head>
 <body>
 
-	<div id="main_wrap">
-		<div id="main_img">
+	<div id="mainWrap">
+		<div id="mainImg">
 			<ul id="data">
 				<li>				
 					<h2>23건</h2>
