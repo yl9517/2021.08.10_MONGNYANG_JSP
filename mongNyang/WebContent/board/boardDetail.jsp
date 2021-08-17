@@ -43,7 +43,7 @@
 			<textarea>
 			
 			</textarea>
-			<p>조회 5</p>
+			<p>조회 <c:out value="${dto.boardReadNo }"></c:out></p>
 		</div>
 		
 		<div id="replyWrap">
