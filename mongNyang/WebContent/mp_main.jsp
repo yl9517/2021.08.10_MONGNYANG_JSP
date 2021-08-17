@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="../css/mp_main.css">
 </head>
 <body>
-	<%@ include file="header.jsp" %>
 	<hr>
 		<div id="mpwrap">		
 			<nav id="mpside">
@@ -33,6 +32,5 @@
 
 			</section>
 		</div>
-	<%@ include file="footer.jsp" %>
 </body>
 </html>
