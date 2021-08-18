@@ -40,6 +40,7 @@ private static BoardService instance=new BoardService();
 		}
 		return list;
 	}
+	//디테일 받아오기
 	public BoardDTO getDetail(int boardnum) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -50,6 +51,7 @@ private static BoardService instance=new BoardService();
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
 			dto=dao.getDetail(conn, boardnum);
+			dao.updateReadNo(conn, boardnum);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);

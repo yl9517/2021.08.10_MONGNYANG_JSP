@@ -253,6 +253,20 @@ public class BoardDAO {
 		return categorys;
 	}
 	
-	
+	//조회수 증가 ( 게시글 클릭할 때마다)
+	    public void updateReadNo(Connection conn,int boardNum) {
+	        StringBuilder sql = new StringBuilder();
+	        sql.append("  update one_board                  ");
+	        sql.append("  set readNo = readNo+1             ");
+	        sql.append("  where boardNum = ?                ");
+
+	        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+	            pstmt.setInt(1, boardNum);
+
+	            pstmt.executeUpdate();
+	        }catch (SQLException e) {
+	            System.out.println(e);
+	        }
+	    }
 	
 }
