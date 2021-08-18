@@ -6,6 +6,7 @@ public class ImageDTO {
 	private String imagePath;
 	private int boardNum;
 	private int replyNum;
+	
 	public int getImageNum() {
 		return imageNum;
 	}

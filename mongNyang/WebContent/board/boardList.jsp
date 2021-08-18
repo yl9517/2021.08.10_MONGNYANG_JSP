@@ -13,6 +13,7 @@
 <body>
 
 <c:set var="list" value="${requestScope.list }"></c:set>
+<c:set var="boardType" value="${requestScope.boardType }"></c:set>
 	
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
@@ -50,13 +51,15 @@
 							<div class="petImg">사진영역</div>
 							<!-- div는 지우고 img 활성화-->
 							<p class="petContent" id="petAddr"><c:out value="${item.petAddr } >"></c:out><c:out value="${item.petType }"></c:out></p>
-							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>["${item.boardReadNo }"]</span></p>
+							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>[${item.boardReadNo }]</span></p>
 							<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
 						</a>				
 					</li>
 				</c:forEach>
 				
 			</ul>
+			
+			<input type="hidden" value="${boardType }" id="btype">
 			<input type="button" value="글쓰기" id="add">
 				
 		</div>

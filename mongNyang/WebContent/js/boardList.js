@@ -2,10 +2,11 @@
  * 
  */
 
+let boardType = $('#btype').val();
 
-$(document).ready(function(){
-	$('#add').click(function(){
-       location.href="boardinsert.do";		
-	});
-	
+console.log(boardType);
+
+$('#add').click(function(){
+      location.href="boardinsert.do?boardType="+boardType;		
 });
+	

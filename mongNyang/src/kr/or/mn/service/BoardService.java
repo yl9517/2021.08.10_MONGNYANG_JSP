@@ -11,6 +11,7 @@ import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
+import kr.or.mn.dto.MainDTO;
 
 public class BoardService {
 
@@ -21,11 +22,11 @@ private static BoardService instance=new BoardService();
 	}
 	private BoardService() {}
 	
-	public List<BoardDTO> getList(String boardType) {
+	public List<MainDTO> getList(String boardType) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
-		List list=new ArrayList();
+		List<MainDTO> list=new ArrayList<>();
 		
 		try {
 			conn=dbconn.getConnection();
@@ -75,18 +76,22 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 	}
-	//게시글 등록
-	public int insertData(BoardDTO dto) {
+	//게시글 등록(게시판, 카테고리, 이미지 등륵)
+	public int insertData(String boardType, MainDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
 		int result=0;
-		
+		String categoryName= null;
+
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
+			categoryName=dao.findCategoryName(conn, boardType, dto.getPetAddr(), dto.getPetType());
+			dto.setCategoryName(categoryName);
 			
-			result=dao.insert(conn, dto);
+			result=dao.insertBoard(conn, boardType, dto);
+			
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);

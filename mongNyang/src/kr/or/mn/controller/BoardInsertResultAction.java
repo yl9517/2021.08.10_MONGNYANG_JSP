@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
-import kr.or.mn.dto.BoardDTO;
+import kr.or.mn.dto.MainDTO;
 import kr.or.mn.service.BoardService;
 
 public class BoardInsertResultAction implements Action { //게시글 등록
@@ -18,29 +18,36 @@ public class BoardInsertResultAction implements Action { //게시글 등록
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		
-		String boardTitle=request.getParameter("boardTitle");
+
 		String boardType=request.getParameter("boardType");
+		String boardTitle=request.getParameter("boardTitle");
 		String petAddr=request.getParameter("petAddr");
 		String petType=request.getParameter("petType");
 		String boardContent=request.getParameter("boardContent");
 		/* String photo=request.getParameter("photo"); */
 		BoardService service=BoardService.getInstance();
-		String categoryName=service.findCategoryName(boardType, petAddr, petType);
+//		String categoryName=service.findCategoryName(boardType, petAddr, petType);
+		System.out.println(boardType);
 		
-		BoardDTO dto=new BoardDTO();
+		MainDTO dto=new MainDTO();
 		dto.setBoardTitle(boardTitle);
+		dto.setPetAddr(petAddr);
+		dto.setPetType(petType);
 		dto.setBoardContent(boardContent);
-		dto.setCategoryName(categoryName);
 		
-		int result=service.insertData(dto);
+		
+		int result=service.insertData(boardType, dto);
+		
 		/* dto constructor만들어서 넘기기 */
 		
 		request.setAttribute("result", result);
 		
 		Forward forward=new Forward();
 		forward.setForward(false);
-		forward.setPath("boardList.do");
+		forward.setPath("boardlist.do?boardType="+boardType);
+		
+//		나중에 board.Detail.do에 boardnum 이랑 같이 보내야함
+		
 		return forward;
 	}
 

@@ -9,6 +9,7 @@ import java.util.List;
 
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
+import kr.or.mn.dto.MainDTO;
 
 public class BoardDAO {
 	private static BoardDAO dao=new BoardDAO();
@@ -17,7 +18,7 @@ public class BoardDAO {
 	}
 	private BoardDAO() {}
 	
-	public List getList(Connection conn, String boardType) {
+	public List<MainDTO> getList(Connection conn, String boardType) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select							");
@@ -31,40 +32,37 @@ public class BoardDAO {
 		sql.append("		, imageNum					");
 		sql.append("		, boardState				");
 		sql.append("		, boardReadNo				");
-		sql.append("  from one_board b					");
-		sql.append("  inner join one_category c			");
-		sql.append("  on b.categoryName=c.categoryName	");
-		//sql.append("  where c.boardType=?				");
+		sql.append("  from one_board as b				");
+		sql.append("  inner join one_category as c		");
+		sql.append("  on b.categoryName=c.categoryName  ");
+		sql.append("  where c.boardType=?				");
 		
-		System.out.println("dao 확인 :"+boardType);
-		
-		List list=new ArrayList();
-		try(
-				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
-				ResultSet rs=pstmt.executeQuery();
+		List<MainDTO> list=new ArrayList<>();
+		ResultSet rs=null;
+		try( PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+				
 				){
-			//pstmt.setString(1, boardType);
+				pstmt.setString(1, boardType);
+				rs=pstmt.executeQuery();
 			
 			while(rs.next()) {
-				System.out.println("결과 있는지 확인 ");
-				BoardDTO dto=new BoardDTO();
-				CategoryDTO cdto=new CategoryDTO();
+				MainDTO dto=new MainDTO();
 				dto.setBoardNum(rs.getInt("boardNum"));
 				dto.setBoardTitle(rs.getString("boardTitle"));
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setBoardDate(rs.getString("boardDate"));
-				cdto.setPetAddr(rs.getString("petAddr"));
-				cdto.setPetType(rs.getString("petType"));
+				dto.setPetAddr(rs.getString("petAddr"));
+				dto.setPetType(rs.getString("petType"));
 				dto.setImageNum(rs.getInt("imageNum"));
 				dto.setBoardState(rs.getBoolean("boardState"));
 				dto.setBoardReadNo(rs.getInt("boardReadNo"));
-				
 				list.add(dto);
-				list.add(cdto);
 			}
 		}catch(SQLException e) {
 			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch(SQLException e) {}
 		}
 		return list;
 	}
@@ -129,21 +127,22 @@ public class BoardDAO {
 			System.out.println(e);
 		}
 	}
+	
 
-	public int insert(Connection conn, BoardDTO dto) {
+	//게시판 테이블에 추가
+	public int insertBoard(Connection conn, String boardType, MainDTO dto) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  insert into one_board	(					");
-		sql.append("						boardNum			");
-		sql.append("						, boardTitle		");
+		sql.append("						boardTitle		");
 		sql.append("						, boardContent		");
 		sql.append("						, userId			");
 		sql.append("						, boardDate			");
 		sql.append("						, categoryName		");
-		sql.append("						, imageNum			");
+//		sql.append("						, imageNum			");
 		sql.append("						, boardState		");
 		sql.append("						, boardReadNo )		");
-		sql.append("  values(boardseq.nextval,?,?,?,?,?,?,?,0	");
+		sql.append("  values(?, ?, 1, ?, ?, 0, 0)		");
 		
 		int result=0;
 		try(
@@ -151,14 +150,12 @@ public class BoardDAO {
 				){
 			pstmt.setString(1, dto.getBoardTitle());
 			pstmt.setString(2, dto.getBoardContent());
-			pstmt.setString(3, dto.getUserId());
+//			pstmt.setString(3, "dto.getUserId()");
 			//아이디 어디서 받아옴?
-			pstmt.setString(4, dto.getBoardDate());
-			pstmt.setString(5, dto.getCategoryName());
-			//카테고리 나눠야함
-			pstmt.setInt(6, dto.getImageNum());
+			pstmt.setString(3, "2021-08-18");
+			pstmt.setString(4, dto.getCategoryName());
+//			pstmt.setInt(5, dto.getImageNum());
 			//이미지도 고민해야함
-			pstmt.setBoolean(7, false);
 			
 			result=pstmt.executeUpdate();
 			
@@ -254,7 +251,8 @@ public class BoardDAO {
 			System.out.println(e);
 		}
 		return categorys;
-	} 
+	}
+	
 	
 	
 }
