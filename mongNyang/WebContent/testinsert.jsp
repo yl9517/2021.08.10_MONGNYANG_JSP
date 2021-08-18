@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form method="post" action="imagetest.do" enctype="multipart/form-data">
+	<form method="post" action="imageinsert.do" enctype="multipart/form-data">
 		<input type="file" name="file1">
 		<input type="submit" value="전송">
 	</form>

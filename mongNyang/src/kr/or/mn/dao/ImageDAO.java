@@ -27,6 +27,7 @@ public class ImageDAO {
 		sql.append("              imageNum          ");
 		sql.append("              imageName         ");
 		sql.append("              imagePath         ");
+		sql.append("    from      one_image         ");
 		//boardNum이면
 		sql.append("     where   boardNum=?         ");
 		//replyNum이면
@@ -35,6 +36,7 @@ public class ImageDAO {
 		List<ImageDTO> list = new ArrayList<ImageDTO>();
 		ResultSet rs = null;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			
 			
 			
 		}catch (SQLException e) {		
@@ -49,14 +51,15 @@ public class ImageDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select                         ");
 		sql.append("              imageNum          ");
-		sql.append("              imageName         ");
-		sql.append("              imagePath         ");
-		sql.append("     where   boardNum=?         ");
+		sql.append("             , imageName         ");
+		sql.append("             , imagePath         ");
+		sql.append("    from      one_image         ");
+		sql.append("     where   boardNum=1         ");
 		
 		ResultSet rs = null;
 		ImageDTO dto = new ImageDTO();
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
-			pstmt.setInt(1, boardNum);
+			//pstmt.setInt(1, boardNum);
 			
 			rs = pstmt.executeQuery();
 			
@@ -80,13 +83,13 @@ public class ImageDAO {
 		sql.append("  		, imagePath	       ");
 		sql.append("  		, boardNum	       ");
 		sql.append("  		, replyNum	 )     ");
-		sql.append("   values( ? , ? , ? , ? ) ");
+		sql.append("   values( ? , ? , 1 , null ) ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setString(1, dto.getImageName());
 			pstmt.setString(2, dto.getImagePath());
-			pstmt.setInt(3, dto.getBoardNum());
-			pstmt.setInt(4, dto.getReplyNum());
+//			pstmt.setInt(3, dto.getBoardNum());
+//			pstmt.setInt(4, dto.getReplyNum());
 			
 			pstmt.executeUpdate();
 			

@@ -63,6 +63,26 @@ public class ImageService {
 		return dto;
 	}
 	
+	//사진 등록
+	public ImageDTO insertImg(ImageDTO dto) {
+		DBConnection dbconn = DBConnection.getDBInstance();
+		
+		Connection conn = null;
+		try {
+			conn = dbconn.getConnection();
+			
+			//dao연결
+			ImageDAO dao = ImageDAO.getDAO();
+			dao.insertImg(conn, dto);
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null)try { conn.close();}catch(SQLException e) {};
+		}
+		return dto;
+	}
+	
 	
 	
 }
