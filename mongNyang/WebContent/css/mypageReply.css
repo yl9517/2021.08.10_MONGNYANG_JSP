@@ -1,20 +1,25 @@
+@charset "UTF-8";
+
 *{
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
 }
+
 a{
 	text-decoration: none;
 }
+
 ul {
 	list-style: none;
 }
 
-#myboardWrap{
+#mypage{
 	width: 1300px;
 	margin: 30px auto;
 	text-align : center;
 }
+
 /*aside*/
 #mypageBtns{
 	float:left;
@@ -45,15 +50,20 @@ ul {
 }
 
 
-/* section */
-#infowrap{
+/* 댓글목록 */
+#replywrap{
 	width: 60%;
 	display: inline-block;
-	margin-top: 100px;
 }
 table{
 	border-collapse: collapse;
 	margin: 30px auto;	
+}
+table thead tr th{
+	text-align: left;
+	background-color: #37419A;
+	padding: 10px 20px;
+	color:white;
 }
 
 table tbody tr{
@@ -63,3 +73,7 @@ table tbody tr{
 table td{
 	padding: 20px;
 }
+
+
+
+

@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/myDelete.css">
+<link rel="stylesheet" href="../css/mypageReply.css">
 </head>
 <body>
-<div id="myboardWrap">
+	<div id="mypage">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="../images/userImg.png">
 			<ul>
@@ -36,17 +36,31 @@
 			</ul>
 		</aside>
 		
- 		<div id="delWrap">
-			<section>			
-	    		<div id="btn_group">
-			    	<p>정말로 탈퇴하시겠습니까?</p>
-			        <button id="btn1" type="button">탈 퇴</button>
-			        <button id="btn2" type="button">취 소</button>
-	    		</div>  		 	
-			</section>
-		</div>
-	</div>
+		<div id="replywrap">
+			<h2>댓글 못록</h2>
+			
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">전체 10</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td width="500px"> 저희집 근처에서 본것 같아요!!  </td>
+						<td width="150px"> 2021.07.25 </td>
 
+					</tr>
+					<tr>
+						<td> 제가 발견했는데 데리고 있을까요?  </td>
+						<td> 2021.07.25 </td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+	</div>
 
 </body>
 </html>
