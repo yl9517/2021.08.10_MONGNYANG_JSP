@@ -154,7 +154,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       <Context docBase="C:\msa\몽냥프로젝트\jspfile\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\msa\몽냥프로젝트\jspfile\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\mongNyang" path="/mongNyang" reloadable="true" source="org.eclipse.jst.jee.server:mongNyang">
- <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/kosta" password="kostamsa220!" type="javax.sql.DataSource" url="jdbc:mysql://my5701.gabiadb.com:3306/kostadb?autoReconnect=true" username="mydb"/>
+ <Resource auth="Container" driverClassName="com.mysql.cj.jdbc.Driver" maxIdle="30" maxTotal="100" maxWaitMillis="10000" name="jdbc/kosta" password="kostamsa220!" type="javax.sql.DataSource" url="jdbc:mysql://my5701.gabiadb.com:3306/kostadb?autoReconnect=true" username="mydb"/>
     
 </Context></Host>
     </Engine>
