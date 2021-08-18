@@ -76,12 +76,14 @@
 	</div>
 			
 	<div id="btns">
-		<input type="button" value="글쓰기">
-		<input type="button" value="수정">
-		<input type="button" value="삭제">
-		<input type="button" class="right" value="목록">
+		<input type="hidden" value=${categorys.boardType } id="btype">
+		<input type="hidden" value=${dto.boardNum } id="bnum">
+		<input type="button" value="글쓰기" id="add">
+		<input type="button" value="수정" id="modify">
+		<input type="button" value="삭제" id="delete">
+		<input type="button" class="right" value="목록" id="list">	
 	</div>
 	
-	<script src="/js/boardBtn.js"></script>
+	<script src="js/boardDetail.js"></script>
 </body>
 </html>

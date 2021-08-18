@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
-import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.service.BoardService;
 
 public class BoardDelAction implements Action {
@@ -18,6 +17,7 @@ public class BoardDelAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String n=request.getParameter("boardNum");
+		String boardType=request.getParameter("boardType");
 		
 		int boardnum=1;
 		if(n!=null && !n.equals("")) {
@@ -29,7 +29,7 @@ public class BoardDelAction implements Action {
 		
 		Forward forward=new Forward();	
 		forward.setForward(false);
-		forward.setPath("boardlist.do");
+		forward.setPath("boardlist.do?boardType="+boardType);
 
 		return forward;
 	}
