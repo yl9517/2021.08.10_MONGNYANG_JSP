@@ -11,7 +11,7 @@ import kr.or.mn.comm.Forward;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.service.BoardService;
 
-public class BoardInsertResultAction implements Action {
+public class BoardInsertResultAction implements Action { //게시글 등록
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
@@ -26,7 +26,7 @@ public class BoardInsertResultAction implements Action {
 		String boardContent=request.getParameter("boardContent");
 		/* String photo=request.getParameter("photo"); */
 		BoardService service=BoardService.getInstance();
-		String categoryName=service.findCategory(boardType, petAddr, petType);
+		String categoryName=service.findCategoryName(boardType, petAddr, petType);
 		
 		BoardDTO dto=new BoardDTO();
 		dto.setBoardTitle(boardTitle);

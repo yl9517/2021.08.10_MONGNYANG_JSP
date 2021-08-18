@@ -10,6 +10,7 @@ import javax.naming.NamingException;
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dto.BoardDTO;
+import kr.or.mn.dto.CategoryDTO;
 
 public class BoardService {
 
@@ -24,7 +25,7 @@ private static BoardService instance=new BoardService();
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
-		List<BoardDTO> list=new ArrayList<BoardDTO>();
+		List list=new ArrayList();
 		
 		try {
 			conn=dbconn.getConnection();
@@ -56,6 +57,8 @@ private static BoardService instance=new BoardService();
 		}
 		return dto;
 	}
+	
+	//게시글 삭제
 	public void delete(int boardnum) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -72,6 +75,7 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 	}
+	//게시글 등록
 	public int insertData(BoardDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -90,6 +94,45 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 		return result;
+	}
+	
+	// 카테고리이름 찾기 ( -> 게시글 등록에 들어갈 것)
+	public String findCategoryName(String boardType, String petAddr, String petType) {
+		
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		String categoryName= null;
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			
+			categoryName=dao.findCategoryName(conn, boardType,petAddr,petType);
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return categoryName;
+	}
+	
+	// 카테고리내용 찾기 ( -> 게시글 목록/개별에 들어갈 것 )
+	public CategoryDTO findCategoryContent(String categoryName) {
+		
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		CategoryDTO categorys = new CategoryDTO();
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			
+			categorys=dao.findCategoryContent(conn, categoryName);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return categorys;
 	}
 	
 	

@@ -17,7 +17,7 @@ public class BoardDAO {
 	}
 	private BoardDAO() {}
 	
-	public List<BoardDTO> getList(Connection conn, String boardType) {
+	public List getList(Connection conn, String boardType) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select							");
@@ -34,17 +34,19 @@ public class BoardDAO {
 		sql.append("  from one_board b					");
 		sql.append("  inner join one_category c			");
 		sql.append("  on b.categoryName=c.categoryName	");
-		sql.append("  where c.boardType=?				");
+		//sql.append("  where c.boardType=?				");
 		
-		List<BoardDTO> list=new ArrayList<BoardDTO>();
-		List<CategoryDTO> clist=new ArrayList<CategoryDTO>();
+		System.out.println("dao 확인 :"+boardType);
+		
+		List list=new ArrayList();
 		try(
 				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				ResultSet rs=pstmt.executeQuery();
 				){
-			pstmt.setString(1, boardType);
+			//pstmt.setString(1, boardType);
 			
 			while(rs.next()) {
+				System.out.println("결과 있는지 확인 ");
 				BoardDTO dto=new BoardDTO();
 				CategoryDTO cdto=new CategoryDTO();
 				dto.setBoardNum(rs.getInt("boardNum"));
@@ -52,8 +54,6 @@ public class BoardDAO {
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setBoardDate(rs.getString("boardDate"));
-//				dto.setCategoryName(rs.getString("categoryName"));
-				cdto.setBoardType(boardType);
 				cdto.setPetAddr(rs.getString("petAddr"));
 				cdto.setPetType(rs.getString("petType"));
 				dto.setImageNum(rs.getInt("imageNum"));
@@ -61,7 +61,7 @@ public class BoardDAO {
 				dto.setBoardReadNo(rs.getInt("boardReadNo"));
 				
 				list.add(dto);
-				clist.add(cdto);
+				list.add(cdto);
 			}
 		}catch(SQLException e) {
 			System.out.println(e);
@@ -167,6 +167,94 @@ public class BoardDAO {
 		}
 		return result;
 	}
+	
+	//해당하는 카테고리 찾기 (게시글 등록 시 필요)
+	public String findCategoryName(Connection conn, String boardType, String petAddr, String petType) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select                   ");
+		sql.append("  categoryName            ");
+		sql.append("   from one_category      ");
+		sql.append("  where  boardType = ?    ");
+		sql.append("  and  petAddr = ?        ");
+		sql.append("  and  petType = ?        ");
+			
+		ResultSet rs = null;
+		String categoryName= null;
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			pstmt.setString(1, boardType);
+			pstmt.setString(2, petAddr);
+			pstmt.setString(3, petType);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				categoryName = rs.getString("categoryName");
+			}
+			
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		return categoryName;
+	}
+	
+	//카테고리내용 리스트
+//	public List<CategoryDTO> findCategoryContent(Connection conn, String categoryName) {
+//		StringBuilder sql = new StringBuilder();
+//		sql.append(" select                    ");
+//		sql.append("    boardType              ");
+//		sql.append("    ,petAddr               ");
+//		sql.append("    ,petType               ");
+//		sql.append("   from one_category       ");
+//		sql.append("  where categoryName = ?   ");
+//			
+//		ResultSet rs = null;
+//		CategoryDTO categorys = new CategoryDTO();
+//		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+//			pstmt.setString(1, categoryName);
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				categorys.setBoardType(rs.getString("boardType"));
+//				categorys.setPetAddr(rs.getString("petAddr"));
+//				categorys.setPetType(rs.getString("petType"));
+//			}
+//			
+//		}catch (SQLException e) {
+//			System.out.println(e);
+//		}
+//		return categorys;
+//	} 
+	
+	
+	//카테고리이름에 해당하는 내용 찾기 (개별 조회 시 필요)
+	public CategoryDTO findCategoryContent(Connection conn, String categoryName) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select                    ");
+		sql.append("    boardType              ");
+		sql.append("    ,petAddr               ");
+		sql.append("    ,petType               ");
+		sql.append("   from one_category       ");
+		sql.append("  where categoryName = ?   ");
+			
+		ResultSet rs = null;
+		CategoryDTO categorys = new CategoryDTO();
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			pstmt.setString(1, categoryName);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				categorys.setBoardType(rs.getString("boardType"));
+				categorys.setPetAddr(rs.getString("petAddr"));
+				categorys.setPetType(rs.getString("petType"));
+			}
+			
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		return categorys;
+	} 
 	
 	
 }

@@ -18,13 +18,16 @@ public class BoardListAction implements Action {
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String boardType=request.getParameter("boardType");
+		//String boardType=request.getParameter("boardType");
+		String boardType="FIND";
 		
 		BoardService service=BoardService.getInstance();
-			
-		List<BoardDTO> list=service.getList(boardType);
+		
+		List list=service.getList(boardType);
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 		request.setAttribute("list", list);
 			
 		Forward forward=new Forward();

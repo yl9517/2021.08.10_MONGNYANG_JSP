@@ -2,7 +2,7 @@
 <Context>
  <Resource name="jdbc/kosta" auth="Container" type="javax.sql.DataSource"
                maxTotal="100" maxIdle="30" maxWaitMillis="10000"
-               username="mydb" password="kostamsa220!" driverClassName="com.mysql.jdbc.Driver"
+               username="mydb" password="kostamsa220!" driverClassName="com.mysql.cj.jdbc.Driver"
                url="jdbc:mysql://my5701.gabiadb.com:3306/kostadb?autoReconnect=true"/>
     
 </Context>

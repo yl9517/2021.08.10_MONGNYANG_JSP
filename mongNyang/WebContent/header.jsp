@@ -15,8 +15,8 @@
 				<img src="images/logo.png" alt="logo">
 			</div>
 			<ul class="boards">
-				<li><a href="#">찾아주세요</a> </li>
-				<li><a href="#">도와주세요</a> </li>
+				<li><a href="boardList.do?boardType=FIND">찾아주세요</a> </li>
+				<li><a href="boardList.do?boardType=HELP">도와주세요</a> </li>
 			</ul>
 
 			<!-- 로그인 null -->

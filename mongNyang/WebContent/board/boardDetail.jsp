@@ -11,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <c:set var="dto" value="${requestScope.dto }"></c:set>
+<c:set var="categorys" value="${requestScope.categorys }"></c:set>
 
 <body>
 	<div id="detailWrap">
@@ -27,9 +28,9 @@
 			</div>
 			<div id="categoryBar">
 				<p class="category">
-					<c:out value="${dto.categoryName }"></c:out>
+					<c:out value="${categorys.petAddr }"></c:out>
 					<c:out value=" > "></c:out>
-					<c:out value="${dto.categoryName }"></c:out>
+					<c:out value="${categorys.petType }"></c:out>
 				</p>		
 				<div class="switchBar">
 					<span class="view">아직 해결 되지 않았습니다 😥</span>
