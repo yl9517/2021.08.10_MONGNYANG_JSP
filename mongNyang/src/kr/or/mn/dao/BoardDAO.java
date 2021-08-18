@@ -8,10 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.or.mn.dto.BoardDTO;
-import kr.or.mn.dto.ReplyDTO;
 
 public class BoardDAO {
-
+	private static BoardDAO dao=new BoardDAO();
+	public static BoardDAO getDAO() {
+		return dao;
+	}
+	private BoardDAO() {}
+	
 	public List<BoardDTO> getList(Connection conn) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
@@ -68,7 +72,6 @@ public class BoardDAO {
 		sql.append("  from one_board		");
 		sql.append("  where boardNum=?		");
 
-		
 		ResultSet rs=null;
 		BoardDTO dto=new BoardDTO();
 		try(
@@ -128,7 +131,6 @@ public class BoardDAO {
 		sql.append("						, boardState		");
 		sql.append("						, boardReadNo )		");
 		sql.append("  values(boardseq.nextval,?,?,?,?,?,?,?,0	");
-		
 		
 		int result=0;
 		try(

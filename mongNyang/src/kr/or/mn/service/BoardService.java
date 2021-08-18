@@ -10,7 +10,6 @@ import javax.naming.NamingException;
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dto.BoardDTO;
-import kr.or.mn.dto.ReplyDTO;
 
 public class BoardService {
 
@@ -29,7 +28,7 @@ private static BoardService instance=new BoardService();
 		
 		try {
 			conn=dbconn.getConnection();
-			BoardDAO dao=new BoardDAO();
+			BoardDAO dao=BoardDAO.getDAO();
 			list=dao.getList(conn);
 			
 		}catch(SQLException|NamingException e) {
@@ -47,7 +46,7 @@ private static BoardService instance=new BoardService();
 		
 		try {
 			conn=dbconn.getConnection();
-			BoardDAO dao=new BoardDAO();
+			BoardDAO dao=BoardDAO.getDAO();
 			dto=dao.getDetail(conn, boardnum);
 			
 		}catch(SQLException|NamingException e) {
@@ -64,7 +63,7 @@ private static BoardService instance=new BoardService();
 		
 		try {
 			conn=dbconn.getConnection();
-			BoardDAO dao=new BoardDAO();
+			BoardDAO dao=BoardDAO.getDAO();
 			dao.delete(conn, boardnum);
 			
 		}catch(SQLException|NamingException e) {
@@ -81,7 +80,7 @@ private static BoardService instance=new BoardService();
 		
 		try {
 			conn=dbconn.getConnection();
-			BoardDAO dao=new BoardDAO();
+			BoardDAO dao=BoardDAO.getDAO();
 			result=dao.insert(conn, dto);
 			
 		}catch(SQLException|NamingException e) {
