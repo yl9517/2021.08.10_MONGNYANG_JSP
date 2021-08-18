@@ -23,10 +23,11 @@
 			<div class="user">
 				<a href="#">LOGIN</a>
 			</div>
+			<!-- 로그인 되어있을 경우 -->
+			<div class="user">
+				<a href="#"><!-- 유저아이디 --></a>			
+			</div>
 			
-			<a href="#" class="toggleBtn">
-				<img src="images/line.png" alt="toogle">
-			</a>
 		</nav>
 	</header>
 	<script src="js/header.js"></script>

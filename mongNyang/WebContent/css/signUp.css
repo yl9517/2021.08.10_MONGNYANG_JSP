@@ -20,7 +20,9 @@ ul{
 }
 #sign_wrap li{
 	margin-bottom: 15px;
+	background-color: yellow;
 }
+
 /*라벨*/
 #sign_wrap li label{
 	display:inline-block;
@@ -29,7 +31,6 @@ ul{
 	font-size: 14px;
 	font-weight: bolder;
 }
-
 #sign_wrap form input,
 #sign_wrap select{
 	width : 260px;
@@ -41,6 +42,10 @@ ul{
 }
 #sign_wrap form input:hover{
 	border: 2px solid black;
+}
+
+#sign_wrap li input#id{
+	width: 180px;
 }
 
 

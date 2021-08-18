@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="../css/signUp.css">
 </head>
 <body>
@@ -13,8 +14,9 @@
 		<form method="post" action="#">
 			<ul>	
 				<li>
-					<label>아이디</label><br>
+					<label for="id">아이디</label><br>
 					<input type="text" id="id" name="id" required="required"> 
+					<a href="#"><input type="button" value="중복확인" id="overlap"></a>
 				</li>
 				<li>
 					<label>비밀번호</label><br>
@@ -51,5 +53,6 @@
 		
 		</form>
 	</div>
+	<script src="../js/userSignup.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ public class UserDAO {
 	private UserDAO() {}
 	// 싱글톤
 	
-	
+
 	
 	// 회원등록
 	public int insertUser(Connection conn, UserDTO dto) {
@@ -82,7 +82,7 @@ public class UserDAO {
 				dto.setUserPhone(rs.getString("userPhone"));
 				dto.setUserEmail(rs.getString("userEmail"));
 				dto.setUserAddr(rs.getString("userAddr"));
-			}		
+			}	
 			
 		}catch(SQLException e) {
 			System.out.println(e);
@@ -148,32 +148,7 @@ public class UserDAO {
 			System.out.println(e);
 		}
 		
-
-		
-		
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
