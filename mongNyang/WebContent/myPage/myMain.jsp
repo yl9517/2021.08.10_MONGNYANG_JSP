@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../css/myMain.css">
 </head>
 <body>
+<c:set var="dto" value="${reqestScope.dto }"></c:set>
+
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="../images/userImg.png">

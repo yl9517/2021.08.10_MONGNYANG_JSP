@@ -38,23 +38,27 @@
 		</aside>
 		<div id="mypageInfo">
 			<h1> My Page </h1>
-			<form>
+			<form method="post" action="../usermodify.do">
 				<ul>
 					<li>
 						<label>ID</label>
-						<input type="text" id="id" name="id" required="required"> 
+						<input type="text" id="id" name="id" readonly="readonly" value=""> 
+					</li>
+					<li>
+						<label>Password</label>
+						<input type="password" id="pwd" name="pwd" required="required" value=""> 
 					</li>
 					<li>
 						<label>Phone</label>
-						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required">
+						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required" value="">
 					</li>
 					<li>
 						<label>Email</label>
-						<input type="email" id="email" name="email" required="required">
+						<input type="email" id="email" name="email" required="required" value="">
 					</li>
 					<li>
 						<label>Address</label>
-						<select id="addr" name="addr">
+						<select id="addr" name="addr" value="">
 							<option value="동">강동</option>
 							<option value="서">강서</option>
 							<option value="남">강남</option>

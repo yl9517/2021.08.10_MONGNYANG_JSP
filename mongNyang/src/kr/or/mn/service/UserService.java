@@ -83,7 +83,7 @@ public class UserService {
 			dao.modifyUser(conn, dto);
 			
 		}catch(SQLException | NamingException e) {
-			System.out.println(e);
+			System.out.println("서비스"+e);
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
