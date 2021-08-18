@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
-import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.ReplyDTO;
 import kr.or.mn.service.ReplyService;
 
@@ -29,10 +28,7 @@ public class ReplyInsertResultAction implements Action {
 		if(bn!=null) {
 			boardNum = Integer.parseInt(bn);
 		}
-		System.out.println("액션 게시판번호 :"+boardNum);
-		
 		String replyContent=request.getParameter("replyContent");
-		System.out.println("댓글내용:" + replyContent);
 		
 		//서비스 접근(번호,내용) => 보이드
 		ReplyDTO dto = new ReplyDTO();

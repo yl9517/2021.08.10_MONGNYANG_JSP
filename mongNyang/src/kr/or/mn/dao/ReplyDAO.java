@@ -11,46 +11,6 @@ import kr.or.mn.dto.ReplyDTO;
 
 public class ReplyDAO {
 	
-public List<ReplyDTO> getReplyList(Connection conn){
-		
-		StringBuilder sql=new StringBuilder();
-		sql.append("  select                   ");
-		sql.append("           replyNum        ");
-		sql.append("          ,boardNum        ");
-		sql.append("          ,replyDate       ");
-		sql.append("          ,userId          ");
-		sql.append("          ,replyContent    ");
-		sql.append("          ,imageNum        ");
-		sql.append("          ,alertCheck      ");
-		sql.append("  from  one_reply          ");
-		
-		List<ReplyDTO> list=new  ArrayList<ReplyDTO>();
-		try(
-			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
-			ResultSet rs=pstmt.executeQuery();
-			){
-			while(rs.next()) {
-				ReplyDTO dto=new ReplyDTO();
-				dto.setReplyNum(rs.getInt("replyNUm"));
-				dto.setBoardNum(rs.getInt("boardNum"));
-				dto.setReplyDate(rs.getString("replyDate"));
-				dto.setUserId(rs.getString("userId"));
-				dto.setReplyContent(rs.getString("replyContent"));
-				dto.setImageNum(rs.getInt("imageNum"));
-				dto.setAlertCheck(rs.getBoolean("alertCheck"));
-				
-				list.add(dto);
-			}
-			
-		}catch(SQLException e)
-		{
-			System.out.println(e);
-		}
-		return list;
-	}
-	
-	
-
 	public int insertReply(Connection conn, ReplyDTO dto) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
@@ -80,12 +40,11 @@ public List<ReplyDTO> getReplyList(Connection conn){
 		return result;
 	}
 	
-	public List<ReplyDTO> replyDetail(Connection conn, int boardNum){
+	public List<ReplyDTO> replyList(Connection conn, int boardNum){
 		
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select                      ");
-		sql.append("                replyNum      ");
-		sql.append("               ,replyContent  ");
+		sql.append("                replyContent  ");
 		sql.append("               ,userId        ");
 		sql.append("               ,replyDate     ");
 		sql.append("               ,boardNum      ");
@@ -105,7 +64,6 @@ public List<ReplyDTO> getReplyList(Connection conn){
 			while(rs.next())
 			{
 				ReplyDTO dto=new ReplyDTO();
-				dto.setReplyNum(rs.getInt("replyNum"));
 				dto.setReplyContent(rs.getString("replyContent"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setReplyDate(rs.getString("replyDate"));
