@@ -10,7 +10,7 @@
 </head>
 <body>
 <c:set var="dto" value="${reqestScope.dto }"></c:set>
- 
+
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="../images/userImg.png">
@@ -38,15 +38,17 @@
 			
 			</ul>
 		</aside>
-				
+
 		<section>
 			<div id="infowrap">
 				<h2>회원정보</h2>
 				<table>
-			        <tr><td>ID</td><td>hong gil dong</td></tr>
-			        <tr><td>Phone</td><td>010-1234-5678</td></tr>
-			        <tr><td>Email</td><td>hong123@gmail.com</td></tr>
-			        <tr><td>Address</td><td>강서</td></tr>			        
+				  <c:forEach var="item" items="${dto}"> 
+			        <tr><td>ID</td><td><c:out value="${item.userId }"></c:out></td></tr>
+			        <tr><td>Phone</td><td><c:out value="${item.userPhone }"></c:out></td></tr>
+			        <tr><td>Email</td><td><c:out value="${item.userEmail }"></c:out></td></tr>
+			        <tr><td>Address</td><td><c:out value="${item.userAddr }"></c:out></td></tr>	
+			      </c:forEach>		        
     			</table>
 			</div>
 		</section>
