@@ -21,7 +21,7 @@ $('#add').click(function(){
 });
 
 $('#modify').click(function(){
-	locatioin.href="boardmodify.do?boardType="+boardType+"&boardNum="+boardNum;
+	location.href="boardmodify.do?boardType="+boardType+"&boardNum="+boardNum;
 });
 
 $('#delete').click(function(){

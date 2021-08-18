@@ -61,6 +61,7 @@ private static BoardService instance=new BoardService();
 		return dto;
 	}
 	
+	
 	//게시글 삭제
 	public void delete(int boardnum) {
 		// TODO Auto-generated method stub
@@ -103,6 +104,29 @@ private static BoardService instance=new BoardService();
 		return result;
 	}
 	
+	//게시글 수정
+		public MainDTO modify(int boardNum) {
+			// TODO Auto-generated method stub
+			DBConnection dbconn=DBConnection.getDBInstance();
+			Connection conn=null;
+
+			try {
+				conn=dbconn.getConnection();
+				BoardDAO dao=BoardDAO.getDAO();
+				MainDTO dto=dao.getDetail(conn, boardNum);
+				String categoryName=dao.findCategoryName(conn, boardNum.getBoardType(), boardNum.getPetAddr(), boardNum.getPetType());
+				boardNum.setCategoryName(categoryName);
+				dao.modify(conn, boardNum);
+				
+			}catch(SQLException|NamingException e) {
+				System.out.println(e);
+			}finally {
+				if(conn!=null) try {conn.close();} catch(SQLException e) {}
+			}
+			return dto;
+			
+		}
+	
 	// 카테고리이름 찾기 ( -> 게시글 등록에 들어갈 것)
 	public String findCategoryName(String boardType, String petAddr, String petType) {
 		
@@ -141,7 +165,6 @@ private static BoardService instance=new BoardService();
 		}
 		return categorys;
 	}
-	
 	
 	
 }

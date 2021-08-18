@@ -22,7 +22,7 @@
 			<div id="titleBar">
 				<h2><c:out value="${dto.boardTitle }"></c:out></h2>
 				<div id="userInfo">
-					<p><c:out value="${dto.userId }"></c:out></p>
+					<p><c:out  value="${dto.userId }"></c:out></p>
 					<p class="date"><c:out value="${dto.boardDate }"></c:out></p>
 				</div>
 			</div>

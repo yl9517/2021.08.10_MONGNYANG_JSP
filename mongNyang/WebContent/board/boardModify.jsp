@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/boardModify.css">
+<link rel="stylesheet" href="/css/boardModify.css">
 </head>
 <body>
-	
+	<c:set var="dto" value="${requestScope.dto }"></c:set>
 	<form method="post" action="">
 		<ul>
 			<li id="titleBar">
@@ -18,7 +19,7 @@
 			</li>
 			<li id="titleBar2">
 				<label for="boardTitle"></label>
-				<input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요(최대 40자)" required="required">
+				<input type="text" name="boardTitle" id="boardTitle" value="${dto.boardTitle }" required="required">
 			</li>
 			<li id="addrBar">
 				<label>실종장소</label>
@@ -37,7 +38,7 @@
 			</li>
 			<li id="contentBar">
 				<label for="boardContent"></label>
-				<textarea name="boardContent" id="boardContent"></textarea>
+				<textarea name="boardContent" id="boardContent">${dto.boardContent }</textarea>
 			</li>
 			
 		</ul>

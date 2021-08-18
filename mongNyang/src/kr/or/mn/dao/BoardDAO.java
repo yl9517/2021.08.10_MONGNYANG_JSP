@@ -257,7 +257,7 @@ public class BoardDAO {
 	    public void updateReadNo(Connection conn,int boardNum) {
 	        StringBuilder sql = new StringBuilder();
 	        sql.append("  update one_board                  ");
-	        sql.append("  set readNo = readNo+1             ");
+	        sql.append("  set boardReadNo = boardReadNo+1             ");
 	        sql.append("  where boardNum = ?                ");
 
 	        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
@@ -268,5 +268,36 @@ public class BoardDAO {
 	            System.out.println(e);
 	        }
 	    }
+	    
+	    //게시글 수정
+		public void modify(Connection conn, MainDTO dto) {
+			// TODO Auto-generated method stub
+			StringBuilder sql=new StringBuilder();
+			sql.append("  update one_board		");
+			sql.append("  set					");
+			sql.append("	boardTitle=?		");
+			sql.append("	, boardContent=?	");
+			sql.append("	, categoryName=?	");
+//			sql.append("	, imageNum=?		");
+			sql.append("	, boardState=1		");
+			sql.append("  where					");
+			sql.append("  		boardNum=?		");
+
+			try(
+					PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+					){
+				pstmt.setString(1, dto.getBoardTitle());
+				pstmt.setString(2, dto.getBoardContent());
+				pstmt.setString(3, dto.getCategoryName());
+//				pstmt.setBoolean(4, dto.isBoardState());
+				pstmt.setInt(4, dto.getBoardNum());
+				//이미지도 고민해야함
+				
+				pstmt.executeUpdate();
+				
+			}catch(SQLException e) {
+				System.out.println(e);
+			}
+		}
 	
 }

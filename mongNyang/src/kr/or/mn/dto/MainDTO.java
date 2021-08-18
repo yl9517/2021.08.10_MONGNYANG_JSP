@@ -12,6 +12,14 @@ public class MainDTO {
 	private int boardReadNo;
 	private String petAddr;
     private String petType;
+    private String boardType;
+    
+	public String getBoardType() {
+		return boardType;
+	}
+	public void setBoardType(String boardType) {
+		this.boardType = boardType;
+	}
 	public int getBoardNum() {
 		return boardNum;
 	}
