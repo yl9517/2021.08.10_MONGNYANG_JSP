@@ -7,11 +7,43 @@ ul{
 	list-style: none;
 }
 
-#mypageInfo{
+#mypage{
 	width: 1300px;
 	margin: 30px auto;
 	text-align : center;
-	min-height: 500px;
+}
+/*aside*/
+#mypageBtns{
+	float:left;
+	width: 20%;
+	height : 500px;
+	border: 3px solid #CCC;
+	border-radius: 10px;
+	padding: 30px 20px 50px 20px;	
+}
+#mypageBtns img{
+	width: 200px;
+	margin-bottom: 20px;
+}
+#mypageBtns li{
+	height: 50px;
+	background-color: #A9DFED;
+	border-radius : 10px;
+	margin: 20px 5px;
+	font-size: 18px;
+	font-weight: bolder;
+	padding: 13px;
+}
+
+#mypageBtns a{
+	display: block;
+	text-decoration: none;
+	color:black;
+}
+/*내 정보*/
+#mypageInfo{
+	display:inline-block;
+	width: 60%;
 }
 #mypageInfo h1{
 	margin-bottom: 50px;
@@ -49,32 +81,4 @@ ul{
  	color : gray;
  }
  
- /* 내가 쓴 게시글, 댓글 가기 */
 
- .mybtn{
- 	display:inline-block;
- 	width: 400px;
- 	height: 80px;
- 	background-color: #A9DFED;
- 	text-align: left;
- 	padding: 0 20px;
- 	border-radius: 10px;
- 	margin: 10px;
- }
-  .mybtn span{
- 	font-size: 24px;
-	font-weight: bolder;
-  }
- .mybtn img{
- 	width: 50px;
- 	position: relative;
- 	top: 15px;
- 	left: 140px;
- }
-  .mybtn:last-child img{
- 	left: 165px;
- }  
-  a.mybtn{
- 	text-decoration: none;
- 	color:black;
- }
