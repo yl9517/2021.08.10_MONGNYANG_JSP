@@ -20,9 +20,11 @@ public class BoardListAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String boardType=request.getParameter("boardType");
+		
 		BoardService service=BoardService.getInstance();
 			
-		List<BoardDTO> list=service.getList();
+		List<BoardDTO> list=service.getList(boardType);
 		request.setAttribute("list", list);
 			
 		Forward forward=new Forward();

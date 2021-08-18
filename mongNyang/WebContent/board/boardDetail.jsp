@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/boardDetail.css">
+<link rel="stylesheet" href="css/boardDetail.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <c:set var="dto" value="${requestScope.dto }"></c:set>
@@ -16,7 +16,7 @@
 	<div id="detailWrap">
 		<div id="boardWrap"> 
 			<div id="boardImg">
-				<img src="../images/dog1.jpg" alt="dog">
+				<img src="images/dog1.jpg" alt="dog">
 			</div>
 			<div id="titleBar">
 				<h2><c:out value="${dto.boardTitle }"></c:out></h2>
@@ -49,19 +49,19 @@
 		<div id="replyWrap">
 		
 			<div id="replyBar">
-				<img alt="replyImg" src="../images/reply.png">
+				<img alt="replyImg" src="images/reply.png">
 				<h2>댓글</h2>
 			</div>
 			
 			<ul id="replyList">
 				<li>
 					<div id="replyInfo">
-						<img alt="userImg" src="../images/userImg.png">					
+						<img alt="userImg" src="images/userImg.png">					
 						<p class="replyId">hong01</p>
 						<p class="date">2021.06.17 18:05</p>
 					</div>
 					<p class="reply">어라 32사거리에서 본 것 같은데</p>
-				<img src="../images/dog1.jpg" alt="dog"> <!-- 사진 있을 시 -->
+				<img src="images/dog1.jpg" alt="dog"> <!-- 사진 있을 시 -->
 				</li>
 			</ul>
 			
@@ -81,6 +81,6 @@
 		<input type="button" class="right" value="목록">	
 	</div>
 	
-	<script src="../js/boardBtn.js"></script>
+	<script src="/js/boardBtn.js"></script>
 </body>
 </html>

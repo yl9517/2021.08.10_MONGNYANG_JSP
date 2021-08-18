@@ -20,7 +20,7 @@ private static BoardService instance=new BoardService();
 	}
 	private BoardService() {}
 	
-	public List<BoardDTO> getList() {
+	public List<BoardDTO> getList(String boardType) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -29,7 +29,7 @@ private static BoardService instance=new BoardService();
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
-			list=dao.getList(conn);
+			list=dao.getList(conn, boardType);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
@@ -81,6 +81,7 @@ private static BoardService instance=new BoardService();
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
+			
 			result=dao.insert(conn, dto);
 			
 		}catch(SQLException|NamingException e) {

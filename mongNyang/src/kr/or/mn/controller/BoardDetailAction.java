@@ -33,7 +33,7 @@ public class BoardDetailAction implements Action {
 		Forward forward=new Forward();	
 
 		forward.setForward(true);
-		forward.setPath("board/boardDetail.jsp");
+		forward.setPath("/view.jsp?page=board/boardDetail.jsp");
 
 		return forward;
 		

@@ -20,19 +20,20 @@
 				<label for="boardTitle"></label>
 				<input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요(최대 40자)" required="required">
 			</li>
+			
 			<li id="addrBar">
 				<label>실종장소</label>
 				<select id="petAddr" name="petAddr">
-					<option value="강동">강동</option>
-					<option value="강서">강서</option>
-					<option value="강남">강남</option>
-					<option value="강북">강북</option>
+					<option value="E">강동</option>
+					<option value="W">강서</option>
+					<option value="S">강남</option>
+					<option value="N">강북</option>
 				</select>
                	
                	<label>견/묘</label>
 				<select id="petType" name="petType">
-					<option value="강아지">강아지</option>
-					<option value="고양이">고양이</option>
+					<option value="D">강아지</option>
+					<option value="C">고양이</option>
 				</select>
 			</li>
 			<li id="contentBar">

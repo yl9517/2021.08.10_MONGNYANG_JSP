@@ -20,17 +20,19 @@ public class BoardInsertResultAction implements Action {
 		request.setCharacterEncoding("utf-8");
 		
 		String boardTitle=request.getParameter("boardTitle");
+		String boardType=request.getParameter("boardType");
 		String petAddr=request.getParameter("petAddr");
 		String petType=request.getParameter("petType");
 		String boardContent=request.getParameter("boardContent");
 		/* String photo=request.getParameter("photo"); */
+		BoardService service=BoardService.getInstance();
+		String categoryName=service.findCategory(boardType, petAddr, petType);
 		
 		BoardDTO dto=new BoardDTO();
 		dto.setBoardTitle(boardTitle);
 		dto.setBoardContent(boardContent);
-		/* dto.setCategoryName(categoryName); */
+		dto.setCategoryName(categoryName);
 		
-		BoardService service=BoardService.getInstance();
 		int result=service.insertData(dto);
 		/* dto constructor만들어서 넘기기 */
 		

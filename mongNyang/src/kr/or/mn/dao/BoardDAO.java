@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.or.mn.dto.BoardDTO;
+import kr.or.mn.dto.CategoryDTO;
 
 public class BoardDAO {
 	private static BoardDAO dao=new BoardDAO();
@@ -16,39 +17,51 @@ public class BoardDAO {
 	}
 	private BoardDAO() {}
 	
-	public List<BoardDTO> getList(Connection conn) {
+	public List<BoardDTO> getList(Connection conn, String boardType) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
-		sql.append("  select				");
-		sql.append("		boardNum		");
-		sql.append("		, boardTitle	");
-		sql.append("		, boardContent	");
-		sql.append("		, userId		");
-		sql.append("		, boardDate		");
-		sql.append("		, categoryName	");
-		sql.append("		, imageNum		");
-		sql.append("		, boardState	");
-		sql.append("		, boardReadNo	");
-		sql.append("  from one_board		");
+		sql.append("  select							");
+		sql.append("		boardNum					");
+		sql.append("		, boardTitle				");
+		sql.append("		, boardContent				");
+		sql.append("		, userId					");
+		sql.append("		, boardDate					");
+		sql.append("		, petAddr					");
+		sql.append("		, petType					");
+		sql.append("		, imageNum					");
+		sql.append("		, boardState				");
+		sql.append("		, boardReadNo				");
+		sql.append("  from one_board b					");
+		sql.append("  inner join one_category c			");
+		sql.append("  on b.categoryName=c.categoryName	");
+		sql.append("  where c.boardType=?				");
 		
 		List<BoardDTO> list=new ArrayList<BoardDTO>();
+		List<CategoryDTO> clist=new ArrayList<CategoryDTO>();
 		try(
 				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				ResultSet rs=pstmt.executeQuery();
 				){
+			pstmt.setString(1, boardType);
+			
 			while(rs.next()) {
 				BoardDTO dto=new BoardDTO();
+				CategoryDTO cdto=new CategoryDTO();
 				dto.setBoardNum(rs.getInt("boardNum"));
 				dto.setBoardTitle(rs.getString("boardTitle"));
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setBoardDate(rs.getString("boardDate"));
-				dto.setCategoryName(rs.getString("categoryName"));
+//				dto.setCategoryName(rs.getString("categoryName"));
+				cdto.setBoardType(boardType);
+				cdto.setPetAddr(rs.getString("petAddr"));
+				cdto.setPetType(rs.getString("petType"));
 				dto.setImageNum(rs.getInt("imageNum"));
 				dto.setBoardState(rs.getBoolean("boardState"));
 				dto.setBoardReadNo(rs.getInt("boardReadNo"));
 				
 				list.add(dto);
+				clist.add(cdto);
 			}
 		}catch(SQLException e) {
 			System.out.println(e);
