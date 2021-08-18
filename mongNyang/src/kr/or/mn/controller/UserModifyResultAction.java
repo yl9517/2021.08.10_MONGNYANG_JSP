@@ -34,7 +34,7 @@ public class UserModifyResultAction implements Action {
 		dto.setUserAddr(addr);
 		
 		service.modifyUser(dto);
-		
+		 
 		Forward forward = new Forward();
 		forward.setForward(false);
 		forward.setPath("usermain.do?userId=");		//수정

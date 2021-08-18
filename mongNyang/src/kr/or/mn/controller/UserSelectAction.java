@@ -17,7 +17,7 @@ public class UserSelectAction implements Action {
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//세션으로 아이디값 받기
+		//세션으로 아이디값 받기 
 		String id = "1";
 		
 		

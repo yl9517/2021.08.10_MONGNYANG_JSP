@@ -18,7 +18,7 @@ public class UserInsertAction implements Action {
 		Forward forward = new Forward();
 		forward.setForward(true);
 		forward.setPath("user/signUp.jsp");
-		
+		 
 		return forward;
 	}
 

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../css/mypageInfo.css">
 </head>
 <body>
-
+ 
 	<div id="mypage">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="../images/userImg.png">

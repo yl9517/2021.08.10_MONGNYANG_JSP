@@ -21,7 +21,7 @@ public class UserService {
 	private UserService() {}
 	
 	
-	
+	 
 	// 회원 개별조회
 	public UserDTO selectUser(String UserId){
 		

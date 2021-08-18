@@ -26,7 +26,7 @@ public class UserInsertResultAction implements Action {
 		String addr = request.getParameter("addr");
 		
 		if(pwd!=pwdCheck) {
-			
+			  
 		}
 		
 		UserService service = UserService.getInstance();

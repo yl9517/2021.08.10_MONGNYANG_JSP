@@ -19,7 +19,7 @@ public class UserModifyAction implements Action {
 		Forward forward = new Forward();
 		forward.setForward(true);
 		forward.setPath("myPage/mypageModify.jsp");		
-		
+		  
 		return forward;
 	}
 
