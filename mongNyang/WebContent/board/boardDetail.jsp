@@ -66,8 +66,8 @@
 				</li>
 			</ul>
 			
-			<form id="replyInsert">
-				<textarea></textarea>
+			<form id="replyInsert" method="post" action="replyinsert.do">
+				<textarea name="replyContent"></textarea>
 				<input type="submit" value="등록">
 				<input type="file">
 			</form>
@@ -79,7 +79,7 @@
 		<input type="button" value="글쓰기">
 		<input type="button" value="수정">
 		<input type="button" value="삭제">
-		<input type="button" class="right" value="목록">	
+		<input type="button" class="right" value="목록">
 	</div>
 	
 	<script src="/js/boardBtn.js"></script>

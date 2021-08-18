@@ -29,7 +29,18 @@ public List<ReplyDTO> getReplyList(Connection conn){
 			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 			ResultSet rs=pstmt.executeQuery();
 			){
-			
+			while(rs.next()) {
+				ReplyDTO dto=new ReplyDTO();
+				dto.setReplyNum(rs.getInt("replyNUm"));
+				dto.setBoardNum(rs.getInt("boardNum"));
+				dto.setReplyDate(rs.getString("replyDate"));
+				dto.setUserId(rs.getString("userId"));
+				dto.setReplyContent(rs.getString("replyContent"));
+				dto.setImageNum(rs.getInt("imageNum"));
+				dto.setAlertCheck(rs.getBoolean("alertCheck"));
+				
+				list.add(dto);
+			}
 			
 		}catch(SQLException e)
 		{
@@ -44,27 +55,23 @@ public List<ReplyDTO> getReplyList(Connection conn){
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  insert into one_reply  (                  ");
-		sql.append("                           replyNum         ");
-		sql.append("                          ,boardNum         ");
-		sql.append("                          ,replyDate       ");
+		sql.append("                          boardNum          ");
+		sql.append("                          ,replyDate        ");
 		sql.append("                          ,userId           ");
 		sql.append("                          ,replyContent     ");
 		sql.append("                          ,imageNum         ");
 		sql.append("                          ,alertCheck)      ");
-		sql.append("  values(boardseq.nextval, ?,?,?,?,?,?)     ");
+		sql.append("  values(?,?,1,?,2,0)                     ");
 		
 		int result=0;
 		try(
 			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 			){
 				pstmt.setInt(1, dto.getBoardNum());
-				pstmt.setString(2, dto.getReplyDate());
-				pstmt.setString(3, dto.getUserId());
-				pstmt.setString(4, dto.getReplyContent());
-				pstmt.setInt(5, dto.getImageNum());
-				pstmt.setBoolean(6, false);
+				pstmt.setString(2, "2021-08-18");
+				pstmt.setString(3, dto.getReplyContent());
 				
-				pstmt.executeUpdate();
+				result = pstmt.executeUpdate();
 				
 		}catch(SQLException e)
 		{
@@ -136,5 +143,29 @@ public List<ReplyDTO> getReplyList(Connection conn){
 		}
 		
 	}
+	
+	public void replyModify(Connection conn, ReplyDTO dto) {
+		
+		StringBuilder sql=new StringBuilder();
+		sql.append("  update       one_reply      ");
+		sql.append("  set                         ");
+		sql.append("               replyContent=? ");
+		sql.append("  where                       ");
+		sql.append("               replyNum=?     ");
+		
+		try(
+			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+				
+			){
+			pstmt.setString(1, dto.getReplyContent());
+			pstmt.setInt(2, dto.getReplyNum());
+			pstmt.executeUpdate();
+			
+		}catch(SQLException e)
+		{
+			System.out.println(e);
+		}
+	}
+
 
 }

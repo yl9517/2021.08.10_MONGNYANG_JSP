@@ -8,7 +8,6 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
-import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dao.ReplyDAO;
 import kr.or.mn.dto.ReplyDTO;
 
@@ -20,6 +19,24 @@ private static ReplyService instance=new ReplyService();
 		return instance;
 	}
 	private ReplyService() {}
+	
+	public List<ReplyDTO> getReplayList(){
+		
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		List<ReplyDTO> list=new ArrayList<ReplyDTO>();
+		
+		try {
+			conn=dbconn.getConnection();
+			ReplyDAO dao=new ReplyDAO();
+			list=dao.getReplyList(conn);
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return list;
+	}
 	
 	public int insertReply(ReplyDTO dto) {
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -69,6 +86,25 @@ private static ReplyService instance=new ReplyService();
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 			
+		}
+	}
+	
+	public void replyModify(ReplyDTO dto) {
+		
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		ReplyDAO dao=new ReplyDAO();
+		try {
+			conn=dbconn.getConnection();
+			dao.replyModify(conn, dto);
+			
+			conn.commit();
+		}catch(SQLException|NamingException e)
+		{
+			System.out.println(e);
+			try {conn.rollback();} catch(SQLException e2) {}
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 	}
 	

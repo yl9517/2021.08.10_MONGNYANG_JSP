@@ -8,18 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
+import kr.or.mn.service.ReplyService;
 
-public class ReplyInsertAction implements Action {
+public class ReplyDetailAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//보류
 		// TODO Auto-generated method stub
+		int replyNum=Integer.parseInt(request.getParameter("replyNum"));
+		
+		ReplyService service=ReplyService.getInstance();
+		service.replyDetail(replyNum);
+		
 		Forward forward=new Forward();
 		forward.setForward(true);
-		forward.setPath("board/boardDetail.jsp");
+		/* forward.setPath(""); */
 		
 		return forward;
 	}

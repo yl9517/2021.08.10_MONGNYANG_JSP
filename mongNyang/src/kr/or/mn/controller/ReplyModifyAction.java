@@ -9,19 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 
-public class ReplyInsertAction implements Action {
+public class ReplyModifyAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//보류
 		// TODO Auto-generated method stub
-		Forward forward=new Forward();
-		forward.setForward(true);
-		forward.setPath("board/boardDetail.jsp");
 		
-		return forward;
+		
+		
+		return null;
 	}
 
 }

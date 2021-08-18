@@ -8,18 +8,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
+import kr.or.mn.service.ReplyService;
 
-public class ReplyInsertAction implements Action {
+public class ReplyDelAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//보류
 		// TODO Auto-generated method stub
+		int replyNum=Integer.parseInt(request.getParameter("replyNum"));
+		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
+		
+		ReplyService service=ReplyService.getInstance();
+		service.replyDelete(replyNum, boardNum);
+		
 		Forward forward=new Forward();
-		forward.setForward(true);
-		forward.setPath("board/boardDetail.jsp");
+		forward.setForward(false);
+		/* forward.setPath(""); */
+		
+		
 		
 		return forward;
 	}
