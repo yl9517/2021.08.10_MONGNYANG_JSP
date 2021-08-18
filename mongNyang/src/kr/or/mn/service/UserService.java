@@ -13,13 +13,12 @@ import kr.or.mn.dto.UserDTO;
 
 public class UserService {
 	
-	
+	// 싱글톤
 	private static UserService instance = new UserService();
 	public static UserService getInstance() {
 		return instance;
 	}
 	private UserService() {}
-	// 싱글톤
 	
 	
 	
@@ -47,28 +46,28 @@ public class UserService {
 	}
 	
 	
+	
 	// 회원등록
-	public void insertUser(UserDTO dto) {
+	public int insertUser(UserDTO dto) {
 		
 		DBConnection dbconn = DBConnection.getDBInstance();
 		Connection conn = null;
 		
+		int result = 0;
 		try {
 			conn = dbconn.getConnection();
-			conn.setAutoCommit(false);
 			
 			UserDAO dao = UserDAO.getDAO();
-			dao.insertUser(conn, dto);
+			result = dao.insertUser(conn, dto);
 			
-			conn.commit();
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);	
-			try {conn.rollback();}catch(SQLException e2) {}
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
-		
+		return result;
 	}
+	
 	
 	
 	// 회원정보 수정
@@ -79,15 +78,12 @@ public class UserService {
 		
 		try {
 			conn = dbconn.getConnection();
-			conn.setAutoCommit(false);
 			
 			UserDAO dao = UserDAO.getDAO();
 			dao.modifyUser(conn, dto);
 			
-			conn.commit();
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);
-			try {conn.rollback();} catch(SQLException e2) {}
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
@@ -106,15 +102,12 @@ public class UserService {
 		
 		try {
 			conn = dbconn.getConnection();
-			conn.setAutoCommit(false);
 			
 			UserDAO dao = UserDAO.getDAO();
 			dao.deleteUser(conn, userId);
 			
-			conn.commit();
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);	
-			try {conn.rollback();} catch(SQLException e2) {}
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
@@ -124,6 +117,12 @@ public class UserService {
 	
 	
 	
+	
+	// 비밀번호 찾기
+	
+	// 아이디 중복 확인
+	
+	// 아이디, 이메일 맞는지 확인
 	
 	
 	

@@ -22,7 +22,7 @@ public class UserDAO {
 	
 	
 	// 회원등록
-	public void insertUser(Connection conn, UserDTO dto) {
+	public int insertUser(Connection conn, UserDTO dto) {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into one_user (  				");
@@ -34,7 +34,7 @@ public class UserDAO {
 		sql.append(" 						)				");
 		sql.append(" values( ?, ?, ?, ?, ? )				");
 		
-		
+		int result = 0;
 		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 				){
 			
@@ -43,13 +43,14 @@ public class UserDAO {
 			pstmt.setString(3, dto.getUserPhone());
 			pstmt.setString(4, dto.getUserEmail());
 			pstmt.setString(5, dto.getUserAddr());
-			pstmt.executeUpdate();	
+			result = pstmt.executeUpdate();	
 			
 			
 		}catch(SQLException e) {
 			System.out.println(e);
 		}
 		
+		return result;
 	}
 	
 	
