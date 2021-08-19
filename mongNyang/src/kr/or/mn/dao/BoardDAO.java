@@ -75,11 +75,14 @@ public class BoardDAO {
 		sql.append("		, boardContent	");
 		sql.append("		, userId		");
 		sql.append("		, boardDate		");
-		sql.append("		, categoryName	");
+		sql.append("		, b.categoryName	");
 		sql.append("		, imageNum		");
 		sql.append("		, boardState	");
 		sql.append("		, boardReadNo	");
-		sql.append("  from one_board		");
+		sql.append("		, boardType		");
+		sql.append("  from one_board as b				");
+		sql.append("  inner join one_category as c		");
+		sql.append("  on b.categoryName=c.categoryName  ");
 		sql.append("  where boardNum=?		");
 
 		ResultSet rs=null;
@@ -100,6 +103,7 @@ public class BoardDAO {
 				dto.setImageNum(rs.getInt("imageNum"));
 				dto.setBoardState(rs.getBoolean("boardState"));
 				dto.setBoardReadNo(rs.getInt("boardReadNo"));
+				dto.setBoardType(rs.getString("boardType"));
 			}
 		}catch(SQLException e) {
 			System.out.println(e);
@@ -141,7 +145,7 @@ public class BoardDAO {
 //		sql.append("						, imageNum			");
 		sql.append("						, boardState		");
 		sql.append("						, boardReadNo )		");
-		sql.append("  values(?, ?, 1, ?, ?, 0, 0)		");
+		sql.append("  values(?, ?, 1, ?, ?, 0, 0)				");
 		
 		try(
 				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
@@ -154,6 +158,8 @@ public class BoardDAO {
 			pstmt.setString(4, dto.getCategoryName());
 //			pstmt.setInt(5, dto.getImageNum());
 			//이미지도 고민해야함
+			
+			pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
 			System.out.println(e);

@@ -89,7 +89,6 @@ private static BoardService instance=new BoardService();
 			BoardDAO dao=BoardDAO.getDAO();
 			dao.insert(conn, dto);
 			
-			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
 		}finally {
@@ -107,7 +106,7 @@ private static BoardService instance=new BoardService();
 				conn=dbconn.getConnection();
 				BoardDAO dao=BoardDAO.getDAO();
 				dao.modify(conn, dto);
-				
+//				System.out.println(dto.getCategoryName()); 안됨
 			}catch(SQLException|NamingException e) {
 				System.out.println(e);
 			}finally {

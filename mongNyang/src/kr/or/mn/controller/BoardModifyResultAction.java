@@ -31,17 +31,18 @@ public class BoardModifyResultAction implements Action {
 		String boardContent=request.getParameter("boardContent");
 //		String photo=requset.getParameter("photo");
 		
+		BoardService service=BoardService.getInstance();
+		String categoryName=service.findCategoryName(boardType, petAddr, petType);
+		
 		MainDTO dto=new MainDTO();
+		dto.setBoardType(boardType);
 		dto.setBoardNum(boardNum);
 		dto.setBoardTitle(boardTitle);
 		dto.setPetAddr(petAddr);
 		dto.setPetType(petType);
 		dto.setBoardContent(boardContent);
-		
-		BoardService service=BoardService.getInstance();
-		String categoryName=service.findCategoryName(boardType, petAddr, petType);
 		dto.setCategoryName(categoryName);
-
+		
 		service.modify(dto);
 		
 		Forward forward=new Forward();

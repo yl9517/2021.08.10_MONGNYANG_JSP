@@ -111,11 +111,12 @@ input:checked + .slider:before {
 }
 
 /* 게시판 - 내용*/
-#boardWrap textarea {
+#boardContent {
 	margin: 30px 0 20px;
 	padding : 30px;
 	width: 100%;
 	min-height: 400px;
+	text-align: left;
 }
 #boardWrap p:last-child{
 	float: right;

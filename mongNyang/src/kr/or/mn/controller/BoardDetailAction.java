@@ -31,7 +31,7 @@ public class BoardDetailAction implements Action {
 		MainDTO dto=service.getDetail(boardNum);
 		CategoryDTO categorys = service.findCategoryContent(dto.getCategoryName()); //dto의 카테고리 이름 가져오기
 		dto.setPetAddr(categorys.getPetAddr());
-		dto.setPetAddr(categorys.getPetType());
+		dto.setPetType(categorys.getPetType());
 		
 		request.setAttribute("dto", dto);
 		

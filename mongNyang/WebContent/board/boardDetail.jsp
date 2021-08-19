@@ -40,9 +40,9 @@
 					</label>
 				</div>		
 			</div>
-			<textarea>
-			
-			</textarea>
+			<p id="boardContent">
+				<c:out value="${dto.boardContent }"></c:out>
+			</p>
 			<p>조회 <c:out value="${dto.boardReadNo }"></c:out></p>
 		</div>
 		
