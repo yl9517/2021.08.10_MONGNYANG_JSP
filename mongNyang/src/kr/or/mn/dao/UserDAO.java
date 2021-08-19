@@ -53,8 +53,7 @@ public class UserDAO {
 		
 		return result;
 	}
-	
-	
+		
 	
 	// 회원 개별조회(+아이디 중복체크)
 	public UserDTO selectUser(Connection conn, String userId) {
@@ -123,8 +122,6 @@ public class UserDAO {
 		}
 	}
 	
-	
-	
 	// 회원정보삭제
 	public int deleteUser(Connection conn, String userId) {
 		
@@ -143,7 +140,6 @@ public class UserDAO {
 		}
 		return result;
 	}
-	
 	
 	
 	//로그인 시도
@@ -176,7 +172,6 @@ public class UserDAO {
 	}
 	
 	
-	
 	// 비밀번호 찾기(아이디, 이메일 맞는지 확인)
 	public String searchPwd(Connection conn, String userId, String userEmail) {
 		
@@ -201,11 +196,13 @@ public class UserDAO {
 			
 		}catch(SQLException e) {
 			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch(SQLException e){}
 		}
 		return findPwd;
 	}
 	
-	
+	//내 게시글 조회는 boardDAO에
 	
 	
 	

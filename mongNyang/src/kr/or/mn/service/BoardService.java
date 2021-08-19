@@ -9,8 +9,11 @@ import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
+import kr.or.mn.dao.UserDAO;
+import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
+import kr.or.mn.dto.UserDTO;
 
 public class BoardService {
 
@@ -134,8 +137,7 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}			
 	}
-		
-		
+			
 	
 	// 카테고리이름 찾기 ( -> 게시글 등록에 들어갈 것)
 	public String findCategoryName(String boardType, String petAddr, String petType) {
@@ -176,5 +178,24 @@ private static BoardService instance=new BoardService();
 		return categorys;
 	}
 	
-	
+	//내 게시글 찾기
+	public List<BoardDTO> findMyWrite(String userId){
+		DBConnection dbconn = DBConnection.getDBInstance();
+		
+		Connection conn = null;
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		try {
+			conn = dbconn.getConnection();
+			
+			BoardDAO dao = BoardDAO.getDAO();
+			list = dao.findMyWrite(conn, userId);
+			
+		}catch (SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return list;
+		
+	}
 }

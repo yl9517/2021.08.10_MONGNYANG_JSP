@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,7 @@
 <link rel="stylesheet" href="css/mypageBoard.css">
 </head>
 <body>
+<c:set var="dto" value="${requestScope.list }"></c:set>
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="images/userImg.png">
@@ -41,20 +44,17 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="3">전체 10</th>
+						<th colspan="3"><c:out value="${dto.size() }"></c:out> </th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td width="500px"> [찾아주세요][서울시][누렁이]저희집 진돌이 보신분 있으신가요?  </td>
-						<td width="150px"> 2021.07.25 </td>
-						<td width="80px"> 2 </td>
-					</tr>
-					<tr>
-						<td> [찾아주세요][서울시][누렁이]저희집 진돌이 보신분 있으신가요?  </td>
-						<td> 2021.07.25 </td>
-						<td> 2 </td>
-					</tr>
+					<c:forEach var="item" items="${dto}">
+						<tr>
+							<td width="500px"> <c:out value="${dto.boardTitle }"></c:out> </td>
+							<td width="150px"> <c:out value="${dto.boardDate }"></c:out> </td>
+							<td width="80px"> <c:out value="${dto.boardState }"></c:out> </td><!-- 불린으로 받아와서 해결 / 미해결 설정 -->
+						</tr>	
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>

@@ -2,6 +2,8 @@ package kr.or.mn.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -19,8 +21,6 @@ public class UserService {
 		return instance;
 	}
 	private UserService() {}
-	
-	
 	 
 	// 회원 개별조회(+아이디 중복체크)
 	public UserDTO selectUser(String UserId){
@@ -44,8 +44,6 @@ public class UserService {
 		
 	}
 	
-	
-	
 	// 회원등록
 	public int insertUser(UserDTO dto) {
 		
@@ -65,9 +63,7 @@ public class UserService {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 		return result;
-	}
-	
-	
+	}	
 	
 	// 회원정보 수정
 	public void modifyUser(UserDTO dto) {
@@ -85,11 +81,8 @@ public class UserService {
 			System.out.println("서비스"+e);
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
-		}
-		
-		
+		}		
 	}
-
 	
 	
 	// 회원정보삭제
@@ -112,8 +105,7 @@ public class UserService {
 		}
 		return result;
 	}
-	
-	
+		
 	
 	// 로그인 시도
 	public int tryLogin(String userId, String userPwd) {
@@ -134,9 +126,7 @@ public class UserService {
 		}
 		return result;
 		
-	}
-	
-	
+	}	
 	
 	// 비밀번호 찾기(아이디, 이메일 맞는지 확인)
 	public String searchPwd (String userId, String userEmail) {
@@ -160,6 +150,7 @@ public class UserService {
 	}
 	
 	
+	//내게시글 찾기는 boardService에
 	
 	
 	

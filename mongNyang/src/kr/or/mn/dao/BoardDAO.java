@@ -7,8 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
+import kr.or.mn.dto.UserDTO;
 
 public class BoardDAO {
 	private static BoardDAO dao=new BoardDAO();
@@ -323,4 +325,39 @@ public class BoardDAO {
 				System.out.println(e);
 			}
 		}
+		
+		// 내 게시글 찾기
+		public List<BoardDTO> findMyWrite(Connection conn,String userId) {
+			StringBuilder sql = new StringBuilder();
+			sql.append("   select  boardTitle    		 ");
+			sql.append("     	   boardDate      		 ");
+			sql.append("           boardState    		 "); 
+			sql.append("   	from one_board    			 ");
+			sql.append("	where userId = ?    		 ");
+			
+			ResultSet rs = null;
+			List<BoardDTO> list = new ArrayList<BoardDTO>();
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+				pstmt.setString(1, userId);
+				
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					BoardDTO dto = new BoardDTO();
+					dto.setBoardTitle(rs.getString("boardTitle"));
+					dto.setBoardDate(rs.getString("boardDate"));
+					dto.setBoardState(rs.getBoolean("boardState"));
+					
+					list.add(dto);
+				}
+						
+			}catch (Exception e) {
+				System.out.println(e);
+			}finally {
+				if(rs!=null) try {rs.close();} catch(SQLException e){}
+			}
+			return list;
+		}
+			
+			
+		
 }
