@@ -59,17 +59,17 @@
 				let no=${dto.boardNum};
 				$.ajax({
 					url:'replylist.mn'
-					, data:{'num':no}
+					, data:{'boardNum':no}
 					, method:'post'
 					, dataType:'json'
 					,success:function(data)
 					{
 						$.each(data, function(index, item){
 							let replyList="<li> <div class='replyInfo'>";
-							replyList+="<p class="replyId">"+item.replyId+"</p>";
-							replyList+="<p class="date">"+item.replyDate+"</p>";
-							replyList+="<p class="reply">"+item.replyContent+"</p></div>";
-							replyList+="</li>";
+							replyList+="<p class='replyId'>"+item.replyId+"</p>";
+							replyList+="<p class='date'>"+item.replyDate+"</p>";
+							replyList+="<p class='reply'>"+item.replyContent+"</p>";
+							replyList+="</div></li>";
 							/* 사진 있을 시 추가 */
 							$('#replyList').append(replyList);
 							
@@ -84,7 +84,17 @@
 			
 			</script>
 			
-			<ul id="replyList"></ul>
+			<ul id="replyList">
+			<li>
+               <div class="replyInfo">
+                  <img alt="userImg" src="images/userImg.png">               
+                  <p class="replyId">hong01</p>
+                  <p class="date">2021.06.17 18:05</p>
+               </div>
+               <p class="reply">어라 32사거리에서 본 것 같은데</p>
+               <img src="images/dog1.jpg" alt="dog"> <!-- 사진 있을 시 -->
+            </li>
+			</ul>
 			
 			
 			<form id="replyInsert" method="post" action="replyinsert.do">
@@ -98,7 +108,7 @@
 	</div>
 			
 	<div id="btns">
-		<input type="hidden" value=${categorys.boardType } id="btype">
+		<input type="hidden" value=${dto.boardType } id="btype">
 		<input type="hidden" value=${dto.boardNum } id="bnum">
 		<input type="button" value="글쓰기" id="add">
 		<input type="button" value="수정" id="modify">
