@@ -8,26 +8,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
-import kr.or.mn.service.UserService;
 
-public class UserDeleteResultAction implements Action {
+public class UserBoardAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		
-		String userId = request.getParameter("userId");		
-		
-		
-		UserService service = UserService.getInstance();
-		service.deleteUser(userId);
-		
+			throws ServletException, IOException {		
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("/view.jsp?page=main.mn");                   
-
+		forward.setPath("/view.jsp?page=myPage/mypageBoard.jsp");		
+		  
 		return forward;
 	}
 

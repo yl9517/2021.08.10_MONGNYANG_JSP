@@ -19,7 +19,7 @@ public class UserDeleteAction implements Action {
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("myPage/myDelete.jsp");
+		forward.setPath("view.jsp?page=myPage/myDelete.jsp");
 		
 		return forward;
 	}

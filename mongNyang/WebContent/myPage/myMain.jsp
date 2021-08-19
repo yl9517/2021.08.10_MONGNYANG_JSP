@@ -6,32 +6,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/myMain.css">
+<link rel="stylesheet" href="css/myMain.css">
 </head>
 <body>
 <c:set var="dto" value="${reqestScope.dto }"></c:set>
 
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
-			<img alt="userImg" src="../images/userImg.png">
+			<img alt="userImg" src="images/userImg.png">
 			<ul>
 				<li>
-					<a href="#">
+					<a href="usermain.do">
 						회원정보
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="usermodify.do">
 						회원정보수정
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="userboard.do">
 						내가 쓴 게시물
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="userreply.do">
 						내가 쓴 댓글
 					</a>
 				</li>

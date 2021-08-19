@@ -37,7 +37,7 @@ public class UserModifyResultAction implements Action {
 		 
 		Forward forward = new Forward();
 		forward.setForward(false);
-		forward.setPath("usermain.do?userId=");		//수정
+		forward.setPath("usermain.do?userId="+id);		//수정
 		
 		return forward;
 	}

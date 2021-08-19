@@ -18,7 +18,7 @@ public class UserModifyAction implements Action {
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("myPage/mypageModify.jsp");		
+		forward.setPath("/view.jsp?page=myPage/mypageModify.jsp");		
 		  
 		return forward;
 	}

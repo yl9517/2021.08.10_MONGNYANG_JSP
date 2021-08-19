@@ -57,7 +57,7 @@ public class UserDAO {
 	
 	
 	
-	// 회원 개별조회
+	// 회원 개별조회 & 아이디 중복 체크
 	public UserDTO selectUser(Connection conn, String userId) {
 		
 		StringBuilder sql = new StringBuilder();
