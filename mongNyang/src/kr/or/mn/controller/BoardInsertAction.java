@@ -23,5 +23,4 @@ public class BoardInsertAction implements Action {
 		
 		return forward;
 	}
-
 }

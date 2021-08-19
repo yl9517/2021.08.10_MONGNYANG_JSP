@@ -13,7 +13,7 @@
 	String boardType=request.getParameter("boardType");
 	
 	%>
-	<form method="post" action="boardinsertresult.do">
+	<form method="post" action="boardinsertresult.do" enctype="multipart/form-data">
 		<input type="hidden" value="<%=boardType %>" name="boardType">
 		<ul>
 			<li id="titleBar">
@@ -47,7 +47,7 @@
 			
 		</ul>
 		<div id="photo">
-			<input type="file" name="imageName">
+			<input type="file" name="file1">
 		</div>
 	</form>
 			
