@@ -35,7 +35,7 @@ public class UserModifyInfoAction implements Action {
 			request.setAttribute("dto", dto);
 			
 			forward.setForward(true);
-			forward.setPath("myPage/mypageModify.jsp");
+			forward.setPath("/view.jsp?page=myPage/mypageModify.jsp");
 		}
 		return forward;
 		

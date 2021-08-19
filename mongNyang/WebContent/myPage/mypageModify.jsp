@@ -9,8 +9,7 @@
 <link rel="stylesheet" href="css/mypageInfo.css">
 </head>
 <body>
- <c:set var="dto" value="${reqestScope.dto }"></c:set>
- <c:forEach var="item" items="${dto}"/> 
+ <c:set var="dto" value="${requestScope.dto }"></c:set>
  
 	<div id="mypage">
 		<aside id="mypageBtns">
@@ -45,23 +44,23 @@
 				<ul>
 					<li>
 						<label>ID</label>
-						<input type="text" id="id" name="id" readonly="readonly" value="${item.userId }"> 
+						<input type="text" id="id" name="id" readonly="readonly" value="${dto.userId }"> 
 					</li>
 					<li>
 						<label>Password</label>
-						<input type="password" id="pwd" name="pwd" required="required" value="${item.userPwd }"> 
+						<input type="password" id="pwd" name="pwd" required="required" value="${dto.userPwd }"> 
 					</li>
 					<li>
 						<label>Phone</label>
-						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required" value="${item.userPhone }">
+						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required" value="${dto.userPhone }">
 					</li>
 					<li>
 						<label>Email</label>
-						<input type="email" id="email" name="email" required="required" value="${item.userEmail }">
+						<input type="email" id="email" name="email" required="required" value="${dto.userEmail }">
 					</li>
 					<li>
 						<label>Address</label>
-						<select id="addr" name="addr" value="${item.userAddr }">
+						<select id="addr" name="addr" value="${dto.userAddr }">
 							<option value="동">강동</option>
 							<option value="서">강서</option>
 							<option value="남">강남</option>

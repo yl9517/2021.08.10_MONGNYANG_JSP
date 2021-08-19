@@ -43,12 +43,12 @@
 			<div id="infowrap">
 				<h2>회원정보</h2>
 				<table>
-				  <c:forEach var="item" items="${dto}"> 
-			        <tr><td>ID</td><td><c:out value="${item.userId }"></c:out></td></tr>
-			        <tr><td>Phone</td><td><c:out value="${item.userPhone }"></c:out></td></tr>
-			        <tr><td>Email</td><td><c:out value="${item.userEmail }"></c:out></td></tr>
-			        <tr><td>Address</td><td><c:out value="${item.userAddr }"></c:out></td></tr>	
-			      </c:forEach>		        
+	
+			        <tr><td>ID</td><td><c:out value="${dto.userId }"/></td></tr>
+			        <tr><td>Phone</td><td><c:out value="${dto.userPhone }"/></td></tr>
+			        <tr><td>Email</td><td><c:out value="${dto.userEmail }"/></td></tr>
+			        <tr><td>Address</td><td><c:out value="${dto.userAddr }"/></td></tr>	
+		        
     			</table>
 			</div>
 		</section>
