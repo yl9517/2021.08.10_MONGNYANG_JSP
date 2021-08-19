@@ -31,7 +31,8 @@
 			
 			<c:if test="${userId!=null }"><!-- 로그인 되어있을 경우 -->
 				<div class="user">
-					<a href="#"><c:out value="${userId }"></c:out></a>			
+					<a href="#"><c:out value="${userId }"></c:out></a>		
+					<a href="userlogout.do">LOGOUT</a>	
 				</div>
 			</c:if>
 		</nav>
