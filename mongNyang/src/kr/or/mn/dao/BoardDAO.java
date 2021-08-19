@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
 
@@ -67,7 +66,7 @@ public class BoardDAO {
 		return list;
 	}
 
-	public BoardDTO getDetail(Connection conn, int boardnum) {
+	public MainDTO getDetail(Connection conn, int boardnum) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select				");
@@ -84,7 +83,7 @@ public class BoardDAO {
 		sql.append("  where boardNum=?		");
 
 		ResultSet rs=null;
-		BoardDTO dto=new BoardDTO();
+		MainDTO dto=new MainDTO();
 		try(
 				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				){
@@ -130,7 +129,7 @@ public class BoardDAO {
 	
 
 	//게시판 테이블에 추가
-	public int insertBoard(Connection conn, String boardType, MainDTO dto) {
+	public void insert(Connection conn, MainDTO dto) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  insert into one_board	(					");
@@ -144,7 +143,6 @@ public class BoardDAO {
 		sql.append("						, boardReadNo )		");
 		sql.append("  values(?, ?, 1, ?, ?, 0, 0)		");
 		
-		int result=0;
 		try(
 				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				){
@@ -157,12 +155,9 @@ public class BoardDAO {
 //			pstmt.setInt(5, dto.getImageNum());
 			//이미지도 고민해야함
 			
-			result=pstmt.executeUpdate();
-			
 		}catch(SQLException e) {
 			System.out.println(e);
 		}
-		return result;
 	}
 	
 	//해당하는 카테고리 찾기 (게시글 등록 시 필요)
@@ -299,5 +294,6 @@ public class BoardDAO {
 				System.out.println(e);
 			}
 		}
+		
 	
 }

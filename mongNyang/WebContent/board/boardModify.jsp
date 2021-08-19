@@ -11,7 +11,9 @@
 </head>
 <body>
 	<c:set var="dto" value="${requestScope.dto }"></c:set>
-	<form method="post" action="">
+	<form method="post" action="boardmodifyresult.do">
+		<input type="hidden" value="${dto.boardNum }" name="boardNum">
+		<input type="hidden" value="${dto.boardType }" name="boardType">
 		<ul>
 			<li id="titleBar">
 				<label>글쓰기</label>
