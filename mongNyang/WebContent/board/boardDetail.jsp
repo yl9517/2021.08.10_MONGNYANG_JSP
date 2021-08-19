@@ -61,6 +61,11 @@
          }
          
          
+         function modify(replyNum)
+         {
+        	location.href="replymodify.do?replyNum="+replyNum; 
+         }
+         
          $(document).ready(function(){
             let no=${dto.boardNum};
             $.ajax({
@@ -76,6 +81,7 @@
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
                      replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+")>";
+                     replyList+="<input type='button' value='수정' onclick=modify("+item.replyNum+")>";
                      replyList+="</div></li>";
                      /* 사진 있을 시 추가 */
                      $('#replyList').append(replyList);
@@ -88,6 +94,7 @@
                }
             });
          });
+         
          
          </script>
          
