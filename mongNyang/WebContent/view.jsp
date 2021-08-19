@@ -8,10 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%@ include file="header.jsp" %>
 	
 	<c:set var="contentpage" value="${param.page }"></c:set> 
 	<jsp:include page="${contentpage }"></jsp:include>
+
 	
 	<%@ include file="footer.jsp" %>
 </body>

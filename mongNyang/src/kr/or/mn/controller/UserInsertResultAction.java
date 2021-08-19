@@ -38,14 +38,13 @@ public class UserInsertResultAction implements Action {
 		dto.setUserAddr(addr);
 		
 		int result = service.insertUser(dto);
-		
-		request.setAttribute("result", result);
-		
-		
 		Forward forward = new Forward();
-		forward.setForward(false);
-		forward.setPath("main.do");
-		
+		if(result ==1) { //회원가입 완료 시 로그인 창으로 보내기
+			forward.setForward(false);
+			forward.setPath("userlogin.do");
+		}else { //회원가입 실패 시 에러창
+
+		}
 		return forward;
 		
 	}

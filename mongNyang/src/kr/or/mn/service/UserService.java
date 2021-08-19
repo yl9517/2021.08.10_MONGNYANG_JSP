@@ -114,7 +114,26 @@ public class UserService {
 		
 	}
 	
-	
+	// 로그인 시도
+	public int tryLogin(String userId, String userPwd) {
+		
+		DBConnection dbconn = DBConnection.getDBInstance();
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = dbconn.getConnection();
+			
+			UserDAO dao = UserDAO.getDAO();
+			result =dao.tryLogin(conn, userId,userPwd);
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);	
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return result;
+		
+	}
 	
 	
 	
