@@ -101,8 +101,7 @@ public class UserDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" update one_user		");
 		sql.append(" set					");
-		sql.append("	userId = ?			");
-		sql.append("	, userPwd = ?		");
+		sql.append("	userPwd = ?			");
 		sql.append("	, userPhone = ?		");
 		sql.append("	, userEmail = ?		");
 		sql.append("	, userAddr = ?		");
@@ -111,12 +110,11 @@ public class UserDAO {
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 			){
-			pstmt.setString(1, dto.getUserId());
-			pstmt.setString(2, dto.getUserPwd());
-			pstmt.setString(3, dto.getUserPhone());
-			pstmt.setString(4, dto.getUserEmail());
-			pstmt.setString(5, dto.getUserAddr());
-			pstmt.setString(6, dto.getUserId());
+			pstmt.setString(1, dto.getUserPwd());
+			pstmt.setString(2, dto.getUserPhone());
+			pstmt.setString(3, dto.getUserEmail());
+			pstmt.setString(4, dto.getUserAddr());
+			pstmt.setString(5, dto.getUserId());
 			
 			pstmt.executeUpdate();
 			

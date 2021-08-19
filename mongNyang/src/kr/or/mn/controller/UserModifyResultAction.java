@@ -28,6 +28,7 @@ public class UserModifyResultAction implements Action {
 		
 		UserService service = UserService.getInstance();
 		UserDTO dto = new UserDTO();
+		dto.setUserId(id);
 		dto.setUserPwd(pwd);
 		dto.setUserPhone(phone);
 		dto.setUserEmail(email);
@@ -37,7 +38,7 @@ public class UserModifyResultAction implements Action {
 		 
 		Forward forward = new Forward();
 		forward.setForward(false);
-		forward.setPath("usermain.do?userId="+id);		//수정
+		forward.setPath("usermain.do");		//수정
 		
 		return forward;
 	}
