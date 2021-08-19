@@ -50,7 +50,7 @@ public class BoardModifyResultAction implements Action {
 		
 		Forward forward=new Forward();
 		forward.setForward(false);
-		forward.setPath("boarddetail.do?boardType="+boardType);
+		forward.setPath("boarddetail.do?boardNum="+boardNum);
 		
 		return forward;
 	}
