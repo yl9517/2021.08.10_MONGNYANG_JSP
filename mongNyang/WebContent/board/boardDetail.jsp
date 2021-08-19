@@ -108,7 +108,7 @@
 	</div>
 			
 	<div id="btns">
-		<input type="hidden" value=${dto.boardType } id="btype">
+		<input type="hidden" value=${categorys.boardType } id="btype">
 		<input type="hidden" value=${dto.boardNum } id="bnum">
 		<input type="button" value="글쓰기" id="add">
 		<input type="button" value="수정" id="modify">
