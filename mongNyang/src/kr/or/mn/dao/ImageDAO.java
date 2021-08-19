@@ -112,7 +112,7 @@ public class ImageDAO {
 		sql.append("  		, imagePath	       ");
 		sql.append("  		, boardNum	       ");
 		sql.append("  		, replyNum	 )     ");
-		sql.append("   values( ? , ? , 8 , null ) ");
+		sql.append("   values( ? , ? , 24 , null ) ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setString(1, dto.getImageName());
