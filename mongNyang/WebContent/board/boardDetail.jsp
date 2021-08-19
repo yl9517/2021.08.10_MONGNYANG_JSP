@@ -60,11 +60,11 @@
             location.href="replydelete.do?replyNum="+replyNum+"&boardNum="+boardNum;
          }
          
-         
-         function modify(replyNum)
+         //댓글 수정 감을 못잡겠습니다.
+        /*  function modify(replyNum)
          {
         	location.href="replymodify.do?replyNum="+replyNum; 
-         }
+         } */
         
          $(document).ready(function(){
             let no=${dto.boardNum};

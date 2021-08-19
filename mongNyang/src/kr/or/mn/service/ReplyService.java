@@ -83,14 +83,28 @@ private static ReplyService instance=new ReplyService();
 		}
 	}
 	
-	public void replyModify(ReplyDTO dto) {
+	
+	//댓글 수정 감을 못잡겠어요 ㅜㅜ
+	/*
+	 * public void replyModify(ReplyDTO dto) {
+	 * 
+	 * DBConnection dbconn=DBConnection.getDBInstance(); Connection conn=null;
+	 * ReplyDAO dao=new ReplyDAO(); try { conn=dbconn.getConnection();
+	 * dao.replyModify(conn, dto);
+	 * 
+	 * conn.commit(); }catch(SQLException|NamingException e) {
+	 * System.out.println(e); try {conn.rollback();} catch(SQLException e2) {}
+	 * }finally { if(conn!=null) try {conn.close();} catch(SQLException e) {} } }
+	 
+	public void replyModify(int replyNum, int boardNum, String replyContent) {
+		// TODO Auto-generated method stub
 		
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
 		ReplyDAO dao=new ReplyDAO();
 		try {
 			conn=dbconn.getConnection();
-			dao.replyModify(conn, dto);
+			dao.replyModify(conn, replyNum, boardNum, replyContent);
 			
 			conn.commit();
 		}catch(SQLException|NamingException e)
@@ -100,7 +114,9 @@ private static ReplyService instance=new ReplyService();
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
-	}
+	
+		
+	}*/
 	
 }
 	

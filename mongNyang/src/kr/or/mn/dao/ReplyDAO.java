@@ -106,7 +106,7 @@ public class ReplyDAO {
 		
 	}
 	
-	public void replyModify(Connection conn, ReplyDTO dto) {
+	public void replyModify(Connection conn, int replyNum,int boardNum, int replyContent) {
 		
 		StringBuilder sql=new StringBuilder();
 		sql.append("  update       one_reply      ");
@@ -119,8 +119,8 @@ public class ReplyDAO {
 			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				
 			){
-			pstmt.setString(1, dto.getReplyContent());
-			pstmt.setInt(2, dto.getReplyNum());
+			pstmt.setInt(1, replyContent);
+			pstmt.setInt(2, replyNum);
 			pstmt.executeUpdate();
 			
 		}catch(SQLException e)
