@@ -19,7 +19,7 @@ public class UserFindPwdResultAction implements Action {
 			
 		String userId = request.getParameter("id");
 		String userEmail = request.getParameter("email");
-		
+			
 		UserService service = UserService.getInstance();
 		String findPwd = service.searchPwd(userId, userEmail);
 		
@@ -30,6 +30,8 @@ public class UserFindPwdResultAction implements Action {
 		forward.setPath("/view.jsp?page=user/findPwdResult.jsp");
 
 		return forward;
+		
+		
 	}
 
 }

@@ -15,7 +15,11 @@
 		<div class="line"></div>
 
 		<div id="findwrap">
+			<%if(findpwd!="") {%>						
 			<p>해당 회원님의 비밀번호는 <b><%=findpwd %></b> 입니다.</p>
+			<%}else{ %>
+			<p>회원정보가 없거나 잘못 입력하셨습니다.</p>
+			<%} %>
 		</div>
 	</div>
 </body>

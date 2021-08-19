@@ -17,11 +17,11 @@
 				<ul>	
 					<li>
 						<label>아이디</label>
-						<input type="text" id="id" name="id">
+						<input type="text" id="id" name="id" required="required">
 					</li>
 					<li>
 						<label>이메일</label>
-						<input type="email" id="email" name="email">
+						<input type="email" id="email" name="email" required="required">
 					</li>
 					<li>
 						<input type="submit" value="찾기">
