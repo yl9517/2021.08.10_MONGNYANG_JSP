@@ -19,7 +19,8 @@
 		<!-- 링크에 따라 이미지 변경 -->
 		<img alt="map" src="images/map.jpg" id="map">
 		<div id="addrBar">
-			<a href="">전체</a>
+			
+			<a href="">전체</a> 
 			<a href="">강동</a>
 			<a href="">강서</a>
 			<a href="">강남</a>
