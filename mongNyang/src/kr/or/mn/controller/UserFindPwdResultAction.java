@@ -27,7 +27,7 @@ public class UserFindPwdResultAction implements Action {
 				
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("/view.jsp?page=폼");
+		forward.setPath("/view.jsp?page=user/findPwdResult.jsp");
 
 		return forward;
 	}
