@@ -25,11 +25,9 @@ public class ReplyInsertResultAction implements Action {
 		// 게시글번호, 내용 받아오기
 		int boardNum = 1;
 		String bn= request.getParameter("reBoardNum");
-		System.out.println("파라미 :"+bn);
 		if(bn!=null) {
 			boardNum = Integer.parseInt(bn);
 		}
-		System.out.println("boardNum:" +boardNum);
 		String replyContent=request.getParameter("replyContent");
 		
 		//서비스 접근(번호,내용) => 보이드
@@ -43,7 +41,6 @@ public class ReplyInsertResultAction implements Action {
 		int result = service.insertReply(dto);
 		
 		request.setAttribute("result", result);
-		System.out.println(result);
 		// 페이지 이동, 페이지경로 정해주기(포워드)
 		Forward forward=new Forward();
 		forward.setForward(false);

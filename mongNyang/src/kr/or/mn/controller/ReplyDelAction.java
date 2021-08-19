@@ -17,12 +17,9 @@ public class ReplyDelAction implements Action {
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("실행 확");
 		
 		int replyNum=Integer.parseInt(request.getParameter("replyNum"));
 		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
-		System.out.println("액션 댓글번호 : "+replyNum);
-		System.out.println("액션 게시물번호:"+boardNum);
 		
 		ReplyService service=ReplyService.getInstance();
 		service.replyDelete(replyNum, boardNum);
