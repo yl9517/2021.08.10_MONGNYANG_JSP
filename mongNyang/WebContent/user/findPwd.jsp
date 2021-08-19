@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/findPwd.css">
+<link rel="stylesheet" href="css/findPwd.css">
 </head>
 <body>
 
 	<div id="findPwd_wrap">
 		<h2>비밀번호 찾기</h2> <br>
 		<div class="line"></div>
-		<form method="post" action="#">
+		<form method="post" action="userfindpwdresult.do">
 				<ul>	
 					<li>
 						<label>아이디</label>
@@ -23,7 +23,7 @@
 						<input type="email" id="email" name="email">
 					</li>
 					<li>
-						<input type="submit" value="확인">
+						<input type="submit" value="찾기">
 					</li>
 				</ul>
 		</form>

@@ -24,7 +24,6 @@ public class UserDAO {
 	// 회원등록
 	public int insertUser(Connection conn, UserDTO dto) {
 		 
-		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into one_user (  				");
 		sql.append(" 						userId			");
@@ -126,6 +125,8 @@ public class UserDAO {
 		}
 	}
 	
+	
+	
 	// 회원정보삭제
 	public int deleteUser(Connection conn, String userId) {
 		
@@ -144,6 +145,8 @@ public class UserDAO {
 		}
 		return result;
 	}
+	
+	
 	
 	//로그인 시도
 	public int tryLogin(Connection conn, String userId, String userPwd) {
@@ -173,6 +176,38 @@ public class UserDAO {
 		}
 		return result;
 	}
+	
+	
+	
+	// 비밀번호 찾기(아이디, 이메일 맞는지 확인)
+	public String searchPwd(Connection conn, String userId, String userEmail) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select	userPwd				");
+		sql.append(" from one_user				");
+		sql.append(" where userId = ?			");
+		sql.append("		and userEmail = ?	");
+		
+		ResultSet rs = null;
+		String findPwd = "";
+		try (PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			){
+			
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userEmail);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				findPwd = rs.getString("userPwd");
+			}
+			
+		}catch(SQLException e) {
+			System.out.println(e);
+		}
+		return findPwd;
+	}
+	
+	
 	
 	
 	

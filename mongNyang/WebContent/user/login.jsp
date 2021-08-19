@@ -22,7 +22,7 @@
 					<input type="submit" value="로그인">
 				</li>
 				<li>
-					<a href="#"> 비밀번호 찾기 </a> <br>
+					<a href="userfindpwd.do"> 비밀번호 찾기 </a> <br>
 					<a href="usersignup.do">회원가입</a>
 				</li>
 			</ul>
