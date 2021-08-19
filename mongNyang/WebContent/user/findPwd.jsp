@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/findPwd.css">
+<link rel="stylesheet" href="../css/findPwd.css">
 </head>
 <body>
 
 	<div id="findPwd_wrap">
-		<h2>비밀번호 찾기</h2> <br>
+		<h1>비밀번호 찾기</h1> <br>	
+		<img alt="run" src="../images/run.gif"> <br>
 		<div class="line"></div>
 		<form method="post" action="userfindpwdresult.do">
 				<ul>	
