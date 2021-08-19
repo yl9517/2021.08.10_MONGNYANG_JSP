@@ -16,7 +16,7 @@
    <div id="detailWrap">
       <div id="boardWrap"> 
          <div id="boardImg">
-            <img src="images/dog1.jpg" alt="dog">
+            <img alt="${dto.imageName }" src="${dto.imagePath }">
          </div>
          <div id="titleBar">
             <h2><c:out value="${dto.boardTitle }"></c:out></h2>

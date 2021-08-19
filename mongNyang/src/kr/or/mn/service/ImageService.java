@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.ImageDAO;
+import kr.or.mn.dto.ImageDTO;
 import kr.or.mn.dto.MainDTO;
 
 public class ImageService {
@@ -42,18 +43,17 @@ public class ImageService {
 //		return list;
 //	}
 	
-	public MainDTO getImg(int boardNum) {
+	public ImageDTO getImg(int boardNum) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 		
 		Connection conn = null;
-		MainDTO dto=new MainDTO();
+		ImageDTO dto=new ImageDTO();
 		
 		try {
 			conn = dbconn.getConnection();
 			
 			//dao연결
 			ImageDAO dao = ImageDAO.getDAO();
-			
 			dto = dao.getImg(conn, boardNum);
 			
 		}catch(SQLException | NamingException e) {

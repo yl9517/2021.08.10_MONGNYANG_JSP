@@ -75,7 +75,7 @@ public class ImageDAO {
 	
 	
 	//사진 하나만 입력할 수 있다고 했을때 사진받아오기 (게시판 기준) - test
-	public MainDTO getImg(Connection conn, int boardNum) { //글번호 (사진번호?)
+	public ImageDTO getImg(Connection conn, int boardNum) { //글번호 (사진번호?)
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select                         ");
@@ -86,7 +86,7 @@ public class ImageDAO {
 		sql.append("     where   boardNum=?         ");
 		
 		ResultSet rs = null;
-		MainDTO dto=new MainDTO();
+		ImageDTO dto=new ImageDTO();
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setInt(1, boardNum);
 			

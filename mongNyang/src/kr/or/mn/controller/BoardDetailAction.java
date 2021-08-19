@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 import kr.or.mn.dto.CategoryDTO;
+import kr.or.mn.dto.ImageDTO;
 import kr.or.mn.dto.MainDTO;
 import kr.or.mn.service.BoardService;
+import kr.or.mn.service.ImageService;
 
 public class BoardDetailAction implements Action {
 
@@ -27,11 +29,15 @@ public class BoardDetailAction implements Action {
 		}
 		
 		BoardService service=BoardService.getInstance();
-		
+		ImageService iservice=ImageService.getService();
 		MainDTO dto=service.getDetail(boardNum);
 		CategoryDTO categorys = service.findCategoryContent(dto.getCategoryName()); //dto의 카테고리 이름 가져오기
 		dto.setPetAddr(categorys.getPetAddr());
 		dto.setPetType(categorys.getPetType());
+		ImageDTO imgdto=iservice.getImg(boardNum);
+		dto.setImageName(imgdto.getImageName());
+		dto.setImageNum(imgdto.getImageNum());
+		dto.setImagePath(imgdto.getImagePath());
 		
 		request.setAttribute("dto", dto);
 		

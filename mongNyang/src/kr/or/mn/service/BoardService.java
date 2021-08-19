@@ -40,7 +40,7 @@ private static BoardService instance=new BoardService();
 		return list;
 	}
 	//디테일 받아오기
-	public MainDTO getDetail(int boardnum) {
+	public MainDTO getDetail(int boardNum) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -51,8 +51,8 @@ private static BoardService instance=new BoardService();
 			conn.setAutoCommit(false);
 			
 			BoardDAO dao=BoardDAO.getDAO();
-			dto=dao.getDetail(conn, boardnum);
-			dao.updateReadNo(conn, boardnum);
+			dto=dao.getDetail(conn, boardNum);
+			dao.updateReadNo(conn, boardNum);
 
 			conn.commit();
 		}catch(SQLException|NamingException e) {
