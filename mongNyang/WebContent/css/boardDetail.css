@@ -149,14 +149,14 @@ input:checked + .slider:before {
 	padding: 10px;
 	border-bottom: 2px solid #ccc;
 }
-#replyInfo img{
+.replyInfo img{
 	width: 45px;
 	margin-right: 20px;
 }
-#replyInfo{
+.replyInfo{
 	display:flex;
 }
-#replyInfo p{
+.replyInfo p{
 	margin-right: 20px;
 	position: relative;
 	top:20px;

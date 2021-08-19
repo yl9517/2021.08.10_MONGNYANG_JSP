@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.mysql.cj.xdevapi.JsonArray;
-
 import kr.or.mn.dto.ReplyDTO;
 import kr.or.mn.service.ReplyService;
 
@@ -70,7 +68,7 @@ public class ReplyListAction extends HttpServlet {
 				replyobject.put("userId", dto.getUserId());
 				replyobject.put("replyDate", dto.getReplyDate());
 				replyobject.put("boardNum", dto.getBoardNum());
-				replyobject.put("imageNum", dto.getImageNum());
+				//replyobject.put("imageNum", dto.getImageNum());
 				arr.add(replyobject);
 			}
 			out.print(arr);

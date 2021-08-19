@@ -28,6 +28,7 @@ public class ReplyInsertResultAction implements Action {
 		if(bn!=null) {
 			boardNum = Integer.parseInt(bn);
 		}
+		System.out.println("boardNum:" +boardNum);
 		String replyContent=request.getParameter("replyContent");
 		
 		//서비스 접근(번호,내용) => 보이드
