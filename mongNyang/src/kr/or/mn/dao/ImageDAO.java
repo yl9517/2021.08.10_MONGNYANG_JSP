@@ -45,9 +45,37 @@ public class ImageDAO {
 		}
 		return list;		
 	}
+//	//사진번호 가져오기
+//	public int getImgNum(Connection conn, String imageName,String imagePath) { 
+//		
+//		StringBuilder sql = new StringBuilder();
+//		sql.append(" select                         ");
+//		sql.append("              imageNum          ");
+//		sql.append("    from      one_image         ");
+//		sql.append("     where   imageName=?  and imagePath =?        ");
+//		
+//		ResultSet rs = null;
+//		int imgNum = 0;
+//		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+//			pstmt.setString(1, imageName);
+//			pstmt.setString(2, imagePath);
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			if(rs.next()) {
+//				imgNum = rs.getInt("imageNum");
+//			}
+//						
+//		}catch (SQLException e) {		
+//			System.out.println(e);
+//		}
+//		return imgNum;		
+//	}
+	
+	
 	
 	//사진 하나만 입력할 수 있다고 했을때 사진받아오기 (게시판 기준) - test
-	public MainDTO getImg(Connection conn, int boardNum) { //사진번호
+	public MainDTO getImg(Connection conn, int boardNum) { //글번호 (사진번호?)
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select                         ");
@@ -84,12 +112,12 @@ public class ImageDAO {
 		sql.append("  		, imagePath	       ");
 		sql.append("  		, boardNum	       ");
 		sql.append("  		, replyNum	 )     ");
-		sql.append("   values( ? , ? , ? , null ) ");
+		sql.append("   values( ? , ? , 8 , null ) ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setString(1, dto.getImageName());
 			pstmt.setString(2, dto.getImagePath());
-			pstmt.setInt(3, dto.getBoardNum());
+//			pstmt.setInt(3, dto.getBoardNum());
 //			pstmt.setInt(4, dto.getReplyNum());
 			
 			pstmt.executeUpdate();

@@ -18,16 +18,15 @@ public class ImageViewAction implements Action{
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String n=request.getParameter("boardNum");
-		int boardNum=1;
-		if(n!=null && !n.equals("")) {
-			boardNum=Integer.parseInt(n);
-		}
+//		String n=request.getParameter("boardNum");
+		int boardNum=8;
+//		if(n!=null && !n.equals("")) {
+//			boardNum=Integer.parseInt(n);
+//		}
 		
 		ImageService service = ImageService.getService();		
 		MainDTO dto =  service.getImg(boardNum);
-		System.out.println(dto.getImageName());
-		System.out.println(dto.getImagePath());
+
 		
 		request.setAttribute("imgdto", dto);
 		
