@@ -65,7 +65,7 @@
          {
         	location.href="replymodify.do?replyNum="+replyNum; 
          }
-         
+        
          $(document).ready(function(){
             let no=${dto.boardNum};
             $.ajax({
