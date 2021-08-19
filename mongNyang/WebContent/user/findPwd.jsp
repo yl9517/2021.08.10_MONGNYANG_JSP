@@ -10,9 +10,10 @@
 <body>
 
 	<div id="findPwd_wrap">
-		<h2>비밀번호 찾기</h2> <br>
+		<h1>비밀번호 찾기</h1> <br>	
+		<img alt="run" src="../images/run.gif"> <br>
 		<div class="line"></div>
-		<form method="post" action="#">
+		<form method="post" action="userfindpwdresult.do">
 				<ul>	
 					<li>
 						<label>아이디</label>
@@ -23,7 +24,7 @@
 						<input type="email" id="email" name="email">
 					</li>
 					<li>
-						<input type="submit" value="확인">
+						<input type="submit" value="찾기">
 					</li>
 				</ul>
 		</form>

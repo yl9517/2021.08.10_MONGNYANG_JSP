@@ -43,23 +43,23 @@
 			<form method="post" action="usermodifyresult.do">
 				<ul>
 					<li>
-						<label>ID</label>
+						<label for="id">ID</label>
 						<input type="text" id="id" name="id" readonly="readonly" value="${dto.userId }"> 
 					</li>
 					<li>
-						<label>Password</label>
+						<label for="pwd">Password</label>
 						<input type="password" id="pwd" name="pwd" required="required" value="${dto.userPwd }"> 
 					</li>
 					<li>
-						<label>Phone</label>
+						<label for="phone">Phone</label>
 						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required" value="${dto.userPhone }">
 					</li>
 					<li>
-						<label>Email</label>
+						<label for="email">Email</label>
 						<input type="email" id="email" name="email" required="required" value="${dto.userEmail }">
 					</li>
 					<li>
-						<label>Address</label>
+						<label for="addr">Address</label>
 						<select id="addr" name="addr" value="${dto.userAddr }">
 							<option value="동">강동</option>
 							<option value="서">강서</option>

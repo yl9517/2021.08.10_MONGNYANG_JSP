@@ -15,7 +15,9 @@
 	<header>
 		<nav id="head">
 			<div class="logo">
-				<img src="images/logo.png" alt="logo">
+				<a href="main.mn">
+					<img src="images/logo.png" alt="logo">
+				</a>
 			</div>
 			<ul class="boards">
 				<li><a href="boardlist.do?boardType=FIND">찾아주세요</a> </li>

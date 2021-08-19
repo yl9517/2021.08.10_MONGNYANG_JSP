@@ -125,7 +125,7 @@ public class UserService {
 			conn = dbconn.getConnection();
 			
 			UserDAO dao = UserDAO.getDAO();
-			result =dao.tryLogin(conn, userId,userPwd);
+			result =dao.tryLogin(conn, userId, userPwd);
 			
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);	
@@ -138,11 +138,26 @@ public class UserService {
 	
 	
 	
-	
-	// 비밀번호 찾기
-	
-	
-	// 아이디, 이메일 맞는지 확인
+	// 비밀번호 찾기(아이디, 이메일 맞는지 확인)
+	public String searchPwd (String userId, String userEmail) {
+		
+		DBConnection dbconn = DBConnection.getDBInstance();
+		Connection conn = null;
+		String findPwd = "";
+		
+		try {
+			conn = dbconn.getConnection();
+			UserDAO dao = UserDAO.getDAO();
+			findPwd = dao.searchPwd(conn, userId, userEmail);			
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+			
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return findPwd;
+	}
 	
 	
 	

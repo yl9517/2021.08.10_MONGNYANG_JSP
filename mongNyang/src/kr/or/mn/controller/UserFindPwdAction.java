@@ -9,14 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 
-public class UserFindpwdAction implements Action {
+public class UserFindPwdAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("/view.jsp?page=user/signUp.jsp");
+		forward.setPath("/view.jsp?page=user/findPwd.jsp");
 		 
 		return forward;
 	}
