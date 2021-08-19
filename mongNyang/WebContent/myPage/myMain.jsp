@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/myMain.css">
 </head>
 <body>
-<c:set var="dto" value="${reqestScope.dto }"></c:set>
+<c:set var="dto" value="${requestScope.dto }"></c:set>
 
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
