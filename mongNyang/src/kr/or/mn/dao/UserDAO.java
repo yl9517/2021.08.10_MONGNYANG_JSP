@@ -57,7 +57,7 @@ public class UserDAO {
 	
 	
 	
-	// 회원 개별조회 & 아이디 중복 체크
+	// 회원 개별조회(+아이디 중복체크)
 	public UserDTO selectUser(Connection conn, String userId) {
 		
 		StringBuilder sql = new StringBuilder();
@@ -127,21 +127,22 @@ public class UserDAO {
 	}
 	
 	// 회원정보삭제
-	public void deleteUser(Connection conn, String userId) {
+	public int deleteUser(Connection conn, String userId) {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" delete from one_user		");
 		sql.append(" where userId = ?			");
 			
+		int result = 0;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 			){
 			pstmt.setString(1, userId);
-			pstmt.executeUpdate();		
+			result = pstmt.executeUpdate();		
 			
 		}catch(SQLException e) {
 			System.out.println(e);
 		}
-		
+		return result;
 	}
 	
 	//로그인 시도

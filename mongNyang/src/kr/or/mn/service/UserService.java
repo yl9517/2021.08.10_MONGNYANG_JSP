@@ -22,7 +22,7 @@ public class UserService {
 	
 	
 	 
-	// 회원 개별조회
+	// 회원 개별조회(+아이디 중복체크)
 	public UserDTO selectUser(String UserId){
 		
 		DBConnection dbconn = DBConnection.getDBInstance();
@@ -93,24 +93,24 @@ public class UserService {
 	
 	
 	// 회원정보삭제
-	public void deleteUser(String userId) {
+	public int deleteUser(String userId) {
 		
 		DBConnection dbconn = DBConnection.getDBInstance();
 		Connection conn = null;
 		
-		
+		int result = 0;
 		try {
 			conn = dbconn.getConnection();
 			
 			UserDAO dao = UserDAO.getDAO();
-			dao.deleteUser(conn, userId);
+			result = dao.deleteUser(conn, userId);
 			
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);	
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
-		
+		return result;
 	}
 	
 	
@@ -135,32 +135,6 @@ public class UserService {
 		return result;
 		
 	}
-	
-	
-	
-	// 아이디 중복 확인
-	public UserDTO checkId(String userId) {
-		
-		DBConnection dbconn = DBConnection.getDBInstance();
-		Connection conn = null;
-		UserDTO dto = new UserDTO();
-		
-		try {
-			
-			conn = dbconn.getConnection();
-			UserDAO dao = UserDAO.getDAO();
-			dto = dao.selectUser(conn, userId);			
-			
-		}catch(SQLException | NamingException e) {
-			System.out.println(e);			
-		}finally {
-			if(conn!=null) try {conn.close();} catch(SQLException e) {}
-		}
-		return dto;
-		
-	}
-	
-	
 	
 	
 	

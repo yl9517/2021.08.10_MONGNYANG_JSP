@@ -34,6 +34,7 @@ public class UserLoginTryAction implements Action{
 			
 			forward.setForward(true);
 			forward.setPath("/view.jsp?page=main.mn");
+			
 		}else { //실패 시 로그인창으로 -> 알림창 뜨게 어떻게?
 			System.out.println("실패"+result);
 			forward.setForward(false);

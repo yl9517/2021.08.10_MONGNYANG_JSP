@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
@@ -15,13 +16,19 @@ public class UserDeleteResultAction implements Action {
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+			
 		
-		
-		String userId = request.getParameter("userId");		
-		
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
 		
 		UserService service = UserService.getInstance();
-		service.deleteUser(userId);
+		
+		int result = service.deleteUser(userId);
+		if(result==1)
+			request.getSession().invalidate();
+		else
+			System.out.println("탈퇴실패");
+
 		
 		
 		Forward forward = new Forward();
