@@ -1,6 +1,7 @@
 package kr.or.mn.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,18 +17,14 @@ public class UserInsertResultAction implements Action {
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
+
 		String id = request.getParameter("id");
 		String pwd =  request.getParameter("pwd");
-		String pwdCheck = request.getParameter("pwdCheck");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		String addr = request.getParameter("addr");
 		
-		if(pwd!=pwdCheck) {
-			  
-		}
 		
 		UserService service = UserService.getInstance();
 		UserDTO dto = new UserDTO();
@@ -38,7 +35,9 @@ public class UserInsertResultAction implements Action {
 		dto.setUserAddr(addr);
 		
 		int result = service.insertUser(dto);
+
 		Forward forward = new Forward();
+		
 		if(result ==1) { //회원가입 완료 시 로그인 창으로 보내기
 			forward.setForward(false);
 			forward.setPath("userlogin.do");

@@ -12,6 +12,7 @@ ul{
 	margin: 0 auto;
 	text-align : center;
 	min-height: 500px;
+	position: relative;
 }
 
 #sign_wrap h2{
@@ -30,6 +31,7 @@ ul{
 	font-size: 14px;
 	font-weight: bolder;
 }
+
 #sign_wrap form input,
 #sign_wrap select{
 	width : 260px;
@@ -42,7 +44,17 @@ ul{
 #sign_wrap form input:hover{
 	border: 2px solid black;
 }
-
+#sign_wrap li:first-child label{	
+	width : 150px;
+	position: absolute;
+	left:520px;
+}
+#sign_wrap li span{
+	color: red;
+	font-size: 11px;
+	position: absolute;
+	right:520px;
+}
 #sign_wrap li input#id{
 	width: 180px;
 }

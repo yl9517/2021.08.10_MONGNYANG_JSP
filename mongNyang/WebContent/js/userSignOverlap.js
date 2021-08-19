@@ -1,11 +1,12 @@
 
 $('#overlap').click(function() {
-	let userid = $('#id').val();
-	if(!userid){
+	let writeId = $('#id').val();
+	
+	if(!writeId){
 		alert("아이디를 입력해주세요");
 		return false;
 	}else{
-		location.href="selectuser.do?userId="+userid;
+		location.href="useroverlap.do?writeId="+writeId;
 	}
 	
 });

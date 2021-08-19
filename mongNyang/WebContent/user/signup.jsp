@@ -1,21 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="../css/signUp.css">
+<link rel="stylesheet" href="css/signUp.css">
 </head>
 <body>
+	<c:set var="useId" value="${requestScope.useId}"></c:set> 
+	<c:set var="writeId" value="${requestScope.writeId}"></c:set> 
 	<div id="sign_wrap">
 		<h2>MONG NYANG</h2>
-		<form method="post" action="userinsert.do">
+		<form method="post" action="userinsert.do" onsubmit="return checkSubmit(${writeId},${useId });">
 			<ul>	
 				<li>
-					<label for="id">아이디</label><br>
-					<input type="text" id="id" name="id" required="required"> 
+					<label for="id">아이디</label>
+					<c:choose>
+						<c:when test="${useId == 1 }">
+							<span>중복 된 아이디 입니다.</span><br>
+							<input type="text" id="id" name="id" required="required"> 
+						</c:when>
+						<c:when test="${useId == 0 }">
+							<span> 사용가능한 아이디 입니다.</span><br>
+							<input type="text" id="id" name="id" value="${writeId }" required="required"> 
+						</c:when>	
+						<c:otherwise>
+							<br>
+							<input type="text" id="id" name="id" value="${writeId }" required="required"> 
+						</c:otherwise>
+					</c:choose>		
+
 					<input type="button" value="중복확인" id="overlap">
 				</li>
 				<li>
@@ -37,10 +54,10 @@
 				<li>
 					<label>사는 곳</label><br>
 					<select id="addr" name="addr">
-						<option value="동">강동</option>
-						<option value="서">강서</option>
-						<option value="남">강남</option>
-						<option value="북">강북</option>
+						<option value="EAST">강동</option>
+						<option value="WEST">강서</option>
+						<option value="SOUTH">강남</option>
+						<option value="NORTH">강북</option>
 					</select>
 				</li>
 				<li>
@@ -49,10 +66,11 @@
 				<li>
 					<a href="login.jsp">로그인 </a>
 				</li>
-			</ul>
+			</ul> 
 		
 		</form>
 	</div>
-	<script src="../js/userSignup.js"></script>
+	<script src="js/userSignOverlap.js"></script>
+	<script src="js/userCheckSubmit.js"></script>
 </body>
 </html>
