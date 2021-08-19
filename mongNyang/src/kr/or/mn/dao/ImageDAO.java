@@ -9,6 +9,7 @@ import java.util.List;
 
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.ImageDTO;
+import kr.or.mn.dto.MainDTO;
 
 public class ImageDAO {
 	private static ImageDAO dao = new ImageDAO();
@@ -46,7 +47,7 @@ public class ImageDAO {
 	}
 	
 	//사진 하나만 입력할 수 있다고 했을때 사진받아오기 (게시판 기준) - test
-	public ImageDTO getImg(Connection conn, int boardNum) { //사진번호
+	public MainDTO getImg(Connection conn, int boardNum) { //사진번호
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select                         ");
@@ -54,12 +55,12 @@ public class ImageDAO {
 		sql.append("             , imageName         ");
 		sql.append("             , imagePath         ");
 		sql.append("    from      one_image         ");
-		sql.append("     where   boardNum=1         ");
+		sql.append("     where   boardNum=?         ");
 		
 		ResultSet rs = null;
-		ImageDTO dto = new ImageDTO();
+		MainDTO dto=new MainDTO();
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
-			//pstmt.setInt(1, boardNum);
+			pstmt.setInt(1, boardNum);
 			
 			rs = pstmt.executeQuery();
 			
@@ -76,19 +77,19 @@ public class ImageDAO {
 	}
 	
 	//이미지 등록
-	public void insertImg(Connection conn, ImageDTO dto) {
+	public void insertImg(Connection conn, MainDTO dto) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("  insert into one_image(   ");
 		sql.append("  		 imageName         ");
 		sql.append("  		, imagePath	       ");
 		sql.append("  		, boardNum	       ");
 		sql.append("  		, replyNum	 )     ");
-		sql.append("   values( ? , ? , 1 , null ) ");
+		sql.append("   values( ? , ? , ? , null ) ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setString(1, dto.getImageName());
 			pstmt.setString(2, dto.getImagePath());
-//			pstmt.setInt(3, dto.getBoardNum());
+			pstmt.setInt(3, dto.getBoardNum());
 //			pstmt.setInt(4, dto.getReplyNum());
 			
 			pstmt.executeUpdate();

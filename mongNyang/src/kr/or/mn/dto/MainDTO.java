@@ -13,7 +13,21 @@ public class MainDTO {
 	private String petAddr;
     private String petType;
     private String boardType;
+    private String imageName;
+    private String imagePath;
     
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+	public String getImagePath() {
+		return imagePath;
+	}
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
 	public String getBoardType() {
 		return boardType;
 	}

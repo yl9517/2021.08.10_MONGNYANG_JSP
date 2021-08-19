@@ -9,7 +9,7 @@ import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.ImageDAO;
-import kr.or.mn.dto.ImageDTO;
+import kr.or.mn.dto.MainDTO;
 
 public class ImageService {
 
@@ -21,32 +21,33 @@ public class ImageService {
 	private ImageService() {};
 	
 	//전체이미지
-	public List<ImageDTO> getIetImgList(int num){
-		DBConnection dbconn = DBConnection.getDBInstance();
-		
-		Connection conn = null;
-		List<ImageDTO> list = new ArrayList<ImageDTO>();
-		try {
-			conn = dbconn.getConnection();
-			
-			//dao연결
-			ImageDAO dao = ImageDAO.getDAO();
-			
-			list = dao.getImgList(conn, num);
-			
-		}catch(SQLException | NamingException e) {
-			System.out.println(e);
-		}finally {
-			if(conn!=null)try { conn.close();}catch(SQLException e) {};
-		}
-		return list;
-	}
+//	public List<MainDTO> getIetImgList(int num){
+//		DBConnection dbconn = DBConnection.getDBInstance();
+//		
+//		Connection conn = null;
+//		List<MainDTO> list = new ArrayList<MainDTO>();
+//		try {
+//			conn = dbconn.getConnection();
+//			
+//			//dao연결
+//			ImageDAO dao = ImageDAO.getDAO();
+//			
+//			list = dao.getImgList(conn, num);
+//			
+//		}catch(SQLException | NamingException e) {
+//			System.out.println(e);
+//		}finally {
+//			if(conn!=null)try { conn.close();}catch(SQLException e) {};
+//		}
+//		return list;
+//	}
 	
-	public ImageDTO getImg(int boardNum) {
+	public MainDTO getImg(int boardNum) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 		
 		Connection conn = null;
-		ImageDTO dto = new ImageDTO();
+		MainDTO dto=new MainDTO();
+		
 		try {
 			conn = dbconn.getConnection();
 			
@@ -64,7 +65,7 @@ public class ImageService {
 	}
 	
 	//사진 등록
-	public ImageDTO insertImg(ImageDTO dto) {
+	public MainDTO insertImg(MainDTO dto) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 		
 		Connection conn = null;

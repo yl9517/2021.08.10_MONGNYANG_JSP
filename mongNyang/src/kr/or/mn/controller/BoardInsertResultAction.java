@@ -10,6 +10,7 @@ import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 import kr.or.mn.dto.MainDTO;
 import kr.or.mn.service.BoardService;
+import kr.or.mn.service.ImageService;
 
 public class BoardInsertResultAction implements Action { //게시글 등록
 
@@ -25,6 +26,7 @@ public class BoardInsertResultAction implements Action { //게시글 등록
 		String petType=request.getParameter("petType");
 		String boardContent=request.getParameter("boardContent");
 		String imageName=request.getParameter("imageName");
+		String imagePath=request.getParameter("imagePath");
 		BoardService service=BoardService.getInstance();
 //		String categoryName=service.findCategoryName(boardType, petAddr, petType);
 		
@@ -34,9 +36,14 @@ public class BoardInsertResultAction implements Action { //게시글 등록
 		dto.setPetAddr(petAddr);
 		dto.setPetType(petType);
 		dto.setBoardContent(boardContent);
+		dto.setImageName(imageName);
+		dto.setImagePath(imagePath);
 		
 		dto.setCategoryName(service.findCategoryName(boardType, petAddr, petType));
 		service.insertData(dto);
+		
+		ImageService iservice=ImageService.getService();
+		iservice.insertImg(dto);
 		
 		Forward forward=new Forward();
 		forward.setForward(false);

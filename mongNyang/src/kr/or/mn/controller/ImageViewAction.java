@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 import kr.or.mn.dto.ImageDTO;
+import kr.or.mn.dto.MainDTO;
 import kr.or.mn.service.ImageService;
 
 public class ImageViewAction implements Action{
@@ -17,13 +18,18 @@ public class ImageViewAction implements Action{
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		int boardNum =1;		
-		ImageService service = ImageService.getService();		
-		ImageDTO imgdto =  service.getImg(boardNum);
-		System.out.println(imgdto.getImageName());
-		System.out.println(imgdto.getImagePath());
+		String n=request.getParameter("boardNum");
+		int boardNum=1;
+		if(n!=null && !n.equals("")) {
+			boardNum=Integer.parseInt(n);
+		}
 		
-		request.setAttribute("imgdto", imgdto);
+		ImageService service = ImageService.getService();		
+		MainDTO dto =  service.getImg(boardNum);
+		System.out.println(dto.getImageName());
+		System.out.println(dto.getImagePath());
+		
+		request.setAttribute("imgdto", dto);
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
