@@ -24,7 +24,7 @@ public class BoardInsertResultAction implements Action { //게시글 등록
 		String petAddr=request.getParameter("petAddr");
 		String petType=request.getParameter("petType");
 		String boardContent=request.getParameter("boardContent");
-		/* String photo=request.getParameter("photo"); */
+		String imageName=request.getParameter("imageName");
 		BoardService service=BoardService.getInstance();
 //		String categoryName=service.findCategoryName(boardType, petAddr, petType);
 		

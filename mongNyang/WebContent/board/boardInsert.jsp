@@ -47,7 +47,7 @@
 			
 		</ul>
 		<div id="photo">
-			<input type="file" name="photo">
+			<input type="file" name="imageName">
 		</div>
 	</form>
 			
