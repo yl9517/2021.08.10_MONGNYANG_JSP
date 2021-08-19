@@ -5,8 +5,6 @@ function checkSubmit(writeId,useId) {
 		alert('아이디 중복확인을 해주세요.');
 		return false;
 	}
-
-	
     
     let pwd = document.getElementById('pwd').value;
     let pwdCheck = document.getElementById('pwdCheck').value;

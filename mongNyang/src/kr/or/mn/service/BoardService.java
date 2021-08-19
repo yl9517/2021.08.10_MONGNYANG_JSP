@@ -48,12 +48,16 @@ private static BoardService instance=new BoardService();
 		
 		try {
 			conn=dbconn.getConnection();
+			conn.setAutoCommit(false);
+			
 			BoardDAO dao=BoardDAO.getDAO();
 			dto=dao.getDetail(conn, boardnum);
 			dao.updateReadNo(conn, boardnum);
-			
+
+			conn.commit();
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
+			try {conn.rollback();}catch (SQLException e2) {}
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}

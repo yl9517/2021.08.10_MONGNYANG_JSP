@@ -29,9 +29,7 @@ public class BoardStateModifyAction implements Action {
 		if(state.equals("true")) { //홀수면 해결			
 			boardState=true;
 		}
-		System.out.println("s"+state);
-		System.out.println(boardState);
-		
+
 		//상태수정
 		BoardService service = BoardService.getInstance();
 		service.stateModify(boardNum, boardState);
