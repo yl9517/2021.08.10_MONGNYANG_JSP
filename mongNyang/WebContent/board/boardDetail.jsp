@@ -54,6 +54,12 @@
 			</div>
 			
 			<script>
+			function del(replyNum, boardNum)
+			{
+				location.href="replydelete.do?replyNum="+replyNum+"&boardNum="+boardNum;
+			}
+			
+			
 			$(document).ready(function(){
 				let no=${dto.boardNum};
 				$.ajax({
@@ -64,10 +70,14 @@
 					,success:function(data)
 					{
 						$.each(data, function(index, item){
+							console.log(item.replyNum);
+							console.log(item.boardNum);
+							console.log("------------------");
 							let replyList="<li> <div class='replyInfo'>";
 							replyList+="<p class='replyId'>"+item.replyId+"</p>";
 							replyList+="<p class='date'>"+item.replyDate+"</p>";
 							replyList+="<p class='reply'>"+item.replyContent+"</p>";
+							replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+")>";
 							replyList+="</div></li>";
 							/* 사진 있을 시 추가 */
 							$('#replyList').append(replyList);

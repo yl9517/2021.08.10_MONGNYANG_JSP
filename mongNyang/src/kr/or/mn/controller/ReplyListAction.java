@@ -68,6 +68,7 @@ public class ReplyListAction extends HttpServlet {
 				replyobject.put("userId", dto.getUserId());
 				replyobject.put("replyDate", dto.getReplyDate());
 				replyobject.put("boardNum", dto.getBoardNum());
+				replyobject.put("replyNum", dto.getReplyNum());
 				//replyobject.put("imageNum", dto.getImageNum());
 				arr.add(replyobject);
 			}

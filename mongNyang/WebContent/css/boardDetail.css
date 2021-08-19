@@ -148,9 +148,10 @@ input:checked + .slider:before {
 	margin: 10px 0;
 	padding: 10px;
 	border-bottom: 2px solid #ccc;
+	background-color: yellow;
 }
 .replyInfo img{
-	width: 45px;
+	width: 15px;
 	margin-right: 20px;
 }
 .replyInfo{
