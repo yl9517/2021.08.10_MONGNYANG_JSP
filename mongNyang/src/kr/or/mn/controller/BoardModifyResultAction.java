@@ -24,12 +24,15 @@ public class BoardModifyResultAction implements Action {
 		if(n!=null && !n.equals("")) {
 			boardNum=Integer.parseInt(n);
 		}
-		String boardType=request.getParameter("boardType");
+		
+		String boardType=request.getParameter("boardType");	
 		String boardTitle=request.getParameter("boardTitle");
 		String petAddr=request.getParameter("petAddr");
 		String petType=request.getParameter("petType");
 		String boardContent=request.getParameter("boardContent");
 //		String photo=requset.getParameter("photo");
+		
+		
 		
 		BoardService service=BoardService.getInstance();
 		String categoryName=service.findCategoryName(boardType, petAddr, petType);
@@ -47,7 +50,7 @@ public class BoardModifyResultAction implements Action {
 		
 		Forward forward=new Forward();
 		forward.setForward(false);
-		forward.setPath("boardlist.do?boardType="+boardType);
+		forward.setPath("boarddetail.do?boardType="+boardType);
 		
 		return forward;
 	}

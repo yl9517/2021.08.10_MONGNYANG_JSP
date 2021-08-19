@@ -111,9 +111,27 @@ private static BoardService instance=new BoardService();
 				System.out.println(e);
 			}finally {
 				if(conn!=null) try {conn.close();} catch(SQLException e) {}
-			}
-			
+			}			
 		}
+	
+  //해결상태 변경		
+	public void stateModify(int boardNum, boolean boardState) {
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			dao.stateModify(conn, boardNum,boardState);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}			
+	}
+		
+		
 	
 	// 카테고리이름 찾기 ( -> 게시글 등록에 들어갈 것)
 	public String findCategoryName(String boardType, String petAddr, String petType) {

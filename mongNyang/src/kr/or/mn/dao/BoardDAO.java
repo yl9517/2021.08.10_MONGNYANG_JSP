@@ -280,7 +280,7 @@ public class BoardDAO {
 			sql.append("	, boardContent=?	");
 			sql.append("	, categoryName=?	");
 //			sql.append("	, imageNum=?		");
-			sql.append("	, boardState=1		");
+			sql.append("	, boardState=1		"); 
 			sql.append("  where					");
 			sql.append("  		boardNum=?		");
 
@@ -290,7 +290,7 @@ public class BoardDAO {
 				pstmt.setString(1, dto.getBoardTitle());
 				pstmt.setString(2, dto.getBoardContent());
 				pstmt.setString(3, dto.getCategoryName());
-//				pstmt.setBoolean(4, dto.isBoardState());
+//				pstmt.setBoolean(4, dto.isBoardState());  //필요없음
 				pstmt.setInt(4, dto.getBoardNum());
 				//이미지도 고민해야함
 				
@@ -301,5 +301,26 @@ public class BoardDAO {
 			}
 		}
 		
-	
+		
+		//해결상태 변경
+		public void stateModify(Connection conn, int boardNum, boolean boardState) {
+			// TODO Auto-generated method stub
+			StringBuilder sql=new StringBuilder();
+			sql.append("  update one_board		");
+			sql.append("  set					");
+			sql.append("	boardState=?		");
+			sql.append("  where					");
+			sql.append("  		boardNum=?		");
+
+			try(PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+					){
+				pstmt.setBoolean(1, boardState);
+				pstmt.setInt(2, boardNum);
+				
+				pstmt.executeUpdate();
+				
+			}catch(SQLException e) {
+				System.out.println(e);
+			}
+		}
 }

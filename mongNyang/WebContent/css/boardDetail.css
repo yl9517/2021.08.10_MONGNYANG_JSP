@@ -90,7 +90,7 @@ ul li{
   background-color: white;
   transition: .4s;
 }
-input:checked + .slider {
+input:checked + .slider { /* 체크 할 시*/
   background-color: #2196F3;
 }
 input:checked + .slider:before {

@@ -28,14 +28,17 @@
 			<div id="categoryBar">
 				<p class="category">
 					<c:out value="${dto.petAddr }"></c:out>
-					<c:out value=" > "></c:out>
-					<c:out value="${dto.petType }"></c:out>
+					<c:out value=" >  "></c:out>
+					<c:out value=" ${dto.petType }"></c:out>
 				</p>		
 				<div class="switchBar">
-					<span class="view">아직 해결 되지 않았습니다 😥</span>
-					<span class="view" style="display:none;">도와주셔서 감사합니다 😊</span>
+					<input type="hidden" value="${dto.boardState}" id="bstate">
+
+						<span class="view">아직 해결 되지 않았습니다 😥</span>
+						<span class="view" style="display:none;">도와주셔서 감사합니다 😊</span>
+	
 					<label class="switch">
-					  <input type="checkbox">
+					  <input type="checkbox" id="stateSelect">
 					  <span class="slider round"></span>
 					</label>
 				</div>		
@@ -70,7 +73,7 @@
 					,success:function(data)
 					{
 						$.each(data, function(index, item){
-							console.log(item.replyNum);
+							console.log("boardreply : "+item.replyNum);
 							console.log(item.boardNum);
 							console.log("------------------");
 							let replyList="<li> <div class='replyInfo'>";
@@ -126,5 +129,6 @@
 	</div>
 	
 	<script src="js/boardDetail.js"></script>
+	<script src="js/boardState.js"></script>
 </body>
 </html>

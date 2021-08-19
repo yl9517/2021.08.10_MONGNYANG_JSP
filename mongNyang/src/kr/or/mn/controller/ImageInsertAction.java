@@ -2,7 +2,7 @@ package kr.or.mn.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Enumeration;
+import java.util.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
