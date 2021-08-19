@@ -11,7 +11,7 @@ import kr.or.mn.comm.Forward;
 import kr.or.mn.dto.UserDTO;
 import kr.or.mn.service.UserService;
 
-public class UserSelectAction implements Action {
+public class UserModifyInfoAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
@@ -30,9 +30,10 @@ public class UserSelectAction implements Action {
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("myPage/myMain.jsp");
+		forward.setPath("myPage/mypageModify.jsp");
 		
 		return forward;
+		
 	}
 
 }

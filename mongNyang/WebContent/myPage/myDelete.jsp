@@ -47,6 +47,7 @@
 		</div>
 	</div>
 
+<script src="js/userdelete.js"></script>
 
 </body>
 </html>

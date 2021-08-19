@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,8 @@
 <link rel="stylesheet" href="../css/mypageInfo.css">
 </head>
 <body>
+ <c:set var="dto" value="${reqestScope.dto }"></c:set>
+ <c:forEach var="item" items="${dto}"/> 
  
 	<div id="mypage">
 		<aside id="mypageBtns">
@@ -42,23 +45,23 @@
 				<ul>
 					<li>
 						<label>ID</label>
-						<input type="text" id="id" name="id" readonly="readonly" value=""> 
+						<input type="text" id="id" name="id" readonly="readonly" value="${item.userId }"> 
 					</li>
 					<li>
 						<label>Password</label>
-						<input type="password" id="pwd" name="pwd" required="required" value=""> 
+						<input type="password" id="pwd" name="pwd" required="required" value="${item.userPwd }"> 
 					</li>
 					<li>
 						<label>Phone</label>
-						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required" value="">
+						<input type="tel" id="phone" name="phone" placeholder="숫자만 입력해주세요" required="required" value="${item.userPhone }">
 					</li>
 					<li>
 						<label>Email</label>
-						<input type="email" id="email" name="email" required="required" value="">
+						<input type="email" id="email" name="email" required="required" value="${item.userEmail }">
 					</li>
 					<li>
 						<label>Address</label>
-						<select id="addr" name="addr" value="">
+						<select id="addr" name="addr" value="${item.userAddr }">
 							<option value="동">강동</option>
 							<option value="서">강서</option>
 							<option value="남">강남</option>
@@ -69,7 +72,7 @@
 						<input type="submit" value="정보수정">
 					</li>
 					<li>
-						<a href="#">회원탈퇴 </a>
+						<a href="userdelete.do">회원탈퇴 </a>
 					</li>
 				</ul>
 			</form>
