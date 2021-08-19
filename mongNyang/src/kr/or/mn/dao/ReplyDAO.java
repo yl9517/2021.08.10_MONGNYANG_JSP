@@ -15,21 +15,23 @@ public class ReplyDAO {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  insert into one_reply  (                  ");
-		sql.append("                          boardNum          ");
+		sql.append("                          replyNum          ");
+		sql.append("                          ,boardNum         ");
 		sql.append("                          ,replyDate        ");
 		sql.append("                          ,userId           ");
 		sql.append("                          ,replyContent     ");
 		sql.append("                          ,imageNum         ");
 		sql.append("                          ,alertCheck)      ");
-		sql.append("  values(?,?,1,?,2,0)                     ");
+		sql.append("  values(?,?,?,1,?,2,0)                     ");
 		
 		int result=0;
 		try(
 			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 			){
-				pstmt.setInt(1, dto.getBoardNum());
-				pstmt.setString(2, "2021-08-18");
-				pstmt.setString(3, dto.getReplyContent());
+				pstmt.setInt(1, dto.getReplyNum());
+				pstmt.setInt(2, dto.getBoardNum());
+				pstmt.setString(3, "2021-08-18");
+				pstmt.setString(4, dto.getReplyContent());
 				
 				result = pstmt.executeUpdate();
 				
@@ -40,11 +42,12 @@ public class ReplyDAO {
 		return result;
 	}
 	
-	public List<ReplyDTO> replyList(Connection conn, int boardNum){
+	public List<ReplyDTO> replyList(Connection conn, int boardNum, int replyNum){
 		
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select                      ");
-		sql.append("                replyContent  ");
+		sql.append("                replyNum  ");
+		sql.append("               ,replyContent  ");
 		sql.append("               ,userId        ");
 		sql.append("               ,replyDate     ");
 		sql.append("               ,boardNum      ");
@@ -64,6 +67,7 @@ public class ReplyDAO {
 			while(rs.next())
 			{
 				ReplyDTO dto=new ReplyDTO();
+				dto.setReplyNum(rs.getInt("replyNum"));
 				dto.setReplyContent(rs.getString("replyContent"));
 				dto.setUserId(rs.getString("userId"));
 				dto.setReplyDate(rs.getString("replyDate"));

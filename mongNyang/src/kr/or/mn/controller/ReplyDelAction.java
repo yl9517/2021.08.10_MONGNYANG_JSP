@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
+import kr.or.mn.dao.ReplyDAO;
 import kr.or.mn.service.ReplyService;
 
 public class ReplyDelAction implements Action {
@@ -18,8 +19,6 @@ public class ReplyDelAction implements Action {
 		// TODO Auto-generated method stub
 		System.out.println("실행 확");
 		
-		String reply=request.getParameter("replyNum");
-		System.out.println(reply);
 		int replyNum=Integer.parseInt(request.getParameter("replyNum"));
 		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
 		System.out.println("액션 댓글번호 : "+replyNum);

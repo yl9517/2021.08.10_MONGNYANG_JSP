@@ -24,7 +24,8 @@ public class ReplyInsertResultAction implements Action {
 		
 		// 게시글번호, 내용 받아오기
 		int boardNum = 1;
-		String bn= request.getParameter("boardNum");
+		String bn= request.getParameter("reBoardNum");
+		System.out.println("파라미 :"+bn);
 		if(bn!=null) {
 			boardNum = Integer.parseInt(bn);
 		}
@@ -34,6 +35,7 @@ public class ReplyInsertResultAction implements Action {
 		//서비스 접근(번호,내용) => 보이드
 		ReplyDTO dto = new ReplyDTO();
 		ReplyService service=ReplyService.getInstance();
+		
 		dto.setBoardNum(boardNum);
 		dto.setUserId(userId);
 		dto.setReplyContent(replyContent);
