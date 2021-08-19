@@ -32,8 +32,7 @@ public class UserService {
 		try {
 			conn = dbconn.getConnection();
 			UserDAO dao = UserDAO.getDAO();
-			dto = dao.selectUser(conn, UserId);
-			
+			dto = dao.selectUser(conn, UserId);	
 			
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);

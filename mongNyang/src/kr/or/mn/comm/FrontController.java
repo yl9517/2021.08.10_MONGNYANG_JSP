@@ -66,11 +66,12 @@ public class FrontController extends HttpServlet {
 	
 	private void doReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
-	//	System.out.println(path);
+		System.out.println(path);
 		Action act = hm.get(path); //path경로를 hm(key)에 넣어서  해당 key의 value값 호출
-	//	System.out.println(act);
+		System.out.println("fc에서 act : "+act);
+		
 		Forward forward = act.execute(request, response); 
-
+		System.out.println("forward.getPath::"+forward.getPath());
 		if(forward.isForward()) {
 			RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
 			dis.forward(request, response);

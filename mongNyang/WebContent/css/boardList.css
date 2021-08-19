@@ -55,6 +55,7 @@ ul li{
 	width: 70px;
 	height: 30px;
 }
+
 /*검색 바 - 날짜검색*/
 #findBar #dateSearch{
 	display:inline-block;
@@ -89,7 +90,7 @@ ul li{
 	width: 500px;
 	height: 200px;
 	/* background-color: gray; */
-	border: solid 2px #84C0E9;
+	border: solid 2px #EBD6EB;
 	border-radius: 10px;
 }
 #list a{

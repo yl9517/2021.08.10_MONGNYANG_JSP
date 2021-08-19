@@ -17,9 +17,16 @@ public class UserSelectAction implements Action {
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		Forward forward = new Forward();
+
 		//세션으로 아이디값 받기 
-		String id = "1";
+		String id = (String) request.getSession().getAttribute("userId");		
 		
+		//if id가 null이면 로그인페이지로
+		if(id==null) {
+			forward.setForward(false);
+			forward.setPath("userlogin.do");		
+		}else {
 		
 		//유저서비스로 접근 => dto로 받
 		UserService service = UserService.getInstance();
@@ -28,10 +35,9 @@ public class UserSelectAction implements Action {
 		
 		request.setAttribute("dto", dto);
 		
-		Forward forward = new Forward();
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=myPage/myMain.jsp");
-		
+		}
 		return forward;
 	}
 
