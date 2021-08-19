@@ -30,6 +30,7 @@ public class UserLoginTryAction implements Action{
 		if(result ==1) { //로그인 성공 시 메인으로
 			System.out.println("성공"+result);
 			HttpSession session = request.getSession();
+			session.setMaxInactiveInterval(60*5);	// 세션유효시간 5분
 			session.setAttribute("userId", userId); //세션 만들기
 			
 			forward.setForward(true);
