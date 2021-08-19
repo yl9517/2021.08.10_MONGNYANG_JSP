@@ -20,7 +20,6 @@ ul{
 }
 #sign_wrap li{
 	margin-bottom: 15px;
-	background-color: yellow;
 }
 
 /*라벨*/
@@ -46,6 +45,9 @@ ul{
 
 #sign_wrap li input#id{
 	width: 180px;
+}
+#sign_wrap li input#overlap{
+	width: 80px;
 }
 
 

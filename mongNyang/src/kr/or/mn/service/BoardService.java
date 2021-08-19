@@ -9,7 +9,6 @@ import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
-import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
 
@@ -41,11 +40,11 @@ private static BoardService instance=new BoardService();
 		return list;
 	}
 	//디테일 받아오기
-	public BoardDTO getDetail(int boardnum) {
+	public MainDTO getDetail(int boardnum) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
-		BoardDTO dto=new BoardDTO();
+		MainDTO dto=new MainDTO();
 		
 		try {
 			conn=dbconn.getConnection();
@@ -80,20 +79,15 @@ private static BoardService instance=new BoardService();
 		}
 	}
 	//게시글 등록(게시판, 카테고리, 이미지 등륵)
-	public int insertData(String boardType, MainDTO dto) {
+	public void insertData(MainDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
-		int result=0;
-		String categoryName= null;
-
+		
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
-			categoryName=dao.findCategoryName(conn, boardType, dto.getPetAddr(), dto.getPetType());
-			dto.setCategoryName(categoryName);
-			
-			result=dao.insertBoard(conn, boardType, dto);
+			dao.insert(conn, dto);
 			
 			
 		}catch(SQLException|NamingException e) {
@@ -101,11 +95,10 @@ private static BoardService instance=new BoardService();
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
-		return result;
 	}
 	
 	//게시글 수정
-		public MainDTO modify(int boardNum) {
+		public void modify(MainDTO dto) {
 			// TODO Auto-generated method stub
 			DBConnection dbconn=DBConnection.getDBInstance();
 			Connection conn=null;
@@ -113,17 +106,13 @@ private static BoardService instance=new BoardService();
 			try {
 				conn=dbconn.getConnection();
 				BoardDAO dao=BoardDAO.getDAO();
-				MainDTO dto=dao.getDetail(conn, boardNum);
-				String categoryName=dao.findCategoryName(conn, boardNum.getBoardType(), boardNum.getPetAddr(), boardNum.getPetType());
-				boardNum.setCategoryName(categoryName);
-				dao.modify(conn, boardNum);
+				dao.modify(conn, dto);
 				
 			}catch(SQLException|NamingException e) {
 				System.out.println(e);
 			}finally {
 				if(conn!=null) try {conn.close();} catch(SQLException e) {}
 			}
-			return dto;
 			
 		}
 	

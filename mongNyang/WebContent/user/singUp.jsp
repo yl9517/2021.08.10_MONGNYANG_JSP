@@ -11,12 +11,12 @@
 <body>
 	<div id="sign_wrap">
 		<h2>MONG NYANG</h2>
-		<form method="post" action="#">
+		<form method="post" action="userinsert.do">
 			<ul>	
 				<li>
 					<label for="id">아이디</label><br>
 					<input type="text" id="id" name="id" required="required"> 
-					<a href="#"><input type="button" value="중복확인" id="overlap"></a>
+					<input type="button" value="중복확인" id="overlap">
 				</li>
 				<li>
 					<label>비밀번호</label><br>

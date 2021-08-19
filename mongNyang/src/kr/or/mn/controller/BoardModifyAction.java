@@ -18,18 +18,14 @@ public class BoardModifyAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//수정하는 것 where절에 넣기 위해
 		String n=request.getParameter("boardNum");
 		int boardNum=1;
 		if(n!=null && !n.equals("")) {
 			boardNum=Integer.parseInt(n);
 		}
-		//해당 리스트(메뉴)로 돌아오기위해
-		String boardType=request.getParameter("boardType");
 		
 		BoardService service=BoardService.getInstance();
-		
-		MainDTO dto=service.modify(boardNum);
+		MainDTO dto=service.getDetail(boardNum);
 		
 		request.setAttribute("dto", dto);
 		
@@ -38,6 +34,8 @@ public class BoardModifyAction implements Action {
 		forward.setPath("/view.jsp?page=board/boardModify.jsp");
 		
 		return forward;
+		
+		//modify리절트 분리하기~
 	}
 
 }

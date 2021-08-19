@@ -124,11 +124,7 @@ public class UserDAO {
 		}catch(SQLException e) {
 			System.out.println(e);
 		}
-		
-		
 	}
-	
-	
 	
 	// 회원정보삭제
 	public void deleteUser(Connection conn, String userId) {
@@ -136,13 +132,11 @@ public class UserDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" delete from one_user		");
 		sql.append(" where userId = ?			");
-		
-		
+			
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 			){
 			pstmt.setString(1, userId);
-			pstmt.executeUpdate();
-			
+			pstmt.executeUpdate();		
 			
 		}catch(SQLException e) {
 			System.out.println(e);
@@ -150,6 +144,34 @@ public class UserDAO {
 		
 	}
 	
+	//로그인 시도
+	public int tryLogin(Connection conn, String userId, String userPwd) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("  select  userId   ");
+		sql.append("  from one_user    ");
+		sql.append("  where userId=?   ");
+		sql.append("  and  userPwd=?   ");
+		
+		ResultSet rs = null;
+		int result = 0;
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+			){
+			pstmt.setString(1, userId);
+			pstmt.setString(2, userPwd);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result =1;
+			}
+			
+		}catch(SQLException e) {
+			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch(SQLException e){}
+		}
+		return result;
+	}
 	
 	
 	

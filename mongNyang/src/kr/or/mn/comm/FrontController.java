@@ -66,9 +66,8 @@ public class FrontController extends HttpServlet {
 	
 	private void doReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = request.getServletPath();
-		
+	
 		Action act = hm.get(path); //path경로를 hm(key)에 넣어서  해당 key의 value값 호출
-		
 		
 		Forward forward = act.execute(request, response); 
 

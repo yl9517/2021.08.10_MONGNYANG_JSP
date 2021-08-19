@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 
-public class UserInsertAction implements Action {
+public class UserSignupAction implements Action {
 
 	@Override
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
@@ -17,7 +17,7 @@ public class UserInsertAction implements Action {
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("user/signUp.jsp");
+		forward.setPath("/view.jsp?page=user/signUp.jsp");
 		 
 		return forward;
 	}
