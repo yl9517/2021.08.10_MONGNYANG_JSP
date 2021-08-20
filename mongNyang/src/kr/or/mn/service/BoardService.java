@@ -12,6 +12,7 @@ import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
+import kr.or.mn.dto.PagingDTO;
 
 public class BoardService {
 
@@ -22,7 +23,7 @@ private static BoardService instance=new BoardService();
 	}
 	private BoardService() {}
 	
-	public List<MainDTO> getList(String boardType,String petAddr) {
+	public List<MainDTO> getList(String boardType,String petAddr, PagingDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -31,7 +32,7 @@ private static BoardService instance=new BoardService();
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
-			list=dao.getList(conn, boardType,petAddr);
+			list=dao.getList(conn, boardType,petAddr, dto);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
@@ -196,6 +197,26 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 		return list;		
+	}
+	//자료 전체 갯수 받아오기
+	public int getTotalCount(String search, String searchtxt) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		
+		int totalcount=0;
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			
+			totalcount=dao.getTotalCount(conn, search, searchtxt);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return totalcount;
 	}
 	
 

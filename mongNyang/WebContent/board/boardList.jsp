@@ -14,6 +14,7 @@
 
 <c:set var="list" value="${requestScope.list }"></c:set>
 <c:set var="boardType" value="${requestScope.boardType }"></c:set>
+<c:set var="paging" value="${requestScope.paging }"></c:set>
 	
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
@@ -30,17 +31,13 @@
 			
 		</div>
 		<div id="findBar">
-			<form method="post" action="">
-				<div id="dateSearch">
-					<label id="cal"> 작성일 </label>
-					<input type="date" value="달력" id="cal" class="c1">
-				</div>
+			<form method="post" action="boardlist.do?boardType=${boardType }">
 				<div id="directSearch">
 					<select id="search" name="search">
-						<option value="제목">제목</option>
+						<option value="boardTitle">제목</option>
 						<option value="내용">내용</option>
 					</select>
-					<input type="text" value="search">
+					<input type="text" name="searchtxt">
 					<input type="submit" value="검색" id="btn1">
 				</div>
 			</form>
@@ -66,6 +63,30 @@
 			
 			<input type="button" value="글쓰기" id="add">
 				
+		</div>
+		
+		<div class="page1">
+			<c:if test="${paging.startblock>1 }">
+				<a href="boardlist.do?boardType=${boardType }&curr=${paging.currpage-1 }&search=${paging.search }&searchtxt=${paging.searchtxt }">이전</a>
+			</c:if>
+		</div>
+		<div class="page2">
+			<c:forEach var="index" begin="${paging.startblock }" end="${paging.endblock }">
+				<c:if test="${paging.currpage==index }">
+					<c:out value="${index }"></c:out>
+				
+				</c:if>
+				
+				<c:if test="${paging.currpage!=index }">
+					<a href="boardlist.do?boardType=${boardType }&curr=${index }&search=${paging.search }&searchtxt=${paging.searchtxt }">${index }</a>
+				
+				</c:if>
+			</c:forEach>
+		</div>
+		<div class="page3">
+			<c:if test="${paging.endblock<totalpage }">
+				<a href="boardlist.do?boardType=${boardType }&curr=${paging.currpage+1 }&search=${paging.search }&searchtxt=${paging.searchtxt }">다음</a>
+			</c:if>
 		</div>
 	</div>
 	

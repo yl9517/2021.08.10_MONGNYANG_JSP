@@ -143,3 +143,31 @@ span {
 	border-radius: 5px;
 	border: 1px;	
 }
+//페이징 바
+.page1{
+	margin-top: 20px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px 5px;
+}
+
+.page2{
+	margin-top: 20px;
+	text-decoration: underline;
+	display: inline-block;
+	padding: 10px 5px;
+}
+
+.page2 a{
+	display: inline-block;
+	background-color: darkblue;
+	color: white;
+	text-decoration: none;
+	width: 20px;
+}
+.page3{
+	margin-top: 20px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px 5px;
+}

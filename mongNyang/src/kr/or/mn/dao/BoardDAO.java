@@ -11,6 +11,7 @@ import java.util.List;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
+import kr.or.mn.dto.PagingDTO;
 
 public class BoardDAO {
 	private static BoardDAO dao=new BoardDAO();
@@ -19,39 +20,64 @@ public class BoardDAO {
 	}
 	private BoardDAO() {}
 	
-	public List<MainDTO> getList(Connection conn, String boardType,String petAddr) {
+	public List<MainDTO> getList(Connection conn, String boardType,String petAddr, PagingDTO pdto) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
-		sql.append("  select							");
-		sql.append("		b.boardNum					");
-		sql.append("		, boardTitle				");
-		sql.append("		, boardContent				");
-		sql.append("		, userId					");
-		sql.append("		, boardDate					");
-		sql.append("		, petAddr					");
-		sql.append("		, petType					");
-		sql.append("		, imageName					");
-		sql.append("		, imagePath					");
-		sql.append("		, boardState				");
-		sql.append("		, boardReadNo				");
-		sql.append("  from one_board as b				");
-		sql.append("  inner join one_category as c		");
-		sql.append("  on b.categoryName=c.categoryName  ");
-		sql.append("  inner join one_image as i			");
-		sql.append("  on b.boardNum=i.boardNum			");
-		sql.append("  where c.boardType=?				");
-	if(!petAddr.equals("all")) 	//petAddr 이름이 all이 아니라면 (뭐라도 적혀져 있다면)
-		sql.append("  and c.petAddr=?					"); //지역
-		sql.append("  order by boardNum desc			");
+		sql.append("  select *											");
+		sql.append("  from (											");
+		sql.append("  		select rownum as rnum, s.*					");
+		sql.append("  		from (										");
+		sql.append("  				select								");
+		sql.append("						b.boardNum					");
+		sql.append("						, boardTitle				");
+		sql.append("						, boardContent				");
+		sql.append("						, userId					");
+		sql.append("						, boardDate					");
+		sql.append("						, petAddr					");
+		sql.append("						, petType					");
+		sql.append("						, imageName					");
+		sql.append("						, imagePath					");
+		sql.append("						, boardState				");
+		sql.append("						, boardReadNo				");
+		sql.append("  				from one_board as b					");
+		sql.append("  				inner join one_category as c		");
+		sql.append("  				on b.categoryName=c.categoryName	");
+		sql.append("  				inner join one_image as i			");
+		sql.append("  				on b.boardNum=i.boardNum			");
+		sql.append("  				where c.boardType=?					");
+		if(!petAddr.equals("all")) 	//petAddr 이름이 all이 아니라면 (뭐라도 적혀져 있다면)
+			sql.append("  			and c.petAddr=?						"); //지역
+		if(!pdto.getSearch().equals("")&&!pdto.getSearchtxt().equals("")) {
+			if(pdto.getSearch().equals("boardTitle")) {
+				sql.append("  		and boardTitle like ?				");
+			}else if(pdto.getSearch().equals("boardContent")) {
+				sql.append("  		and boardContent like ?				");
+			}
+		}
+		sql.append("  				order by boardNum desc				");
+		sql.append("			)s										");
+		sql.append("		)											");
+		sql.append("  where rnum>=? and rnum<=?							");
 		
 		List<MainDTO> list=new ArrayList<>();
 		ResultSet rs=null;
 		try( PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				
 				){
-				pstmt.setString(1, boardType);
-			if(!petAddr.equals("all")) //petAddr 이름이 all이 아니라면
-				pstmt.setString(2, petAddr);
+				int num = 1;
+				pstmt.setString(num++, boardType);
+				if(!petAddr.equals("all")) //petAddr 이름이 all이 아니라면
+					pstmt.setString(num++, petAddr);
+				
+				if(!pdto.getSearch().equals("")&&!pdto.getSearchtxt().equals("")) {
+					pstmt.setString(num++, "%"+pdto.getSearchtxt()+"%");
+					pstmt.setInt(num++, pdto.getStartrow());
+					pstmt.setInt(num++, pdto.getEndrow());
+				}else {
+					pstmt.setInt(num++, pdto.getStartrow());
+					pstmt.setInt(num++, pdto.getEndrow());
+				}	
+			
 			
 				rs=pstmt.executeQuery();
 			
@@ -368,6 +394,43 @@ public class BoardDAO {
 				if(rs!=null) try {rs.close();} catch(SQLException e){}
 			}
 			return list;
+		}
+		public int getTotalCount(Connection conn, String search, String searchtxt) {
+			// TODO Auto-generated method stub
+			StringBuilder sql=new StringBuilder();
+			sql.append("  select count(*)		");
+			sql.append("  from one_board		");
+			
+			if(!search.equals("") && !searchtxt.equals("")) {
+				if(search.equals("boardTitle")) {
+					sql.append("  where boardTitle like ?  ");
+				}else if(search.equals("boardContent")) {
+					sql.append("  where boardContent like ?  ");
+				}
+			}
+			
+			int totalcount=0;
+			ResultSet rs=null;
+			try(
+					PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+					
+					){
+					
+					if(!search.equals("") && !searchtxt.equals("")) {
+						pstmt.setString(1, "%"+searchtxt+"%");
+					}
+					rs=pstmt.executeQuery();
+					
+				if(rs.next()) {
+					totalcount=rs.getInt(1);
+				}
+				
+			}catch(SQLException e) {
+				System.out.println(e);
+			}finally {
+				if(rs!=null) try {rs.close();} catch(SQLException e) {}
+			}
+			return totalcount;
 		}
 			
 		
