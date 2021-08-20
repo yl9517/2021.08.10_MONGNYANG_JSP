@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,8 @@
 <link rel="stylesheet" href="css/mypageReply.css">
 </head>
 <body>
+<c:set var="replydto" value="${requestScope.mypagereplylist }"></c:set>
+
 	<div id="mypage">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="images/userImg.png">
@@ -35,9 +39,9 @@
 			
 			</ul>
 		</aside>
-		 
+		
 		<div id="replywrap">
-			<h2>댓글 못록</h2>
+			<h2>댓글 목록</h2>
 			
 			<table>
 				<thead>
@@ -56,6 +60,23 @@
 						<td> 2021.07.25 </td>
 
 					</tr>
+				</tbody>
+			</table>
+			<table>
+				<thead>
+					<tr>
+						<th colspan="2">전체<c:out value="${replydto.size() }"/></th>
+	<!-- 					<th>댓글 내용</th>
+						<th>작성일</th> -->
+					</tr>
+				</thead>
+				<tbody>
+				  <c:forEach var="item" items="${replydto }">
+					<tr>
+						<td><c:out value="${item.replyContent }"/></td>
+						
+					</tr>
+				  </c:forEach>
 				</tbody>
 			</table>
 		</div>

@@ -137,9 +137,6 @@ public class ReplyDAO {
 		
 	}
 	
-
-	
-	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
 	
 	
 	//내 게시글에 다른사람의 댓글이 달렸다면(상태 0 혹은 1인것만 )
@@ -204,6 +201,49 @@ public class ReplyDAO {
 		
 	}
 	
-
+	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
+	   
+	   public List<ReplyDTO> mypageReply(Connection conn,String userId) {
+	      StringBuilder sql=new StringBuilder();
+	      sql.append("select                        ");
+	      sql.append("                replyNum      ");
+	      sql.append("               ,boardNum      ");
+	      sql.append("               ,replyDate     ");
+	      sql.append("               ,userId        ");
+	      sql.append("               ,replyContent  ");
+	      sql.append("  from     one_reply          ");
+	      sql.append("  where                       ");
+	      sql.append("               userId = ?     ");
+	      
+	      ResultSet rs=null;
+	      List<ReplyDTO> mypagereplylist=new ArrayList<ReplyDTO>();
+	      
+	      try(
+	         PreparedStatement pstmt=conn.prepareStatement(sql.toString());   
+	         ){
+	         pstmt.setString(1, userId);
+	         rs=pstmt.executeQuery();
+	         
+	         while(rs.next())
+	         {
+	            ReplyDTO replydto=new ReplyDTO();
+	            replydto.setReplyNum(rs.getInt("replyNum"));
+	            replydto.setBoardNum(rs.getInt("boardNum"));
+	            replydto.setReplyDate(rs.getString("replyDate"));
+	            replydto.setUserId(rs.getString("userId"));
+	            replydto.setReplyContent(rs.getString("replyContent"));
+	            
+	            
+	            mypagereplylist.add(replydto);
+	            
+	         }
+	      }catch(Exception e)
+	      {
+	         System.out.println(e);
+	      }finally {
+	         if(rs!=null) try {rs.close();} catch(SQLException e) {}
+	      }return mypagereplylist;
+	
+	   }
 
 }

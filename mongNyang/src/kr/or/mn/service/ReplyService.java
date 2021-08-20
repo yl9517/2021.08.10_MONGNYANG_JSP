@@ -190,6 +190,26 @@ private static ReplyService instance=new ReplyService();
 		}
 	}
 	
+	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
+	public List<ReplyDTO> mypageReply(String userId) {
+	      DBConnection dbconn=DBConnection.getDBInstance();
+	      Connection conn=null;
+	      List<ReplyDTO> mypagereplylist=new ArrayList<ReplyDTO>();
+//	      System.out.println("my댓글 "+mypagereplylist.get(0).getReplyContent());
+	      
+	      try {
+	         conn=dbconn.getConnection();
+	         ReplyDAO dao=ReplyDAO.getDAO();
+	         mypagereplylist=dao.mypageReply(conn, userId);
+	      }catch(SQLException | NamingException e) {
+	         System.out.println(e);
+	      }finally {
+	         if(conn!=null) try {conn.close();} catch(SQLException e) {}
+	      }
+	      return mypagereplylist;
+	   }
+
+	
 }
 	
 
