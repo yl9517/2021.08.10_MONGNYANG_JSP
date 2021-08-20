@@ -46,7 +46,11 @@
 			
 		</ul>
 		<div id="photo">
-			사진 첨부 (미완성)
+			<input type="hidden" value="${dto.imageName }" name="imageName">
+			<input type="hidden" value="${dto.imagePath }" name="imagePath">
+			<input type="hidden" value="${dto.imageNum }" name="imageNum">
+			<img alt="${dto.imageName }" src="${dto.imagePath }">
+			<input type="file" name="file1">
 		</div>
 	</form>
 			

@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
+import kr.or.mn.dto.ImageDTO;
 import kr.or.mn.dto.MainDTO;
 import kr.or.mn.service.BoardService;
+import kr.or.mn.service.ImageService;
 
 public class BoardModifyAction implements Action {
 
@@ -36,7 +38,11 @@ public class BoardModifyAction implements Action {
 
 			BoardService service = BoardService.getInstance();
 			MainDTO dto = service.getDetail(boardNum);
-
+			ImageService iservice = ImageService.getService();
+			ImageDTO idto=iservice.getImg(boardNum);
+			dto.setImageName(idto.getImageName());
+			dto.setImagePath(idto.getImagePath());
+			dto.setImageNum(idto.getImageNum());
 			request.setAttribute("dto", dto);
 
 			forward.setForward(true);

@@ -13,13 +13,15 @@ import kr.or.mn.dto.MainDTO;
 public class ImageService {
 
 	private static ImageService service = new ImageService();
-	
+
 	public static ImageService getService() {
 		return service;
-	}	
-	private ImageService() {};
-	
-	//전체이미지
+	}
+
+	private ImageService() {
+	};
+
+	// 전체이미지
 //	public List<MainDTO> getIetImgList(int num){
 //		DBConnection dbconn = DBConnection.getDBInstance();
 //		
@@ -40,28 +42,28 @@ public class ImageService {
 //		}
 //		return list;
 //	}
-	
+
 	public ImageDTO getImg(int boardNum) {
 		DBConnection dbconn = DBConnection.getDBInstance();
-		
+
 		Connection conn = null;
-		ImageDTO dto=new ImageDTO();
-		
+		ImageDTO dto = new ImageDTO();
+
 		try {
 			conn = dbconn.getConnection();
-			
-			//dao연결
+
+			// dao연결
 			ImageDAO dao = ImageDAO.getDAO();
 			dto = dao.getImg(conn, boardNum);
-			
-		}catch(SQLException | NamingException e) {
+
+		} catch (SQLException | NamingException e) {
 			System.out.println(e);
-		}finally {
-			if(conn!=null)try { conn.close();}catch(SQLException e) {};
+		} finally {	
+			if (conn != null) try {conn.close();} catch (SQLException e) {};
 		}
 		return dto;
 	}
-	
+
 //	public int getImgNum(int boardNum) { //이미지 넘버
 //		DBConnection dbconn = DBConnection.getDBInstance();
 //		
@@ -83,28 +85,64 @@ public class ImageService {
 //		}
 //		return dto;
 //	}
-	
-	//사진 등록
+
+	// 사진 등록
 	public int insertImg(MainDTO dto) {
 		DBConnection dbconn = DBConnection.getDBInstance();
-		
+
 		Connection conn = null;
-		int imageNum=0;
+		int imageNum = 0;
 		try {
 			conn = dbconn.getConnection();
-			
-			//dao연결
+
+			// dao연결
 			ImageDAO dao = ImageDAO.getDAO();
-			imageNum=dao.insertImg(conn, dto);
-			
-		}catch(SQLException | NamingException e) {
+			imageNum = dao.insertImg(conn, dto);
+
+		} catch (SQLException | NamingException e) {
 			System.out.println(e);
-		}finally {
-			if(conn!=null)try { conn.close();}catch(SQLException e) {};
+		} finally {	
+			if (conn != null) try {conn.close();} catch (SQLException e) {};
 		}
 		return imageNum;
 	}
-	
-	
-	
+
+	public void modify(MainDTO dto) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn = DBConnection.getDBInstance();
+
+		Connection conn = null;
+		try {
+			conn = dbconn.getConnection();
+
+			// dao연결
+			ImageDAO dao = ImageDAO.getDAO();
+			dao.updateImg(conn, dto);
+
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} finally {	
+			if (conn != null) try {conn.close();} catch (SQLException e) {};
+		}
+	}
+
+	public void delete(MainDTO dto) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn = DBConnection.getDBInstance();
+
+		Connection conn = null;
+		try {
+			conn = dbconn.getConnection();
+
+			// dao연결
+			ImageDAO dao = ImageDAO.getDAO();
+			dao.deleteImg(conn, dto);
+
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} finally {	
+			if (conn != null) try {conn.close();} catch (SQLException e) {};
+		}
+	}
+
 }

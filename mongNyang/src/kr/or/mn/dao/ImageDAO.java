@@ -135,7 +135,7 @@ public class ImageDAO {
 	}
 	
 	//이미지 수정
-	public void updateImg(Connection conn, ImageDTO dto) {
+	public void updateImg(Connection conn, MainDTO dto) {
 		StringBuilder  sql = new StringBuilder();
 		sql.append(" update one_image set      ");
 		sql.append("      imageName =?         ");
@@ -155,13 +155,13 @@ public class ImageDAO {
 	}
 	
 	//이미지 삭제
-	public void deleteImg(Connection conn, int imageNum) {
+	public void deleteImg(Connection conn, MainDTO dto) {
 		StringBuilder  sql = new StringBuilder();
 		sql.append(" delete from one_image      ");
 		sql.append("  where imageNum = ?        ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
-			pstmt.setInt(1, imageNum);
+			pstmt.setInt(1, dto.getImageNum());
 			
 			pstmt.executeUpdate();			
 			
