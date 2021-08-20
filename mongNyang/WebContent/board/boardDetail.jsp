@@ -77,7 +77,7 @@
                {
                   $.each(data, function(index, item){
                      let replyList="<li> <div class='replyInfo'>";
-                     replyList+="<p class='replyId'>"+item.replyId+"</p>";
+                     replyList+="<p class='replyId'>"+item.userId+"</p>";
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
                      replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+")>";
@@ -85,7 +85,7 @@
                      replyList+="</div></li>";
                      /* 사진 있을 시 추가 */
                      $('#replyList').append(replyList);
-                     
+        
                   });
                }
                ,error:function(data)

@@ -20,7 +20,13 @@ public class ReplyInsertResultAction implements Action {
 		request.setCharacterEncoding("utf-8");
 	
 		//아이디 세션으로 받아오기		
-		String userId="1";
+		Forward forward = new Forward();
+
+		//세션으로 아이디값 받기 
+        String userId = (String) request.getSession().getAttribute("userId");
+
+        
+        
 		
 		// 게시글번호, 내용 받아오기
 		int boardNum = 1;
@@ -37,15 +43,15 @@ public class ReplyInsertResultAction implements Action {
 		dto.setBoardNum(boardNum);
 		dto.setUserId(userId);
 		dto.setReplyContent(replyContent);
-		
+		 
 		int result = service.insertReply(dto);
 		
 		request.setAttribute("result", result);
 		// 페이지 이동, 페이지경로 정해주기(포워드)
-		Forward forward=new Forward();
+		
 		forward.setForward(false);
 		forward.setPath("boarddetail.do?boardNum="+boardNum);
-
+		
 		return forward;
 		
 		

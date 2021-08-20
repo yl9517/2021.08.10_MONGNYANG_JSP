@@ -22,7 +22,7 @@ public class ReplyDAO {
 		sql.append("                          ,replyContent     ");
 		sql.append("                          ,imageNum         ");
 		sql.append("                          ,alertCheck)      ");
-		sql.append("  values(?,?,?,1,?,2,0)                     ");
+		sql.append("  values(?,?,?,?,?,2,0)                     ");
 		
 		int result=0;
 		try(
@@ -31,7 +31,8 @@ public class ReplyDAO {
 				pstmt.setInt(1, dto.getReplyNum());
 				pstmt.setInt(2, dto.getBoardNum());
 				pstmt.setString(3, "2021-08-18");
-				pstmt.setString(4, dto.getReplyContent());
+				pstmt.setString(4, dto.getUserId());
+				pstmt.setString(5, dto.getReplyContent());
 				
 				result = pstmt.executeUpdate();
 				
