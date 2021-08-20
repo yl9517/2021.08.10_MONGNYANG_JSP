@@ -24,18 +24,17 @@ public class UserBoardAction implements Action {
 		
 		//세션으로 아이디값 받기 
         String id = (String) request.getSession().getAttribute("userId");
-
+        
         //if id가 null이면 로그인페이지로
         if(id==null) {
         	PrintWriter out = response.getWriter();
-        	
         	out.println("<script>");
-        	out.println("alert('로그인 후 이용바랍니다.');");
+        	out.println("alert('로그인 후 이용바랍니다.')");
         	out.println("</script>");
         	
             forward.setForward(false);
             forward.setPath("userlogin.do");
-        }
+        }else {
         
 	     //게시판서비스에서 받아오기
         BoardService service = BoardService.getInstance();
@@ -44,8 +43,9 @@ public class UserBoardAction implements Action {
 		
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=myPage/mypageBoard.jsp");		
-		  
+        }
 		return forward;
+	
 	}
 
 }
