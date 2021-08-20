@@ -80,20 +80,20 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 			dto.setImagePath("upload/" + fileName1);
 			
 			int boardNum=service.insertData(dto);
-			System.out.println("Action출력 : "+boardNum);
 
 			dto.setBoardNum(boardNum);
 			
 			if(dto.getImageName()!=null) {
-			imgservice.insertImg(dto);
-			
+			int imageNum=imgservice.insertImg(dto);
+			dto.setImageNum(imageNum);
+
 			}
 	
 	//		service.getImg(boardNum);
 	//		입력하고 바로 불러오는거 해야함(미리보기)
 			
 			forward.setForward(false);
-			forward.setPath("boardlist.do?boardType=" + boardType);
+			forward.setPath("boarddetail.do?boardNum=" + boardNum);
 	
 	//		나중에 board.Detail.do에 boardnum 이랑 같이 보내야함
         }

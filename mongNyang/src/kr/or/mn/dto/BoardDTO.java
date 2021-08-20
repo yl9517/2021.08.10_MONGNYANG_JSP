@@ -7,7 +7,7 @@ public class BoardDTO {
 	private String userId;
 	private String boardDate;
 	private String categoryName;
-	private int imageNum;
+//	private int imageNum;
 	private boolean boardState;
 	private int boardReadNo;
 	
@@ -47,12 +47,12 @@ public class BoardDTO {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	public int getImageNum() {
-		return imageNum;
-	}
-	public void setImageNum(int imageNum) {
-		this.imageNum = imageNum;
-	}
+//	public int getImageNum() {
+//		return imageNum;
+//	}
+//	public void setImageNum(int imageNum) {
+//		this.imageNum = imageNum;
+//	}
 	public boolean isBoardState() {
 		return boardState;
 	}

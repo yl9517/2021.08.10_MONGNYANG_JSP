@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.ImageDTO;
 import kr.or.mn.dto.MainDTO;
 
@@ -35,7 +35,6 @@ public class ImageDAO {
 		sql.append("     where   replyNum=?         ");
 		
 		List<ImageDTO> list = new ArrayList<ImageDTO>();
-		ResultSet rs = null;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			
 			
@@ -105,7 +104,7 @@ public class ImageDAO {
 	}
 	
 	//이미지 등록
-	public void insertImg(Connection conn, MainDTO dto) {
+	public int insertImg(Connection conn, MainDTO dto) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("  insert into one_image(   ");
 		sql.append("  		 imageName         ");
@@ -114,18 +113,25 @@ public class ImageDAO {
 		sql.append("  		, replyNum	 )     ");
 		sql.append("   values( ? , ? , ? , null ) ");
 		
-		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+		int imageNum=0;
+		ResultSet rs=null;
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);){
 			pstmt.setString(1, dto.getImageName());
 			pstmt.setString(2, dto.getImagePath());
 			pstmt.setInt(3, dto.getBoardNum());
 //			pstmt.setInt(4, dto.getReplyNum());
 			
 			pstmt.executeUpdate();
-			
+			rs=pstmt.getGeneratedKeys();
+			if(rs.next()) {
+				imageNum=rs.getInt(1);
+			}
 		}catch (Exception e) {
 			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch (SQLException e) {}
 		}
-		
+		return imageNum;
 	}
 	
 	//이미지 수정

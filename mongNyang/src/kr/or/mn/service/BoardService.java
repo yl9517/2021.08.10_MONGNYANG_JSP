@@ -9,12 +9,9 @@ import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.BoardDAO;
-import kr.or.mn.dao.UserDAO;
-import kr.or.mn.dto.AlertDTO;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
-import kr.or.mn.dto.UserDTO;
 
 public class BoardService {
 

@@ -2,8 +2,6 @@ package kr.or.mn.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -87,23 +85,24 @@ public class ImageService {
 //	}
 	
 	//사진 등록
-	public MainDTO insertImg(MainDTO dto) {
+	public int insertImg(MainDTO dto) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 		
 		Connection conn = null;
+		int imageNum=0;
 		try {
 			conn = dbconn.getConnection();
 			
 			//dao연결
 			ImageDAO dao = ImageDAO.getDAO();
-			dao.insertImg(conn, dto);
+			imageNum=dao.insertImg(conn, dto);
 			
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);
 		}finally {
 			if(conn!=null)try { conn.close();}catch(SQLException e) {};
 		}
-		return dto;
+		return imageNum;
 	}
 	
 	

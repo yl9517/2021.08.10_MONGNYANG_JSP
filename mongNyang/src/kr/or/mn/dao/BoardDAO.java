@@ -8,11 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.or.mn.dto.AlertDTO;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
-import kr.or.mn.dto.UserDTO;
 
 public class BoardDAO {
 	private static BoardDAO dao=new BoardDAO();
@@ -25,19 +23,22 @@ public class BoardDAO {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select							");
-		sql.append("		boardNum					");
+		sql.append("		b.boardNum					");
 		sql.append("		, boardTitle				");
 		sql.append("		, boardContent				");
 		sql.append("		, userId					");
 		sql.append("		, boardDate					");
 		sql.append("		, petAddr					");
 		sql.append("		, petType					");
-		sql.append("		, imageNum					");
+		sql.append("		, imageName					");
+		sql.append("		, imagePath					");
 		sql.append("		, boardState				");
 		sql.append("		, boardReadNo				");
 		sql.append("  from one_board as b				");
 		sql.append("  inner join one_category as c		");
 		sql.append("  on b.categoryName=c.categoryName  ");
+		sql.append("  inner join one_image as i			");
+		sql.append("  on b.boardNum=i.boardNum			");
 		sql.append("  where c.boardType=?				");
 		sql.append("  order by boardNum desc			");
 		
@@ -58,7 +59,8 @@ public class BoardDAO {
 				dto.setBoardDate(rs.getString("boardDate"));
 				dto.setPetAddr(rs.getString("petAddr"));
 				dto.setPetType(rs.getString("petType"));
-				dto.setImageNum(rs.getInt("imageNum"));
+				dto.setImageName(rs.getString("imageName"));
+				dto.setImagePath(rs.getString("imagePath"));
 				dto.setBoardState(rs.getBoolean("boardState"));
 				dto.setBoardReadNo(rs.getInt("boardReadNo"));
 				list.add(dto);
@@ -81,7 +83,7 @@ public class BoardDAO {
 		sql.append("		, userId		");
 		sql.append("		, boardDate		");
 		sql.append("		, b.categoryName	");
-		sql.append("		, imageNum		");
+//		sql.append("		, imageNum		");
 		sql.append("		, boardState	");
 		sql.append("		, boardReadNo	");
 		sql.append("		, boardType		");
@@ -105,7 +107,7 @@ public class BoardDAO {
 				dto.setUserId(rs.getString("userId"));
 				dto.setBoardDate(rs.getString("boardDate"));
 				dto.setCategoryName(rs.getString("categoryName"));
-				dto.setImageNum(rs.getInt("imageNum"));
+//				dto.setImageNum(rs.getInt("imageNum"));
 				dto.setBoardState(rs.getBoolean("boardState"));
 				dto.setBoardReadNo(rs.getInt("boardReadNo"));
 				dto.setBoardType(rs.getString("boardType"));
@@ -147,10 +149,10 @@ public class BoardDAO {
 		sql.append("						, userId			");
 		sql.append("						, boardDate			");
 		sql.append("						, categoryName		");
-		sql.append("						, imageNum			");
+//		sql.append("						, imageNum			");
 		sql.append("						, boardState		");
 		sql.append("						, boardReadNo )		");
-		sql.append("  values(?, ?, ?, now(), ?, null, 0, 0)		");
+		sql.append("  values(?, ?, ?, now(), ?, 0, 0)		");
 		
 		int boardNum=0;
 		ResultSet rs=null;
@@ -169,7 +171,6 @@ public class BoardDAO {
 			if(rs.next()) {
 				boardNum=rs.getInt(1);
 			}
-			System.out.println("DAO출력 : "+boardNum);
 		}catch(SQLException e) {
 			System.out.println(e);
 		}finally {

@@ -48,9 +48,9 @@
 					
 					<li>
 						<a href="boarddetail.do?boardNum=${item.boardNum }">
-							<%-- <img alt="${item.imageName }" src="${item.imagePath }" class="petImg"> --%>
+							<img alt="${item.imageName }" src="${item.imagePath }" class="petImg">
 							
-							<div class="petImg">사진영역</div>
+							<!-- <div class="petImg">사진영역</div> -->
 							<!-- div는 지우고 img 활성화-->
 							<p class="petContent" id="petAddr"><c:out value="${item.petAddr } >"></c:out><c:out value="${item.petType }"></c:out></p>
 							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>[${item.boardReadNo }]</span></p>
