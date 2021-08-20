@@ -17,7 +17,7 @@ ul li{
 }
 
 /* 지도 이미지 */
-#boardWrap img {
+#amp {
 	width: 100px;
 	margin-right: 50px;
 	position: relative;
@@ -101,13 +101,14 @@ ul li{
 	display: block;
 }
 
+//동물 사진
 .petImg {
-	width: 2000px;
+	width: 180px;
 	height: 180px;
 	float: left;
 	background-color: yellow;
 	margin-left: 10px;
-	margin-top: -52px;
+	margin-top: -12px;
 	margin-right: 20px;
 	/* border: solid 2px #84C0E9;
 	border-radius: 10px; */
