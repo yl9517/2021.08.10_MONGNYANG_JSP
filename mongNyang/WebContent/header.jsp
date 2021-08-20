@@ -10,7 +10,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<c:set var="userId" value="${sessionScope.userId}"></c:set>
+<c:set var="loginId" value="${sessionScope.userId}"></c:set>
+<c:set var="alertdto" value="${requestScope.alertdto}"></c:set>
 
 	<header>
 		<nav id="head">
@@ -25,21 +26,37 @@
 			</ul>
 			
 			<!-- 로그인이 안되어 있을 경우 -->
-			<c:if test="${userId==null }">
-					<div class="user">
+			<c:if test="${loginId == null }">
+					<div class="user log">
 						<a href="userlogin.do">LOGIN</a>
 					</div>
 			</c:if>
 			
-			<c:if test="${userId!=null }"><!-- 로그인 되어있을 경우 -->
+			<c:if test="${loginId != null }"><!-- 로그인 되어있을 경우 -->
+					<c:set var="loop_alCheck" value="true"/><!-- 댓글 상태 확인 (0이 포함되어있는지 아닌지) 초기화:1 = 꺼져있음 -->
+					
+					<c:forEach var="item" items="${alertdto }">	
+						<c:if test="${loop_alCheck}">
+							<c:if test="${item.alertCheck == 0 }">
+								<c:set var="loop_alCheck" value="false"/>
+							</c:if>
+						</c:if>
+					</c:forEach>
+					
 				<div class="user">
 					<a href="useralert.do">
-					
-						<img alt="ringbell" src="images/bell2.png"><!-- 댓글 알림상태가 하나라도 0 일경우-->
-						<img alt="bell" src="images/bell.png"> <!-- 그 외 -->
+
+						<c:choose>
+							<c:when test="${loop_alCheck}">							
+								<img alt="bell" src="images/bell.png"> <!-- 트루일경우 -->
+							</c:when>
+							<c:otherwise>
+								<img alt="ringbell" src="images/bell2.png"><!-- 댓글 알림상태가 하나라도 0 일경우 불빛 -->
+							</c:otherwise>
+						</c:choose>
 					
 					</a>
-					<a href="usermain.do"><c:out value="${userId }"></c:out></a>		
+					<a href="usermain.do"><c:out value="${loginId }"></c:out></a>		
 					<a href="userlogout.do">LOGOUT</a>	
 				</div>
 			</c:if>

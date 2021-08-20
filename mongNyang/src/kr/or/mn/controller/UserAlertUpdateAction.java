@@ -18,7 +18,8 @@ public class UserAlertUpdateAction implements Action {
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Forward forward = new Forward();
-	
+		String rn = request.getParameter("replyNum");
+		System.out.println("alertUp 댓글번호 :"+rn);
 		//세션으로 아이디값 받기 
         String id = (String) request.getSession().getAttribute("userId");
         
@@ -27,14 +28,19 @@ public class UserAlertUpdateAction implements Action {
             forward.setForward(false);
             forward.setPath("userlogin.do");
         }
-        else {
-	        int replyNum = Integer.parseInt(request.getParameter("replyNum"));
-	        int changeAlert = Integer.parseInt(request.getParameter("changeAlert"));
+        else {       	
+        	int replyNum = Integer.parseInt(rn);
+        	int changeAlert = Integer.parseInt(request.getParameter("changeAlert"));
+        	
 	        System.out.println("수정 상태!!!!!!!!!!!!:"+changeAlert+"로 바꿈 (댓글번호 = "+replyNum);
-	        //service 연결
+	        //service 연결하여 댓글 상태 변경
 	        ReplyService service = ReplyService.getInstance();
 	        service.myAlertUpdate(replyNum,changeAlert);
 	        
+	        //세션 알아서 바뀌나..? call by reference?
+//	        List<AlertDTO> dto = service.myAlert(id);
+//	        request.getSession().setAttribute("alertdto", dto); //세션 재저장
+			
 			forward.setForward(false);
 			forward.setPath("useralert.do");
         }

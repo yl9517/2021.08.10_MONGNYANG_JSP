@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
@@ -21,7 +22,7 @@ public class UserAlertAction implements Action {
 
 		//세션으로 아이디값 받기 
         String id = (String) request.getSession().getAttribute("userId");
-        System.out.println(id);
+      
         //if id가 null이면 로그인페이지로
         if(id==null) {
             forward.setForward(false);
@@ -29,10 +30,12 @@ public class UserAlertAction implements Action {
         }
         else {
 	        //service 연결
-	        ReplyService service = ReplyService.getInstance();
+	        ReplyService service = ReplyService.getInstance();    
 	        List<AlertDTO> dto = service.myAlert(id);
 	        
-	        request.setAttribute("dto", dto);
+//	        HttpSession session = request.getSession();
+//			session.setMaxInactiveInterval(60*5);	// 세션유효시간 5분
+			request.setAttribute("alertdto", dto); //알림세션 만들기
 	        
 			forward.setForward(true);
 			forward.setPath("/view.jsp?page=user/myAlert.jsp");

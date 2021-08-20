@@ -24,24 +24,24 @@ public class UserBoardAction implements Action {
 		
 		//세션으로 아이디값 받기 
         String id = (String) request.getSession().getAttribute("userId");
-        
+
         //if id가 null이면 로그인페이지로
-        if(id==null) {     	
+        if(id==null) {
+        	
             forward.setForward(false);
             forward.setPath("userlogin.do");
-            
-        }else {
+        }
         
 	     //게시판서비스에서 받아오기
         BoardService service = BoardService.getInstance();
         List<BoardDTO> list = service.findMyWrite(id);
+		System.out.println("유저보드 :"+list.get(1).getBoardTitle());
         request.setAttribute("list",list);
 		
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=myPage/mypageBoard.jsp");		
-        }
+		  
 		return forward;
-	
 	}
 
 }

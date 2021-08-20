@@ -140,7 +140,7 @@ public class ReplyDAO {
 	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
 	
 	
-	//내 게시글에 댓글이 달렸다면(상태 0 혹은 1인것만 )
+	//내 게시글에 다른사람의 댓글이 달렸다면(상태 0 혹은 1인것만 )
 	public List<AlertDTO> myAlert(Connection conn, String userId){
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select   b.boardNum        ");
@@ -151,7 +151,8 @@ public class ReplyDAO {
 		sql.append("  from one_board as b       ");
 		sql.append(" inner join one_reply as r  ");
 		sql.append(" on b.boardNum = r.boardNum ");
-		sql.append("    where b.userId = ?      ");
+		sql.append("    where b.userId = ?      "); //본인의 게시글이고
+		sql.append("    and not r.userId = ?    "); //본인의 댓글이 아니며
 		sql.append("    and alertCheck in(0,1)  "); //상태가 0 혹은 1
 		sql.append("    order by replyDate DESC "); //댓글 최신순으로 정렬
 		
@@ -159,6 +160,7 @@ public class ReplyDAO {
 		List<AlertDTO> list = new ArrayList<AlertDTO>();
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 			pstmt.setString(1, userId);
+			pstmt.setString(2, userId);
 
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
