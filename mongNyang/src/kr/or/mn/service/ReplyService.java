@@ -8,7 +8,9 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
+import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dao.ReplyDAO;
+import kr.or.mn.dto.AlertDTO;
 import kr.or.mn.dto.ReplyDTO;
 
 public class ReplyService {
@@ -39,7 +41,7 @@ private static ReplyService instance=new ReplyService();
 		
 		try {
 			conn=dbconn.getConnection();
-			ReplyDAO dao=new ReplyDAO();
+			ReplyDAO dao=ReplyDAO.getDAO();
 			result=dao.insertReply(conn, dto);
 			
 		}catch(SQLException | NamingException e) {
@@ -50,6 +52,7 @@ private static ReplyService instance=new ReplyService();
 		return result;
 	}
 	
+	//댓글 리스트
 	public List<ReplyDTO> replyList(int boardNum) {
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -57,7 +60,7 @@ private static ReplyService instance=new ReplyService();
 		
 		try {
 			conn=dbconn.getConnection();
-			ReplyDAO dao=new ReplyDAO();
+			ReplyDAO dao=ReplyDAO.getDAO();
 			list=dao.replyList(conn, boardNum, boardNum);
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);
@@ -67,13 +70,14 @@ private static ReplyService instance=new ReplyService();
 		return list;
 	}
 	
+	//댓글 삭제
 	public void replyDelete(int replyNum, int boardNum) {
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
 		
 		try {
 			conn=dbconn.getConnection();
-			ReplyDAO dao=new ReplyDAO();
+			ReplyDAO dao=ReplyDAO.getDAO();
 			dao.replyDelete(conn, replyNum, boardNum);
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);
@@ -101,7 +105,7 @@ private static ReplyService instance=new ReplyService();
 		
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
-		ReplyDAO dao=new ReplyDAO();
+		ReplyDAO dao=ReplyDAO.getDAO();
 		try {
 			conn=dbconn.getConnection();
 			dao.replyModify(conn, replyNum, boardNum, replyContent);
@@ -117,6 +121,43 @@ private static ReplyService instance=new ReplyService();
 	
 		
 	}*/
+	
+	//내 게시글에 댓글이 달렸다면
+	public List<AlertDTO> myAlert(String userId){
+		DBConnection dbconn = DBConnection.getDBInstance();
+		
+		Connection conn = null;
+		List<AlertDTO> list = new ArrayList<AlertDTO>();
+		try {
+			conn= dbconn.getConnection();
+			
+			ReplyDAO dao = ReplyDAO.getDAO();
+			list = dao.myAlert(conn, userId);		
+		}catch (SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return list;
+	}
+	
+	//내 게시글에 달린 댓글 1또는 2로 변경
+	public void myAlertUpdate(int replyNum, int changeAlert){
+		DBConnection dbconn = DBConnection.getDBInstance();
+		
+		Connection conn = null;
+		try {
+			conn= dbconn.getConnection();
+			
+			ReplyDAO dao = ReplyDAO.getDAO();
+			dao.myAlertUpdate(conn, replyNum,changeAlert);		
+			
+		}catch (SQLException | NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+	}
 	
 }
 	

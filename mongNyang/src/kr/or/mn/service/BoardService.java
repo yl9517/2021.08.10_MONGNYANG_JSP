@@ -199,25 +199,6 @@ private static BoardService instance=new BoardService();
 		return list;		
 	}
 	
-	//내 게시글에 댓글이 달렸다면
-	public List<AlertDTO> myAlert(String userId){
-		DBConnection dbconn = DBConnection.getDBInstance();
-		
-		Connection conn = null;
-		List<AlertDTO> list = new ArrayList<AlertDTO>();
-		try {
-			conn= dbconn.getConnection();
-			
-			BoardDAO dao = BoardDAO.getDAO();
-			list = dao.myAlert(conn, userId);		
-			
-		}catch (SQLException | NamingException e) {
-			System.out.println(e);
-		}finally {
-			if(conn!=null) try {conn.close();} catch(SQLException e) {}
-		}
-		return list;
-	}
-	
+
 	
 }

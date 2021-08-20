@@ -7,32 +7,37 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.or.mn.dto.AlertDTO;
 import kr.or.mn.dto.ReplyDTO;
 
 public class ReplyDAO {
+	private static ReplyDAO dao=new ReplyDAO();
+	public static ReplyDAO getDAO() {
+		return dao;
+	}
+	private ReplyDAO() {}
 	
-	public int insertReply(Connection conn, ReplyDTO dto) {
+	public int insertReply(Connection conn, ReplyDTO dto) {	
+		
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  insert into one_reply  (                  ");
-		sql.append("                          replyNum          ");
-		sql.append("                          ,boardNum         ");
+		sql.append("                          boardNum         ");
 		sql.append("                          ,replyDate        ");
 		sql.append("                          ,userId           ");
 		sql.append("                          ,replyContent     ");
 		sql.append("                          ,imageNum         ");
 		sql.append("                          ,alertCheck)      ");
-		sql.append("  values(?,?,?,?,?,2,0)                     ");
+		sql.append("  values(?,now(),?,?,2,0)                     ");
 		
 		int result=0;
 		try(
 			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 			){
-				pstmt.setInt(1, dto.getReplyNum());
-				pstmt.setInt(2, dto.getBoardNum());
-				pstmt.setString(3, "2021-08-18");
-				pstmt.setString(4, dto.getUserId());
-				pstmt.setString(5, dto.getReplyContent());
+				pstmt.setInt(1, dto.getBoardNum());
+				pstmt.setString(2, dto.getUserId());
+				pstmt.setString(3, dto.getReplyContent());
+		//   	pstmt.setString(4, dto.getReplyContent()); //이미지넘버 받아오기
 				
 				result = pstmt.executeUpdate();
 				
@@ -48,7 +53,7 @@ public class ReplyDAO {
 		
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select                      ");
-		sql.append("                replyNum  ");
+		sql.append("                replyNum  	  ");
 		sql.append("               ,replyContent  ");
 		sql.append("               ,userId        ");
 		sql.append("               ,replyDate     ");
@@ -134,6 +139,66 @@ public class ReplyDAO {
 	
 	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
 	
+	
+	//내 게시글에 댓글이 달렸다면(상태 0 혹은 1인것만 )
+	public List<AlertDTO> myAlert(Connection conn, String userId){
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select   b.boardNum        ");
+		sql.append(" 		  ,boardTitle       ");
+		sql.append(" 		  ,replyNum         ");
+		sql.append(" 		  ,alertCheck       ");
+		sql.append(" 		  ,replyDate        ");
+		sql.append("  from one_board as b       ");
+		sql.append(" inner join one_reply as r  ");
+		sql.append(" on b.boardNum = r.boardNum ");
+		sql.append("    where b.userId = ?      ");
+		sql.append("    and alertCheck in(0,1)  "); //상태가 0 혹은 1
+		sql.append("    order by replyDate DESC "); //댓글 최신순으로 정렬
+		
+		ResultSet rs = null;
+		List<AlertDTO> list = new ArrayList<AlertDTO>();
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			pstmt.setString(1, userId);
+
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				AlertDTO dto = new AlertDTO();
+				dto.setBoardNum(rs.getInt("boardNum"));
+				dto.setBoardTitle(rs.getString("boardTitle"));
+				dto.setReplyNum(rs.getInt("replyNum"));
+				dto.setAlertCheck(rs.getInt("alertCheck"));
+				dto.setReplyDate(rs.getString("replyDate"));
+				
+				list.add(dto);
+			}
+		}catch (SQLException e) {
+			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch(SQLException e){}
+		}			
+		return list;			
+	}
+	
+	//내 게시글에 달린 댓글 상태변경 ( 링크누르면 1, x누르면 2)
+	public void myAlertUpdate(Connection conn,int replyNum, int changeAlert) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("	 update	 one_reply	 ");
+		sql.append("     set alertCheck = ?  ");
+		sql.append("     where replyNum = ?  ");
+		
+		System.out.println("dao에서 변경할 alert번호 확인"+changeAlert);
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			pstmt.setInt(1, changeAlert);
+			pstmt.setInt(2, replyNum);
+			
+			pstmt.executeUpdate();
+			System.out.println("변경 완료");
+			
+		}catch (SQLException e) {
+			System.out.println(e);
+		}
+		
+	}
 	
 
 

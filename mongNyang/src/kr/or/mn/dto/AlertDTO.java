@@ -3,7 +3,9 @@ package kr.or.mn.dto;
 public class AlertDTO {
 	private int boardNum;
 	private String boardTitle;
-	private boolean alertCheck;
+	private int replyNum;
+	private int alertCheck;
+	private String replyDate;
 	
 	public int getBoardNum() {
 		return boardNum;
@@ -17,11 +19,23 @@ public class AlertDTO {
 	public void setBoardTitle(String boardTitle) {
 		this.boardTitle = boardTitle;
 	}
-	public boolean isAlertCheck() {
+	public int getReplyNum() {
+		return replyNum;
+	}
+	public void setReplyNum(int replyNum) {
+		this.replyNum = replyNum;
+	}
+	public int getAlertCheck() {
 		return alertCheck;
 	}
-	public void setAlertCheck(boolean alertCheck) {
+	public void setAlertCheck(int alertCheck) {
 		this.alertCheck = alertCheck;
+	}
+	public String getReplyDate() {
+		return replyDate;
+	}
+	public void setReplyDate(String replyDate) {
+		this.replyDate = replyDate;
 	}
 	
 	
