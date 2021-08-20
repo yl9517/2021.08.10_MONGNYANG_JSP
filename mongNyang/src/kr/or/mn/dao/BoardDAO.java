@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import kr.or.mn.dto.AlertDTO;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
@@ -330,8 +331,8 @@ public class BoardDAO {
 		public List<BoardDTO> findMyWrite(Connection conn,String userId) {
 			StringBuilder sql = new StringBuilder();
 			sql.append("   select  boardTitle    		 ");
-			sql.append("     	   boardDate      		 ");
-			sql.append("           boardState    		 "); 
+			sql.append("     	   ,boardDate      		 ");
+			sql.append("           ,boardState    		 "); 
 			sql.append("   	from one_board    			 ");
 			sql.append("	where userId = ?    		 ");
 			
@@ -358,6 +359,42 @@ public class BoardDAO {
 			return list;
 		}
 			
+		
+		//내 게시글에 댓글이 달렸다면(상태 상관없이 -> 상태 0 혹은 1인것만 )
+		public List<AlertDTO> myAlert(Connection conn, String userId){
+			StringBuilder sql = new StringBuilder();
+			sql.append(" select   b.boardNum        ");
+			sql.append(" 		  ,boardTitle       ");
+			sql.append(" 		  ,alertCheck       ");
+			sql.append(" 		  ,replyDate        ");
+			sql.append("  from one_board as b       ");
+			sql.append(" inner join one_reply as r  ");
+			sql.append(" on b.boardNum = r.boardNum ");
+			sql.append("    where b.userId = ?      ");
+			sql.append("    and alertCheck in(0,1)  ");
+			sql.append("    order by replyDate DESC "); //댓글 최신순으로 정렬
+			
+			ResultSet rs = null;
+			List<AlertDTO> list = new ArrayList<AlertDTO>();
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+				pstmt.setString(1, userId);
+
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					AlertDTO dto = new AlertDTO();
+					dto.setBoardNum(rs.getInt("boardNum"));
+					dto.setBoardTitle(rs.getString("boardTitle"));
+					dto.setAlertCheck(rs.getBoolean("alertCheck"));
+					
+					list.add(dto);
+				}
+			}catch (SQLException e) {
+				System.out.println(e);
+			}finally {
+				if(rs!=null) try {rs.close();} catch(SQLException e){}
+			}			
+			return list;			
+		}
 			
 		
 }

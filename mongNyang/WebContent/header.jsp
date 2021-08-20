@@ -33,12 +33,13 @@
 			
 			<c:if test="${userId!=null }"><!-- 로그인 되어있을 경우 -->
 				<div class="user">
+					<img alt="bell" src="images/bell.png"> <!-- 댓글 알림상태가 다 1일경우 -->
+					<img alt="ringbell" src="images/bell2.png"> <!-- 댓글 알림상태가 하나라도 0 일경우-->
 					<a href="usermain.do"><c:out value="${userId }"></c:out></a>		
 					<a href="userlogout.do">LOGOUT</a>	
 				</div>
 			</c:if>
 		</nav>
 	</header>
-	<script src="js/header.js"></script>
 </body>
 </html>

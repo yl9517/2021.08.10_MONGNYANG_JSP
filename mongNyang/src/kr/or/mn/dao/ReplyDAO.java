@@ -42,6 +42,7 @@ public class ReplyDAO {
 		return result;
 	}
 	
+	
 	public List<ReplyDTO> replyList(Connection conn, int boardNum, int replyNum){
 		
 		StringBuilder sql=new StringBuilder();
@@ -106,6 +107,7 @@ public class ReplyDAO {
 		
 	}
 	
+	//댓글수정
 	public void replyModify(Connection conn, int replyNum,int boardNum, int replyContent) {
 		
 		StringBuilder sql=new StringBuilder();
@@ -128,6 +130,10 @@ public class ReplyDAO {
 			System.out.println(e);
 		}
 	}
+	
+	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
+	
+	
 
 
 }

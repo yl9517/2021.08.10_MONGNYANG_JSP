@@ -52,22 +52,19 @@ header{
 }
 
 /* 유저 */
+.user img{
+	width: 32px;
+    position: relative;
+    top: 9px;
+    right: 10px;
+    cursor: pointer;
+}
 #head .user{
 	color : #A8A8A8;
 	font-weight: bolder;
+    position: relative;
+    bottom: 7px;
 }
 #head .user:hover{
 	color:black;
-}
-
-/* 토글버튼 */
-#head .toggleBtn img{
-	width: 32px;
-}
-
-#head .toggleBtn{
-	display:none;
-	position: absolute;
-	top : 9px;
-	right: 32px;
 }

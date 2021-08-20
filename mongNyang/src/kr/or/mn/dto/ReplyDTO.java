@@ -7,7 +7,7 @@ public class ReplyDTO {
 	private String userId;
 	private String replyContent;
 	private int imageNum;
-	private boolean alertCheck;
+	private int alertCheck;
 	
 	public int getReplyNum() {
 		return replyNum;
@@ -45,10 +45,10 @@ public class ReplyDTO {
 	public void setImageNum(int imageNum) {
 		this.imageNum = imageNum;
 	}
-	public boolean isAlertCheck() {
+	public int isAlertCheck() {
 		return alertCheck;
 	}
-	public void setAlertCheck(boolean alertCheck) {
+	public void setAlertCheck(int alertCheck) {
 		this.alertCheck = alertCheck;
 	}
 	
