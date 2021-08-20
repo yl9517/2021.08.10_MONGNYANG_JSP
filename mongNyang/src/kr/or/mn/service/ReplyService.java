@@ -209,7 +209,6 @@ private static ReplyService instance=new ReplyService();
 	      return mypagereplylist;
 	   }
 
-	
 }
 	
 

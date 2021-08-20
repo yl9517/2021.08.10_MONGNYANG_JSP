@@ -74,7 +74,6 @@
 				  <c:forEach var="item" items="${replydto }">
 					<tr>
 						<td><c:out value="${item.replyContent }"/></td>
-						
 					</tr>
 				  </c:forEach>
 				</tbody>

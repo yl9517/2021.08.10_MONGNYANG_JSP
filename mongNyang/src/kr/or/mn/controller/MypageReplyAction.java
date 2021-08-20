@@ -40,7 +40,6 @@ public class MypageReplyAction implements Action {
 
 			forward.setForward(true);
 			forward.setPath("/view.jsp?page=myPage/mypageReply.jsp");
-			
 		}
 		return forward;
 	}
