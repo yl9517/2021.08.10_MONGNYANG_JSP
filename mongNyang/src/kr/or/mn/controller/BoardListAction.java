@@ -21,9 +21,15 @@ public class BoardListAction implements Action {
 		
 		String boardType=request.getParameter("boardType");
 		
+		String petAddr="";
+		String paddr = request.getParameter("petAddr");
+		if(paddr!=null) { //paddr이 널값이 아니면 대입
+			petAddr=paddr;
+		}
+		
 		BoardService service=BoardService.getInstance();
 		
-		List<MainDTO> list=service.getList(boardType);
+		List<MainDTO> list=service.getList(boardType,petAddr);
 		request.setAttribute("list", list);
 		request.setAttribute("boardType", boardType);
 			

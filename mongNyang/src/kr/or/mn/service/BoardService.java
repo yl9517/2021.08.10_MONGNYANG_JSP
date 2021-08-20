@@ -22,7 +22,7 @@ private static BoardService instance=new BoardService();
 	}
 	private BoardService() {}
 	
-	public List<MainDTO> getList(String boardType) {
+	public List<MainDTO> getList(String boardType,String petAddr) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -31,7 +31,7 @@ private static BoardService instance=new BoardService();
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
-			list=dao.getList(conn, boardType);
+			list=dao.getList(conn, boardType,petAddr);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
@@ -52,8 +52,8 @@ private static BoardService instance=new BoardService();
 			conn.setAutoCommit(false);
 			
 			BoardDAO dao=BoardDAO.getDAO();
-			dto=dao.getDetail(conn, boardNum);
-			dao.updateReadNo(conn, boardNum);
+			dto=dao.getDetail(conn, boardNum); //dto 받아오기
+			dao.updateReadNo(conn, boardNum); //조회수 증가
 
 			conn.commit();
 		}catch(SQLException|NamingException e) {

@@ -1,0 +1,54 @@
+diff a/mongNyang/src/kr/or/mn/controller/ImageInsertAction.java b/mongNyang/src/kr/or/mn/controller/ImageInsertAction.java	(rejected hunks)
+@@ -23,24 +23,29 @@
+ 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
+ 			throws ServletException, IOException {
+ 			
+-		request.setCharacterEncoding("euc-kr");
+-		String imagePath=request.getRealPath("upload");
++		request.setCharacterEncoding("utf-8");
++		response.setCharacterEncoding("utf-8");
++		
++		String fileName1 = "";
++		String orgfileName1 = "";
++		
++		String uploadPath = request.getRealPath("upload");
+ 		 
+ 	   int size = 10*1024*1024;
+ 	   
+ 	   String imageName="";
+ 	   
+ 	   try{
+-	      MultipartRequest multi=new MultipartRequest(request,
+-	                     imagePath,
+-	                     size,
+-	                     "euc-kr",
+-	            new DefaultFileRenamePolicy());
+-	 
+-	     Enumeration files=multi.getFileNames();
+-	     
+-	      String file =(String)files.nextElement();
+-	      imageName=multi.getFilesystemName(file);
++			MultipartRequest multi = new MultipartRequest( // MultipartRequest ?몄ㅽ댁????cos.jar? ?쇱대??щ━)
++					request, 
++					uploadPath, // ??쇱 ??ν ???由?吏?
++					10 * 1024 * 1024, // 泥⑤????理? ?⑸ ?ㅼ(bite) 
++					"utf-8", // ?몄???諛⑹ 吏?
++					new DefaultFileRenamePolicy()); // 以蹂????泥由???쇳 ??쇰????濡??硫??ㅼ ?レ ?깆 遺??以蹂????
++			
++			fileName1 = multi.getFilesystemName("file1"); // name=file1? ?濡?? ??ㅽ ??쇰?? 援ы?以蹂듬 ??쇱???쇰㈃, 以蹂?泥由?? ????대?)
++			orgfileName1 = multi.getOriginalFileName("file1"); // name=file1? ?濡?? ?蹂명???대?? 援ы?以蹂?泥由?? ?대?)
++
+ 	   }catch(Exception e){
+ 	      e.printStackTrace();
+ 	   }
+@@ -49,8 +54,8 @@
+ 		ImageService service = ImageService.getService();
+ 		
+ 		MainDTO dto=new MainDTO();
+-		dto.setImageName(imageName);
+-		dto.setImagePath(imagePath);
++		dto.setImageName(orgfileName1); //?ㅼ ???紐
++		dto.setImagePath("upload/"+fileName1);
+ 		service.insertImg(dto);
+ 		
+ 		Forward forward = new Forward();

@@ -40,7 +40,7 @@ public class BoardDetailAction implements Action {
 			boardNum=Integer.parseInt(n);
 		}
 		
-		BoardService service=BoardService.getInstance();
+		BoardService service=BoardService.getInstance(); 
 		ImageService iservice=ImageService.getService();
 		MainDTO dto=service.getDetail(boardNum);
 		CategoryDTO categorys = service.findCategoryContent(dto.getCategoryName()); //dto의 카테고리 이름 가져오기
@@ -48,7 +48,8 @@ public class BoardDetailAction implements Action {
 		dto.setUserId(dto.getUserId());		//글쓴이 아이디
 		dto.setPetAddr(categorys.getPetAddr());
 		dto.setPetType(categorys.getPetType());
-		ImageDTO imgdto=iservice.getImg(boardNum);
+		
+		ImageDTO imgdto=iservice.getImg(boardNum); //boardNum으로 이미지 가져오기
 		dto.setImageName(imgdto.getImageName());
 		dto.setImageNum(imgdto.getImageNum());
 		dto.setImagePath(imgdto.getImagePath());

@@ -11,6 +11,8 @@
 	<form method="post" action="imageinsert.do" enctype="multipart/form-data"> <!--  action="imageinsert.do" -->
 		<input type="file" name="file1">
 		<input type="submit" value="전송">
+		
+		<input type="file" name="file1" value="upload/bell22.png">
 	</form>
 </body>
 </html>

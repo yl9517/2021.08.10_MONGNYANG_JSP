@@ -19,7 +19,7 @@ public class BoardDAO {
 	}
 	private BoardDAO() {}
 	
-	public List<MainDTO> getList(Connection conn, String boardType) {
+	public List<MainDTO> getList(Connection conn, String boardType,String petAddr) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select							");
@@ -40,6 +40,8 @@ public class BoardDAO {
 		sql.append("  inner join one_image as i			");
 		sql.append("  on b.boardNum=i.boardNum			");
 		sql.append("  where c.boardType=?				");
+	if(!petAddr.equals("")) //petAddr 이름이 ""이 아니라면
+		sql.append("  and c.petAddr=?					"); //지역
 		sql.append("  order by boardNum desc			");
 		
 		List<MainDTO> list=new ArrayList<>();
@@ -48,6 +50,9 @@ public class BoardDAO {
 				
 				){
 				pstmt.setString(1, boardType);
+			if(!petAddr.equals("all")) //petAddr 이름이 all이 아니라면
+				pstmt.setString(2, petAddr);
+			
 				rs=pstmt.executeQuery();
 			
 			while(rs.next()) {

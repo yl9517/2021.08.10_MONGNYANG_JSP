@@ -52,10 +52,6 @@ header{
 }
 
 /* 유저 */
-.log{
-	position: relative;
-    top: 7px;
-}
 .user img{
 	width: 32px;
     position: relative;
@@ -70,4 +66,8 @@ header{
 }
 #head .user:hover{
 	color:black;
+}
+.log{
+	position: relative;
+    top: 7px;
 }
