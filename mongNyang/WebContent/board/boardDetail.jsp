@@ -125,8 +125,10 @@
       <input type="hidden" value=${dto.boardType } id="btype">
       <input type="hidden" value=${dto.boardNum } id="bnum">
       <input type="button" value="글쓰기" id="add">
+      <c:if test="${dto.loginId==dto.userId }">
       <input type="button" value="수정" id="modify">
       <input type="button" value="삭제" id="delete">
+      </c:if>
       <input type="button" class="right" value="목록" id="list">   
    </div>
    

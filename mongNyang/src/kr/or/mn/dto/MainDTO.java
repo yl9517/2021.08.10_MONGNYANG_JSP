@@ -4,7 +4,7 @@ public class MainDTO {
 	private int boardNum;
 	private String boardTitle;
 	private String boardContent;
-	private String userId;
+	private String userId;		//글쓴이아이디
 	private String boardDate;
 	private String categoryName;
 	private int imageNum;
@@ -15,7 +15,14 @@ public class MainDTO {
     private String boardType;
     private String imageName;
     private String imagePath;
+    private String loginId;		//로그인아이디
     
+	public String getLoginId() {
+		return loginId;
+	}
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
 	public String getImageName() {
 		return imageName;
 	}

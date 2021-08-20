@@ -148,16 +148,14 @@ public class BoardDAO {
 //		sql.append("						, imageNum			");
 		sql.append("						, boardState		");
 		sql.append("						, boardReadNo )		");
-		sql.append("  values(?, ?, 1, ?, ?, 0, 0)				");
+		sql.append("  values(?, ?, ?, now(), ?, 0, 0)				");
 		
 		try(
 				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
 				){
 			pstmt.setString(1, dto.getBoardTitle());
 			pstmt.setString(2, dto.getBoardContent());
-//			pstmt.setString(3, "dto.getUserId()");
-			//아이디 어디서 받아옴?
-			pstmt.setString(3, "2021-08-18");
+			pstmt.setString(3, dto.getUserId());
 			pstmt.setString(4, dto.getCategoryName());
 //			pstmt.setInt(5, dto.getImageNum());
 			//이미지도 고민해야함

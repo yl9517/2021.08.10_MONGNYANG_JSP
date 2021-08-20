@@ -21,6 +21,18 @@ public class BoardDetailAction implements Action {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+		
+		Forward forward = new Forward();
+
+		//세션으로 아이디값 받기 
+        String id = (String) request.getSession().getAttribute("userId");
+
+        //if id가 null이면 로그인페이지로
+        if(id==null) {
+            forward.setForward(false);
+            forward.setPath("userlogin.do");
+        }
+        else {
 
 		String n=request.getParameter("boardNum");
 		int boardNum=1;
@@ -32,6 +44,8 @@ public class BoardDetailAction implements Action {
 		ImageService iservice=ImageService.getService();
 		MainDTO dto=service.getDetail(boardNum);
 		CategoryDTO categorys = service.findCategoryContent(dto.getCategoryName()); //dto의 카테고리 이름 가져오기
+		dto.setLoginId(id);		//로그인 아이디
+		dto.setUserId(dto.getUserId());		//글쓴이 아이디
 		dto.setPetAddr(categorys.getPetAddr());
 		dto.setPetType(categorys.getPetType());
 		ImageDTO imgdto=iservice.getImg(boardNum);
@@ -41,12 +55,12 @@ public class BoardDetailAction implements Action {
 		
 		request.setAttribute("dto", dto);
 		
-		Forward forward=new Forward();	
-
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=board/boardDetail.jsp");
-
+        }
+        
 		return forward;
+      
 		
 	}
 

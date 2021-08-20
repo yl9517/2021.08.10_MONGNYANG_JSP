@@ -17,7 +17,7 @@
 	
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
-		<img alt="map" src="images/map.jpg" id="map">
+		<img alt="map" src="images/map.png" id="map">
 		<div id="addrBar">
 			
 			<a href="">전체</a> 
@@ -55,7 +55,6 @@
 							<p class="petContent" id="petAddr"><c:out value="${item.petAddr } >"></c:out><c:out value="${item.petType }"></c:out></p>
 							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>[${item.boardReadNo }]</span></p>
 							<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
-							<th colspan="3"><c:out value="${dto.size() }"></c:out></th>
 						</a>				
 					</li>
 				</c:forEach>
