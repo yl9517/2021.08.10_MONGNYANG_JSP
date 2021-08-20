@@ -113,29 +113,31 @@ public class ReplyDAO {
 		
 	}
 	
-	//댓글수정
-	public void replyModify(Connection conn, int replyNum,int boardNum, int replyContent) {
+	
+	
+	// 댓글 수정
+	public void replyModify(Connection conn, ReplyDTO dto) {
 		
-		StringBuilder sql=new StringBuilder();
-		sql.append("  update       one_reply      ");
-		sql.append("  set                         ");
-		sql.append("               replyContent=? ");
-		sql.append("  where                       ");
-		sql.append("               replyNum=?     ");
+		StringBuilder sql = new StringBuilder();
+		sql.append(" update one_reply			");
+		sql.append(" set						");
+		sql.append("	replyContent = ?		");
+		sql.append(" where replyNum = ?			");
 		
-		try(
-			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
-				
+		
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
 			){
-			pstmt.setInt(1, replyContent);
-			pstmt.setInt(2, replyNum);
+			pstmt.setString(1, dto.getReplyContent());
+			pstmt.setInt(2, dto.getReplyNum());
 			pstmt.executeUpdate();
 			
-		}catch(SQLException e)
-		{
+		}catch(SQLException e) {
 			System.out.println(e);
-		}
+		}	
+		
 	}
+	
+
 	
 	//내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
 	

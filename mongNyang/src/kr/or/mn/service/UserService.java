@@ -150,7 +150,7 @@ public class UserService {
 	}
 	
 	
-	//내게시글 찾기는 boardService에
+	//내게시글 찾기는 boardService,DAO에
 	
 	
 	

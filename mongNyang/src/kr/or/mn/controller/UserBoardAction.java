@@ -30,17 +30,17 @@ public class UserBoardAction implements Action {
         	
             forward.setForward(false);
             forward.setPath("userlogin.do");
-        }
+        }else {
         
 	     //게시판서비스에서 받아오기
         BoardService service = BoardService.getInstance();
         List<BoardDTO> list = service.findMyWrite(id);
-		System.out.println("유저보드 :"+list.get(1).getBoardTitle());
+		//System.out.println("유저보드 :"+list.get(1).getBoardTitle());
         request.setAttribute("list",list);
 		
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=myPage/mypageBoard.jsp");		
-		  
+        }
 		return forward;
 	}
 

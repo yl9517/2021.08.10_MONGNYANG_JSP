@@ -34,6 +34,7 @@ private static ReplyService instance=new ReplyService();
 	 * catch(SQLException e) {} } return list; }
 	 */
 	
+	// 댓글 등록
 	public int insertReply(ReplyDTO dto) {
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -52,6 +53,8 @@ private static ReplyService instance=new ReplyService();
 		return result;
 	}
 	
+	
+	
 	//댓글 리스트
 	public List<ReplyDTO> replyList(int boardNum) {
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -69,6 +72,8 @@ private static ReplyService instance=new ReplyService();
 		}
 		return list;
 	}
+	
+	
 	
 	//댓글 삭제
 	public void replyDelete(int replyNum, int boardNum) {
@@ -121,6 +126,32 @@ private static ReplyService instance=new ReplyService();
 	
 		
 	}*/
+	
+	
+	
+	//	댓글수정
+	public void replyModify(ReplyDTO dto) {
+		
+		DBConnection dbconn = DBConnection.getDBInstance();
+		Connection conn = null;
+		
+		try {
+			conn = dbconn.getConnection();
+			ReplyDAO dao = ReplyDAO.getDAO();
+			dao.replyModify(conn, dto);	
+			
+		}catch(SQLException | NamingException e) {
+			System.out.println(e);
+			
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		
+		
+	}
+	
+	
+	
 	
 	//내 게시글에 댓글이 달렸다면
 	public List<AlertDTO> myAlert(String userId){
