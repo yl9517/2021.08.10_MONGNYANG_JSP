@@ -32,12 +32,16 @@ ul li{
 	padding-bottom:10px;
 	border-bottom: solid 5px #F1F1F1;	
 }
-#addrBar a {
+.addrBtn {
 	text-decoration : none;
+	font-size: xx-large;
+	font-weight: bolder;
 	padding: 10px 60px;
-	color: #717171;
+	border: none;
+	background-color: white;
+	
 }
-#addrBar a:hover {
+.addrBtn:hover {
 	border-bottom: solid 5px #84C0E9;
 	color: black;
 }
@@ -98,7 +102,7 @@ ul li{
 }
 
 .petImg {
-	width: 180px;
+	width: 2000px;
 	height: 180px;
 	float: left;
 	background-color: yellow;

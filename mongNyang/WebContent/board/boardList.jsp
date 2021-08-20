@@ -18,13 +18,16 @@
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
 		<img alt="map" src="images/map.png" id="map">
+		<input type="hidden" value="${boardType }" id="btype">
+		
 		<div id="addrBar">
+		
+			<input type="button" value="전체" id="addrAll" class="addrBtn" name= "petAddr">
+			<input type="button" value="강동" id="addrEast" class="addrBtn" name= "petAddr">
+			<input type="button" value="강서" id="addrWest" class="addrBtn" name= "petAddr">
+			<input type="button" value="강남" id="addrSouth" class="addrBtn" name= "petAddr">
+			<input type="button" value="강북" id="addrNorth" class="addrBtn" name= "petAddr">
 			
-			<a href="">전체</a> 
-			<a href="">강동</a>
-			<a href="">강서</a>
-			<a href="">강남</a>
-			<a href="">강북</a>
 		</div>
 		<div id="findBar">
 			<form method="post" action="">
@@ -61,7 +64,6 @@
 				
 			</ul>
 			
-			<input type="hidden" value="${boardType }" id="btype">
 			<input type="button" value="글쓰기" id="add">
 				
 		</div>

@@ -50,7 +50,7 @@ public class BoardDAO {
 				
 				){
 				pstmt.setString(1, boardType);
-			if(!petAddr.equals("all")) //petAddr 이름이 all이 아니라면
+			if(!petAddr.equals("")) //petAddr 이름이 all이 아니라면
 				pstmt.setString(2, petAddr);
 			
 				rs=pstmt.executeQuery();
