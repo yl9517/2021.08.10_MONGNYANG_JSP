@@ -207,8 +207,8 @@ public class ReplyDAO {
 	      StringBuilder sql=new StringBuilder();
 	      sql.append("select                        ");
 //	      sql.append("                replyNum      ");
-//	      sql.append("               ,boardNum      ");
-	      sql.append("                replyDate     ");
+	      sql.append("                boardNum      ");
+	      sql.append("               ,replyDate     ");
 	      sql.append("               ,userId        ");
 	      sql.append("               ,replyContent  ");
 	      sql.append("  from     one_reply          ");
@@ -228,7 +228,7 @@ public class ReplyDAO {
 	         {
 	            ReplyDTO dto=new ReplyDTO();
 //	            dto.setReplyNum(rs.getInt("replyNum"));
-//	            dto.setBoardNum(rs.getInt("boardNum"));
+	            dto.setBoardNum(rs.getInt("boardNum"));
 	            dto.setReplyDate(rs.getString("replyDate"));
 	            dto.setUserId(rs.getString("userId"));
 	            dto.setReplyContent(rs.getString("replyContent"));

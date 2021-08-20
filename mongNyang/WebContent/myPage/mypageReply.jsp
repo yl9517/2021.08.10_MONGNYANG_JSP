@@ -46,28 +46,8 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2">전체 10</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td width="500px"> 저희집 근처에서 본것 같아요!!  </td>
-						<td width="150px"> 2021.07.25 </td>
-
-					</tr>
-					<tr>
-						<td> 제가 발견했는데 데리고 있을까요?  </td>
-						<td> 2021.07.25 </td>
-
-					</tr>
-				</tbody>
-			</table>
-			<table>
-				<thead>
-					<tr>
 						<th colspan="2">전체<c:out value="${dto.size() }"/></th>
-						<th>댓글내용</th>
-						<th>작성일</th>
+						
 	<!-- 					<th>댓글 내용</th>
 						<th>작성일</th> -->
 					</tr>
@@ -75,7 +55,7 @@
 				<tbody>
 				  <c:forEach var="item" items="${dto }">
 					<tr>
-						<td width="500px"><c:out value="${item.replyContent }"/></td>
+						<td width="500px"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
 						<td width="150px"><c:out value="${item.replyDate }"/></td>
 					</tr>
 				  </c:forEach>
