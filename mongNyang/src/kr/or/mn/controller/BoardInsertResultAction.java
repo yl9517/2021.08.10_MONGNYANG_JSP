@@ -75,11 +75,19 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 			}
 	
 			ImageService imgservice = ImageService.getService();
-	
+			
 			dto.setImageName(orgfileName1); // 실제 파일 명
 			dto.setImagePath("upload/" + fileName1);
-			service.insertData(dto);
+			
+			int boardNum=service.insertData(dto);
+			System.out.println("Action출력 : "+boardNum);
+
+			dto.setBoardNum(boardNum);
+			
+			if(dto.getImageName()!=null) {
 			imgservice.insertImg(dto);
+			
+			}
 	
 	//		service.getImg(boardNum);
 	//		입력하고 바로 불러오는거 해야함(미리보기)

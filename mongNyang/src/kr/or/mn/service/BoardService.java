@@ -87,21 +87,23 @@ private static BoardService instance=new BoardService();
 		}
 	}
 	//게시글 등록(게시판, 카테고리, 이미지 등륵)
-	public void insertData(MainDTO dto) {
+	public int insertData(MainDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
 		
+		int boardNum=0;
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
-			dao.insert(conn, dto);
+			boardNum=dao.insert(conn, dto);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
+		return boardNum;
 	}
 	
 	//게시글 수정

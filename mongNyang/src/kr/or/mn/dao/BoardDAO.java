@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class BoardDAO {
 		sql.append("  inner join one_category as c		");
 		sql.append("  on b.categoryName=c.categoryName  ");
 		sql.append("  where c.boardType=?				");
-		sql.append("  order by boardNum desc				");
+		sql.append("  order by boardNum desc			");
 		
 		List<MainDTO> list=new ArrayList<>();
 		ResultSet rs=null;
@@ -137,22 +138,24 @@ public class BoardDAO {
 	
 
 	//게시판 테이블에 추가
-	public void insert(Connection conn, MainDTO dto) {
+	public int insert(Connection conn, MainDTO dto) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  insert into one_board	(					");
-		sql.append("						boardTitle		");
+		sql.append("						boardTitle			");
 		sql.append("						, boardContent		");
 		sql.append("						, userId			");
 		sql.append("						, boardDate			");
 		sql.append("						, categoryName		");
-//		sql.append("						, imageNum			");
+		sql.append("						, imageNum			");
 		sql.append("						, boardState		");
 		sql.append("						, boardReadNo )		");
-		sql.append("  values(?, ?, ?, now(), ?, 0, 0)				");
+		sql.append("  values(?, ?, ?, now(), ?, null, 0, 0)		");
 		
+		int boardNum=0;
+		ResultSet rs=null;
 		try(
-				PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+				PreparedStatement pstmt=conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
 				){
 			pstmt.setString(1, dto.getBoardTitle());
 			pstmt.setString(2, dto.getBoardContent());
@@ -162,10 +165,17 @@ public class BoardDAO {
 			//이미지도 고민해야함
 			
 			pstmt.executeUpdate();
-			
+			rs=pstmt.getGeneratedKeys();
+			if(rs.next()) {
+				boardNum=rs.getInt(1);
+			}
+			System.out.println("DAO출력 : "+boardNum);
 		}catch(SQLException e) {
 			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch (SQLException e) {}
 		}
+		return boardNum;
 	}
 	
 	//해당하는 카테고리 찾기 (게시글 등록 시 필요)
