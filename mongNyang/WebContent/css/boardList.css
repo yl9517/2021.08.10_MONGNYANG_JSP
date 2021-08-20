@@ -17,7 +17,7 @@ ul li{
 }
 
 /* 지도 이미지 */
-#amp {
+#map {
 	width: 100px;
 	margin-right: 50px;
 	position: relative;
@@ -101,7 +101,7 @@ ul li{
 	display: block;
 }
 
-//동물 사진
+/* 동물 사진 */
 .petImg {
 	width: 180px;
 	height: 180px;
