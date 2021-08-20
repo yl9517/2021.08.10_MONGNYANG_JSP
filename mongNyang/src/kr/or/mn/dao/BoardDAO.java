@@ -38,6 +38,7 @@ public class BoardDAO {
 		sql.append("  inner join one_category as c		");
 		sql.append("  on b.categoryName=c.categoryName  ");
 		sql.append("  where c.boardType=?				");
+		sql.append("  order by boardNum desc				");
 		
 		List<MainDTO> list=new ArrayList<>();
 		ResultSet rs=null;
