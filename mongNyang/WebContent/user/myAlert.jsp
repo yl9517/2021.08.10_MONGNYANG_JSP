@@ -8,9 +8,8 @@
 <link rel="stylesheet" href="../css/myAlert.css">
 </head>
 <body>
-	
 		<div id="myAlert">
-			<h2>내 알림</h2>
+			<h1>내 알림</h1>
 			
 			<table>
 				<thead>
@@ -20,7 +19,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td width="800px"> [저희집 누렁이 보신 분 있나요] 에 새 댓글이 등록되었습니다.  </td>
+						<td width="900px"> [저희집 누렁이 보신 분 있나요] 에 새 댓글이 등록되었습니다.  </td>
 					</tr>
 				</tbody>
 			</table>
