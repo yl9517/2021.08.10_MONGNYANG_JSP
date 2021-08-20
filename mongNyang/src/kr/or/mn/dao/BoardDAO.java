@@ -40,7 +40,7 @@ public class BoardDAO {
 		sql.append("  inner join one_image as i			");
 		sql.append("  on b.boardNum=i.boardNum			");
 		sql.append("  where c.boardType=?				");
-	if(!petAddr.equals("")) //petAddr 이름이 ""이 아니라면
+	if(!petAddr.equals("all")) 	//petAddr 이름이 all이 아니라면 (뭐라도 적혀져 있다면)
 		sql.append("  and c.petAddr=?					"); //지역
 		sql.append("  order by boardNum desc			");
 		
@@ -50,7 +50,7 @@ public class BoardDAO {
 				
 				){
 				pstmt.setString(1, boardType);
-			if(!petAddr.equals("")) //petAddr 이름이 all이 아니라면
+			if(!petAddr.equals("all")) //petAddr 이름이 all이 아니라면
 				pstmt.setString(2, petAddr);
 			
 				rs=pstmt.executeQuery();
@@ -154,9 +154,8 @@ public class BoardDAO {
 		sql.append("						, userId			");
 		sql.append("						, boardDate			");
 		sql.append("						, categoryName		");
-//		sql.append("						, imageNum			");
-		sql.append("						, boardState		");
-		sql.append("						, boardReadNo )		");
+		sql.append("						, boardState		"); //미해결
+		sql.append("						, boardReadNo )		"); //조회수
 		sql.append("  values(?, ?, ?, now(), ?, 0, 0)		");
 		
 		int boardNum=0;
@@ -168,11 +167,9 @@ public class BoardDAO {
 			pstmt.setString(2, dto.getBoardContent());
 			pstmt.setString(3, dto.getUserId());
 			pstmt.setString(4, dto.getCategoryName());
-//			pstmt.setInt(5, dto.getImageNum());
-			//이미지도 고민해야함
 			
 			pstmt.executeUpdate();
-			rs=pstmt.getGeneratedKeys();
+			rs=pstmt.getGeneratedKeys(); //방금 생성된 게시판 번호 받기
 			if(rs.next()) {
 				boardNum=rs.getInt(1);
 			}
@@ -276,7 +273,7 @@ public class BoardDAO {
 	    public void updateReadNo(Connection conn,int boardNum) {
 	        StringBuilder sql = new StringBuilder();
 	        sql.append("  update one_board                  ");
-	        sql.append("  set boardReadNo = boardReadNo+1             ");
+	        sql.append("  set boardReadNo = boardReadNo+1   ");
 	        sql.append("  where boardNum = ?                ");
 
 	        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
@@ -297,8 +294,6 @@ public class BoardDAO {
 			sql.append("	boardTitle=?		");
 			sql.append("	, boardContent=?	");
 			sql.append("	, categoryName=?	");
-//			sql.append("	, imageNum=?		");
-			sql.append("	, boardState=1		"); 
 			sql.append("  where					");
 			sql.append("  		boardNum=?		");
 
@@ -308,7 +303,6 @@ public class BoardDAO {
 				pstmt.setString(1, dto.getBoardTitle());
 				pstmt.setString(2, dto.getBoardContent());
 				pstmt.setString(3, dto.getCategoryName());
-//				pstmt.setBoolean(4, dto.isBoardState());  //필요없음
 				pstmt.setInt(4, dto.getBoardNum());
 				//이미지도 고민해야함
 				

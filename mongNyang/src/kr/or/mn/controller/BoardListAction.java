@@ -21,7 +21,7 @@ public class BoardListAction implements Action {
 		
 		String boardType=request.getParameter("boardType");
 		
-		String petAddr="";
+		String petAddr="all";
 		String paddr = request.getParameter("petAddr");
 		if(paddr!=null) { //paddr이 널값이 아니면 대입
 			petAddr=paddr;

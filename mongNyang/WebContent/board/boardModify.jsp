@@ -11,9 +11,9 @@
 </head>
 <body>
 	<c:set var="dto" value="${requestScope.dto }"></c:set>
-	<form method="post" action="boardmodifyresult.do">
-		<input type="hidden" value="${dto.boardNum }" name="boardNum">
-		<input type="hidden" value="${dto.boardType }" name="boardType">
+	<form method="post" action="boardmodifyresult.do" enctype="multipart/form-data">
+		<input type="text" value="${dto.boardNum }" name="bNum">
+		<input type="text" value="${dto.boardType }" name="bType">
 		<ul>
 			<li id="titleBar">
 				<label>글쓰기</label>
@@ -21,7 +21,7 @@
 			</li>
 			<li id="titleBar2">
 				<label for="boardTitle"></label>
-				<input type="text" name="boardTitle" id="boardTitle" value="${dto.boardTitle }" required="required">
+				<input type="text" name="boardTitle" id="boardTitle" value="${dto.boardTitle }" maxlength="40" required="required">
 			</li>
 			<li id="addrBar">
 				<label>실종장소</label>

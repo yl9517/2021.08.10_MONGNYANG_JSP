@@ -83,7 +83,7 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 	}
-	//게시글 등록(게시판, 카테고리, 이미지 등륵)
+	//게시글 등록(게시판, 카테고리, 이미지 등륵)후 바로 게시판번호 받아옴
 	public int insertData(MainDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();

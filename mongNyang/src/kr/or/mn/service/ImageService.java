@@ -42,7 +42,31 @@ public class ImageService {
 //		}
 //		return list;
 //	}
+	//사진번호 가져오기 
+	public int getImgNum(String imageName,String imagePath) {
+		DBConnection dbconn = DBConnection.getDBInstance();
+		
+		Connection conn = null;
+		ImageDTO dto = new ImageDTO();
+		
+		int imgNum = 0;
+		try {
+			conn = dbconn.getConnection();
 
+			// dao연결
+			ImageDAO dao = ImageDAO.getDAO();
+			imgNum = dao.getImgNum(conn,imageName,imagePath);
+
+		} catch (SQLException | NamingException e) {
+			System.out.println(e);
+		} finally {	
+			if (conn != null) try {conn.close();} catch (SQLException e) {};
+		}
+		return imgNum;
+	}
+			
+			
+			
 	public ImageDTO getImg(int boardNum) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 
@@ -87,7 +111,7 @@ public class ImageService {
 //	}
 
 	// 사진 등록
-	public int insertImg(MainDTO dto) {
+	public int insertImg(ImageDTO dto) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 
 		Connection conn = null;
@@ -107,7 +131,7 @@ public class ImageService {
 		return imageNum;
 	}
 
-	public void modify(MainDTO dto) {
+	public void modify(ImageDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn = DBConnection.getDBInstance();
 

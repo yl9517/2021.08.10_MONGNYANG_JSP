@@ -11,6 +11,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
+import kr.or.mn.dto.ImageDTO;
+import kr.or.mn.dto.ImageDTO;
 import kr.or.mn.dto.MainDTO;
 import kr.or.mn.service.BoardService;
 import kr.or.mn.service.ImageService;
@@ -35,18 +37,17 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
         }
         else {
 
-			String fileName1 = "";
-			String orgfileName1 = "";
+			String imagePath = "";
+			String imageName = "";
 	
 			String uploadPath = request.getRealPath("upload");
 	
 			int size = 10 * 1024 * 1024;
 	
-			String imageName = "";
 			String boardType = "";
-			MainDTO dto = new MainDTO();
 			BoardService service = BoardService.getInstance();
 	
+			MainDTO dto = new MainDTO();
 			try {
 				MultipartRequest multi = new MultipartRequest( // MultipartRequest 인스턴스 생성(cos.jar의 라이브러리)
 						request, uploadPath, // 파일을 저장할 디렉토리 지정
@@ -54,38 +55,44 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 						"utf-8", // 인코딩 방식 지정
 						new DefaultFileRenamePolicy()); // 중복 파일 처리(동일한 파일명이 업로드되면 뒤에 숫자 등을 붙여 중복 회피)
 	
-				fileName1 = multi.getFilesystemName("file1"); // name=file1의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후 파일 이름)
-				orgfileName1 = multi.getOriginalFileName("file1"); // name=file1의 업로드된 원본파일 이름을 구함(중복 처리 전 이름)
+				imagePath = multi.getFilesystemName("file1"); // name=file1의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후 파일 이름)
+				imageName = multi.getOriginalFileName("file1"); // name=file1의 업로드된 원본파일 이름을 구함(중복 처리 전 이름)
 	
-				boardType = multi.getParameter("boardType");
 				String boardTitle = multi.getParameter("boardTitle");
+				String boardContent = multi.getParameter("boardContent");
+				boardType = multi.getParameter("boardType");
 				String petAddr = multi.getParameter("petAddr");
 				String petType = multi.getParameter("petType");
-				String boardContent = multi.getParameter("boardContent");
-				dto.setUserId(id);
-				dto.setBoardType(boardType);
+				
 				dto.setBoardTitle(boardTitle);
+				dto.setBoardContent(boardContent);
+				dto.setUserId(id);
+				dto.setCategoryName(service.findCategoryName(boardType, petAddr, petType));
+				dto.setBoardType(boardType);
 				dto.setPetAddr(petAddr);
 				dto.setPetType(petType);
-				dto.setBoardContent(boardContent);
-				dto.setCategoryName(service.findCategoryName(boardType, petAddr, petType));
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 	
-			ImageService imgservice = ImageService.getService();
-			
-			dto.setImageName(orgfileName1); // 실제 파일 명
-			dto.setImagePath("upload/" + fileName1);
-			
-			int boardNum=service.insertData(dto);
-
+			int boardNum=service.insertData(dto); //게시판 번호
 			dto.setBoardNum(boardNum);
 			
-			if(dto.getImageName()!=null) {
-			int imageNum=imgservice.insertImg(dto);
-			dto.setImageNum(imageNum);
+			
+			ImageService imgservice = ImageService.getService();
+			
+			if(imageName!=null && imageName.equals("")) { //사진 넣었을 경우
+				ImageDTO imgdto = new ImageDTO();
+				imgdto.setImageName(imageName);
+				imgdto.setImagePath("upload/"+imagePath);
+				imgdto.setBoardNum(boardNum);		
+				
+				int imageNum=imgservice.insertImg(imgdto); //이미지번호 가져오기
+				
+				dto.setImageNum(imageNum);
+				dto.setImageName(imgdto.getImageName());
+				dto.setImagePath(imgdto.getImagePath());
 
 			}
 	
@@ -94,8 +101,7 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 			
 			forward.setForward(false);
 			forward.setPath("boarddetail.do?boardNum=" + boardNum);
-	
-	//		나중에 board.Detail.do에 boardnum 이랑 같이 보내야함
+
         }
 		return forward;
 	}

@@ -5,17 +5,17 @@ public class MainDTO {
 	private String boardTitle;
 	private String boardContent;
 	private String userId;		//글쓴이아이디
-	private String boardDate;
+	private String boardDate;	//필요X
 	private String categoryName;
-	private int imageNum;
-	private boolean boardState;
-	private int boardReadNo;
+	private boolean boardState; //필요X
+	private int boardReadNo;    //필요X
+	private String boardType;
 	private String petAddr;
     private String petType;
-    private String boardType;
+    private int imageNum;
     private String imageName;
     private String imagePath;
-    private String loginId;		//로그인아이디
+    private String loginId;		//로그인아이디 (필요없긴 함)
     
 	public String getLoginId() {
 		return loginId;

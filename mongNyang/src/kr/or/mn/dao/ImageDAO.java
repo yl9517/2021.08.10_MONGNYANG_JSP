@@ -70,8 +70,32 @@ public class ImageDAO {
 //		}
 //		return imgNum;		
 //	}
-	
-	
+	//사진 번호 가져오기
+	public int getImgNum(Connection conn, String imageName,String imagePath) {
+		StringBuilder sql = new StringBuilder();
+		sql.append(" select                         ");
+		sql.append("              imageNum          ");
+		sql.append("    from      one_image         ");
+		sql.append("     where   imageName=?        ");
+		sql.append("          and  imagePath=?      ");
+		
+		ResultSet rs = null;
+		int imgNum = 0;
+		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+			pstmt.setString(1,imageName);
+			pstmt.setString(2,imagePath);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				imgNum = rs.getInt("imageNum");
+			}
+						
+		}catch (SQLException e) {		
+			System.out.println(e);
+		}
+		return imgNum;	
+	}
 	
 	//사진 하나만 입력할 수 있다고 했을때 사진받아오기 (게시판 기준) - test
 	public ImageDTO getImg(Connection conn, int boardNum) { //글번호 (사진번호?)
@@ -104,7 +128,7 @@ public class ImageDAO {
 	}
 	
 	//이미지 등록
-	public int insertImg(Connection conn, MainDTO dto) {
+	public int insertImg(Connection conn, ImageDTO dto) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("  insert into one_image(   ");
 		sql.append("  		 imageName         ");
@@ -112,6 +136,7 @@ public class ImageDAO {
 		sql.append("  		, boardNum	       ");
 		sql.append("  		, replyNum	 )     ");
 		sql.append("   values( ? , ? , ? , null ) ");
+		System.out.println("imgDao insert에서 replyNum 확인 :"+dto.getReplyNum());
 		
 		int imageNum=0;
 		ResultSet rs=null;
@@ -122,7 +147,7 @@ public class ImageDAO {
 //			pstmt.setInt(4, dto.getReplyNum());
 			
 			pstmt.executeUpdate();
-			rs=pstmt.getGeneratedKeys();
+			rs=pstmt.getGeneratedKeys(); //방금 insert한 이미지 번호 가져오기
 			if(rs.next()) {
 				imageNum=rs.getInt(1);
 			}
@@ -135,7 +160,7 @@ public class ImageDAO {
 	}
 	
 	//이미지 수정
-	public void updateImg(Connection conn, MainDTO dto) {
+	public void updateImg(Connection conn, ImageDTO dto) {
 		StringBuilder  sql = new StringBuilder();
 		sql.append(" update one_image set      ");
 		sql.append("      imageName =?         ");
@@ -169,6 +194,7 @@ public class ImageDAO {
 			System.out.println(e);
 		}	
 	}
+
 	
 	
 }
