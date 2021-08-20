@@ -73,7 +73,7 @@
 		<div class="page2">
 			<c:forEach var="index" begin="${paging.startblock }" end="${paging.endblock }">
 				<c:if test="${paging.currpage==index }">
-					<c:out value="${index }"></c:out>
+					<a href="#"><c:out value="${index }"></c:out></a>
 				
 				</c:if>
 				

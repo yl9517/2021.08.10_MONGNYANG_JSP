@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 import kr.or.mn.service.BoardService;
+import kr.or.mn.service.ImageService;
 
 public class BoardDelAction implements Action {
 
@@ -22,10 +23,18 @@ public class BoardDelAction implements Action {
 		int boardnum=1;
 		if(n!=null && !n.equals("")) {
 			boardnum=Integer.parseInt(n);
-		}
-		
+		}		
 		BoardService service=BoardService.getInstance();
-		service.delete(boardnum);
+		service.delete(boardnum); //게시글 삭제
+
+		//이미지 삭제
+		String imageName=request.getParameter("imageName");
+		String imagePath=request.getParameter("imagePath");
+		
+		ImageService imgService = ImageService.getService();
+		int imgNum = imgService.getImgNum(imageName, imagePath);
+		imgService.delete(imgNum); 
+		
 		
 		Forward forward=new Forward();	
 		forward.setForward(false);

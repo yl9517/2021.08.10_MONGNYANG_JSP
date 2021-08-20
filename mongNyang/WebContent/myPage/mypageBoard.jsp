@@ -40,7 +40,7 @@
 		</aside>
 		
 		<div id="myboard">
-			<h2>내가 쓴 게시글</h2>	 
+			<h1>내가 쓴 게시글</h1>	 
 			<table>
 			
 				<thead>

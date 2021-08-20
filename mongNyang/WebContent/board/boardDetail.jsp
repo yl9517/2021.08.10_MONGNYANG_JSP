@@ -122,12 +122,15 @@
    </div>
          
    <div id="btns">
-      <input type="hidden" value=${dto.boardType } id="btype">
-      <input type="hidden" value=${dto.boardNum } id="bnum">
-      <input type="button" value="글쓰기" id="add">
+      <input type="hidden" value=${dto.boardType } id="boardType">
+      <input type="hidden" value=${dto.boardNum } id="boardNum">    
+      <input type="hidden" value=${dto.imageName } id="imageName">
+      <input type="hidden" value=${dto.imagePath } id="imagePath">
+      
+      <input type="button" value="글쓰기" id="add" style="background-color : #A9DFED">
       <c:if test="${dto.loginId==dto.userId }">
-      <input type="button" value="수정" id="modify">
-      <input type="button" value="삭제" id="delete">
+	      <input type="button" value="수정" id="modify">
+	      <input type="button" value="삭제" id="delete">
       </c:if>
       <input type="button" class="right" value="목록" id="list">   
    </div>

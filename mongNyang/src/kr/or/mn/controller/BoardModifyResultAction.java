@@ -64,12 +64,12 @@ public class BoardModifyResultAction implements Action {
 					imagePath = multi.getFilesystemName("file1"); // name=file1의 업로드된 시스템 파일명을 구함(중복된 파일이 있으면, 중복 처리 후																	// 파일 이름)
 					imageName = multi.getOriginalFileName("file1"); // name=file1의 업로드된 원본파일 이름을 구함(중복 처리 전 이름)
 				
-					boardNum = Integer.parseInt(multi.getParameter("bNum"));
+					boardNum = Integer.parseInt(multi.getParameter("boardNum"));
 					String boardTitle = multi.getParameter("boardTitle");
 					String boardContent = multi.getParameter("boardContent");
 					String petAddr = multi.getParameter("petAddr");
 					String petType = multi.getParameter("petType");
-					boardType = multi.getParameter("bType");	
+					boardType = multi.getParameter("boardType");	
 					String categoryName = service.findCategoryName(boardType, petAddr, petType); //카테고리 이름 찾기						
 					imageNum = Integer.parseInt(multi.getParameter("imageNum"));
 

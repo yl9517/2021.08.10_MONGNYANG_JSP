@@ -150,7 +150,7 @@ public class ImageService {
 		}
 	}
 
-	public void delete(MainDTO dto) {
+	public void delete(int imgNum) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn = DBConnection.getDBInstance();
 
@@ -160,7 +160,7 @@ public class ImageService {
 
 			// dao연결
 			ImageDAO dao = ImageDAO.getDAO();
-			dao.deleteImg(conn, dto);
+			dao.deleteImg(conn, imgNum);
 
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);

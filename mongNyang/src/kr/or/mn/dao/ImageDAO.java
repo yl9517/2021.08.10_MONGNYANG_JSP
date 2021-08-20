@@ -180,13 +180,13 @@ public class ImageDAO {
 	}
 	
 	//이미지 삭제
-	public void deleteImg(Connection conn, MainDTO dto) {
+	public void deleteImg(Connection conn, int imgNum) {
 		StringBuilder  sql = new StringBuilder();
 		sql.append(" delete from one_image      ");
 		sql.append("  where imageNum = ?        ");
 		
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());) {
-			pstmt.setInt(1, dto.getImageNum());
+			pstmt.setInt(1, imgNum);
 			
 			pstmt.executeUpdate();			
 			

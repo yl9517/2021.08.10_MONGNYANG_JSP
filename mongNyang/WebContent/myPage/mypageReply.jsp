@@ -41,7 +41,7 @@
 		</aside>
 		
 		<div id="replywrap">
-			<h2>댓글 목록</h2>
+			<h1>댓글 목록</h1>
 			
 			<table>
 				<thead>
