@@ -31,7 +31,7 @@ public class UserBoardAction implements Action {
         	
         	out.println("<script>");
         	out.println("alert('로그인 후 이용바랍니다.');");
-        	out.println("<script>");
+        	out.println("</script>");
         	
             forward.setForward(false);
             forward.setPath("userlogin.do");
@@ -40,7 +40,6 @@ public class UserBoardAction implements Action {
 	     //게시판서비스에서 받아오기
         BoardService service = BoardService.getInstance();
         List<BoardDTO> list = service.findMyWrite(id);
-		System.out.println("유저보드 :"+list.get(1).getBoardTitle());
         request.setAttribute("list",list);
 		
 		forward.setForward(true);
