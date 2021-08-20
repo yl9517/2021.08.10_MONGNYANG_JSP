@@ -52,7 +52,7 @@ public class BoardListAction implements Action {
 		}
 		
 		PagingDTO dto=new PagingDTO();
-		dto.setSearch(searchtxt);
+		dto.setSearch(search);
 		dto.setSearchtxt(searchtxt);
 		dto.setTotalcount(totalcount);
 		dto.setPagepercount(pagepercount);

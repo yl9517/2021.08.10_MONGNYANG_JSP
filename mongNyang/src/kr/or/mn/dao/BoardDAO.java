@@ -25,26 +25,24 @@ public class BoardDAO {
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select *											");
 		sql.append("  from (											");
-		sql.append("  		select rownum as rnum, s.*					");
-		sql.append("  		from (										");
-		sql.append("  				select								");
-		sql.append("						b.boardNum					");
-		sql.append("						, boardTitle				");
-		sql.append("						, boardContent				");
-		sql.append("						, userId					");
-		sql.append("						, boardDate					");
-		sql.append("						, petAddr					");
-		sql.append("						, petType					");
-		sql.append("						, imageName					");
-		sql.append("						, imagePath					");
-		sql.append("						, boardState				");
-		sql.append("						, boardReadNo				");
-		sql.append("  				from one_board as b					");
-		sql.append("  				inner join one_category as c		");
-		sql.append("  				on b.categoryName=c.categoryName	");
-		sql.append("  				inner join one_image as i			");
-		sql.append("  				on b.boardNum=i.boardNum			");
-		sql.append("  				where c.boardType=?					");
+		sql.append("  		select								");
+		sql.append("				b.boardNum					");
+		sql.append("				, boardTitle				");
+		sql.append("				, boardContent				");
+		sql.append("				, userId					");
+		sql.append("				, boardDate					");
+		sql.append("				, petAddr					");
+		sql.append("				, petType					");
+		sql.append("				, imageName					");
+		sql.append("				, imagePath					");
+		sql.append("				, boardState				");
+		sql.append("				, boardReadNo				");
+		sql.append("		from one_board as b					");
+		sql.append("		inner join one_category as c		");
+		sql.append("		on b.categoryName=c.categoryName	");
+		sql.append("		inner join one_image as i			");
+		sql.append("		on b.boardNum=i.boardNum			");
+		sql.append("		where c.boardType=?					");
 		if(!petAddr.equals("all")) 	//petAddr 이름이 all이 아니라면 (뭐라도 적혀져 있다면)
 			sql.append("  			and c.petAddr=?						"); //지역
 		if(!pdto.getSearch().equals("")&&!pdto.getSearchtxt().equals("")) {
@@ -54,10 +52,13 @@ public class BoardDAO {
 				sql.append("  		and boardContent like ?				");
 			}
 		}
-		sql.append("  				order by boardNum desc				");
-		sql.append("			)s										");
-		sql.append("		)											");
-		sql.append("  where rnum>=? and rnum<=?							");
+		sql.append("  		order by boardNum desc				");
+		sql.append("		) s											");
+		sql.append("  limit												");
+		sql.append("  		?,?											");
+
+		
+		
 		
 		List<MainDTO> list=new ArrayList<>();
 		ResultSet rs=null;
@@ -65,19 +66,22 @@ public class BoardDAO {
 				
 				){
 				int num = 1;
+				System.out.println(boardType);
+				System.out.println(pdto.getSearch());
+				System.out.println(pdto.getSearchtxt());
+				System.out.println(pdto.getStartrow());
+				System.out.println(pdto.getEndrow());
 				pstmt.setString(num++, boardType);
-				if(!petAddr.equals("all")) //petAddr 이름이 all이 아니라면
+				if(!petAddr.equals("all")) { //petAddr 이름이 동서남북 이면
 					pstmt.setString(num++, petAddr);
+				}
 				
 				if(!pdto.getSearch().equals("")&&!pdto.getSearchtxt().equals("")) {
 					pstmt.setString(num++, "%"+pdto.getSearchtxt()+"%");
-					pstmt.setInt(num++, pdto.getStartrow());
+				}
+					pstmt.setInt(num++, pdto.getStartrow()-1);
 					pstmt.setInt(num++, pdto.getEndrow());
-				}else {
-					pstmt.setInt(num++, pdto.getStartrow());
-					pstmt.setInt(num++, pdto.getEndrow());
-				}	
-			
+
 			
 				rs=pstmt.executeQuery();
 			

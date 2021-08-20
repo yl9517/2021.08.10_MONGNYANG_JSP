@@ -35,7 +35,7 @@
 				<div id="directSearch">
 					<select id="search" name="search">
 						<option value="boardTitle">제목</option>
-						<option value="내용">내용</option>
+						<option value="boardContent">내용</option>
 					</select>
 					<input type="text" name="searchtxt">
 					<input type="submit" value="검색" id="btn1">
@@ -84,7 +84,7 @@
 			</c:forEach>
 		</div>
 		<div class="page3">
-			<c:if test="${paging.endblock<totalpage }">
+			<c:if test="${paging.endblock<paging.totalpage }">
 				<a href="boardlist.do?boardType=${boardType }&curr=${paging.currpage+1 }&search=${paging.search }&searchtxt=${paging.searchtxt }">다음</a>
 			</c:if>
 		</div>
