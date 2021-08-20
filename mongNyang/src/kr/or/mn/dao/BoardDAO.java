@@ -331,6 +331,7 @@ public class BoardDAO {
 			sql.append("   select  boardTitle    		 ");
 			sql.append("     	   ,boardDate      		 ");
 			sql.append("           ,boardState    		 "); 
+			sql.append("           ,boardNum    		 "); 	//
 			sql.append("   	from one_board    			 ");
 			sql.append("	where userId = ?    		 ");
 			
@@ -345,6 +346,7 @@ public class BoardDAO {
 					dto.setBoardTitle(rs.getString("boardTitle"));
 					dto.setBoardDate(rs.getString("boardDate"));
 					dto.setBoardState(rs.getBoolean("boardState"));
+					dto.setBoardNum(rs.getInt("boardNum"));		//
 					
 					list.add(dto);
 				}
