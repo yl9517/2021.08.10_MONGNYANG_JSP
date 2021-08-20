@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/mypageReply.css">
 </head>
 <body>
-<c:set var="replydto" value="${requestScope.mypagereplylist }"></c:set>
+<c:set var="dto" value="${requestScope.mypagereplylist }"></c:set>
 
 	<div id="mypage">
 		<aside id="mypageBtns">
@@ -65,15 +65,18 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2">전체<c:out value="${replydto.size() }"/></th>
+						<th colspan="2">전체<c:out value="${dto.size() }"/></th>
+						<th>댓글내용</th>
+						<th>작성일</th>
 	<!-- 					<th>댓글 내용</th>
 						<th>작성일</th> -->
 					</tr>
 				</thead>
 				<tbody>
-				  <c:forEach var="item" items="${replydto }">
+				  <c:forEach var="item" items="${dto }">
 					<tr>
-						<td><c:out value="${item.replyContent }"/></td>
+						<td width="500px"><c:out value="${item.replyContent }"/></td>
+						<td width="150px"><c:out value="${item.replyDate }"/></td>
 					</tr>
 				  </c:forEach>
 				</tbody>

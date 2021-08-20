@@ -206,9 +206,9 @@ public class ReplyDAO {
 	   public List<ReplyDTO> mypageReply(Connection conn,String userId) {
 	      StringBuilder sql=new StringBuilder();
 	      sql.append("select                        ");
-	      sql.append("                replyNum      ");
-	      sql.append("               ,boardNum      ");
-	      sql.append("               ,replyDate     ");
+//	      sql.append("                replyNum      ");
+//	      sql.append("               ,boardNum      ");
+	      sql.append("                replyDate     ");
 	      sql.append("               ,userId        ");
 	      sql.append("               ,replyContent  ");
 	      sql.append("  from     one_reply          ");
@@ -226,15 +226,15 @@ public class ReplyDAO {
 	         
 	         while(rs.next())
 	         {
-	            ReplyDTO replydto=new ReplyDTO();
-	            replydto.setReplyNum(rs.getInt("replyNum"));
-	            replydto.setBoardNum(rs.getInt("boardNum"));
-	            replydto.setReplyDate(rs.getString("replyDate"));
-	            replydto.setUserId(rs.getString("userId"));
-	            replydto.setReplyContent(rs.getString("replyContent"));
+	            ReplyDTO dto=new ReplyDTO();
+//	            dto.setReplyNum(rs.getInt("replyNum"));
+//	            dto.setBoardNum(rs.getInt("boardNum"));
+	            dto.setReplyDate(rs.getString("replyDate"));
+	            dto.setUserId(rs.getString("userId"));
+	            dto.setReplyContent(rs.getString("replyContent"));
 	            
 	            
-	            mypagereplylist.add(replydto);
+	            mypagereplylist.add(dto);
 	         
 	         }
 	      }catch(Exception e)

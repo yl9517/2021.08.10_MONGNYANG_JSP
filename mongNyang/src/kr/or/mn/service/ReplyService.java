@@ -8,7 +8,6 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import kr.or.mn.comm.DBConnection;
-import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dao.ReplyDAO;
 import kr.or.mn.dto.AlertDTO;
 import kr.or.mn.dto.ReplyDTO;
