@@ -182,7 +182,7 @@ private static BoardService instance=new BoardService();
 	}
 	
 	//내 게시글 찾기
-	public List<BoardDTO> findMyWrite(String userId){
+	public List<BoardDTO> findMyWrite(String userId, PagingDTO pdto){
 		DBConnection dbconn = DBConnection.getDBInstance();
 		
 		Connection conn = null;
@@ -191,7 +191,7 @@ private static BoardService instance=new BoardService();
 			conn = dbconn.getConnection();
 			
 			BoardDAO dao = BoardDAO.getDAO();
-			list = dao.findMyWrite(conn, userId);
+			list = dao.findMyWrite(conn, userId, pdto);
 			
 		}catch (SQLException | NamingException e) {
 			System.out.println(e);
@@ -242,5 +242,26 @@ private static BoardService instance=new BoardService();
 		return replyCount;
 	}
 	
+	//게시물자료 전체 갯수 받아오기(유저기준으로)
+	
+	public int getUserBoardTotalCount(String userId) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		
+		int totalcount=0;
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			
+			totalcount=dao.getUserBoardTotalCount(conn, userId);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return totalcount;
+	}
 	
 }

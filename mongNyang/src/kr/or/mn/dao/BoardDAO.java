@@ -363,7 +363,7 @@ public class BoardDAO {
 		}
 		
 		// 내 게시글 찾기
-		public List<BoardDTO> findMyWrite(Connection conn,String userId) {
+		public List<BoardDTO> findMyWrite(Connection conn,String userId, PagingDTO pdto) {
 			StringBuilder sql = new StringBuilder();
 			sql.append("   select  boardTitle    		 ");
 			sql.append("     	   ,boardDate      		 ");
@@ -371,12 +371,17 @@ public class BoardDAO {
 			sql.append("           ,boardNum    		 "); 	//
 			sql.append("   	from one_board    			 ");
 			sql.append("	where userId = ?    		 ");
-			
+			sql.append("  order by boardNum desc        ");
+		    sql.append("  limit                          ");
+		    sql.append("          ?,?                    ");
+		    
+		    
 			ResultSet rs = null;
 			List<BoardDTO> list = new ArrayList<BoardDTO>();
 			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 				pstmt.setString(1, userId);
-				
+				pstmt.setInt(2, pdto.getStartrow()-1);
+		        pstmt.setInt(3, pdto.getEndrow());
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					BoardDTO dto = new BoardDTO();
@@ -462,5 +467,34 @@ public class BoardDAO {
 			}
 			return replyCount;
 			
+		}
+		
+		//게시물자료 갯수 불러오기(유저 기준으로)
+		public int getUserBoardTotalCount(Connection conn, String userId) {
+			// TODO Auto-generated method stub
+			StringBuilder sql=new StringBuilder();
+			sql.append("  select count(*)		");
+			sql.append("  from one_board		");
+			sql.append("  where userId=?        ");
+			
+			int totalcount=0;
+			ResultSet rs=null;
+			try(
+					PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+					
+					){
+					pstmt.setString(1, userId);
+					rs=pstmt.executeQuery();
+					
+				if(rs.next()) {
+					totalcount=rs.getInt(1);
+				}
+				
+			}catch(SQLException e) {
+				System.out.println(e);
+			}finally {
+				if(rs!=null) try {rs.close();} catch(SQLException e) {}
+			}
+			return totalcount;
 		}
 }

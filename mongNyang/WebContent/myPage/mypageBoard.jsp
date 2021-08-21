@@ -11,6 +11,8 @@
 </head>
 <body>
 <c:set var="dto" value="${requestScope.list }"></c:set>
+<c:set var="paging" value="${requestScope.paging }"></c:set>
+<c:set var="userId" value="${sessionScope.userId}"></c:set>
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="images/userImg.png">
@@ -62,6 +64,29 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div class="page1">
+			<c:if test="${paging.startblock>1 }">
+				<a href="userboard.do?userId=${userId }&curr=${paging.currpage-1 }">이전</a>
+			</c:if>
+		</div>
+		<div class="page2">
+			<c:forEach var="index" begin="${paging.startblock }" end="${paging.endblock }">
+				<c:if test="${paging.currpage==index }">
+					<a href="#"><c:out value="${index }"></c:out></a>
+				</c:if>
+				
+				<c:if test="${paging.currpage!=index }">
+					<a href="userboard.do?userId=${userId }&curr=${index }">${index }</a>
+				</c:if>
+			</c:forEach>
+		</div>
+		<div class="page3">
+			<c:if test="${paging.endblock<paging.totalpage }">
+				<a href="userboard.do?userId=${userId }&curr=${paging.currpage+1 }">다음</a>
+			</c:if>
+		</div>
+		
 	</div>
 </body>
 </html>
