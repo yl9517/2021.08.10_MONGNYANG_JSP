@@ -23,6 +23,7 @@ private static BoardService instance=new BoardService();
 	}
 	private BoardService() {}
 	
+	//게시글 리스트 받기
 	public List<MainDTO> getList(String boardType,String petAddr, PagingDTO dto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -41,6 +42,7 @@ private static BoardService instance=new BoardService();
 		}
 		return list;
 	}
+	
 	//디테일 받아오기
 	public MainDTO getDetail(int boardNum) {
 		// TODO Auto-generated method stub
@@ -53,7 +55,7 @@ private static BoardService instance=new BoardService();
 			conn.setAutoCommit(false);
 			
 			BoardDAO dao=BoardDAO.getDAO();
-			dto=dao.getDetail(conn, boardNum); //dto 받아오기
+			dto=dao.getDetail(conn, boardNum); //dto 받아오기 (디테일)
 			dao.updateReadNo(conn, boardNum); //조회수 증가
 
 			conn.commit();
@@ -219,6 +221,26 @@ private static BoardService instance=new BoardService();
 		return totalcount;
 	}
 	
-
+	//해당 게시글의 댓글 수 가져오기
+	public int replyCount(int boardNum) {
+		// TODO Auto-generated method stub
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		
+		int replyCount=0;
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			
+			replyCount=dao.replyCount(conn, boardNum);
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return replyCount;
+	}
+	
 	
 }

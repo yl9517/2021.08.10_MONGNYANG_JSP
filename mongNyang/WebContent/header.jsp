@@ -56,7 +56,7 @@
 						</c:choose>
 					
 					</a>
-					<a href="usermain.do"><c:out value="${loginId }"></c:out></a>		
+					<a href="usermain.do" class="logid"><c:out value="${loginId }"></c:out></a>		
 					<a href="userlogout.do">LOGOUT</a>	
 				</div>
 			</c:if>

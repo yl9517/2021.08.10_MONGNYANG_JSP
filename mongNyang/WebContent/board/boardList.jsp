@@ -16,7 +16,8 @@
 <c:set var="boardType" value="${requestScope.boardType }"></c:set>
 <c:set var="petAddr" value="${requestScope.petAddr }"></c:set> <!-- 이미지때문에 생성 -->
 <c:set var="paging" value="${requestScope.paging }"></c:set>
-	
+<c:set var="replyCount" value="${requestScope.replyCount }"></c:set> <!--댓글 갯수-->
+
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
 		<img alt="map" src="images/map_none.png" id="map">
@@ -46,7 +47,7 @@
 		</div>
 		<div id="list">
 			<ul>
-				<c:forEach var="item" items="${list }"> 
+				<c:forEach var="item" items="${list }" varStatus="status"> 
 					
 					<li>
 						<a href="boarddetail.do?boardNum=${item.boardNum }">
@@ -55,7 +56,7 @@
 							<!-- <div class="petImg">사진영역</div> -->
 							<!-- div는 지우고 img 활성화-->
 							<p class="petContent" id="petAddr"><c:out value="${item.petAddr } >"></c:out><c:out value="${item.petType }"></c:out></p>
-							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>[${item.boardReadNo }]</span></p>
+							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>[${replyCount.get(status.index)}]</span></p>
 							<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
 						</a>				
 					</li>

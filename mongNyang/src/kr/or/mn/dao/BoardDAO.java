@@ -395,6 +395,7 @@ public class BoardDAO {
 			}
 			return list;
 		}
+		
 		public int getTotalCount(Connection conn, String search, String searchtxt) {
 			// TODO Auto-generated method stub
 			StringBuilder sql=new StringBuilder();
@@ -432,6 +433,34 @@ public class BoardDAO {
 			}
 			return totalcount;
 		}
-			
 		
+		
+		//해당 게시글번호의 댓글 갯수 가져오기
+		public int replyCount(Connection conn, int boardNum){
+			StringBuilder sql = new StringBuilder();
+			sql.append(" select count(replyNum) ");
+			sql.append("  from one_board as b inner join one_reply as r ");
+			sql.append("  on b.boardNum = r.boardNum ");
+			sql.append("  where r.boardNum = ?       ");
+			sql.append("  group by r.boardNum        ");
+	
+			ResultSet rs = null;
+			int replyCount = 0;
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+				pstmt.setInt(1, boardNum);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					replyCount = rs.getInt(1);
+				}
+				
+			}catch (SQLException e) {
+				System.out.println(e);
+			}finally {
+				if(rs!=null) try {rs.close();} catch(SQLException e) {}
+			}
+			return replyCount;
+			
+		}
 }
