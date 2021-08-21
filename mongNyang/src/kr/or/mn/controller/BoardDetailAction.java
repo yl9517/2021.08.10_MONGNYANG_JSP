@@ -60,7 +60,7 @@ public class BoardDetailAction implements Action {
 		dto.setPetAddr(userMap.get(categorys.getPetAddr()));
 		dto.setPetType(userMap.get(categorys.getPetType()));
 		
-		ImageDTO imgdto=iservice.getImg(boardNum); //boardNum으로 이미지 가져오기
+		ImageDTO imgdto=iservice.getImg(boardNum,0); //boardNum으로 이미지 가져오기
 		dto.setImageName(imgdto.getImageName());
 		dto.setImageNum(imgdto.getImageNum());
 		dto.setImagePath(imgdto.getImagePath());

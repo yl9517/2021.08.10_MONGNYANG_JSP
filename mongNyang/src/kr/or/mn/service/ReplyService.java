@@ -33,23 +33,23 @@ private static ReplyService instance=new ReplyService();
 	 * catch(SQLException e) {} } return list; }
 	 */
 	
-	// 댓글 등록
+	// 댓글 등록 및 댓글번호 받아오기
 	public int insertReply(ReplyDTO dto) {
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
-		int result=0;
+		int replyNum=0;
 		
 		try {
 			conn=dbconn.getConnection();
 			ReplyDAO dao=ReplyDAO.getDAO();
-			result=dao.insertReply(conn, dto);
+			replyNum=dao.insertReply(conn, dto);
 			
 		}catch(SQLException | NamingException e) {
 			System.out.println(e);
 		}finally {
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
-		return result;
+		return replyNum;
 	}
 	
 	

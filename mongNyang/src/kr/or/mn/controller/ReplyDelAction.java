@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 import kr.or.mn.dao.ReplyDAO;
+import kr.or.mn.service.ImageService;
 import kr.or.mn.service.ReplyService;
 
 public class ReplyDelAction implements Action {
@@ -20,9 +21,16 @@ public class ReplyDelAction implements Action {
 		
 		int replyNum=Integer.parseInt(request.getParameter("replyNum"));
 		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
+		int imgNum=Integer.parseInt(request.getParameter("imgNum"));
 		
+		//이미지삭제
+		ImageService imgservice = ImageService.getService();
+		imgservice.delete(imgNum);
+		
+		//댓글삭제
 		ReplyService service=ReplyService.getInstance();
 		service.replyDelete(replyNum, boardNum);
+		
 		
 		Forward forward=new Forward();
 		forward.setForward(false);

@@ -2,6 +2,7 @@ package kr.or.mn.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import kr.or.mn.dto.ImageDTO;
 import kr.or.mn.dto.ReplyDTO;
+import kr.or.mn.service.ImageService;
 import kr.or.mn.service.ReplyService;
 
 /**
@@ -22,28 +25,16 @@ import kr.or.mn.service.ReplyService;
 @WebServlet("/replylist.mn")
 public class ReplyListAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ReplyListAction() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doReq(request, response);	
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doReq(request, response);	
 	}
 	
@@ -55,12 +46,24 @@ public class ReplyListAction extends HttpServlet {
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out=response.getWriter();
 			int boardNum=Integer.parseInt(request.getParameter("boardNum"));
+
+			//댓글
 			ReplyService service=ReplyService.getInstance();
 			List<ReplyDTO> list=service.replyList(boardNum);
 			
+			//이미지
+			ImageService imgService = ImageService.getService();			
+			List<ImageDTO> imgList = new ArrayList<ImageDTO>();  			
+			for(int i=0; i<list.size(); i++) {
+				ImageDTO imgdto = imgService.getImg(list.get(i).getReplyNum(), 1);
+				imgList.add(imgdto);
+			}
 			
+			
+			//JSON
 			JSONArray arr=new JSONArray();
 			
+			int index = 0;
 			for(ReplyDTO dto:list)
 			{
 				JSONObject replyobject=new JSONObject();
@@ -69,9 +72,14 @@ public class ReplyListAction extends HttpServlet {
 				replyobject.put("replyDate", dto.getReplyDate());
 				replyobject.put("boardNum", dto.getBoardNum());
 				replyobject.put("replyNum", dto.getReplyNum());
-				//replyobject.put("imageNum", dto.getImageNum());
+				replyobject.put("imgName", imgList.get(index).getImageName()); 
+				replyobject.put("imgPath", imgList.get(index).getImagePath()); 
+				replyobject.put("imgNum", imgList.get(index).getImageNum()); 
+		
 				arr.add(replyobject);
+				index++;
 			}
+
 			out.print(arr);
 	}
 

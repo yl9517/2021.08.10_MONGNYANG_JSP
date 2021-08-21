@@ -39,7 +39,7 @@ public class BoardModifyAction implements Action {
 			BoardService service = BoardService.getInstance();
 			MainDTO dto = service.getDetail(boardNum);
 			ImageService iservice = ImageService.getService();
-			ImageDTO idto=iservice.getImg(boardNum);
+			ImageDTO idto=iservice.getImg(boardNum,0);
 			dto.setImageName(idto.getImageName());
 			dto.setImagePath(idto.getImagePath());
 			dto.setImageNum(idto.getImageNum());

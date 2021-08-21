@@ -55,9 +55,9 @@
          </div>
          
          <script>
-         function del(replyNum, boardNum)
+         function del(replyNum, boardNum, imgNum)
          {
-            location.href="replydelete.do?replyNum="+replyNum+"&boardNum="+boardNum;
+            location.href="replydelete.do?replyNum="+replyNum+"&boardNum="+boardNum+"&imgNum="+imgNum;
          }
          
          //댓글 수정 감을 못잡겠습니다.
@@ -80,10 +80,15 @@
                      replyList+="<p class='replyId'>"+item.userId+"</p>";
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
-                     replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+")>";
-                     replyList+="<input type='button' value='수정' onclick=modify("+item.replyNum+")>";
+                     /* 사진 널이 아닐경우 받아오기 */
+                     console.log(item.imgPath);
+                     if(item.imgName != null){
+                    	 replyList+="<br>";
+                         replyList+="<img src='"+item.imgPath+"' alt='"+item.imgName+"'>";
+                     }
+                     
+                     replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";
                      replyList+="</div></li>";
-                     /* 사진 있을 시 추가 */
                      $('#replyList').append(replyList);
         
                   });
@@ -99,7 +104,7 @@
          </script>
          
          <ul id="replyList">
-         <li>
+        	<li>
                <div class="replyInfo">
                   <img alt="userImg" src="images/userImg.png">               
                   <p class="replyId">hong01</p>
@@ -111,11 +116,11 @@
          </ul>
          
          
-         <form id="replyInsert" method="post" action="replyinsert.do">
+         <form id="replyInsert" method="post" action="replyinsert.do" enctype="multipart/form-data">
             <input type="hidden" name="reBoardNum" value="${dto.boardNum }">
             <textarea name="replyContent"></textarea>
             <input type="submit" value="등록">
-            <input type="file">
+            <input type="file" name="replyfile">
          </form>
       
       </div>   

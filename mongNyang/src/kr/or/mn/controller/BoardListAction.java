@@ -43,7 +43,7 @@ public class BoardListAction implements Action {
 		int pagepercount=6;	//한페이지에 보여질 자료수
 		
 		int totalpage=(int) Math.ceil((float)totalcount/pagepercount);
-		int startrow=(currpage-1)*totalpage+1;
+		int startrow=(currpage-1)*pagepercount+1; //수정
 		int endrow=startrow+pagepercount-1;
 		if(endrow>totalcount) {
 			endrow=totalcount;

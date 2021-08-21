@@ -93,7 +93,7 @@
 		</div>
 	</div>
 	
- 	<script src="js/boardAddrMenu.js"></script> -
+ 	<script src="js/boardAddrMenu.js"></script> 
 	
 </body>
 </html>

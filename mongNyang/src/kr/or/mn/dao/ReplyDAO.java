@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,26 +27,33 @@ public class ReplyDAO {
 		sql.append("                          ,replyDate        ");
 		sql.append("                          ,userId           ");
 		sql.append("                          ,replyContent     ");
-		sql.append("                          ,imageNum         ");
+//		sql.append("                          ,imageNum         ");
 		sql.append("                          ,alertCheck)      ");
-		sql.append("  values(?,now(),?,?,2,0)                     ");
+		sql.append("  values(?,now(),?,?,0)                     ");
 		
-		int result=0;
+		int replyNum=0;
+		ResultSet rs=null;
 		try(
-			PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+			PreparedStatement pstmt=conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
 			){
 				pstmt.setInt(1, dto.getBoardNum());
 				pstmt.setString(2, dto.getUserId());
 				pstmt.setString(3, dto.getReplyContent());
-		//   	pstmt.setString(4, dto.getReplyContent()); //이미지넘버 받아오기
+//   	pstmt.setString(4, dto.getReplyContent()); //이미지넘버 받아오기
 				
-				result = pstmt.executeUpdate();
+				pstmt.executeUpdate();
+				
+				rs = pstmt.getGeneratedKeys(); //방금 생성된 댓글번호 받기
+				if(rs.next())
+					replyNum = rs.getInt(1);
 				
 		}catch(SQLException e)
 		{
 			System.out.println(e);
+		}finally {
+			if(rs!=null) try {rs.close();} catch (SQLException e) {}
 		}
-		return result;
+		return replyNum;
 	}
 	
 	

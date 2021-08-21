@@ -98,20 +98,23 @@ public class ImageDAO {
 	}
 	
 	//사진 하나만 입력할 수 있다고 했을때 사진받아오기 (게시판 기준) - test
-	public ImageDTO getImg(Connection conn, int boardNum) { //글번호 (사진번호?)
-		
+	public ImageDTO getImg(Connection conn, int num, int numType) { //글번호 (사진번호?)
+														//numType = 0이면 글, 1이면 댓글
 		StringBuilder sql = new StringBuilder();
 		sql.append(" select                         ");
 		sql.append("              imageNum          ");
 		sql.append("             , imageName         ");
 		sql.append("             , imagePath         ");
 		sql.append("    from      one_image         ");
+		if(numType == 1)
+		sql.append("     where   replyNum=?         ");
+		else
 		sql.append("     where   boardNum=?         ");
 		
 		ResultSet rs = null;
 		ImageDTO dto=new ImageDTO();
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
-			pstmt.setInt(1, boardNum);
+			pstmt.setInt(1, num);
 			
 			rs = pstmt.executeQuery();
 			
@@ -133,19 +136,23 @@ public class ImageDAO {
 		sql.append("  insert into one_image(   ");
 		sql.append("  		 imageName         ");
 		sql.append("  		, imagePath	       ");
-		sql.append("  		, boardNum	       ");
-		sql.append("  		, replyNum	 )     ");
-		sql.append("   values( ? , ? , ? , null ) ");
-		System.out.println("imgDao insert에서 replyNum 확인 :"+dto.getReplyNum());
+		if(dto.getBoardNum()!=0 ) 
+			sql.append("  		, boardNum	       ");
+		else if(dto.getReplyNum()!=0)
+			sql.append("  		, replyNum	 )     ");
+		sql.append("   values( ? , ? , ?) ");
 		
 		int imageNum=0;
 		ResultSet rs=null;
 		try(PreparedStatement pstmt = conn.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);){
 			pstmt.setString(1, dto.getImageName());
 			pstmt.setString(2, dto.getImagePath());
-			pstmt.setInt(3, dto.getBoardNum());
-//			pstmt.setInt(4, dto.getReplyNum());
-			
+			if(dto.getBoardNum()!=0 ) {
+				pstmt.setInt(3, dto.getBoardNum());
+			}
+			else if(dto.getReplyNum()!=0) {
+				pstmt.setInt(3, dto.getReplyNum());
+			}
 			pstmt.executeUpdate();
 			rs=pstmt.getGeneratedKeys(); //방금 insert한 이미지 번호 가져오기
 			if(rs.next()) {

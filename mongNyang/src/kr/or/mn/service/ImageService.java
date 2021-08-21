@@ -66,8 +66,8 @@ public class ImageService {
 	}
 			
 			
-			
-	public ImageDTO getImg(int boardNum) {
+	//이미지번호 가져오기
+	public ImageDTO getImg(int num,int numType) {
 		DBConnection dbconn = DBConnection.getDBInstance();
 
 		Connection conn = null;
@@ -78,7 +78,7 @@ public class ImageService {
 
 			// dao연결
 			ImageDAO dao = ImageDAO.getDAO();
-			dto = dao.getImg(conn, boardNum);
+			dto = dao.getImg(conn, num, numType);
 
 		} catch (SQLException | NamingException e) {
 			System.out.println(e);

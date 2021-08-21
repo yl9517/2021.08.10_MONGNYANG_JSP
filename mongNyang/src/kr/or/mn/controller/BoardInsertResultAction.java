@@ -41,9 +41,7 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 			String imageName = "";
 	
 			String uploadPath = request.getRealPath("upload");
-	
-			int size = 10 * 1024 * 1024;
-	
+
 			String boardType = "";
 			BoardService service = BoardService.getInstance();
 	
@@ -82,7 +80,7 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 			
 			ImageService imgservice = ImageService.getService();
 			
-			if(imageName!=null && imageName.equals("")) { //사진 넣었을 경우
+			if(imageName!=null && !imageName.equals("")) { //사진 넣었을 경우
 				ImageDTO imgdto = new ImageDTO();
 				imgdto.setImageName(imageName);
 				imgdto.setImagePath("upload/"+imagePath);

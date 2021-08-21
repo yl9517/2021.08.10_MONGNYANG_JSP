@@ -151,8 +151,9 @@ input:checked + .slider:before {
 	border-bottom: 2px solid #ccc;
 	background-color: yellow;
 }
+/*댓글이미지*/
 .replyInfo img{
-	width: 15px;
+	width: 100px;
 	margin-right: 20px;
 }
 .replyInfo{
@@ -173,11 +174,6 @@ input:checked + .slider:before {
 }
 p.date {
 	font-size: 14px;
-}
-#replyList li > img{
-	width: 200px;
-	display: flex;
-	margin: 0 0 20px 20px;
 }
 
 
