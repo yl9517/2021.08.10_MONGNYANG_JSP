@@ -75,7 +75,7 @@
 		<div class="page2">
 			<c:forEach var="index" begin="${paging.startblock }" end="${paging.endblock }">
 				<c:if test="${paging.currpage==index }">
-					<a href="#"><c:out value="${index }"></c:out></a>
+					<a href="#" class="ispage"><c:out value="${index }"></c:out></a>
 				
 				</c:if>
 				
@@ -92,7 +92,6 @@
 		</div>
 	</div>
 	
-	<!-- <script src="js/boardList.js"></script> -->
  	<script src="js/boardAddrMenu.js"></script> -
 	
 </body>

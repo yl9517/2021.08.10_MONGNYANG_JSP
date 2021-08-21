@@ -171,7 +171,7 @@ span {
     line-height: 9px;
     border-radius: 10px;
 }
-.page2 a:first-child{
+.page2 a.ispage{
     pointer-events: none;
     cursor: default;
 }

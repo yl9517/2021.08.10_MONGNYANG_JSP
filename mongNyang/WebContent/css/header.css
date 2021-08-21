@@ -35,15 +35,16 @@ header{
 #head .boards{
 	display: flex;
 	list-style: none;
+    margin-left: 130px;
 }
 
 #head .boards li{
 	padding : 10px 30px;  
 	margin : 0 10px;
-	font-size:30px;
+	font-size:25px;
 	font-weight: bolder;
 	cursor: pointer;
-	border: 3px solid white;
+	border: 4px solid white;
 	border-radius: 30px;
 }
 #head .boards li:hover{
@@ -60,7 +61,6 @@ header{
 }
 .user a{
 	width: 100px;
-    background-color: pink;
     display: inline-block;
 }
 #head .user{
