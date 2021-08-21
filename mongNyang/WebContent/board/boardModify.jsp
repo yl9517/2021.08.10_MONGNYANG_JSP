@@ -16,7 +16,7 @@
 		<input type="text" value="${dto.boardType }" name="bType">
 		<ul>
 			<li id="titleBar">
-				<label>글쓰기</label>
+				<label>글수정</label>
 				<input type="submit" value="완료">
 			</li>
 			<li id="titleBar2">

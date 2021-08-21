@@ -20,6 +20,8 @@ public class BoardListAction implements Action {
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
+		//페이징처리
 		String curr=request.getParameter("curr");
 		
 		int currpage=1;
@@ -27,6 +29,7 @@ public class BoardListAction implements Action {
 			currpage=Integer.parseInt(curr);
 		}
 		
+		//검색
 		String search=request.getParameter("search");
 		String searchtxt=request.getParameter("searchtxt");
 		
@@ -66,6 +69,8 @@ public class BoardListAction implements Action {
 		dto.setCurrpage(currpage);
 		
 		request.setAttribute("paging", dto);
+		
+		//list받아오기
 		String boardType=request.getParameter("boardType");
 		
 		String petAddr="all";
@@ -73,9 +78,7 @@ public class BoardListAction implements Action {
 		if(paddr!=null) { //paddr이 널값이 아니면 대입
 			petAddr=paddr;
 		}
-		
-//		list에서 각 dto의 addr을 받아서 -> hashmap으로 바꿔주고 다시 리스트에 넣어서 수정
-		
+				
 		List<MainDTO> list=service.getList(boardType,petAddr, dto);
 		
 		HashMap<String, String> userMap=new HashMap<String, String>();
