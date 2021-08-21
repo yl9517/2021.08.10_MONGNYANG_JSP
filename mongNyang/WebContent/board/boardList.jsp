@@ -14,16 +14,18 @@
 
 <c:set var="list" value="${requestScope.list }"></c:set>
 <c:set var="boardType" value="${requestScope.boardType }"></c:set>
+<c:set var="petAddr" value="${requestScope.petAddr }"></c:set> <!-- 이미지때문에 생성 -->
 <c:set var="paging" value="${requestScope.paging }"></c:set>
 	
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
-		<img alt="map" src="images/map_all.png" id="map">
+		<img alt="map" src="images/map_none.png" id="map">
 		<input type="hidden" value="${boardType }" id="btype">
+		<input type="hidden" value="${petAddr }" id="paddr"><!-- 이미지때문에 생성 -->
 		
 		<div id="addrBar">
 		
-			<input type="button" value="전체" id="all" class="addrBtn thisclick" name= "petAddr">
+			<input type="button" value="전체" id="all" class="addrBtn" name= "petAddr">
 			<input type="button" value="강동" id="east" class="addrBtn" name= "petAddr">
 			<input type="button" value="강서" id="west" class="addrBtn" name= "petAddr">
 			<input type="button" value="강남" id="south" class="addrBtn" name= "petAddr">
