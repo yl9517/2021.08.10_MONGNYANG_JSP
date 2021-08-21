@@ -18,19 +18,19 @@
 	
 	<div id="boardWrap">
 		<!-- 링크에 따라 이미지 변경 -->
-		<img alt="map" src="images/map.png" id="map">
+		<img alt="map" src="images/map_all.png" id="map">
 		<input type="hidden" value="${boardType }" id="btype">
 		
 		<div id="addrBar">
 		
-			<input type="button" value="전체" id="addrAll" class="addrBtn" name= "petAddr">
-			<input type="button" value="강동" id="addrEast" class="addrBtn" name= "petAddr">
-			<input type="button" value="강서" id="addrWest" class="addrBtn" name= "petAddr">
-			<input type="button" value="강남" id="addrSouth" class="addrBtn" name= "petAddr">
-			<input type="button" value="강북" id="addrNorth" class="addrBtn" name= "petAddr">
+			<input type="button" value="전체" id="all" class="addrBtn thisclick" name= "petAddr">
+			<input type="button" value="강동" id="east" class="addrBtn" name= "petAddr">
+			<input type="button" value="강서" id="west" class="addrBtn" name= "petAddr">
+			<input type="button" value="강남" id="south" class="addrBtn" name= "petAddr">
+			<input type="button" value="강북" id="north" class="addrBtn" name= "petAddr">
 			
 		</div>
-		<div id="findBar">
+		<div id="findBar"> <!-- 검색창 -->
 			<form method="post" action="boardlist.do?boardType=${boardType }">
 				<div id="directSearch">
 					<select id="search" name="search">
@@ -90,7 +90,8 @@
 		</div>
 	</div>
 	
-	<script src="js/boardList.js"></script>
+	<!-- <script src="js/boardList.js"></script> -->
+ 	<script src="js/boardAddrMenu.js"></script> -
 	
 </body>
 </html>

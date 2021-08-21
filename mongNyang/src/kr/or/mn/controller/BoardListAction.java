@@ -40,6 +40,7 @@ public class BoardListAction implements Action {
 		int totalpage=(int) Math.ceil((float)totalcount/pagepercount);
 		int startrow=(currpage-1)*totalpage+1;
 		int endrow=startrow+pagepercount-1;
+
 		if(endrow>totalcount) {
 			endrow=totalcount;
 		}
