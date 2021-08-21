@@ -66,11 +66,7 @@ public class BoardDAO {
 				
 				){
 				int num = 1;
-				System.out.println(boardType);
-				System.out.println(pdto.getSearch());
-				System.out.println(pdto.getSearchtxt());
-				System.out.println(pdto.getStartrow());
-				System.out.println(pdto.getEndrow());
+				
 				pstmt.setString(num++, boardType);
 				if(!petAddr.equals("all")) { //petAddr 이름이 동서남북 이면
 					pstmt.setString(num++, petAddr);

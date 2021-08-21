@@ -1,6 +1,7 @@
 package kr.or.mn.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,7 +41,6 @@ public class BoardListAction implements Action {
 		int totalpage=(int) Math.ceil((float)totalcount/pagepercount);
 		int startrow=(currpage-1)*totalpage+1;
 		int endrow=startrow+pagepercount-1;
-
 		if(endrow>totalcount) {
 			endrow=totalcount;
 		}
@@ -74,12 +74,29 @@ public class BoardListAction implements Action {
 			petAddr=paddr;
 		}
 		
-		
+//		list에서 각 dto의 addr을 받아서 -> hashmap으로 바꿔주고 다시 리스트에 넣어서 수정
 		
 		List<MainDTO> list=service.getList(boardType,petAddr, dto);
+		
+		HashMap<String, String> userMap=new HashMap<String, String>();
+		userMap.put("EAST", "강동");
+		userMap.put("WEST", "강서");
+		userMap.put("SOUTH", "강남");
+		userMap.put("NORTH", "강북");
+		userMap.put("DOG", "강아지");
+		userMap.put("CAT", "고양이");
+		
+		for(int i=0;i<list.size();i++) {
+			String addrKor=userMap.get(list.get(i).getPetAddr());
+			String petKor=userMap.get(list.get(i).getPetType());
+			list.get(i).setPetAddr(addrKor);
+			list.get(i).setPetType(petKor);
+		}
+		
 		request.setAttribute("list", list);
 		request.setAttribute("boardType", boardType);
-			
+		request.setAttribute("petAddr", petAddr);
+		
 		Forward forward=new Forward();
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=board/boardList.jsp");

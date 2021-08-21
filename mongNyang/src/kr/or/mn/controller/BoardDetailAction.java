@@ -1,6 +1,7 @@
 package kr.or.mn.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -46,8 +47,18 @@ public class BoardDetailAction implements Action {
 		CategoryDTO categorys = service.findCategoryContent(dto.getCategoryName()); //dto의 카테고리 이름 가져오기
 		dto.setLoginId(id);		//로그인 아이디
 		dto.setUserId(dto.getUserId());		//글쓴이 아이디
-		dto.setPetAddr(categorys.getPetAddr());
-		dto.setPetType(categorys.getPetType());
+//		dto.setPetAddr(categorys.getPetAddr());
+//		dto.setPetType(categorys.getPetType());
+		
+		HashMap<String, String> userMap=new HashMap<String, String>();
+		userMap.put("EAST", "강동");
+		userMap.put("WEST", "강서");
+		userMap.put("SOUTH", "강남");
+		userMap.put("NORTH", "강북");
+		userMap.put("DOG", "강아지");
+		userMap.put("CAT", "고양이");
+		dto.setPetAddr(userMap.get(categorys.getPetAddr()));
+		dto.setPetType(userMap.get(categorys.getPetType()));
 		
 		ImageDTO imgdto=iservice.getImg(boardNum); //boardNum으로 이미지 가져오기
 		dto.setImageName(imgdto.getImageName());
