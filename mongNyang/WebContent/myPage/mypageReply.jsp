@@ -46,10 +46,8 @@
 			<table>
 				<thead>
 					<tr>
-						<th colspan="2">전체<c:out value="${dto.size() }"/></th>
-						
-	<!-- 					<th>댓글 내용</th>
-						<th>작성일</th> -->
+						<th>전체<c:out value="${dto.size() }"/></th>
+						<th>작성일</th>
 					</tr>
 				</thead>
 				<tbody>

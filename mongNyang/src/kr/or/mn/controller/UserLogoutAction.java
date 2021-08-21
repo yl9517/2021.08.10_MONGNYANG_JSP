@@ -21,7 +21,7 @@ public class UserLogoutAction implements Action {
 			
 			Forward forward = new Forward();			
 			forward.setForward(true);
-			forward.setPath("/main.mn"); //메인으로 돌아가기
+			forward.setPath("main.do"); //메인으로 돌아가기
 			
 		return forward;
 	}

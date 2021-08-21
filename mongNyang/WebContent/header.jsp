@@ -16,7 +16,7 @@
 	<header>
 		<nav id="head">
 			<div class="logo">
-				<a href="main.mn">
+				<a href="main.do">
 					<img src="images/logo.png" alt="logo">
 				</a>
 			</div>

@@ -44,7 +44,7 @@ public class UserLoginTryAction implements Action{
 //			session.setAttribute("alertdto", dto); //알림세션 만들기	        			
 			
 			forward.setForward(true);
-			forward.setPath("/view.jsp?page=main.mn");
+			forward.setPath("main.do");
 			
 		}else { //실패 시 로그인창으로 -> 알림창 뜨게 어떻게?
 			forward.setForward(false);

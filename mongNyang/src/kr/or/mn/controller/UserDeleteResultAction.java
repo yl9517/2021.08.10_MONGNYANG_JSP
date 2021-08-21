@@ -33,7 +33,7 @@ public class UserDeleteResultAction implements Action {
 		
 		Forward forward = new Forward();
 		forward.setForward(true);
-		forward.setPath("/view.jsp?page=main.mn");                   
+		forward.setPath("main.do");                   
 
 		return forward;
 	}
