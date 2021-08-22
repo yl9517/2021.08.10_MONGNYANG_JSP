@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.or.mn.dto.AlertDTO;
-import kr.or.mn.dto.PagingDTO;
+import kr.or.mn.dto.PageDTO;
 import kr.or.mn.dto.ReplyDTO;
 
 public class ReplyDAO {
@@ -24,7 +24,7 @@ public class ReplyDAO {
       // TODO Auto-generated method stub
       StringBuilder sql=new StringBuilder();
       sql.append("  insert into one_reply  (                  ");
-      sql.append("                          boardNum          ");
+      sql.append("                          boardNum         ");
       sql.append("                          ,replyDate        ");
       sql.append("                          ,userId           ");
       sql.append("                          ,replyContent     ");
@@ -208,12 +208,11 @@ public class ReplyDAO {
    
    //내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
       
-      public List<ReplyDTO> mypageReply(Connection conn,String userId, PagingDTO pdto) {
+      public List<ReplyDTO> mypageReply(Connection conn,String userId, PageDTO pdto) {
          StringBuilder sql=new StringBuilder();
          sql.append("select *                      ");
          sql.append("  from(                       ");
-         sql.append("  select                      ");
-         sql.append("                replyNum      ");
+         sql.append("  select        replyNum      ");
          sql.append("               ,boardNum      ");
          sql.append("               ,replyDate     ");
          sql.append("               ,userId        ");
@@ -233,7 +232,7 @@ public class ReplyDAO {
             ){
             pstmt.setString(1, userId);
             pstmt.setInt(2, pdto.getStartrow()-1);
-            pstmt.setInt(3, pdto.getEndrow());
+            pstmt.setInt(3, pdto.getPageSize());
             rs=pstmt.executeQuery();
             
             while(rs.next())
@@ -264,7 +263,7 @@ public class ReplyDAO {
          sql.append("  select count(*)      ");
          sql.append("  from one_reply      ");
          sql.append("  where userId=?        ");
-             
+         
          int totalcount=0;
          ResultSet rs=null;
          try(

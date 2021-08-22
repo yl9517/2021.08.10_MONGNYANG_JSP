@@ -11,7 +11,7 @@ import java.util.List;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
-import kr.or.mn.dto.PagingDTO;
+import kr.or.mn.dto.PageDTO;
 
 public class BoardDAO {
 	private static BoardDAO dao=new BoardDAO();
@@ -20,7 +20,7 @@ public class BoardDAO {
 	}
 	private BoardDAO() {}
 	
-	public List<MainDTO> getList(Connection conn, String boardType,String petAddr, PagingDTO pdto) {
+	public List<MainDTO> getList(Connection conn, String boardType,String petAddr, PageDTO pdto) {
 		// TODO Auto-generated method stub
 		StringBuilder sql=new StringBuilder();
 		sql.append("  select *											");
@@ -68,8 +68,6 @@ public class BoardDAO {
 				int num = 1;
 				
 				pstmt.setString(num++, boardType);
-				System.out.println("boardDAO에서 : "+boardType);
-
 				if(!petAddr.equals("all")) { //petAddr 이름이 동서남북 이면
 					pstmt.setString(num++, petAddr);
 				}
@@ -78,7 +76,7 @@ public class BoardDAO {
 					pstmt.setString(num++, "%"+pdto.getSearchtxt()+"%");
 				}
 					pstmt.setInt(num++, pdto.getStartrow()-1);
-					pstmt.setInt(num++, pdto.getEndrow());
+					pstmt.setInt(num++, pdto.getPageSize());
 
 			
 				rs=pstmt.executeQuery();
@@ -365,12 +363,12 @@ public class BoardDAO {
 		}
 		
 		// 내 게시글 찾기
-		public List<BoardDTO> findMyWrite(Connection conn,String userId, PagingDTO pdto) {
+		public List<BoardDTO> findMyWrite(Connection conn,String userId, PageDTO pdto) {
 			StringBuilder sql = new StringBuilder();
 			sql.append("   select  boardTitle    		 ");
 			sql.append("     	   ,boardDate      		 ");
 			sql.append("           ,boardState    		 "); 
-			sql.append("           ,boardNum    		 "); 	//
+			sql.append("           ,boardNum    		 "); 	
 			sql.append("   	from one_board    			 ");
 			sql.append("	where userId = ?    		 ");
 			sql.append("  order by boardNum desc        ");
@@ -383,7 +381,7 @@ public class BoardDAO {
 			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
 				pstmt.setString(1, userId);
 				pstmt.setInt(2, pdto.getStartrow()-1);
-		        pstmt.setInt(3, pdto.getEndrow());
+		        pstmt.setInt(3, pdto.getPageSize());
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					BoardDTO dto = new BoardDTO();

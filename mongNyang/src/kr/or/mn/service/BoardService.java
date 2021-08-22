@@ -12,7 +12,7 @@ import kr.or.mn.dao.BoardDAO;
 import kr.or.mn.dto.BoardDTO;
 import kr.or.mn.dto.CategoryDTO;
 import kr.or.mn.dto.MainDTO;
-import kr.or.mn.dto.PagingDTO;
+import kr.or.mn.dto.PageDTO;
 
 public class BoardService {
 
@@ -24,7 +24,7 @@ private static BoardService instance=new BoardService();
 	private BoardService() {}
 	
 	//게시글 리스트 받기
-	public List<MainDTO> getList(String boardType,String petAddr, PagingDTO dto) {
+	public List<MainDTO> getList(String boardType,String petAddr,PageDTO pdto) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -33,7 +33,7 @@ private static BoardService instance=new BoardService();
 		try {
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
-			list=dao.getList(conn, boardType,petAddr, dto);
+			list=dao.getList(conn, boardType,petAddr,pdto);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
@@ -182,7 +182,7 @@ private static BoardService instance=new BoardService();
 	}
 	
 	//내 게시글 찾기
-	public List<BoardDTO> findMyWrite(String userId, PagingDTO pdto){
+	public List<BoardDTO> findMyWrite(String userId, PageDTO pdto){
 		DBConnection dbconn = DBConnection.getDBInstance();
 		
 		Connection conn = null;

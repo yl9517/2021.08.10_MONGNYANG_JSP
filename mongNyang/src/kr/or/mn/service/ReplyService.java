@@ -10,7 +10,7 @@ import javax.naming.NamingException;
 import kr.or.mn.comm.DBConnection;
 import kr.or.mn.dao.ReplyDAO;
 import kr.or.mn.dto.AlertDTO;
-import kr.or.mn.dto.PagingDTO;
+import kr.or.mn.dto.PageDTO;
 import kr.or.mn.dto.ReplyDTO;
 
 public class ReplyService {
@@ -191,16 +191,16 @@ private static ReplyService instance=new ReplyService();
    }
    
    //내 댓글 받아오기 (유저 기준으로 모든 댓글리스트)
-   public List<ReplyDTO> mypageReply(String userId, PagingDTO pdto) {
+   public List<ReplyDTO> mypageReply(String userId, PageDTO pdto) {
          DBConnection dbconn=DBConnection.getDBInstance();
          Connection conn=null;
          List<ReplyDTO> mypagereplylist=new ArrayList<ReplyDTO>();
-//         System.out.println("my댓글 "+mypagereplylist.get(0).getReplyContent());
-         
+       
          try {
             conn=dbconn.getConnection();
             ReplyDAO dao=ReplyDAO.getDAO();
             mypagereplylist=dao.mypageReply(conn, userId, pdto);
+            
          }catch(SQLException | NamingException e) {
             System.out.println(e);
          }finally {
