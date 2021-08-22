@@ -50,6 +50,12 @@ header{
 	color:black;
 	border-color: #EBD6EB;	
 }
+/*선택시*/
+.thisclick{
+	color:black;
+	border-color: #EBD6EB;	
+	background-color: blue;	
+}
 
 /* 유저 */
 #head .user{
@@ -62,6 +68,7 @@ header{
 /*로그인 안했을 때*/
 .nolog{
 	position: relative;
+    top: 7px;
 }
 .user img{  /* 종 이미지*/
 	width: 32px;

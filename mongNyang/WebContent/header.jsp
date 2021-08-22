@@ -21,8 +21,8 @@
 				</a>
 			</div>
 			<ul class="boards">
-				<li><a href="boardlist.do?boardType=FIND">찾아주세요</a> </li>
-				<li><a href="boardlist.do?boardType=HELP">도와주세요</a> </li>
+				<li><a href="boardlist.do?boardType=FIND" class="FIND">찾아주세요</a> </li>
+				<li><a href="boardlist.do?boardType=HELP" class="HELP">도와주세요</a> </li>
 			</ul>
 			
 
@@ -54,7 +54,7 @@
 					</a>
 					
 					<a href="usermain.do" class="logid"><c:out value="${loginId }"></c:out></a>		
-					<a href="userlogout.do" class="nolog">LOGOUT</a>	
+					<a href="userlogout.do">LOGOUT</a>	
 				</c:if>
 			</div>
 		</nav>

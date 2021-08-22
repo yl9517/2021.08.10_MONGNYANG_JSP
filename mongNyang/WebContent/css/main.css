@@ -45,17 +45,17 @@
 	border-bottom: 5px solid rgba(255,255,255,0.7);
 }
 #data li p{
-	font-size: 20px;
+	font-size: 22px;
 	margin-top : 50px;
 	font-weight: bolder;
 }
 #data li:first-child p{
-	margin-top : 40px;
+	margin-top : 30px;
 }
 
 /* 메세지 */
 #mainWrap .msg{
-	font-size: 40px;
+	font-size: 45px;
     color: white;
     position: absolute;
     top: 680px;

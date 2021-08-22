@@ -44,7 +44,7 @@
 				<h1>회원정보</h1>
 				<table>
 	
-			        <tr><td>ID</td><td><c:out value="${dto.userId }"/></td></tr>
+			        <tr><td>ID</td><td width="200px"><c:out value="${dto.userId }"/></td></tr>
 			        <tr><td>Phone</td><td><c:out value="${dto.userPhone }"/></td></tr>
 			        <tr><td>Email</td><td><c:out value="${dto.userEmail }"/></td></tr>
 			        <tr><td>Address</td><td><c:out value="${dto.userAddr }"/></td></tr>	

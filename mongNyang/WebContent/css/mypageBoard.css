@@ -53,6 +53,7 @@ ul {
 table{
 	border-collapse: collapse;
 	margin: 30px auto;	
+    width: 800px;
 }
 table thead tr th{
 	text-align: left;

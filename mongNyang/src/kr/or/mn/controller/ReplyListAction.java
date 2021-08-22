@@ -44,7 +44,6 @@ public class ReplyListAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		response.setContentType("application/json;charset=utf-8");
-		String id = (String) request.getSession().getAttribute("userId");
 
 		PrintWriter out=response.getWriter();
 		int boardNum=Integer.parseInt(request.getParameter("boardNum"));

@@ -1,6 +1,5 @@
-//보드 리스트랑 연결
 
-let boardType = $('#btype').val(); //보드타입
+let boardType = $('#btype').val(); //보드타입  /*보드리스트랑 연결된 js*/
 let petAddr = $('#paddr').val(); //펫타입
 
 let petAddrlower = petAddr.toLowerCase(); //소문자로

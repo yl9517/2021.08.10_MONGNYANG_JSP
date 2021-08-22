@@ -23,3 +23,9 @@ check.click(function(){
 	location.href="boardstatemodify.do?boardNum="+bnum+"&boardState="+bstate;
 	
 });
+
+/*댓글 이미지*/
+$('.insImg').click(function() {
+	console.log('이미지 클릭');
+	$(this).toggleClass('big');
+});

@@ -5,17 +5,13 @@
 	padding:0;
 	box-sizing: border-box;
 }
-
-#mypage{
-	width: 1300px;
-	margin: 30px auto;
-	text-align : center;
-    min-height: 600px;
+#updateWrap{
+	min-height: 900px;
+	width:1300px;
+	margin: 50px auto;
 }
-
 form {
-	width: 50%;
-	height: 1000px;
+	width: 60%;
 	margin: 0 auto;
 }
 li {
@@ -25,7 +21,7 @@ li {
 /* 게시판글씨, 등록버튼 */
 #titleBar {
 	border-bottom: solid gray 2px;
-	
+	padding-bottom: 10px;
 }
 
 #titleBar label{
@@ -40,22 +36,21 @@ li {
 	background-color: #84C0E9;
 	border-radius: 5px;
 	width: 80px;
-	height: 30px;
+	height: 40px;
 	float: right;
 }
 
 /* 게시판 제목 */
 #titleBar2 input{
 	margin-top: 20px;
-	width: 100%;
-	height: 30px;
+	width: 100%; 
+    padding: 10px 20px;
 }
 
 /* 주소 및 견/묘 선택 */
 #addrBar {
-	margin-top: 10px;
+	margin: 20px 20px 20px 0;
 	font-weight: bold;
-	
 }
 
 #addrBar label {
@@ -65,6 +60,8 @@ li {
 
 #addrBar select {
 	margin-right: 50px;
+	width: 70px;
+    padding: 0 5px;
 }
 
 /* 게시판 내용 */
@@ -72,12 +69,15 @@ li {
 	margin-top: 10px;
 }
 #boardContent{
-	width: 100%;
-	height: 500px;
-	
+    width: 100%;
+    padding: 20px;
+    min-height: 500px;	
 }
 /* 사진 첨부 */
 #photo	{
-	width: 20px;
-	height: 20px;
+	margin: 10px 0;
+    background-color: #F1F1F1;
+    width: 100%;
+    height: 65px;
+    padding: 20px;
 }
