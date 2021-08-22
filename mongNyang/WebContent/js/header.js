@@ -5,8 +5,6 @@ const params = new URLSearchParams(sear);
 let bType = params.get('boardType');
 console.log('타입'+bType);
 
+console.log('되나?');
+document.getElementById(bType).classList.add('thisclick');
 
-document.getElementsByClassName(bType).onclick=function(){
-	document.getElementsByClassName(bType).classList.toggle('thisclick');
-
-}

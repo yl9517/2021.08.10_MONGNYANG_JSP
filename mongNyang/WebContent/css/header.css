@@ -51,10 +51,9 @@ header{
 	border-color: #EBD6EB;	
 }
 /*선택시*/
-.thisclick{
+#head .boards li.thisclick{
 	color:black;
 	border-color: #EBD6EB;	
-	background-color: blue;	
 }
 
 /* 유저 */

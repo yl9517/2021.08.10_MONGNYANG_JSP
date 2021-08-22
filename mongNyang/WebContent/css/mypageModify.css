@@ -43,13 +43,13 @@ ul{
 	text-decoration: none;
 	color:black;
 }
-/*�궡 �젙蹂�*/
+/*마이페이지 수정*/
 #mypageInfo{
 	display:inline-block;
 	width: 60%;
 }
 #mypageInfo h1{
-	margin-bottom: 50px;
+	margin: 50px;
 }
 #mypageInfo li{
 	margin: 20px;
@@ -78,6 +78,7 @@ ul{
 	border-radius : 5px;
 	width: 100px;
 	height: 45px;
+	cursor: pointer;
 }
  #mypageInfo ul li a{
  	font-size: 12px;

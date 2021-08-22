@@ -1,11 +1,8 @@
 #myAlert{
 	width: 1300px;	
 	margin: 30px auto;
-	text-align: left;
-	min-height: 600px;
-}
-#myAlert h1{	
 	text-align: center;
+    min-height: 800px;
 }
 table{
 	border-collapse: collapse;
@@ -15,6 +12,7 @@ table thead tr th{
 	background-color: #37419A;
 	padding: 10px 30px;
 	color:white;
+	text-align: left;
 }
 
 table tbody tr{
@@ -22,6 +20,7 @@ table tbody tr{
 	border-bottom: 2px solid #A9DFED;
 }
 table td:first-child{
+    text-align: left;
 	padding: 20px 60px;
 }
 table td img{

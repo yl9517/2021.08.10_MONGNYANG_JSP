@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/mypageInfo.css">
+<link rel="stylesheet" href="css/mypageModify.css">
 </head>
 <body>
  <c:set var="dto" value="${requestScope.dto }"></c:set>
@@ -39,7 +39,7 @@
 			</ul>
 		</aside>
 		<div id="mypageInfo">
-			<h1> My Page </h1>
+			<h1> 정보 수정 </h1>
 			<form method="post" action="usermodifyresult.do">
 				<ul>
 					<li>

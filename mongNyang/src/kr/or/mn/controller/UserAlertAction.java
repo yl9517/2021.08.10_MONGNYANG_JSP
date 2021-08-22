@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
@@ -46,8 +47,7 @@ public class UserAlertAction implements Action {
 	        
 	        request.setAttribute("paging", pdto);
 	        List<AlertDTO> dto = service.myAlert(id, pdto);
-	        
-//	        HttpSession session = request.getSession();
+
 //			session.setMaxInactiveInterval(60*5);	// 세션유효시간 5분
 			request.setAttribute("alertdto", dto); //알림세션 만들기
 	        

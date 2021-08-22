@@ -41,7 +41,7 @@
 
 		<section>
 			<div id="infowrap">
-				<h1>회원정보</h1>
+				<h1> My Page</h1>
 				<table>
 	
 			        <tr><td>ID</td><td width="200px"><c:out value="${dto.userId }"/></td></tr>

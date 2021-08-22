@@ -32,7 +32,7 @@ public class UserReplyAction implements Action {
       //전체 자료수
       ReplyService service=ReplyService.getInstance();
       int totalcount=service.getTotalCount(userId);
-      int pageSize=6; //한페이지에 보여질 자료수
+      int pageSize=5; //한페이지에 보여질 자료수
       request.setAttribute("totalcount", totalcount);
 
       PageDTO pdto = new PageDTO("", "", currpage, totalcount, pageSize);

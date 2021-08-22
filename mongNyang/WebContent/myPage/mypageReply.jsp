@@ -44,7 +44,7 @@
       </aside>
       
       <div id="replywrap">
-         <h1>댓글 목록</h1>
+         <h1>내가 쓴 댓글</h1>
          
          <table>
             <thead>
@@ -63,10 +63,10 @@
             </tbody>
          </table>
       </div>
-      
+      <div></div>
       <div class="page1">
          <c:if test="${paging.startblock>1 }">
-            <a href="userreply.do?userId=${userId }&curr=${paging.prevPageblock }"><</a>
+            <a href="userreply.do?userId=${userId }&curr=${paging.prevPageblock }" id="next"><</a>
          </c:if>
       </div>
       <div class="page2">
@@ -82,7 +82,7 @@
       </div>
       <div class="page3">
          <c:if test="${paging.endblock<paging.totalpage }">
-            <a href="userreply.do?userId=${userId }&curr=${paging.nextPageblock }">></a>
+            <a href="userreply.do?userId=${userId }&curr=${paging.nextPageblock }" id="next">></a>
          </c:if>
       </div>
       

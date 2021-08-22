@@ -124,7 +124,7 @@
          
          <form id="replyInsert" method="post" action="replyinsert.do" enctype="multipart/form-data">
             <input type="hidden" name="reBoardNum" value="${dto.boardNum }">
-            <textarea name="replyContent"></textarea>
+            <textarea name="replyContent" required="required"></textarea>
             <input type="submit" value="등록">
             <input type="file" name="replyfile">
          </form>

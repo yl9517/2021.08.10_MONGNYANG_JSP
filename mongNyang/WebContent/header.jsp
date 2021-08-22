@@ -21,8 +21,8 @@
 				</a>
 			</div>
 			<ul class="boards">
-				<li><a href="boardlist.do?boardType=FIND" class="FIND">찾아주세요</a> </li>
-				<li><a href="boardlist.do?boardType=HELP" class="HELP">도와주세요</a> </li>
+				<li id="FIND"><a href="boardlist.do?boardType=FIND">찾아주세요</a> </li>
+				<li id="HELP"><a href="boardlist.do?boardType=HELP">도와주세요</a> </li>
 			</ul>
 			
 

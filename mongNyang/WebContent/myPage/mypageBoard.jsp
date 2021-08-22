@@ -69,7 +69,7 @@
 		
 		<div class="page1">
 			<c:if test="${paging.startblock>1 }">
-				<a href="userboard.do?userId=${userId }&curr=${paging.prevPageblock }"><</a>
+				<a href="userboard.do?userId=${userId }&curr=${paging.prevPageblock }" id="next"><</a>
 			</c:if>
 		</div>
 		<div class="page2">
@@ -85,7 +85,7 @@
 		</div>
 		<div class="page3">
 			<c:if test="${paging.endblock<paging.totalpage }">
-				<a href="userboard.do?userId=${userId }&curr=${paging.nextPageblock }">></a>
+				<a href="userboard.do?userId=${userId }&curr=${paging.nextPageblock }" id="next">></a>
 			</c:if>
 		</div>
 		
