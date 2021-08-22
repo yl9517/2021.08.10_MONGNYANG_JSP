@@ -25,7 +25,7 @@ check.click(function(){
 });
 
 /*댓글 이미지*/
-$('.insImg').click(function() {
+document.getElementsByClassName('insImg').onclick=function(){
 	console.log('이미지 클릭');
-	$(this).toggleClass('big');
-});
+	this.classList.toggle('big');
+}
