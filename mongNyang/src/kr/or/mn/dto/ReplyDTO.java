@@ -7,7 +7,7 @@ public class ReplyDTO {
 	private String userId;
 	private String replyContent;
 	private int alertCheck;
-	
+	  
 	public int getReplyNum() {
 		return replyNum;
 	}
