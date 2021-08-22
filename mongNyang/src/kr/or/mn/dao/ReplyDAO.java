@@ -197,13 +197,11 @@ public class ReplyDAO {
       sql.append("     set alertCheck = ?  ");
       sql.append("     where replyNum = ?  ");
       
-      System.out.println("dao에서 변경할 alert번호 확인"+changeAlert);
       try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
          pstmt.setInt(1, changeAlert);
          pstmt.setInt(2, replyNum);
          
          pstmt.executeUpdate();
-         System.out.println("변경 완료");
          
       }catch (SQLException e) {
          System.out.println(e);
