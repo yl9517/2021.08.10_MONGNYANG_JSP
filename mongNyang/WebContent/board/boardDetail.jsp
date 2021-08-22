@@ -81,7 +81,6 @@
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
                      /* 사진 널이 아닐경우 받아오기 */
-                     console.log(item.imgPath);
                      if(item.imgName != null){
                     	 replyList+="<br>";
                          replyList+="<img src='"+item.imgPath+"' alt='"+item.imgName+"'>";
@@ -128,7 +127,8 @@
          
    <div id="btns">
       <input type="hidden" value=${dto.boardType } id="boardType">
-      <input type="hidden" value=${dto.boardNum } id="boardNum">    
+      <input type="hidden" value=${dto.boardNum } id="boardNum">   
+      <input type="hidden" value=${dto.boardNum } id="bNum">   
       <input type="hidden" value=${dto.imageName } id="imageName">
       <input type="hidden" value=${dto.imagePath } id="imagePath">
       

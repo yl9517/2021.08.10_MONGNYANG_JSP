@@ -1,6 +1,8 @@
-let bnum = $('#bnum').val();
+let bnum = $('#boardNum').val();
+let bnum2 = $('#bNum').val();
 let bstate = $('#bstate').val();
-
+console.log(bnum);
+console.log(bnum2);
 /*console.log(bstate);
 console.log(typeof bstate)*/
 
