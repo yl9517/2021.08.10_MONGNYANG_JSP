@@ -142,7 +142,7 @@
       <input type="hidden" value=${dto.imageName } id="imageName">
       <input type="hidden" value=${dto.imagePath } id="imagePath">
       
-      <input type="button" value="글쓰기" id="add" style="background-color : #A9DFED">
+      <input type="button" value="글쓰기" id="add">
       <c:if test="${loginId eq dto.userId }">
 	      <input type="button" value="수정" id="modify">
 	      <input type="button" value="삭제" id="delete">
