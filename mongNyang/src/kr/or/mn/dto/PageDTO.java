@@ -25,6 +25,10 @@ public class PageDTO {
 //		endblock=totalpage;
 //	}
 	
+	//이전, 다음
+	int prevPageblock; //이전 페이지블럭 (8페이지에서 이전 누를시 5페이지)
+	int nextPageblock; //다음 페이지블럭 (8페이지에서 다음 누를시 11페이지)
+	
 	public PageDTO(String search, String searchtxt, int currpage,int totalcount, int pageSize) {
 		this.search=search;
 		this.searchtxt=searchtxt;
@@ -45,6 +49,9 @@ public class PageDTO {
 		this.endblock=startblock+pageblock-1;
 		if(endblock>totalpage) 
 			endblock=totalpage;
+		
+		this.prevPageblock = (currpage-1)/pageblock*pageblock;
+		this.nextPageblock = (currpage+4)/pageblock*pageblock+1;
 		
 	}
 
@@ -135,6 +142,26 @@ public class PageDTO {
 
 	public void setEndblock(int endblock) {
 		this.endblock = endblock;
+	}
+
+
+	public int getPrevPageblock() {
+		return prevPageblock;
+	}
+
+
+	public void setPrevPageblock(int prevPageblock) {
+		this.prevPageblock = prevPageblock;
+	}
+
+
+	public int getNextPageblock() {
+		return nextPageblock;
+	}
+
+
+	public void setNextPageblock(int nextPageblock) {
+		this.nextPageblock = nextPageblock;
 	}
 	
 	

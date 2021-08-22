@@ -53,7 +53,7 @@ public class BoardListAction implements Action {
 		//페이징
 		int pageSize=6;	//한페이지에 보여질 자료수			
 		PageDTO pagedto = new PageDTO(search, searchtxt,currpage, totalcount, pageSize);
-		
+
 		List<MainDTO> list=service.getList(boardType,petAddr, pagedto);	
 			
 		request.setAttribute("paging", pagedto);

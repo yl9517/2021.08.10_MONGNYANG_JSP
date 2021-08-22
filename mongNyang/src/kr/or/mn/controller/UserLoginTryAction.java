@@ -22,9 +22,7 @@ public class UserLoginTryAction implements Action{
 		
 		String userId = request.getParameter("id");
 		String userPwd = request.getParameter("pwd");
-		System.out.println("logintry 아디 :"+userId);
-		System.out.println("logintry 비번 :"+userPwd);
-		
+
 		UserService service = UserService.getInstance();
 		int result = service.tryLogin(userId, userPwd);
 		

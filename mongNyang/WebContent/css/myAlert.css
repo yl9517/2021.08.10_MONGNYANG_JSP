@@ -28,3 +28,47 @@ table td img{
 	width: 15px;
 }
 
+/*페이징 바*/
+.page1{
+	margin-top: 20px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px 5px;
+}
+.page2{
+	display: inline-block;
+    margin: 30px;
+}
+.page2 a{
+     display: inline-block;
+    background-color: #DBAADB;
+    color: white;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 20px;
+    width: 50px;
+    margin: 5px;
+    height: 50px;
+    line-height: 9px;
+    border-radius: 10px;
+}
+.page2 a.ispage{
+    pointer-events: none;
+    cursor: default;
+    background-color: #EBD6EB;
+}
+
+.page3{
+	margin-top: 20px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 10px 5px;
+}
+
+/*이전, 다음*/
+.next{
+	font-size: 35px;
+    position: relative;
+    color: #DBAADB;
+    top: 6px;
+}
