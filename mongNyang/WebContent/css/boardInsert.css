@@ -42,7 +42,7 @@ li {
 }
 
 /* 게시판 제목 */
-#titleBar2 input{
+input#boardTitle{
 	margin-top: 20px;
 	width: 100%; 
     padding: 10px 20px;
@@ -68,7 +68,7 @@ li {
 #contentBar {
 	margin-top: 10px;
 }
-#boardContent{
+textarea#boardContent{
     width: 100%;
     padding: 20px;
     min-height: 500px;	

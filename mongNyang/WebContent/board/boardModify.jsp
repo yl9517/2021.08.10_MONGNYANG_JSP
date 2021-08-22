@@ -14,8 +14,8 @@
 	
 	<div id="updateWrap">
 		<form method="post" action="boardmodifyresult.do" enctype="multipart/form-data">
-			<input type="text" value="${dto.boardNum }" name="boardNum">
-			<input type="text" value="${dto.boardType }" name="boardType">
+			<input type="hidden" value="${dto.boardNum }" name="boardNum">
+			<input type="hidden" value="${dto.boardType }" name="boardType">
 			<ul>
 				<li id="titleBar">
 					<label>글수정</label>

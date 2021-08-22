@@ -78,6 +78,9 @@ li {
 	margin: 10px 0;
     background-color: #F1F1F1;
     width: 100%;
-    height: 65px;
+    height: 155px;
     padding: 20px;
+}
+#photo img{
+	width: 100px;
 }

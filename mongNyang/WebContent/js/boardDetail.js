@@ -10,7 +10,13 @@ $('#modify').click(function(){
 });
 
 $('#delete').click(function(){
-	location.href="boarddel.do?boardType="+boardType+"&boardNum="+boardNum;
+
+   	 if(confirm("글을 삭제 하시겠습니까?")){		  		  
+     		 location.href="boarddel.do?boardType="+boardType+"&boardNum="+boardNum;
+	}else{
+		return;	
+	}
+    
 });
 
 $('#list').click(function(){

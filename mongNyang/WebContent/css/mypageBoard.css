@@ -47,7 +47,8 @@ ul {
 /* 게시판 */
 #myboard{
 	width: 60%;
-	display: inline-block;
+	display: inline-block;	
+    min-height: 800px;
 }
 
 table{

@@ -49,20 +49,28 @@
 			
 				<thead>
 					<tr>
-						<th class="myboardcss" style="text-align:left;">전체  <c:out value="${totalcount }"/></th>
-						<th>작성일</th>
-						<th>상태</th>
+						<th width="500px" class="myboardcss" style="text-align:left;">전체  <c:out value="${totalcount }"/></th>
+						<th width="150px">작성일</th>
+						<th width="90px">상태</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="item" items="${dto}">
+					<c:if test="${dto.size() ==0 }"> <!-- 자료가 하나도 없으면 -->
 						<tr>
-							<td width="500px" class="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
-							<td width="150px"> <c:out value="${item.boardDate }"/> </td>
-							<td width="90px"> <c:if test="${item.boardState==true }">해결</c:if>
-											  <c:if test="${item.boardState==false }">미해결</c:if></td><!-- 불린으로 받아와서 해결 / 미해결 설정 -->
-						</tr>	
-					</c:forEach>
+							<th width="900px" colspan="3"> 작성한 게시글이 없습니다. </th>
+						</tr>
+					</c:if>
+					
+					<c:if test="${dto.size() >= 1 }">
+						<c:forEach var="item" items="${dto}">
+							<tr>
+								<tdclass="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
+								<td> <c:out value="${item.boardDate }"/> </td>
+								<td>  <c:if test="${item.boardState==true }">해결</c:if>
+												  <c:if test="${item.boardState==false }">미해결</c:if></td><!-- 불린으로 받아와서 해결 / 미해결 설정 -->
+							</tr>	
+						</c:forEach>
+					</c:if>
 				</tbody>
 			</table>
 		</div>

@@ -111,12 +111,13 @@ input:checked + .slider:before {
 }
 
 /* 게시판 - 내용*/
-#boardContent {
-	margin: 30px 0 20px;
-	padding : 30px;
-	width: 100%;
-	min-height: 400px;
-	text-align: left;
+pre {
+    margin: 20px 0;
+    padding: 30px;
+    width: 100%;
+    line-height: 30px;
+    min-height: 400px;
+    text-align: left;
 }
 #boardWrap p:last-child{
 	margin-right: 50px;
@@ -243,7 +244,7 @@ p.reply{
 	font-size: 16px;
 	cursor: auto;
 }
-#btns input:first-child{
+input#add{
 	background-color: #37419A;		
 }
 #btns .right{

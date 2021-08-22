@@ -61,7 +61,9 @@ ul{
 #sign_wrap li input#overlap{
 	width: 80px;
 }
-
+input[type="submit"]{
+	background-color:#A9DFED;
+}
 
 /* 로그인 버튼 */
 #sign_wrap li:last-child {

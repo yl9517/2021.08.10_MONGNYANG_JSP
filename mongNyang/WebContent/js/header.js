@@ -3,6 +3,6 @@ let sear = window.location.search;
 
 const params = new URLSearchParams(sear);
 let bType = params.get('boardType');
-
-document.getElementById(bType).classList.add('thisclick');
-
+if(bType != "" && bType!=null){
+	document.getElementById(bType).classList.add('thisclick');
+}

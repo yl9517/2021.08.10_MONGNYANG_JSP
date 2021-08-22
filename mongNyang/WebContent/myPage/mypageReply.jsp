@@ -54,12 +54,19 @@
                </tr>
             </thead>
             <tbody>
-              <c:forEach var="item" items="${dto }">
-               <tr>
-                  <td class="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
-                  <td><c:out value="${item.replyDate }"/></td>
-               </tr>
-              </c:forEach>
+            	<c:if test="${dto.size() ==0 }"> <!-- 자료가 하나도 없으면 -->
+					<tr>
+						<th width="900px" colspan="3"> 작성한 댓글이 없습니다. </th>
+					</tr>
+				</c:if>
+				<c:if test="${dto.size() >= 1 }">
+		              <c:forEach var="item" items="${dto }">
+		               <tr>
+		                  <td class="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
+		                  <td><c:out value="${item.replyDate }"/></td>
+		               </tr>
+		              </c:forEach>
+              </c:if>
             </tbody>
          </table>
       </div>

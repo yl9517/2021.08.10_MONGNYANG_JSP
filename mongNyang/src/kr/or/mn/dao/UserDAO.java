@@ -161,6 +161,8 @@ public class UserDAO {
 			
 			if(rs.next()) {
 				result =1;
+			}else {
+				result =2;
 			}
 			
 		}catch(SQLException e) {

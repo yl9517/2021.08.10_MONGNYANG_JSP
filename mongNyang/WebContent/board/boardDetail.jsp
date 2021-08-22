@@ -47,9 +47,9 @@
 	            </div>
             </c:if>      
          </div>
-         <p id="boardContent">
-            <c:out value="${dto.boardContent }"></c:out>
-         </p>
+
+            <pre> <c:out value="${dto.boardContent }"/></pre>
+  
          <p style="float: right;">조회 <c:out value="${dto.boardReadNo }"></c:out></p>
       </div>
       
@@ -146,6 +146,7 @@
       </c:if>
       <input type="button" class="right" value="목록" id="list">   
    </div>
+ 
    
    <script src="js/boardDetail.js"></script>
    <script src="js/boardState.js"></script>
