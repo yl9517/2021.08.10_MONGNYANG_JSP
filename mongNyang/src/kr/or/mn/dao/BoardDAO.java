@@ -38,9 +38,9 @@ public class BoardDAO {
 		sql.append("				, boardState				");
 		sql.append("				, boardReadNo				");
 		sql.append("		from one_board as b					");
-		sql.append("		inner join one_category as c		");
+		sql.append("		left outer join one_category as c		");
 		sql.append("		on b.categoryName=c.categoryName	");
-		sql.append("		inner join one_image as i			");
+		sql.append("		left outer join one_image as i			");
 		sql.append("		on b.boardNum=i.boardNum			");
 		sql.append("		where c.boardType=?					");
 		if(!petAddr.equals("all")) 	//petAddr 이름이 all이 아니라면 (뭐라도 적혀져 있다면)
