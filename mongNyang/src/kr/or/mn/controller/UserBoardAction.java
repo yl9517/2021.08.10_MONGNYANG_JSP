@@ -21,6 +21,7 @@ public class UserBoardAction implements Action {
 		Forward forward = new Forward();
 		
 		String curr=request.getParameter("curr");
+		
 		//세션으로 아이디값 받기 
         String userId = (String) request.getSession().getAttribute("userId");
 
