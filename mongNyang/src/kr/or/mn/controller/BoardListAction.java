@@ -48,7 +48,7 @@ public class BoardListAction implements Action {
 		
 		//전체 자료수
 		BoardService service=BoardService.getInstance();
-		int totalcount=service.getTotalCount(search, searchtxt);
+		int totalcount=service.getTotalCount(boardType,petAddr, search, searchtxt);
 		
 		//페이징
 		int pageSize=6;	//한페이지에 보여질 자료수			

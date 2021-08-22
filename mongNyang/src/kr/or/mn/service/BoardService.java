@@ -201,7 +201,7 @@ private static BoardService instance=new BoardService();
 		return list;		
 	}
 	//자료 전체 갯수 받아오기
-	public int getTotalCount(String search, String searchtxt) {
+	public int getTotalCount(String boardType, String petAddr, String search, String searchtxt) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;
@@ -211,7 +211,7 @@ private static BoardService instance=new BoardService();
 			conn=dbconn.getConnection();
 			BoardDAO dao=BoardDAO.getDAO();
 			
-			totalcount=dao.getTotalCount(conn, search, searchtxt);
+			totalcount=dao.getTotalCount(conn,boardType,petAddr, search, searchtxt);
 			
 		}catch(SQLException|NamingException e) {
 			System.out.println(e);
@@ -276,7 +276,7 @@ private static BoardService instance=new BoardService();
 			
 			data[0] = dao.getTodayData(conn); //접수 된 글
 			data[1] = dao.getFinData(conn);   //총 해결된 글
-			data[2] = dao.getTotalCount(conn, "", ""); //총 글수
+			data[2] = dao.getTotalData(conn); //총 글수
 		
 			
 		}catch(SQLException|NamingException e) {
