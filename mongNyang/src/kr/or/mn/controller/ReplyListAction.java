@@ -48,6 +48,7 @@ public class ReplyListAction extends HttpServlet {
 		PrintWriter out=response.getWriter();
 		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
 		String master = request.getParameter("master");
+		String loginId = (String) request.getSession().getAttribute("userId");
 	
 		//댓글
 		ReplyService service=ReplyService.getInstance();
@@ -78,7 +79,9 @@ public class ReplyListAction extends HttpServlet {
 			replyobject.put("imgPath", imgList.get(index).getImagePath()); 
 			replyobject.put("imgNum", imgList.get(index).getImageNum()); 
 			replyobject.put("master", master);
-
+			replyobject.put("loginId", loginId);
+			
+			
 			arr.add(replyobject);
 			index++;
 		}

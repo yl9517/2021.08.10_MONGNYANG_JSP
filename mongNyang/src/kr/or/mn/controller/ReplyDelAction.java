@@ -23,6 +23,7 @@ public class ReplyDelAction implements Action {
 		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
 		int imgNum=Integer.parseInt(request.getParameter("imgNum"));
 		
+		
 		//이미지삭제
 		ImageService imgservice = ImageService.getService();
 		imgservice.delete(imgNum);
@@ -31,11 +32,9 @@ public class ReplyDelAction implements Action {
 		ReplyService service=ReplyService.getInstance();
 		service.replyDelete(replyNum, boardNum);
 		
-		
 		Forward forward=new Forward();
 		forward.setForward(false);
 		forward.setPath("boarddetail.do?boardNum="+boardNum);
-		
 		
 		return forward;
 	}

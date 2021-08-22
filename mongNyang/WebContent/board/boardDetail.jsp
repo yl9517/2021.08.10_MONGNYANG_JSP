@@ -71,16 +71,10 @@
 			}
          }
          
-         //댓글 수정 감을 못잡겠습니다.
-        /*  function modify(replyNum)
-         {
-        	location.href="replymodify.do?replyNum="+replyNum; 
-         } */
         
          $(document).ready(function(){
             let no=${dto.boardNum};
  			let master = $('.boardUserId').val();
- 
  			
             $.ajax({
                url:'replylist.mn'
@@ -96,9 +90,12 @@
                      if(item.userId==item.master){
                    	 	replyList+="<p class='master'> 작성자 </p>"
                      }
-                     replyList+="<p class='date'>"+item.replyDate+"</p>";
-                     replyList+="<img class='del' alt='del' src='images/del.png' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";
-                     replyList+="<p class='reply'>"+item.replyContent+"</p>";
+                     replyList+="<p class='date'>"+item.replyDate+"</p>";                
+                     
+                     if(item.userId==item.loginId){
+                     	replyList+="<img class='del' alt='del' src='images/del.png' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";                    	 
+                     }
+					 replyList+="<p class='reply'>"+item.replyContent+"</p>";
                      /* 사진 널이 아닐경우 받아오기 */
                      if(item.imgName != null){
                     	 replyList+="<br>";
