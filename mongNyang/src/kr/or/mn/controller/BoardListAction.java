@@ -73,6 +73,7 @@ public class BoardListAction implements Action {
 		
 		//list받아오기
 		String boardType=request.getParameter("boardType");
+		System.out.println("boardListAction에서 : "+boardType);
 		
 		String petAddr="all";
 		String paddr = request.getParameter("petAddr");
@@ -82,7 +83,7 @@ public class BoardListAction implements Action {
 		
 		List<MainDTO> list=service.getList(boardType,petAddr, dto);
 		
-		
+		//영문 한글로 변환
 		HashMap<String, String> userMap=new HashMap<String, String>();
 		userMap.put("EAST", "강동");
 		userMap.put("WEST", "강서");
