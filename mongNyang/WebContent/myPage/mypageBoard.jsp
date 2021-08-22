@@ -13,6 +13,7 @@
 <c:set var="dto" value="${requestScope.list }"></c:set>
 <c:set var="paging" value="${requestScope.paging }"></c:set>
 <c:set var="userId" value="${sessionScope.userId}"></c:set>
+<c:set var="totalcount" value="${requestScope.totalcount }"></c:set>
 
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
@@ -48,7 +49,7 @@
 			
 				<thead>
 					<tr>
-						<th>전체 <c:out value="${dto.size() }"/></th>
+						<th class="myboardcss">전체  <c:out value="${totalcount }"/></th>
 						<th>작성일</th>
 						<th>상태</th>
 					</tr>
@@ -56,7 +57,7 @@
 				<tbody>
 					<c:forEach var="item" items="${dto}">
 						<tr>
-							<td width="500px" id="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
+							<td width="500px" class="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
 							<td width="150px"> <c:out value="${item.boardDate }"/> </td>
 							<td width="90px"> <c:if test="${item.boardState==true }">해결</c:if>
 											  <c:if test="${item.boardState==false }">미해결</c:if></td><!-- 불린으로 받아와서 해결 / 미해결 설정 -->
