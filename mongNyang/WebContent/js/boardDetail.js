@@ -1,9 +1,6 @@
 let boardType = $('#boardType').val();
 let boardNum = $('#boardNum').val();
 
-console.log(boardType);
-console.log(boardNum);
-
 $('#add').click(function(){
     location.href="boardinsert.do?boardType="+boardType;		
 });

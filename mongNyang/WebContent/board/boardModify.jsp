@@ -12,8 +12,8 @@
 <body>
 	<c:set var="dto" value="${requestScope.dto }"></c:set>
 	<form method="post" action="boardmodifyresult.do" enctype="multipart/form-data">
-		<input type="text" value="${dto.boardNum }" name="bNum">
-		<input type="text" value="${dto.boardType }" name="bType">
+		<input type="text" value="${dto.boardNum }" name="boardNum">
+		<input type="text" value="${dto.boardType }" name="boardType">
 		<ul>
 			<li id="titleBar">
 				<label>글수정</label>
