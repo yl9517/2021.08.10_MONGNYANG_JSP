@@ -32,9 +32,8 @@
 							<tr>
 								<td width="880px">
 									 				
-									<input type="hidden" value="${item.boardNum }" name="boardNum">
-									<a href="useralertupdate.do?replyNum=${item.replyNum }&changeAlert=1">
-									<%-- <a href="boarddetail.do?boardNum=${item.boardNum }" onclick="return modifyAlert(${item.replyNum})">	 --%>						
+									
+									<a href="useralertupdate.do?replyNum=${item.replyNum }&changeAlert=1&boardNum=${item.boardNum } ">
 										<c:if test="${item.alertCheck == 1 }"> <!-- 알림상태가 1이면 -->
 											<span style="color : #ccc;">[ <b><c:out value="${item.boardTitle }"></c:out></b> ] 에 새 댓글이 등록되었습니다.</span>
 										</c:if>
@@ -74,6 +73,5 @@
 	      	</div>
 		</div>
 		
-		<script src="js/myAlert.js"></script>
 </body>
 </html>
