@@ -54,7 +54,7 @@
 					</a>
 					
 					<a href="usermain.do" class="logid"><c:out value="${loginId }"></c:out></a>		
-					<a href="userlogout.do">LOGOUT</a>	
+					<a href="userlogout.do" class="nolog">LOGOUT</a>	
 				</c:if>
 			</div>
 		</nav>

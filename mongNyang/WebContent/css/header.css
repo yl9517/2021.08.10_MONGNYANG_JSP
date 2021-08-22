@@ -76,8 +76,9 @@ header{
 .user a.logid{
 	width: 100px;	
 }
-#head .user:hover{
+#head .user .nolog:hover{
 	color:black;
+	font-weight: bolder;
 }
 .log a{
 	position: relative;
