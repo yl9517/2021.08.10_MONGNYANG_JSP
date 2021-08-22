@@ -56,7 +56,7 @@ public class ReplyDAO {
    }
    
    
-   public List<ReplyDTO> replyList(Connection conn, int boardNum, int replyNum){
+   public List<ReplyDTO> replyList(Connection conn, int boardNum){
       
       StringBuilder sql=new StringBuilder();
       sql.append("  select                      ");

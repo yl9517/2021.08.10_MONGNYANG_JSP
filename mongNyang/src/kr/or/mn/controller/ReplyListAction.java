@@ -46,7 +46,7 @@ public class ReplyListAction extends HttpServlet {
 		response.setContentType("application/json;charset=utf-8");
 		PrintWriter out=response.getWriter();
 			int boardNum=Integer.parseInt(request.getParameter("boardNum"));
-
+		
 			//댓글
 			ReplyService service=ReplyService.getInstance();
 			List<ReplyDTO> list=service.replyList(boardNum);
@@ -55,7 +55,7 @@ public class ReplyListAction extends HttpServlet {
 			ImageService imgService = ImageService.getService();			
 			List<ImageDTO> imgList = new ArrayList<ImageDTO>();  			
 			for(int i=0; i<list.size(); i++) {
-				ImageDTO imgdto = imgService.getImg(list.get(i).getReplyNum(), 1);
+				ImageDTO imgdto = imgService.getImg(list.get(i).getReplyNum(), 1); //numType = 0이면 글, 1이면 댓글
 				imgList.add(imgdto);
 			}
 			

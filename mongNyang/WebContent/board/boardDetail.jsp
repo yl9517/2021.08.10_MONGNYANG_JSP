@@ -32,7 +32,7 @@
                <c:out value=" > "></c:out>
                <c:out value="${dto.petType }"></c:out>
             </p>      
-            <c:if test="${dto.userId == loginId }">
+            <c:if test="${dto.userId == loginId }"> <!-- 글 작성자랑 로그인 아이디랑 같지 않으면 아예 안뜨게 -->
             	<div class="switchBar">
 	               <input type="hidden" value="${dto.boardState}" id="bstate">
 	               <span class="view">아직 해결 되지 않았습니다 😥</span>
@@ -71,6 +71,7 @@
         
          $(document).ready(function(){
             let no=${dto.boardNum};
+ //           let master=${dto.userId};
             $.ajax({
                url:'replylist.mn'
                , data:{'boardNum':no}
@@ -82,9 +83,9 @@
                      let replyList="<li> <div class='replyInfo'>";
                      replyList+="<img class='userImg' alt='userImg' src='images/userImg.png'> ";
                      replyList+="<p class='replyId'>"+item.userId+"</p>";
-                	 if(item.userId == ${loginId}){
-                         replyList+="<p class='master'> 작성자 </p>";
-                	 }
+  //               	 if(item.userId == master){
+  //                       replyList+="<p class='master'> 작성자 </p>";
+  //              	 }
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
@@ -140,7 +141,7 @@
       <input type="hidden" value=${dto.imagePath } id="imagePath">
       
       <input type="button" value="글쓰기" id="add" style="background-color : #A9DFED">
-      <c:if test="${dto.loginId==dto.userId }">
+      <c:if test="${loginId eq dto.userId }">
 	      <input type="button" value="수정" id="modify">
 	      <input type="button" value="삭제" id="delete">
       </c:if>

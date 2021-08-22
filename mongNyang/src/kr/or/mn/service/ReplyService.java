@@ -64,7 +64,7 @@ private static ReplyService instance=new ReplyService();
       try {
          conn=dbconn.getConnection();
          ReplyDAO dao=ReplyDAO.getDAO();
-         list=dao.replyList(conn, boardNum, boardNum);
+         list=dao.replyList(conn, boardNum);
       }catch(SQLException | NamingException e) {
          System.out.println(e);
       }finally {
