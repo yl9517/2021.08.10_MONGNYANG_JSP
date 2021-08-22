@@ -1,3 +1,5 @@
+//보드 리스트랑 연결
+
 let boardType = $('#btype').val(); //보드타입
 let petAddr = $('#paddr').val(); //펫타입
 

@@ -135,8 +135,7 @@
          
    <div id="btns">
       <input type="hidden" value=${dto.boardType } id="boardType">
-      <input type="hidden" value=${dto.boardNum } id="boardNum">   
-      <input type="hidden" value=${dto.boardNum } id="bNum">   
+      <input type="hidden" value=${dto.boardNum } id="boardNum">     
       <input type="hidden" value=${dto.imageName } id="imageName">
       <input type="hidden" value=${dto.imagePath } id="imagePath">
       

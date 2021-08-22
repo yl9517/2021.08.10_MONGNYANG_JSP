@@ -12,10 +12,10 @@
 <body>
 <c:set var="loginId" value="${sessionScope.userId}"></c:set>
 <c:set var="alertdto" value="${requestScope.alertdto}"></c:set>
-
+	
 	<header>
 		<nav id="head">
-			<div class="logo">
+			<div class="logo" style="width:250px;">
 				<a href="main.do">
 					<img src="images/logo.png" alt="logo">
 				</a>
@@ -25,14 +25,13 @@
 				<li><a href="boardlist.do?boardType=HELP">도와주세요</a> </li>
 			</ul>
 			
-			<!-- 로그인이 안되어 있을 경우 -->
-			<c:if test="${loginId == null }">
-					<div class="user log">
-						<a href="userlogin.do">LOGIN</a>
-					</div>
-			</c:if>
+
+			<div class="user">
+				<c:if test="${loginId == null }">	<!-- 로그인이 안되어 있을 경우 -->
+					<a href="userlogin.do" class="nolog">LOGIN</a>
+				</c:if>
 			
-			<c:if test="${loginId != null }"><!-- 로그인 되어있을 경우 -->
+				<c:if test="${loginId != null }"><!-- 로그인 되어있을 경우 -->
 					<c:set var="loop_alCheck" value="true"/><!-- 댓글 상태 확인 (0이 포함되어있는지 아닌지) 초기화:1 = 꺼져있음 -->
 					
 					<c:forEach var="item" items="${alertdto }">	
@@ -43,9 +42,7 @@
 						</c:if>
 					</c:forEach>
 					
-				<div class="user">
 					<a href="useralert.do">
-
 						<c:choose>
 							<c:when test="${loop_alCheck}">							
 								<img alt="bell" src="images/bell.png"> <!-- 트루일경우 -->
@@ -54,13 +51,14 @@
 								<img alt="ringbell" src="images/bell2.png"><!-- 댓글 알림상태가 하나라도 0 일경우 불빛 -->
 							</c:otherwise>
 						</c:choose>
-					
 					</a>
+					
 					<a href="usermain.do" class="logid"><c:out value="${loginId }"></c:out></a>		
 					<a href="userlogout.do">LOGOUT</a>	
-				</div>
-			</c:if>
+				</c:if>
+			</div>
 		</nav>
 	</header>
+	<script src="js/header.js"></script>
 </body>
 </html>
