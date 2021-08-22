@@ -402,32 +402,40 @@ public class BoardDAO {
 			return list;
 		}
 		
-		// 게시글 총 글수 (검색) + 메인에 쓸 데이터(3.총 글 수)
-		public int getTotalCount(Connection conn, String search, String searchtxt) {
+		// 게시글 총 글수 (보드타입,실종지역,검색)
+		public int getTotalCount(Connection conn,String boardType, String petAddr, String search, String searchtxt) {
 			// TODO Auto-generated method stub
 			StringBuilder sql=new StringBuilder();
 			sql.append("  select count(*)		");
-			sql.append("  from one_board		");
-			
+			sql.append("  from one_board as b   ");
+			sql.append("   inner join one_category as c	");
+			sql.append("  on b.categoryName = c.categoryName	");
+			sql.append(" where boardType = ? ");
+			if(!petAddr.equals("all") && petAddr !=null) { //지역 검색 시
+				sql.append(" and petAddr = ?");
+			}
 			if(!search.equals("") && !searchtxt.equals("")) {
 				if(search.equals("boardTitle")) {
-					sql.append("  where boardTitle like ?  ");
+					sql.append("  and boardTitle like ?  ");
 				}else if(search.equals("boardContent")) {
-					sql.append("  where boardContent like ?  ");
+					sql.append("  and boardContent like ?  ");
 				}
 			}
 			
 			int totalcount=0;
 			ResultSet rs=null;
-			try(
-					PreparedStatement pstmt=conn.prepareStatement(sql.toString());
-					
-					){
-					
-					if(!search.equals("") && !searchtxt.equals("")) {
-						pstmt.setString(1, "%"+searchtxt+"%");
-					}
-					rs=pstmt.executeQuery();
+			try(PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+				){
+				
+				int num = 1;
+				pstmt.setString(num++, boardType);
+				
+				if(!petAddr.equals("all") && petAddr !=null) 
+					pstmt.setString(num++, petAddr);
+				if(!search.equals("") && !searchtxt.equals("")) 
+					pstmt.setString(num++, "%"+searchtxt+"%");
+				
+				rs=pstmt.executeQuery();
 					
 				if(rs.next()) {
 					totalcount=rs.getInt(1);
@@ -539,7 +547,26 @@ public class BoardDAO {
 			return finDate;
 			
 		}
-
+		//메인에 쓸 게시글 자료 가져오기 (3. 총 글수)		
+		public int getTotalData(Connection conn) {
+			// TODO Auto-generated method stub
+			StringBuilder sql=new StringBuilder();
+			sql.append("  select count(*)		");
+			sql.append("  from one_board		");
+			
+			int totalData=0;
+			try(	PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+					ResultSet rs=pstmt.executeQuery();					
+				){
+							
+				if(rs.next()) {
+					totalData=rs.getInt(1);
+				}
+			}catch(SQLException e) {
+				System.out.println(e);
+			}
+			return totalData;
+		}
 		
 		
 }

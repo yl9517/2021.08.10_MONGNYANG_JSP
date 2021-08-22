@@ -20,7 +20,7 @@ public class MainAction implements Action {
 		int[] data =service.getData();
 
 		request.setAttribute("data", data);
-		
+
 		Forward forward = new Forward();
 		forward.setForward(true);
 		forward.setPath("/view.jsp?page=main.jsp");
