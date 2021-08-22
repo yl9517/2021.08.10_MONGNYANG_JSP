@@ -154,7 +154,7 @@ private static ReplyService instance=new ReplyService();
    
    
    //내 게시글에 댓글이 달렸다면
-   public List<AlertDTO> myAlert(String userId){
+   public List<AlertDTO> myAlert(String userId, PageDTO pdto){
       DBConnection dbconn = DBConnection.getDBInstance();
       
       Connection conn = null;
@@ -163,7 +163,7 @@ private static ReplyService instance=new ReplyService();
          conn= dbconn.getConnection();
          
          ReplyDAO dao = ReplyDAO.getDAO();
-         list = dao.myAlert(conn, userId);      
+         list = dao.myAlert(conn, userId, pdto);      
       }catch (SQLException | NamingException e) {
          System.out.println(e);
       }finally {
@@ -230,6 +230,27 @@ private static ReplyService instance=new ReplyService();
          }
          return totalcount;
       }
+      
+      //내 알림 전체자료 갯수 받아오기(유저 기준으로)
+      public int getAlertTotalCount(String userId) {
+          // TODO Auto-generated method stub
+          DBConnection dbconn=DBConnection.getDBInstance();
+          Connection conn=null;
+          
+          int totalcount=0;
+          try {
+             conn=dbconn.getConnection();
+             ReplyDAO dao=ReplyDAO.getDAO();
+             
+             totalcount=dao.getAlertTotalCount(conn, userId);
+             
+          }catch(SQLException|NamingException e) {
+             System.out.println(e);
+          }finally {
+             if(conn!=null) try {conn.close();} catch(SQLException e) {}
+          }
+          return totalcount;
+       }
 
 }
    

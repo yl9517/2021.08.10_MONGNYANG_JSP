@@ -145,7 +145,7 @@ public class ReplyDAO {
    
    
    //내 게시글에 다른사람의 댓글이 달렸다면(상태 0 혹은 1인것만 )
-   public List<AlertDTO> myAlert(Connection conn, String userId){
+   public List<AlertDTO> myAlert(Connection conn, String userId, PageDTO pdto){
       StringBuilder sql = new StringBuilder();
       sql.append(" select   b.boardNum        ");
       sql.append("         ,boardTitle       ");
@@ -159,12 +159,17 @@ public class ReplyDAO {
       sql.append("    and not r.userId = ?    "); //본인의 댓글이 아니며
       sql.append("    and alertCheck in(0,1)  "); //상태가 0 혹은 1
       sql.append("    order by replyDate DESC "); //댓글 최신순으로 정렬
+      sql.append("  limit                       ");
+      sql.append("          ?,?                 ");
+      
       
       ResultSet rs = null;
       List<AlertDTO> list = new ArrayList<AlertDTO>();
       try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
          pstmt.setString(1, userId);
          pstmt.setString(2, userId);
+         pstmt.setInt(3, pdto.getStartrow()-1);
+         pstmt.setInt(4, pdto.getPageSize());
 
          rs = pstmt.executeQuery();
          while(rs.next()) {
@@ -257,6 +262,7 @@ public class ReplyDAO {
    
       }
       
+      //내 댓글 자료갯수 받아오기 (유저 기준으로)
       public int getTotalCount(Connection conn, String userId) {
          // TODO Auto-generated method stub
          StringBuilder sql=new StringBuilder();
@@ -284,5 +290,39 @@ public class ReplyDAO {
          }
          return totalcount;
       }
+      
+      
+      //내 알림 전체자료 갯수 받아오기(유저 기준으로)
+      public int getAlertTotalCount(Connection conn, String userId) {
+		// TODO Auto-generated method stub
+    	  StringBuilder sql=new StringBuilder();
+    	  sql.append("  select  count(r.replyNum)     ");
+    	  sql.append("  from  one_reply as r          ");
+    	  sql.append("  inner join one_board as b     ");
+    	  sql.append("  on r.boardNum=b.boardNum      ");
+    	  sql.append("  where b.userId=?              ");
+    	  sql.append("  and not r.userId=?            ");
+    	  
+    	  int totalcount=0;
+          ResultSet rs=null;
+          try(
+                PreparedStatement pstmt=conn.prepareStatement(sql.toString());
+                
+                ){
+                pstmt.setString(1, userId);
+                pstmt.setString(2, userId);
+                rs=pstmt.executeQuery();
+                
+             if(rs.next()) {
+                totalcount=rs.getInt(1);
+             }
+             
+          }catch(SQLException e) {
+             System.out.println(e);
+          }finally {
+             if(rs!=null) try {rs.close();} catch(SQLException e) {}
+          }
+          return totalcount;
+       }
 
 }

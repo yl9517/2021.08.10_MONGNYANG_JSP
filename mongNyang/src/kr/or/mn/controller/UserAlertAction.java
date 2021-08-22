@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import kr.or.mn.comm.Action;
 import kr.or.mn.comm.Forward;
 import kr.or.mn.dto.AlertDTO;
+import kr.or.mn.dto.PageDTO;
 import kr.or.mn.service.ReplyService;
 
 public class UserAlertAction implements Action {
@@ -19,10 +20,17 @@ public class UserAlertAction implements Action {
 	public Forward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Forward forward = new Forward();
-
+		
+		String curr=request.getParameter("curr");
+		
 		//세션으로 아이디값 받기 
         String id = (String) request.getSession().getAttribute("userId");
-      
+        
+        
+        int currpage=1;
+        if(curr!=null) {
+           currpage=Integer.parseInt(curr);
+        }
         //if id가 null이면 로그인페이지로
         if(id==null) {
             forward.setForward(false);
@@ -30,8 +38,15 @@ public class UserAlertAction implements Action {
         }
         else {
 	        //service 연결
-	        ReplyService service = ReplyService.getInstance();    
-	        List<AlertDTO> dto = service.myAlert(id);
+	        ReplyService service = ReplyService.getInstance(); 
+	        int totalcount=service.getAlertTotalCount(id);
+	        int pageSize=8; //한페이지에 보여질 자료수
+	        
+	        PageDTO pdto = new PageDTO("", "", currpage, totalcount, pageSize);
+	        
+	        
+	        request.setAttribute("paging", pdto);
+	        List<AlertDTO> dto = service.myAlert(id, pdto);
 	        
 //	        HttpSession session = request.getSession();
 //			session.setMaxInactiveInterval(60*5);	// 세션유효시간 5분
