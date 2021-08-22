@@ -14,6 +14,9 @@
 <c:set var="loginId" value="${sessionScope.userId}"></c:set>
 
 <body>
+
+<input type="hidden" class="boardUserId" value="${dto.userId }"> <!-- 게시글 작성자 -->
+
    <div id="detailWrap">
       <div id="boardWrap"> 
          <div id="boardImg">
@@ -22,7 +25,7 @@
          <div id="titleBar">
             <h2><c:out value="${dto.boardTitle }"></c:out></h2>
             <div id="userInfo">
-               <p><c:out  value="${dto.userId }"></c:out></p>
+               <p><c:out value="${dto.userId }"></c:out></p>
                <p class="date"><c:out value="${dto.boardDate }"></c:out></p>
             </div>
          </div>
@@ -76,10 +79,12 @@
         
          $(document).ready(function(){
             let no=${dto.boardNum};
+ 			let master = $('.boardUserId').val();
+ 
  			
             $.ajax({
                url:'replylist.mn'
-               , data:{'boardNum':no}
+               , data:{'boardNum':no,'master':master}
                , method:'post'
                , dataType:'json'
                ,success:function(data)
@@ -88,8 +93,8 @@
                      let replyList="<li> <div class='replyInfo'>";
                      replyList+="<img class='userImg' alt='userImg' src='images/userImg.png'> ";
                      replyList+="<p class='replyId'>"+item.userId+"</p>";
-                     if(item.userId==item.loginId){
-                   	 replyList+="<p class='master'> 작성자 </p>"
+                     if(item.userId==item.master){
+                   	 	replyList+="<p class='master'> 작성자 </p>"
                      }
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<img class='del' alt='del' src='images/del.png' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";

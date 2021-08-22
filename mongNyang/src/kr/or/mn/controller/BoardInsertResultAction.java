@@ -86,7 +86,7 @@ public class BoardInsertResultAction implements Action { // 게시글 등록
 				imgdto.setImagePath("upload/"+imagePath);
 				imgdto.setBoardNum(boardNum);		
 				
-				int imageNum=imgservice.insertImg(imgdto); //이미지번호 가져오기
+				int imageNum=imgservice.insertImg(imgdto); //이미지삽입 및 번호 가져오기
 				
 				dto.setImageNum(imageNum);
 				dto.setImageName(imgdto.getImageName());

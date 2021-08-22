@@ -137,7 +137,7 @@ public class ImageDAO {
 		sql.append("  		 imageName         ");
 		sql.append("  		, imagePath	       ");
 		if(dto.getBoardNum()!=0 ) 
-			sql.append("  		, boardNum	       ");
+			sql.append("  		, boardNum	 )      ");
 		else if(dto.getReplyNum()!=0)
 			sql.append("  		, replyNum	 )     ");
 		sql.append("   values( ? , ? , ?) ");

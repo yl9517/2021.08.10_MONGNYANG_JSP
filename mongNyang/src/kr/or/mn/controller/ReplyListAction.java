@@ -47,43 +47,44 @@ public class ReplyListAction extends HttpServlet {
 		String id = (String) request.getSession().getAttribute("userId");
 
 		PrintWriter out=response.getWriter();
-			int boardNum=Integer.parseInt(request.getParameter("boardNum"));
+		int boardNum=Integer.parseInt(request.getParameter("boardNum"));
+		String master = request.getParameter("master");
+	
+		//댓글
+		ReplyService service=ReplyService.getInstance();
+		List<ReplyDTO> list=service.replyList(boardNum);
 		
-			//댓글
-			ReplyService service=ReplyService.getInstance();
-			List<ReplyDTO> list=service.replyList(boardNum);
-			
-			//이미지
-			ImageService imgService = ImageService.getService();			
-			List<ImageDTO> imgList = new ArrayList<ImageDTO>();  			
-			for(int i=0; i<list.size(); i++) {
-				ImageDTO imgdto = imgService.getImg(list.get(i).getReplyNum(), 1); //numType = 0이면 글, 1이면 댓글
-				imgList.add(imgdto);
-			}
-			
-			
-			//JSON
-			JSONArray arr=new JSONArray();
-			
-			int index = 0;
-			for(ReplyDTO dto:list)
-			{
-				JSONObject replyobject=new JSONObject();
-				replyobject.put("replyContent", dto.getReplyContent());
-				replyobject.put("userId", dto.getUserId());
-				replyobject.put("replyDate", dto.getReplyDate());
-				replyobject.put("boardNum", dto.getBoardNum());
-				replyobject.put("replyNum", dto.getReplyNum());
-				replyobject.put("imgName", imgList.get(index).getImageName()); 
-				replyobject.put("imgPath", imgList.get(index).getImagePath()); 
-				replyobject.put("imgNum", imgList.get(index).getImageNum()); 
-				replyobject.put("loginId", id);
+		//이미지
+		ImageService imgService = ImageService.getService();			
+		List<ImageDTO> imgList = new ArrayList<ImageDTO>();  			
+		for(int i=0; i<list.size(); i++) {
+			ImageDTO imgdto = imgService.getImg(list.get(i).getReplyNum(), 1); //numType = 0이면 글, 1이면 댓글
+			imgList.add(imgdto);
+		}
+		
+		
+		//JSON
+		JSONArray arr=new JSONArray();
+		
+		int index = 0;
+		for(ReplyDTO dto:list)
+		{
+			JSONObject replyobject=new JSONObject();
+			replyobject.put("replyContent", dto.getReplyContent());
+			replyobject.put("userId", dto.getUserId());
+			replyobject.put("replyDate", dto.getReplyDate());
+			replyobject.put("boardNum", dto.getBoardNum());
+			replyobject.put("replyNum", dto.getReplyNum());
+			replyobject.put("imgName", imgList.get(index).getImageName()); 
+			replyobject.put("imgPath", imgList.get(index).getImagePath()); 
+			replyobject.put("imgNum", imgList.get(index).getImageNum()); 
+			replyobject.put("master", master);
 
-				arr.add(replyobject);
-				index++;
-			}
+			arr.add(replyobject);
+			index++;
+		}
 
-			out.print(arr);
+		out.print(arr);
 	}
 
 }

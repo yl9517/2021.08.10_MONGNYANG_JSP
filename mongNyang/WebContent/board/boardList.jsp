@@ -52,7 +52,7 @@
 					<li>
 						<a href="boarddetail.do?boardNum=${item.boardNum }">
 							<img alt="${item.imageName }" src="${item.imagePath }" class="petImg">
-							<p class="petContent" id="petAddr"><c:out value="${item.petAddr } >"></c:out><c:out value="${item.petType }"></c:out></p>
+							<p class="petContent" id="petAddr"><c:out value="${item.petAddr } > "></c:out><c:out value="${item.petType }"></c:out></p>
 							<p class="petContent" id="boardTitle"><c:out value="${item.boardTitle }"></c:out><span>[${replyCount.get(status.index)}]</span></p>
 							<p class="petContent"><c:out value="${item.boardDate }"></c:out></p>
 						</a>				

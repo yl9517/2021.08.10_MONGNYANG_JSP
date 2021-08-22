@@ -114,16 +114,14 @@ ul li{
 	height: 200px;
 	border: solid 2px #EBD6EB;
 	border-radius: 10px;
-    transition:all 0.4s;
+    transition:0.3s;
 }
 #list li:hover {	
-    transition:all 0.4s;
+	transform:scale(1.05);
+    transition: 0.3s;
+    box-shadow: 5px 5px 5px 5px gray;
 }
-#list li:hover .petImg{
-	width: 200px;
-	height:200px;
-    transition:all 0.4s;
-}
+
 #list a{
 	display: block;
 }
