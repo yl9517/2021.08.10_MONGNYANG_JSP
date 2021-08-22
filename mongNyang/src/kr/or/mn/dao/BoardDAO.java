@@ -401,6 +401,7 @@ public class BoardDAO {
 			return list;
 		}
 		
+		// 게시글 총 글수 (검색) + 메인에 쓸 데이터(3.총 글 수)
 		public int getTotalCount(Connection conn, String search, String searchtxt) {
 			// TODO Auto-generated method stub
 			StringBuilder sql=new StringBuilder();
@@ -497,4 +498,47 @@ public class BoardDAO {
 			}
 			return totalcount;
 		}
+
+		//메인에 쓸 게시글 자료 가져오기 (1.오늘 등록 된 글)
+		public int getTodayData(Connection conn){
+			StringBuilder sql = new StringBuilder();
+			sql.append(" select count(boardDate)                           ");
+			sql.append(" from one_board                                    ");
+			sql.append("  where boardDate like DATE_FORMAT(now(),'%Y-%m-%d%')  ");
+			
+			int todayDate = 0;
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				ResultSet rs = pstmt.executeQuery();){
+				
+				if(rs.next())
+					todayDate = rs.getInt(1);
+				
+			}catch (SQLException e) {
+				System.out.println(e);
+			}
+			return todayDate;
+		}
+		//메인에 쓸 게시글 자료 가져오기 (2.총 해결된 글)
+		public int getFinData(Connection conn){
+			StringBuilder sql = new StringBuilder();
+			sql.append(" select count(boardState)     ");
+			sql.append(" from one_board               ");
+			sql.append("  where boardState = 1        ");
+			
+			int finDate = 0;
+			try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+				ResultSet rs = pstmt.executeQuery();){
+				
+				if(rs.next())
+					finDate = rs.getInt(1);
+				
+			}catch (SQLException e) {
+				System.out.println(e);
+			}
+			return finDate;
+			
+		}
+
+		
+		
 }

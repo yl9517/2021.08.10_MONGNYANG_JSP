@@ -264,4 +264,27 @@ private static BoardService instance=new BoardService();
 		return totalcount;
 	}
 	
+	//메인에 쓸 게시글 자료 가져오기 (오늘 등록 된 글, 총 해결된 글, 총 글수)
+	public int[] getData(){
+		DBConnection dbconn=DBConnection.getDBInstance();
+		Connection conn=null;
+		
+		int[] data = new int[3];
+		try {
+			conn=dbconn.getConnection();
+			BoardDAO dao=BoardDAO.getDAO();
+			
+			data[0] = dao.getTodayData(conn); //접수 된 글
+			data[1] = dao.getFinData(conn);   //총 해결된 글
+			data[2] = dao.getTotalCount(conn, "", ""); //총 글수
+		
+			
+		}catch(SQLException|NamingException e) {
+			System.out.println(e);
+		}finally {
+			if(conn!=null) try {conn.close();} catch(SQLException e) {}
+		}
+		return data;
+	}
+	
 }

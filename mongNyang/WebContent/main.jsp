@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +10,20 @@
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-
+	<c:set var="data" value="${requestScope.data }"></c:set>
 	<div id="mainWrap">
 		<div id="mainImg">
 			<ul id="data">
 				<li>				
-					<h2>23건</h2>
+					<h2><c:out value="${data[0] }건"></c:out></h2>
 					<p>오늘 접수 된 <br>실종 건수</p>				
 				</li>
 				<li>
-					<h2>122건</h2>
+					<h2><c:out value="${data[1] }건"></c:out></h2>
 					<p>찾은 반려동물 건수</p>				
 				</li>
 				<li>
-					<h2>453건</h2>
+					<h2><c:out value="${data[2] }건"></c:out></h2>
 					<p>누적 신고 건수</p>				
 				</li>
 			</ul>
