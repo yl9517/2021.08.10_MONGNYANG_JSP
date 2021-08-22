@@ -119,7 +119,6 @@ input:checked + .slider:before {
 	text-align: left;
 }
 #boardWrap p:last-child{
-	float: right;
 	margin-right: 50px;
 }
 /*---------------------------------*/
@@ -149,11 +148,11 @@ input:checked + .slider:before {
 	margin: 10px 0;
 	padding: 10px;
 	border-bottom: 2px solid #ccc;
-	background-color: yellow;
 }
 /*댓글이미지*/
-.replyInfo img{
-	width: 100px;
+.replyInfo .userImg{
+	width: 40px;
+	height: 40px;
 	margin-right: 20px;
 }
 .replyInfo{
@@ -162,20 +161,26 @@ input:checked + .slider:before {
 .replyInfo p{
 	margin-right: 20px;
 	position: relative;
-	top:20px;
+	bottom:10px;
+    display: inline-block;
+	font-size: 18px;
 }
-.replyId{
-	line-height : 3px;
-	font-size: 20px;
-}
-.reply{
-	text-align:left;
-	padding: 10px 30px;
-}
-p.date {
-	font-size: 14px;
-}
+/*작성자*/
 
+/*날짜*/
+p.date {
+	font-size: 12px;
+    color: #909090;
+}
+/*작성댓글*/
+p.reply{
+	display: block;
+	padding: 20px;
+}
+.replyInfo .insImg{
+	width: 100px;
+	margin-right: 20px;
+}
 
 /* 댓글 작성 칸 */
 #replyInsert{

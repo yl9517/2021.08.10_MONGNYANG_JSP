@@ -382,6 +382,7 @@ public class BoardDAO {
 				pstmt.setString(1, userId);
 				pstmt.setInt(2, pdto.getStartrow()-1);
 		        pstmt.setInt(3, pdto.getPageSize());
+		        
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					BoardDTO dto = new BoardDTO();

@@ -32,6 +32,7 @@ public class PageDTO {
 		this.currpage=currpage;
 		this.totalcount=totalcount;
 		this.pageSize=pageSize;
+		
 		this.totalpage=(int) Math.ceil((float)totalcount/pageSize);
 		this.startrow=(currpage-1)*pageSize+1; 
 		this.endrow=startrow+pageSize-1;
