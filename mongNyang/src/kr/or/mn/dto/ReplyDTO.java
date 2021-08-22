@@ -6,7 +6,6 @@ public class ReplyDTO {
 	private String replyDate;
 	private String userId;
 	private String replyContent;
-	private int imageNum;
 	private int alertCheck;
 	
 	public int getReplyNum() {
@@ -39,12 +38,7 @@ public class ReplyDTO {
 	public void setReplyContent(String replyContent) {
 		this.replyContent = replyContent;
 	}
-	public int getImageNum() {
-		return imageNum;
-	}
-	public void setImageNum(int imageNum) {
-		this.imageNum = imageNum;
-	}
+	
 	public int isAlertCheck() {
 		return alertCheck;
 	}

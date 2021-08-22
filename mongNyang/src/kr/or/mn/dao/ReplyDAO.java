@@ -264,7 +264,7 @@ public class ReplyDAO {
          sql.append("  select count(*)      ");
          sql.append("  from one_reply      ");
          sql.append("  where userId=?        ");
-         
+           
          int totalcount=0;
          ResultSet rs=null;
          try(
