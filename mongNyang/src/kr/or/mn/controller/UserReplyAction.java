@@ -32,7 +32,7 @@ public class UserReplyAction implements Action {
       //전체 자료수
       ReplyService service=ReplyService.getInstance();
       int totalcount=service.getTotalCount(userId);
-      int pagepercount=8; //한페이지에 보여질 자료수
+      int pagepercount=5; //한페이지에 보여질 자료수
       
       int totalpage=(int) Math.ceil((float)totalcount/pagepercount);
       int startrow=(currpage-1)*pagepercount+1;
@@ -42,7 +42,7 @@ public class UserReplyAction implements Action {
       }
       
       int blockcount=5; //한 페이지에 보여질 최대 페이지 수
-      int startblock=(currpage-1)/blockcount*blockcount+1;
+      int startblock=((currpage-1)/blockcount)*blockcount+1;
       int endblock=startblock+blockcount-1;
       if(endblock>totalpage) {
          endblock=totalpage;

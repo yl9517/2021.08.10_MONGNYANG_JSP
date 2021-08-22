@@ -24,11 +24,10 @@ public class ReplyDAO {
       // TODO Auto-generated method stub
       StringBuilder sql=new StringBuilder();
       sql.append("  insert into one_reply  (                  ");
-      sql.append("                          boardNum         ");
+      sql.append("                          boardNum          ");
       sql.append("                          ,replyDate        ");
       sql.append("                          ,userId           ");
       sql.append("                          ,replyContent     ");
-//      sql.append("                          ,imageNum         ");
       sql.append("                          ,alertCheck)      ");
       sql.append("  values(?,now(),?,?,0)                     ");
       
@@ -40,7 +39,6 @@ public class ReplyDAO {
             pstmt.setInt(1, dto.getBoardNum());
             pstmt.setString(2, dto.getUserId());
             pstmt.setString(3, dto.getReplyContent());
-//      pstmt.setString(4, dto.getReplyContent()); //이미지넘버 받아오기
             
             pstmt.executeUpdate();
             
@@ -67,7 +65,6 @@ public class ReplyDAO {
       sql.append("               ,userId        ");
       sql.append("               ,replyDate     ");
       sql.append("               ,boardNum      ");
-      sql.append("               ,imageNum      ");
       sql.append("  from     one_reply          ");
       sql.append("  where                       ");
       sql.append("               boardNum=?     ");
@@ -88,7 +85,6 @@ public class ReplyDAO {
             dto.setUserId(rs.getString("userId"));
             dto.setReplyDate(rs.getString("replyDate"));
             dto.setBoardNum(rs.getInt("boardNum"));
-            dto.setImageNum(rs.getInt("imageNum"));
             list.add(dto);
          }
          
