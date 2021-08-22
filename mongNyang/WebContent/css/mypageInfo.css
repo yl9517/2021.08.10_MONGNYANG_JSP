@@ -3,10 +3,17 @@
 	padding:0;
 	box-sizing: border-box;
 }
+
 ul{
 	list-style: none;
 }
 
+#myboardWrap{
+	width: 1300px;
+	margin: 30px auto;
+	text-align : center;
+    min-height: 600px;
+}
 #mypage{
 	width: 1300px;
 	margin: 30px auto;

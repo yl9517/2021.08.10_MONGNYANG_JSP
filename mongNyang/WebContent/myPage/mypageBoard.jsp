@@ -13,6 +13,7 @@
 <c:set var="dto" value="${requestScope.list }"></c:set>
 <c:set var="paging" value="${requestScope.paging }"></c:set>
 <c:set var="userId" value="${sessionScope.userId}"></c:set>
+
 	<div id="myboardWrap">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="images/userImg.png">

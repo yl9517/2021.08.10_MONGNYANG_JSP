@@ -6,6 +6,13 @@
 	box-sizing: border-box;
 }
 
+#mypage{
+	width: 1300px;
+	margin: 30px auto;
+	text-align : center;
+    min-height: 600px;
+}
+
 form {
 	width: 50%;
 	height: 1000px;
