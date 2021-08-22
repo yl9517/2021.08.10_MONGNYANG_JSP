@@ -64,7 +64,7 @@
 					<c:if test="${dto.size() >= 1 }">
 						<c:forEach var="item" items="${dto}">
 							<tr>
-								<tdclass="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
+								<td class="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
 								<td> <c:out value="${item.boardDate }"/> </td>
 								<td>  <c:if test="${item.boardState==true }">해결</c:if>
 												  <c:if test="${item.boardState==false }">미해결</c:if></td><!-- 불린으로 받아와서 해결 / 미해결 설정 -->
