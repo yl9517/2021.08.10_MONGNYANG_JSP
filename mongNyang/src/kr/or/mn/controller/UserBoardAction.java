@@ -33,7 +33,7 @@ public class UserBoardAction implements Action {
 		BoardService service=BoardService.getInstance();
 		int totalcount=service.getUserBoardTotalCount(userId);
 		int pageSize=5; //한페이지에 보여질 자료수
-		
+		request.setAttribute("totalcount", totalcount);
 		PageDTO pdto = new PageDTO("", "", currpage, totalcount, pageSize);
 		
 		request.setAttribute("paging", pdto);

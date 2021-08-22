@@ -13,6 +13,7 @@
 <c:set var="dto" value="${requestScope.mypagereplylist }"></c:set>
 <c:set var="paging" value="${requestScope.paging }"></c:set>
 <c:set var="userId" value="${sessionScope.userId}"></c:set>
+<c:set var="totalcount" value="${requestScope.totalcount }"></c:set>
 
    <div id="mypage">
       <aside id="mypageBtns">
@@ -47,14 +48,15 @@
          
          <table>
             <thead>
-               <tr>
-                  <th colspan="2">전체<c:out value="${dto.size() }"/></th>
+               <tr class="myreplycss">
+                  <th colspan="2">전체  <c:out value="${totalcount }"/></th>
+                  <th>작성일</th>
                </tr>
             </thead>
             <tbody>
               <c:forEach var="item" items="${dto }">
                <tr>
-                  <td width="500px" id="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
+                  <td width="500px" class="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
                   <td width="150px"><c:out value="${item.replyDate }"/></td>
                </tr>
               </c:forEach>
