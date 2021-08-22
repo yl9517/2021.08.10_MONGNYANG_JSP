@@ -56,7 +56,7 @@
 				<tbody>
 					<c:forEach var="item" items="${dto}">
 						<tr>
-							<td width="500px"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
+							<td width="500px" id="myboardcss"><a href="boarddetail.do?boardNum=${item.boardNum }"> <c:out value="${item.boardTitle }"/> </a></td>
 							<td width="150px"> <c:out value="${item.boardDate }"/> </td>
 							<td width="90px"> <c:if test="${item.boardState==true }">해결</c:if>
 											  <c:if test="${item.boardState==false }">미해결</c:if></td><!-- 불린으로 받아와서 해결 / 미해결 설정 -->
@@ -68,7 +68,7 @@
 		
 		<div class="page1">
 			<c:if test="${paging.startblock>1 }">
-				<a href="userboard.do?userId=${userId }&curr=${paging.currpage-1 }">이전</a>
+				<a href="userboard.do?userId=${userId }&curr=${paging.currpage-1 }"><</a>
 			</c:if>
 		</div>
 		<div class="page2">
@@ -84,7 +84,7 @@
 		</div>
 		<div class="page3">
 			<c:if test="${paging.endblock<paging.totalpage }">
-				<a href="userboard.do?userId=${userId }&curr=${paging.currpage+1 }">다음</a>
+				<a href="userboard.do?userId=${userId }&curr=${paging.currpage+1 }">></a>
 			</c:if>
 		</div>
 		

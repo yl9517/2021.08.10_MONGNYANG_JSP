@@ -11,7 +11,7 @@
 <body>
  <c:set var="dto" value="${requestScope.dto }"></c:set>
  
-	<div id="mypage">
+	<div id="myboardWrap">
 		<aside id="mypageBtns">
 			<img alt="userImg" src="images/userImg.png">
 			<ul>

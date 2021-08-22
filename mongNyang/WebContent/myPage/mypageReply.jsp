@@ -54,7 +54,7 @@
             <tbody>
               <c:forEach var="item" items="${dto }">
                <tr>
-                  <td width="500px"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
+                  <td width="500px" id="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
                   <td width="150px"><c:out value="${item.replyDate }"/></td>
                </tr>
               </c:forEach>
@@ -64,7 +64,7 @@
       
       <div class="page1">
          <c:if test="${paging.startblock>1 }">
-            <a href="userreply.do?userId=${userId }&curr=${paging.currpage-1 }">이전</a>
+            <a href="userreply.do?userId=${userId }&curr=${paging.currpage-1 }"><</a>
          </c:if>
       </div>
       <div class="page2">
@@ -80,7 +80,7 @@
       </div>
       <div class="page3">
          <c:if test="${paging.endblock<paging.totalpage }">
-            <a href="userreply.do?userId=${userId }&curr=${paging.currpage+1 }">다음</a>
+            <a href="userreply.do?userId=${userId }&curr=${paging.currpage+1 }">></a>
          </c:if>
       </div>
       
