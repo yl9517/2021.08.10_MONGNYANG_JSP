@@ -44,6 +44,8 @@ public class ReplyListAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		response.setContentType("application/json;charset=utf-8");
+		String id = (String) request.getSession().getAttribute("userId");
+
 		PrintWriter out=response.getWriter();
 			int boardNum=Integer.parseInt(request.getParameter("boardNum"));
 		
@@ -75,7 +77,8 @@ public class ReplyListAction extends HttpServlet {
 				replyobject.put("imgName", imgList.get(index).getImageName()); 
 				replyobject.put("imgPath", imgList.get(index).getImagePath()); 
 				replyobject.put("imgNum", imgList.get(index).getImageNum()); 
-		
+				replyobject.put("loginId", id);
+
 				arr.add(replyobject);
 				index++;
 			}

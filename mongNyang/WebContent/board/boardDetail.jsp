@@ -71,7 +71,7 @@
         
          $(document).ready(function(){
             let no=${dto.boardNum};
- //           let master=${dto.userId};
+ 			
             $.ajax({
                url:'replylist.mn'
                , data:{'boardNum':no}
@@ -83,9 +83,9 @@
                      let replyList="<li> <div class='replyInfo'>";
                      replyList+="<img class='userImg' alt='userImg' src='images/userImg.png'> ";
                      replyList+="<p class='replyId'>"+item.userId+"</p>";
-  //               	 if(item.userId == master){
-  //                       replyList+="<p class='master'> 작성자 </p>";
-  //              	 }
+                     if(item.userId==item.loginId){
+                   	 replyList+="<p class='master'> 작성자 </p>"
+                     }
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
                      replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
@@ -135,7 +135,8 @@
          
    <div id="btns">
       <input type="hidden" value=${dto.boardType } id="boardType">
-      <input type="hidden" value=${dto.boardNum } id="boardNum">     
+      <input type="hidden" value=${dto.boardNum } id="boardNum">   
+      <input type="hidden" value=${dto.boardNum } id="bNum">   
       <input type="hidden" value=${dto.imageName } id="imageName">
       <input type="hidden" value=${dto.imagePath } id="imagePath">
       
