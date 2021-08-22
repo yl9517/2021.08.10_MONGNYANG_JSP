@@ -14,7 +14,7 @@
 	<c:set var="writeId" value="${requestScope.writeId}"></c:set> 
 	<div id="sign_wrap">
 		<h2>MONG NYANG</h2>
-		<form method="post" action="userinsert.do" onsubmit="return checkSubmit(${writeId},${useId });">
+		<form id="join" method="post" action="userinsert.do" onsubmit="return checkSubmit(${writeId},${useId });">
 			<ul>	
 				<li>
 					<label for="id">아이디</label>

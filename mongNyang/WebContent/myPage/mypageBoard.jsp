@@ -49,7 +49,7 @@
 			
 				<thead>
 					<tr>
-						<th class="myboardcss">전체  <c:out value="${totalcount }"/></th>
+						<th class="myboardcss" style="text-align:left;">전체  <c:out value="${totalcount }"/></th>
 						<th>작성일</th>
 						<th>상태</th>
 					</tr>

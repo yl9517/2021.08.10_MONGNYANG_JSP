@@ -65,14 +65,14 @@ table tbody tr{
 	height: 30px;	
 	border-bottom: 2px solid #A9DFED;
 }
-table td{
+table tbody td{
 	padding: 20px;
 }
-table tbody tr td:first-child{
+table tbody td:first-child{
     text-align: left;
 }
 
-.myboardcss{
+td.myboardcss{
 	text-align: left;
 	padding-left: 40px;
 }

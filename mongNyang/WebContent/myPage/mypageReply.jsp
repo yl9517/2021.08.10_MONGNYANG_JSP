@@ -49,15 +49,15 @@
          <table>
             <thead>
                <tr class="myreplycss">
-                  <th colspan="2">전체  <c:out value="${totalcount }"/></th>
-                  <th>작성일</th>
+                  <th width="600px">전체  <c:out value="${totalcount }"/></th>
+                  <th style="text-align:center;">작성일</th>
                </tr>
             </thead>
             <tbody>
               <c:forEach var="item" items="${dto }">
                <tr>
-                  <td width="500px" class="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
-                  <td width="150px"><c:out value="${item.replyDate }"/></td>
+                  <td class="myreplycss"><a href="boarddetail.do?boardNum=${item.boardNum }"><c:out value="${item.replyContent }"/></a></td>
+                  <td><c:out value="${item.replyDate }"/></td>
                </tr>
               </c:forEach>
             </tbody>
