@@ -60,7 +60,12 @@
          <script>
          function del(replyNum, boardNum, imgNum)
          {
-            location.href="replydelete.do?replyNum="+replyNum+"&boardNum="+boardNum+"&imgNum="+imgNum;
+        	 if(confirm("삭제 하시겠습니까?")){		
+          		 location.href="replydelete.do?replyNum="+replyNum+"&boardNum="+boardNum+"&imgNum="+imgNum;
+          		  
+			}else{
+				return;	
+			}
          }
          
          //댓글 수정 감을 못잡겠습니다.
@@ -87,7 +92,7 @@
                    	 replyList+="<p class='master'> 작성자 </p>"
                      }
                      replyList+="<p class='date'>"+item.replyDate+"</p>";
-                     replyList+="<input type='button' value='삭제' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";
+                     replyList+="<img class='del' alt='del' src='images/del.png' onclick=del("+item.replyNum+","+item.boardNum+","+item.imgNum+")>";
                      replyList+="<p class='reply'>"+item.replyContent+"</p>";
                      /* 사진 널이 아닐경우 받아오기 */
                      if(item.imgName != null){
@@ -111,15 +116,7 @@
          </script>
          
          <ul id="replyList">
-        	<li>
-               <div class="replyInfo">
-                  <img alt="userImg" src="images/userImg.png">               
-                  <p class="replyId">hong01</p>
-                  <p class="date">2021.06.17 18:05</p>
-               </div>
-               <p class="reply">어라 32사거리에서 본 것 같은데</p>
-               <img src="images/dog1.jpg" alt="dog"> 사진 있을 시
-            </li>
+   
          </ul>
          
          

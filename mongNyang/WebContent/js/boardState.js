@@ -1,17 +1,11 @@
 let bnum = $('#boardNum').val();
-let bnum2 = $('#bNum').val();
 let bstate = $('#bstate').val();
-console.log(bnum);
-console.log(bnum2);
-/*console.log(bstate);
-console.log(typeof bstate)*/
 
 if(bstate=='true'){ //1이면 (bstate가 1이면 해결상태)
 	$(".view").toggle();
 	$('input:checkbox').prop('checked',true);
 		//	console.log('해결상태');
 }
-
 
 
 let check = $("input[type='checkbox']");

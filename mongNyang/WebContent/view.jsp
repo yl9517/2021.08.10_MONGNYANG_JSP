@@ -8,6 +8,17 @@
 <title>Insert title here</title>
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="icon" href="favicon.ico">
+<style>
+@font-face { 
+    font-family: 'EliceDigitalBaeum_Bold'; /* 엘리스디지털배움체B */
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/EliceDigitalBaeum_Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+	font-family: 'EliceDigitalBaeum_Bold', cursive;
+}
+</style>
 </head>
 <body>
 

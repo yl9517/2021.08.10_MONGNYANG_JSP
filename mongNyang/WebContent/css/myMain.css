@@ -64,3 +64,6 @@ table tbody tr{
 table td{
 	padding: 20px;
 }
+table td:last-child {	
+    width: 200px;
+}

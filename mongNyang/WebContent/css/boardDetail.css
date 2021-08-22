@@ -166,21 +166,28 @@ input:checked + .slider:before {
 	font-size: 18px;
 }
 /*작성자*/
-
+.master{
+	padding: 5px 10px 3px;
+    background-color: #EBD6EB;
+    border-radius: 20px;
+    font-size: 15px;
+}
 /*날짜*/
 p.date {
 	font-size: 12px;
     color: #909090;
 }
 /*삭제버튼*/
-.replyInfo input{
-	padding: 10px 20px;
+.replyInfo .del{
+	width: 20px;
     float: right;
+    margin: 10px;
 }
 /*작성댓글*/
 p.reply{
 	display: block;
-	padding: 20px;
+	padding: 20px 0 10px 20px;
+    bottom: 0;
 }
 .replyInfo .insImg{
 	width: 100px;
@@ -202,6 +209,11 @@ p.reply{
 	bottom: 15px;
 	width: 70px;
 	height: 40px;
+}
+ /*파일 선택*/
+#replyInsert input[type="file"]{
+	float: left;
+    margin-left: 50px;
 }
 
 /* 버튼*/

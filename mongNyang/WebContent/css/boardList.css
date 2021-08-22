@@ -64,6 +64,7 @@ ul li{
 #findBar select{
 	width: 70px;
 	height: 30px;
+    padding: 0 5px;
 }
 
 /*검색 바 -직접 검색*/
@@ -80,6 +81,7 @@ ul li{
 	background-color: #84C0E9;
 	border-radius: 5px;
 	border: 1px;	
+    font-size: 16px;
 }
 
 /* 게시판 */
@@ -92,30 +94,40 @@ ul li{
     justify-content: space-around;
     flex-flow: row wrap;
 }
-#list li {
-	display:inline-block;
-	margin: 30px;
-	width: 500px;
-	height: 200px;
-	border: solid 2px #37419A;
-	border-radius: 10px;
-}
-#list a{
-	display: block;
-}
-
 /* 게시물 속 사진 */
 .petImg {
 	width: 180px;
 	height: 180px;
 	float: left;
-	background-color: yellow;
 	margin-left: 10px;
 	margin-top: -12px;
 	margin-right: 20px;
+    border-radius: 10px;
 	/* border: solid 2px #84C0E9;
 	border-radius: 10px; */
 }
+
+#list li {
+	display:inline-block;
+	margin: 30px;
+	width: 500px;
+	height: 200px;
+	border: solid 2px #EBD6EB;
+	border-radius: 10px;
+    transition:all 0.4s;
+}
+#list li:hover {	
+    transition:all 0.4s;
+}
+#list li:hover .petImg{
+	width: 200px;
+	height:200px;
+    transition:all 0.4s;
+}
+#list a{
+	display: block;
+}
+
 
 .petContent {
 	text-align: left;
@@ -123,13 +135,15 @@ ul li{
 }
 
 #petAddr{
-	color: #84C0E9;
+	color: #37419A;
 	font-weight: bold;
 }
 
 #boardTitle{
 	font-weight: bold;
-	font-size: larger;
+    font-size: 18px;
+    display: flow-root;
+    padding-right: 10px;
 }
 #add {
    position: relative;
@@ -147,6 +161,8 @@ ul li{
  }
 span {
 	color: #84C0E9;
+    padding: 0 10px;
+    font-size: 16px;
 }
 /*페이징 바*/
 .page1{
@@ -157,11 +173,11 @@ span {
 }
 .page2{
 	display: inline-block;
-    margin-top: 30px;
+    margin: 30px;
 }
 .page2 a{
      display: inline-block;
-    background-color: #EBD6EB;
+    background-color: #DBAADB;
     color: white;
     font-weight: 900;
     font-size: 20px;
@@ -175,6 +191,7 @@ span {
 .page2 a.ispage{
     pointer-events: none;
     cursor: default;
+    background-color: #EBD6EB;
 }
 
 .page3{
@@ -182,4 +199,12 @@ span {
 	text-decoration: none;
 	display: inline-block;
 	padding: 10px 5px;
+}
+
+/*이전, 다음*/
+.next{
+	font-size: 35px;
+    position: relative;
+    color: #DBAADB;
+    top: 6px;
 }

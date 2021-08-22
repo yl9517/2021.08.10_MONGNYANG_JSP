@@ -19,7 +19,7 @@
 					<input type="password" id="pwd" name="pwd" placeholder="Password">
 				</li>
 				<li>
-					<input type="submit" value="로그인">
+					<input style="background-color: #A9DFED; font-size: 16px;" type="submit" value="로그인">
 				</li>
 				<li>
 					<a href="userfindpwd.do"> 비밀번호 찾기 </a> <br>

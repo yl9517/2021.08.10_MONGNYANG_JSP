@@ -67,7 +67,7 @@
 		
 		<div class="page1">
 			<c:if test="${paging.startblock>1 }">
-				<a href="boardlist.do?boardType=${boardType }&petAddr=${petAddr }&curr=${paging.currpage-1 }&search=${paging.search }&searchtxt=${paging.searchtxt }">이전</a>
+				<a href="boardlist.do?boardType=${boardType }&petAddr=${petAddr }&curr=${paging.currpage-1 }&search=${paging.search }&searchtxt=${paging.searchtxt }" class="next"> < </a>
 			</c:if>
 		</div>
 		<div class="page2">
@@ -85,7 +85,7 @@
 		</div>
 		<div class="page3">
 			<c:if test="${paging.endblock<paging.totalpage }">
-				<a href="boardlist.do?boardType=${boardType }&petAddr=${petAddr }&curr=${paging.currpage+1 }&search=${paging.search }&searchtxt=${paging.searchtxt }">다음</a>
+				<a href="boardlist.do?boardType=${boardType }&petAddr=${petAddr }&curr=${paging.currpage+1 }&search=${paging.search }&searchtxt=${paging.searchtxt }" class="next">></a>
 			</c:if>
 		</div>
 	</div>

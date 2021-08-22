@@ -68,7 +68,6 @@ private static BoardService instance=new BoardService();
 		return dto;
 	}
 	
-	
 	//게시글 삭제
 	public void delete(int boardnum) {
 		// TODO Auto-generated method stub
@@ -86,6 +85,7 @@ private static BoardService instance=new BoardService();
 			if(conn!=null) try {conn.close();} catch(SQLException e) {}
 		}
 	}
+	
 	//게시글 등록(게시판, 카테고리, 이미지 등륵)후 바로 게시판번호 받아옴
 	public int insertData(MainDTO dto) {
 		// TODO Auto-generated method stub
@@ -242,8 +242,7 @@ private static BoardService instance=new BoardService();
 		return replyCount;
 	}
 	
-	//게시물자료 전체 갯수 받아오기(유저기준으로)
-	
+	//게시물자료 전체 갯수 받아오기(유저기준으로 내 게시글 보기)
 	public int getUserBoardTotalCount(String userId) {
 		// TODO Auto-generated method stub
 		DBConnection dbconn=DBConnection.getDBInstance();
@@ -264,7 +263,7 @@ private static BoardService instance=new BoardService();
 		return totalcount;
 	}
 	
-	//메인에 쓸 게시글 자료 가져오기 (오늘 등록 된 글, 총 해결된 글, 총 글수)
+	//메인에 쓸 데이터 가져오기 (오늘 등록 된 글, 총 해결된 글, 총 글수)
 	public int[] getData(){
 		DBConnection dbconn=DBConnection.getDBInstance();
 		Connection conn=null;

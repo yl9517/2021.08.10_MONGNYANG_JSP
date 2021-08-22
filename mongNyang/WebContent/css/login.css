@@ -33,11 +33,12 @@ ul{
 #log_wrap li:last-child {
 	margin-top: 20px;
 }
-
+/*회원가입, 로그인*/
 #log_wrap a{
 	text-decoration: none;
 	margin : 5px;
 	color: #717171;
+    font-size: 15px;
 }
 #log_wrap a:hover{
 	color: black;
