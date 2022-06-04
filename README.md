@@ -4,6 +4,10 @@
 #### 프로젝트 기간 : 2021.08.10 ~ 2021.08.22 (12일) 
 ![기간](https://user-images.githubusercontent.com/80736033/135708027-b464b181-a7d4-439c-8e87-c83b3f9e696d.PNG)
 
+## 스킬
+![image](https://user-images.githubusercontent.com/80736033/171987355-d1323282-d98b-44c5-986d-5aff91759881.png)
+
+
 ### 기획 배경
 * 조금은 멀게 느껴지는 유기견 보호소보다, 당장 우리 주변에 쉽게 발견할 수 있는 거리의 동물들에게 먼저 시선을 두고자 함.
 * ‘가장 가까운 곳에서 가장 가까운 사람들이 돕는다’ 라는 취지를 가지고 각자의 동네를 기반으로 둔 유기동물 구조 커뮤니티.
@@ -25,3 +29,24 @@
 
 ## 마인드 맵
 ![몽냥 마인드맵](https://user-images.githubusercontent.com/80736033/135708011-8b7ea054-7cb9-4c53-a99d-2b6bdf79666b.PNG)
+
+## 기능
+#### 1. 메인
+![image](https://user-images.githubusercontent.com/80736033/171987427-ca7fd48b-9df0-46c9-ad86-9e48f8c31813.png)
+
+#### 2. 로그인
+![image](https://user-images.githubusercontent.com/80736033/171987462-49a24ad1-1c71-4975-b164-36a090656a37.png)
+- 비밀번호 찾기
+- 회원가입
+
+#### 3. 마이페이지
+![image](https://user-images.githubusercontent.com/80736033/171987497-05ccf95a-bf41-4461-9408-bc1668bd8a71.png)
+- 내가 쓴 게시글/댓글 (페이징)
+- 회원 수정/탈퇴
+
+#### 4. 게시판
+![image](https://user-images.githubusercontent.com/80736033/171987520-c37257a2-7b87-4ecc-8ff2-3df970c94280.png)
+![image](https://user-images.githubusercontent.com/80736033/171987581-085e5a5c-1fd3-47e5-ae36-3a1b9f453ff6.png)
+
+#### 5. 내 알림
+![image](https://user-images.githubusercontent.com/80736033/171987595-29b87bbf-48b2-4853-b3a7-2b9b8140ed5f.png)
