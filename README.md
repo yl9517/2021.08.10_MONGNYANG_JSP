@@ -29,6 +29,12 @@
 
 ## 마인드 맵
 ![몽냥 마인드맵](https://user-images.githubusercontent.com/80736033/135708011-8b7ea054-7cb9-4c53-a99d-2b6bdf79666b.PNG)
+(USE CASE)
+
+![image](https://user-images.githubusercontent.com/80736033/185879348-506e49c5-54e2-4174-b17e-b889f414c1a2.png)
+
+## DB정의서
+![image](https://user-images.githubusercontent.com/80736033/185879521-972efbf5-a2f8-404e-a7f7-e98eca9c6fe8.png)
 
 ## 기능
 #### 1. 메인
